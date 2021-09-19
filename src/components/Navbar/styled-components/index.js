@@ -8,7 +8,7 @@ export const NavMenu = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: rgb(221, 113, 86);
+	background: lightblue;
 	h3 {
 		width: 100%;
 		text-align: center;
