@@ -14,15 +14,16 @@ var timer;
 function showRemaining() {
 	var now = new Date();
 	var distance = end - now;
-	if (distance < 0) {
+	var countdown = document.getElementById('countdown');
+	if (distance < 0 && countdown) {
 		clearInterval(timer);
-		document.getElementById('countdown').innerHTML = 'EXPIRED!';
-
+		countdown.innerHTML = 'EXPIRED!';
 		return;
 	}
-	var days = Math.floor(distance / _day);
-
-	document.getElementById('countdown').innerHTML = days + ' days ';
+	if (countdown) {
+		var days = Math.floor(distance / _day);
+		countdown.innerHTML = days + ' days ';
+	}
 }
 
 timer = setInterval(showRemaining, 1000);
