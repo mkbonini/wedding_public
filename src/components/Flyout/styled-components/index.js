@@ -9,6 +9,7 @@ export const FlyoutContainer = styled.div`
 	right: 0;
 	background-color: whitesmoke;
 	transition: 200ms ease;
+	z-index: 10;
 `;
 
 export const LinkContainer = styled.div`

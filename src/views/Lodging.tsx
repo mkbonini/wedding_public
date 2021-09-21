@@ -1,17 +1,11 @@
 /** @format */
 
-import React, {useState} from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import map from '../assets/DeerCreekMap.jpg';
-import cabin1 from '../assets/cabin-1.png';
-import cabin2 from '../assets/cabin-2.png';
-import cabin3 from '../assets/cabin-3.png';
-import cabin4 from '../assets/cabin-4.png';
-import camper1 from '../assets/camper-1.png';
-import camper2 from '../assets/camper-2.png';
-import camper3 from '../assets/camper-3.png';
-import camper4 from '../assets/camper-4.png';
-import Modal from '../components/Modal'
+import { cabinInfo } from './utils/getLodgingFAQ';
+import Modal from '../components/Modal';
+import arrow from '../assets/arrow.png';
 
 const Title = styled.div`
 	display: flex;
@@ -28,8 +22,7 @@ const Title = styled.div`
 `;
 
 const ImageContainer = styled.div`
-	max-width: 50px;
-
+	max-width: 40px;
 	img {
 		width: 100%;
 	}
@@ -42,192 +35,178 @@ const MapImageContainer = styled.div`
 	}
 `;
 
+const bounce = keyframes`
+  0%{
+	transform: translateY(0);
+  }
+  50%{
+	transform: translateY(-15px);
+  }
+  100% {
+	transform: translateY(0px);
+  }
+`;
+
+const ArrowContainer = styled.div<{
+	displayArrow: boolean;
+	top: number;
+	left: number;
+}>`
+	display: ${(p) => (p.displayArrow ? 'block' : 'block')};
+	max-width: 25px;
+	animation: ${bounce} 1s linear infinite;
+	position: absolute;
+	top: ${(p) => p.top && `${p.top}%`};
+	left: ${(p) => p.left && `${p.left}%`};
+	img {
+		width: 100%;
+		position: relative;
+	}
+`;
+
 const MapContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 `;
 
-const CabinInfoContainer = styled.div<{ color: string }>`
+const CabinCard = styled.div<{ color: string }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	min-height: 200px;
+	position: relative;
+	min-height: 75px;
+	width: 100%;
 	padding: 20px;
 	margin: 10px;
 	border: 1px solid gray;
 	border-radius: 5px;
-	max-width: 500px;
-	min-width: 300px;
 	&:hover {
-		background-color: ${(p) => p.color && ` ${p.color}`};
+		background-color: ${(p) => p.color && p.color};
 		opacity: 0.9;
 	}
-	h1{
-		font-size: 26px;
-		padding:0;
-		margin:0;
-	}
-	h3{
+	h1 {
+		font-family: 'Raleway', sans-serif;
+		font-size: 20px;
 		padding: 0;
-		margin:0
+		margin: 0;
+	}
+	h3 {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 500;
+		font-size: 16px;
+		padding: 0;
+		margin: 0;
 	}
 `;
 
-const Container = styled.div`
+const CabinInfoContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	max-height: 700px;
+	border: 1px solid lightgray;
+	margin: 1rem;
+	padding: 1rem;
+	overflow-x: scroll;
+	width: 80%;
+	max-width: 400px;
+	::-webkit-scrollbar {
+		-webkit-appearance: none;
+		width: 7px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: rgba(78, 154, 152, 1);
+	}
+
+	h2 {
+		text-transform: uppercase;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 700;
+	}
+	@media only screen and (max-width: 1000px) {
+		max-width: unset;
+		margin: 0;
+	}
 `;
 
-const cabinInfo = [
-	{
-		name: 'Humming Bird',
-		capacity: 12,
-		image: cabin1,
-		color: '#E3A335',
-	},
-	{
-		name: 'Spruce',
-		capacity: 12,
-		image: cabin2,
-		color: '#F7669B',
-	},
-	{
-		name: 'Lark',
-		capacity: 12,
-		image: cabin3,
-		color: '#6691F4',
-	},
-	{
-		name: 'Moose',
-		capacity: 12,
-		image: cabin4,
-		color: '#D0F766',
-	},
-	{
-		name: "Bear's Cave",
-		capacity: 12,
-		image: cabin1,
-		color: '#E3A335',
-	},
-	{
-		name: "Crow's Nest",
-		capacity: 12,
-		image: cabin2,
-		color: '#F7669B',
-	},
-	{
-		name: "Black Bear 1",
-		capacity: 12,
-		image: cabin3,
-		color: '#6691F4',
-	},
-	{
-		name: "Black Bear 2",
-		capacity: 12,
-		image: cabin4,
-		color: '#D0F766',
-	},
-	{
-		name: "Pine",
-		capacity: 12,
-		image: cabin1,
-		color: '#E3A335',
-	},
-	{
-		name: "Jackalope",
-		capacity: 12,
-		image: cabin2,
-		color: '#F7669B',
-	},
-	{
-		name: "Arapahoe",
-		capacity: 12,
-		image: cabin3,
-		color: '#6691F4',
-	},
-	{
-		name: "Sasquach",
-		capacity: 12,
-		image: cabin4,
-		color: '#D0F766',
-	},
-	{
-		name: "Aspen",
-		capacity: 12,
-		image: cabin1,
-		color: '#E3A335',
-	},
-	{
-		name: "RV #1",
-		capacity: 1,
-		image: camper2,
-		color: '#F7669B',
-	},
-	{
-		name: "RV #2",
-		capacity: 1,
-		image: camper3,
-		color: '#6691F4',
-	},
-	{
-		name: "RV #3",
-		capacity: 1,
-		image: camper4,
-		color: '#D0F766',
-	},
-	{
-		name: "RV #4",
-		capacity: 1,
-		image: camper1,
-		color: '#E3A335',
-	},
-	{
-		name: "RV #5",
-		capacity: 1,
-		image: camper2,
-		color: '#F7669B',
-	},
-	{
-		name: "RV #6",
-		capacity: 1,
-		image: camper3,
-		color: '#6691F4',
-	},
-];
+const LodgingContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	@media only screen and (max-width: 1000px) {
+		flex-direction: column;
+		align-items: center;
+	}
+`;
+
 export default function Lodging() {
 	const [visible, setVisible] = useState(false);
+	const [cabinClicked, setCabinClicked] = useState('');
+	const [displayArrow, setDisplayArrow] = useState(false);
+	const [top, setTop] = useState(0);
+	const [left, setLeft] = useState(0);
 
-	const handleClick = () => {
-		setVisible(true)
-	}
+	const handleClick = (id: string) => {
+		setVisible(true);
+		setCabinClicked(id);
+	};
+
+	const handleHover = (top: number, left: number) => {
+		setDisplayArrow(true);
+		setTop(top);
+		setLeft(left);
+		console.log(top, left);
+	};
 
 	return (
 		<>
-		<Modal setVisible={setVisible} visible={visible}/>
+			<Modal
+				setVisible={setVisible}
+				visible={visible}
+				data={cabinInfo}
+				cabinClicked={cabinClicked}
+			/>
 			<Title>
 				<h1>{'Lodging & Food'}</h1>
 			</Title>
-			<MapContainer>
-				<MapImageContainer>
-					<img src={map} alt='' />
-				</MapImageContainer>
-			</MapContainer>
-			<Container>
-				{cabinInfo.map((cabin) => {
-					return (
-						<CabinInfoContainer color={cabin.color} onClick={handleClick} >
-							<ImageContainer>
-								<img src={cabin.image} alt='' />
-							</ImageContainer>
-							<h1>{cabin.name}</h1>
-							<h3>{cabin.capacity} spots available</h3>
-						</CabinInfoContainer>
-					);
-				})}
-			</Container>
+			<LodgingContainer>
+				<MapContainer>
+					<ArrowContainer displayArrow={displayArrow} top={top} left={left}>
+						<img src={arrow} alt='' />
+					</ArrowContainer>
+					<MapImageContainer>
+						<img src={map} alt='' />
+					</MapImageContainer>
+				</MapContainer>
+				<CabinInfoContainer>
+					<h2>Cabin Information</h2>
+					{cabinInfo.map((cabin) => {
+						return (
+							<CabinCard
+								color={cabin.color}
+								onClick={() => handleClick(cabin.id)}
+								onMouseEnter={() => handleHover(cabin.top, cabin.left)}
+								onMouseLeave={() => setDisplayArrow(false)}
+							>
+								<ImageContainer>
+									<img src={cabin.image} alt='' />
+								</ImageContainer>
+								<h1>{cabin.name}</h1>
+								<h3>
+									{cabin.capacity}
+									{cabin.capacity === 1
+										? ' spot available'
+										: ' spots available'}
+								</h3>
+							</CabinCard>
+						);
+					})}
+				</CabinInfoContainer>
+			</LodgingContainer>
 		</>
 	);
 }
