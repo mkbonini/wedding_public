@@ -9,6 +9,7 @@ import arrow from '../assets/arrow.png';
 
 const Title = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
@@ -18,6 +19,9 @@ const Title = styled.div`
 		font-family: 'Raleway', sans-serif;
 		font-weight: 300;
 		text-transform: uppercase;
+	}
+	p {
+		max-width: 800px;
 	}
 `;
 
@@ -127,7 +131,7 @@ const CabinInfoContainer = styled.div`
 		font-family: 'Raleway', sans-serif;
 		font-weight: 700;
 	}
-	@media only screen and (max-width: 1000px) {
+	@media only screen and (max-width: 1200px) {
 		max-width: unset;
 		margin: 0;
 	}
@@ -137,10 +141,17 @@ const LodgingContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	@media only screen and (max-width: 1000px) {
+	@media only screen and (max-width: 1200px) {
 		flex-direction: column;
 		align-items: center;
 	}
+`;
+
+const Overlay = styled.div`
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.3;
 `;
 
 export default function Lodging() {
@@ -153,6 +164,8 @@ export default function Lodging() {
 	const handleClick = (id: string) => {
 		setVisible(true);
 		setCabinClicked(id);
+		let bodyStyle = document.getElementById('body')?.style.overflow;
+		bodyStyle = 'hidden';
 	};
 
 	const handleHover = (top: number, left: number) => {
@@ -172,7 +185,17 @@ export default function Lodging() {
 			/>
 			<Title>
 				<h1>{'Lodging & Food'}</h1>
+				<h2>Guest Accomidations</h2>
+				<p>
+					Deer Creek Mountain Camp is a stunning camp with near 120 beds
+					situating in beautiful cabins surrounded by aspens and wildlife. It is
+					a truly beautiful and unique venue, and our preference is that guests
+					sleep onsite if they can. We are asking $30 per person which covers
+					the two evenings (Friday and Saturday) which can be paid on the
+					registry tab.
+				</p>
 			</Title>
+
 			<LodgingContainer>
 				<MapContainer>
 					<ArrowContainer displayArrow={displayArrow} top={top} left={left}>

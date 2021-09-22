@@ -6,10 +6,7 @@ import styled from 'styled-components';
 const ModalContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	padding: 20px;
-	height: 80%;
-	width: 75%;
-	border: 1px solid grey;
+	padding: 2rem;
 	background-color: white;
 	position: fixed;
 	overflow: scroll;
@@ -19,8 +16,8 @@ const ModalContainer = styled.div`
 	bottom: 0;
 	margin: auto;
 	z-index: 1;
-	border-radius: 10px;
-	box-shadow: 10px 7px 20px lightgray;
+	/* border-radius: 10px; */
+	/* box-shadow: 10px 7px 20px lightgray; */
 	h1 {
 		font-size: 45px;
 		color: black;
@@ -33,7 +30,7 @@ const ModalContainer = styled.div`
 		font-weight: 300;
 		text-transform: uppercase;
 	}
-	@media only screen and (max-width: 1000px) {
+	@media only screen and (max-width: 1200px) {
 		flex-direction: column;
 	}
 `;
@@ -142,7 +139,7 @@ const SignUpForm = styled.div<{ color: string }>`
 			background-color: ${(p) => p.color && p.color};
 		}
 	}
-	@media only screen and (max-width: 1000px) {
+	@media only screen and (max-width: 1200px) {
 		margin: 20px 0px;
 		padding: 20px 0px;
 	}
