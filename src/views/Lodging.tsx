@@ -1,178 +1,36 @@
 /** @format */
 
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
 import map from '../assets/DeerCreekMap.jpg';
 import { cabinInfo } from './utils/getLodgingFAQ';
 import Modal from '../components/Modal';
-import arrow from '../assets/arrow.png';
-
-const Title = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 20px;
-	h1 {
-		font-size: 45px;
-		color: black;
-		font-family: 'Raleway', sans-serif;
-		font-weight: 300;
-		text-transform: uppercase;
-	}
-	p {
-		max-width: 800px;
-	}
-`;
-
-const ImageContainer = styled.div`
-	max-width: 40px;
-	img {
-		width: 100%;
-	}
-`;
-
-const MapImageContainer = styled.div`
-	max-width: 900px;
-	img {
-		width: 100%;
-	}
-`;
-
-const bounce = keyframes`
-  0%{
-	transform: translateY(0);
-  }
-  50%{
-	transform: translateY(-15px);
-  }
-  100% {
-	transform: translateY(0px);
-  }
-`;
-
-const ArrowContainer = styled.div<{
-	displayArrow: boolean;
-	top: number;
-	left: number;
-}>`
-	display: ${(p) => (p.displayArrow ? 'block' : 'block')};
-	max-width: 25px;
-	animation: ${bounce} 1s linear infinite;
-	position: absolute;
-	top: ${(p) => p.top && `${p.top}%`};
-	left: ${(p) => p.left && `${p.left}%`};
-	img {
-		width: 100%;
-		position: relative;
-	}
-`;
-
-const MapContainer = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const CabinCard = styled.div<{ color: string }>`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	position: relative;
-	min-height: 75px;
-	width: 100%;
-	padding: 20px;
-	margin: 10px;
-	border: 1px solid gray;
-	border-radius: 5px;
-	&:hover {
-		background-color: ${(p) => p.color && p.color};
-		opacity: 0.9;
-	}
-	h1 {
-		font-family: 'Raleway', sans-serif;
-		font-size: 20px;
-		padding: 0;
-		margin: 0;
-	}
-	h3 {
-		font-family: 'Raleway', sans-serif;
-		font-weight: 500;
-		font-size: 16px;
-		padding: 0;
-		margin: 0;
-	}
-`;
-
-const CabinInfoContainer = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	max-height: 700px;
-	border: 1px solid lightgray;
-	margin: 1rem;
-	padding: 1rem;
-	overflow-x: scroll;
-	width: 80%;
-	max-width: 400px;
-	::-webkit-scrollbar {
-		-webkit-appearance: none;
-		width: 7px;
-	}
-
-	::-webkit-scrollbar-thumb {
-		border-radius: 4px;
-		background-color: rgba(78, 154, 152, 1);
-	}
-
-	h2 {
-		text-transform: uppercase;
-		font-family: 'Raleway', sans-serif;
-		font-weight: 700;
-	}
-	@media only screen and (max-width: 1200px) {
-		max-width: unset;
-		margin: 0;
-	}
-`;
-
-const LodgingContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	@media only screen and (max-width: 1200px) {
-		flex-direction: column;
-		align-items: center;
-	}
-`;
-
-const Overlay = styled.div`
-	height: 100%;
-	width: 100%;
-	background-color: black;
-	opacity: 0.3;
-`;
+import coloradoMap from '../assets/map.png';
+import lodging from '../assets/lodging.png';
+import additional from '../assets/additional.png';
+import distance from '../assets/distance.png';
+import {
+	Title,
+	LodgingContainer,
+	MapContainer,
+	MapImageContainer,
+	CabinCard,
+	CabinInfoContainer,
+	ImageContainer,
+} from './styled-components';
 
 export default function Lodging() {
 	const [visible, setVisible] = useState(false);
 	const [cabinClicked, setCabinClicked] = useState('');
-	const [displayArrow, setDisplayArrow] = useState(false);
-	const [top, setTop] = useState(0);
-	const [left, setLeft] = useState(0);
 
-	const handleClick = (id: string) => {
-		setVisible(true);
-		setCabinClicked(id);
+	const disableBody = () => {
 		let bodyStyle = document.getElementById('body')?.style.overflow;
 		bodyStyle = 'hidden';
 	};
 
-	const handleHover = (top: number, left: number) => {
-		setDisplayArrow(true);
-		setTop(top);
-		setLeft(left);
-		console.log(top, left);
+	const handleClick = (id: string) => {
+		setVisible(true);
+		setCabinClicked(id);
+		disableBody();
 	};
 
 	return (
@@ -184,23 +42,29 @@ export default function Lodging() {
 				cabinClicked={cabinClicked}
 			/>
 			<Title>
-				<h1>{'Lodging & Food'}</h1>
-				<h2>Guest Accomidations</h2>
+				<ImageContainer id='lodging'>
+					<img src={lodging} alt='' />
+				</ImageContainer>
+
+				<h3>Deer Creek Mountain Camp - 228 S Pine Dr, Bailey, CO 80421</h3>
 				<p>
-					Deer Creek Mountain Camp is a stunning camp with near 120 beds
-					situating in beautiful cabins surrounded by aspens and wildlife. It is
-					a truly beautiful and unique venue, and our preference is that guests
-					sleep onsite if they can. We are asking $30 per person which covers
-					the two evenings (Friday and Saturday) which can be paid on the
-					registry tab.
+					Deer Creek Mountain Camp is a stunning camp with near 120 beds in
+					cabins surrounded by aspens and wildlife. It is a truly beautiful and
+					unique venue, and our preference is that guests sleep onsite if they
+					can. We are asking $30 per person which covers the two evenings
+					(Friday and Saturday) which can be paid on the registry tab.
+					<br />
+					<br /> Note: If you are lodging on site, please reserve your spot
+					below. If you have any issues with reserving your spot, please email
+					Miwha at{' '}
+					<a href='mailto: miwha.geschwind@gmail.com'>
+						miwha.geschwind@gmail.com
+					</a>
 				</p>
 			</Title>
 
 			<LodgingContainer>
 				<MapContainer>
-					<ArrowContainer displayArrow={displayArrow} top={top} left={left}>
-						<img src={arrow} alt='' />
-					</ArrowContainer>
 					<MapImageContainer>
 						<img src={map} alt='' />
 					</MapImageContainer>
@@ -212,8 +76,6 @@ export default function Lodging() {
 							<CabinCard
 								color={cabin.color}
 								onClick={() => handleClick(cabin.id)}
-								onMouseEnter={() => handleHover(cabin.top, cabin.left)}
-								onMouseLeave={() => setDisplayArrow(false)}
 							>
 								<ImageContainer>
 									<img src={cabin.image} alt='' />
@@ -230,6 +92,77 @@ export default function Lodging() {
 					})}
 				</CabinInfoContainer>
 			</LodgingContainer>
+			<Title>
+				<ImageContainer id='additional'>
+					<img src={additional} alt='' />
+				</ImageContainer>
+				<p>
+					Bailey, CO is an hour outside of Denver. Between Denver and Bailey
+					there are plenty or Air bnb options with Confier being the closest
+					small town. Refer to the map to see neighboring towns.
+				</p>
+				<span>
+					Bailey, CO:{' '}
+					<a
+						target='_blank'
+						href='https://www.airbnb.com/s/Bailey--CO/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&ne_lat=39.506147143646864&ne_lng=-105.38012221385952&sw_lat=39.340923016158364&sw_lng=-105.57374015380856&zoom=12&search_by_map=true&search_type=user_map_move&query=Bailey%2C%20CO'
+					>
+						Bailey Air Bnbs
+					</a>
+				</span>
+				<span>
+					Denver, CO:{' '}
+					<a
+						target='_blank'
+						href='https://www.airbnb.com/s/Bailey--CO/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&ne_lat=39.506147143646864&ne_lng=-105.38012221385952&sw_lat=39.340923016158364&sw_lng=-105.57374015380856&zoom=12&search_by_map=true&search_type=user_map_move&query=Bailey%2C%20CO'
+					>
+						Denver Air Bnbs
+					</a>
+				</span>
+				<span>
+					Lakewood, CO:{' '}
+					<a
+						target='_blank'
+						href='https://www.airbnb.com/s/Lakewood--CO--United-States/homes?flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&source=structured_search_input_header&search_type=autocomplete_click&query=Lakewood%2C%20CO%2C%20United%20States&place_id=ChIJt3LdXG-Ba4cRl87Q8fpdkJ4'
+					>
+						Lakewood Air Bnbs
+					</a>
+				</span>
+				<br />
+				<br />
+				<ImageContainer id='colorado-map'>
+					<img src={coloradoMap} alt='colorado map' />
+				</ImageContainer>
+				<br />
+				<br />
+				<ImageContainer id='distance'>
+					<img src={distance} alt='' />
+				</ImageContainer>
+				<span>
+					<strong>Distance to Denver International Airport:</strong> <br />
+					67.8 miles - 1 hour 13 minutes
+				</span>
+				<br />
+				<span>
+					<strong>Distance to Downtown Denver:</strong>
+					<br /> 44.7 miles - 53 minutes{' '}
+				</span>
+				<br />
+				<span>
+					<strong>Distance to Golden, CO:</strong> <br />
+					36 miles - 43 minutes{' '}
+				</span>
+				<br />
+				<span>
+					<strong>Nearest major grocery store:</strong>
+					<br /> 13 miles - 20 minutes
+				</span>
+				<br />
+				<span>
+					<strong>Distance to local town:</strong>
+					<br /> 4.4 miles - 8 minutes
+				</span>
+			</Title>
 		</>
 	);
 }

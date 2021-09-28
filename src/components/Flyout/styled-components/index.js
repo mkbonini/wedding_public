@@ -24,9 +24,9 @@ export const MenuLink = styled.div`
 		text-decoration: none;
 		font-size: 30px;
 		color: black;
-		font-family: 'Raleway', sans-serif;
 		font-weight: 100;
 		text-transform: uppercase;
+		font-family: 'Urbanist', sans-serif;
 		&:hover {
 			font-weight: 400;
 			cursor: pointer;

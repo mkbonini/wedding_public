@@ -8,6 +8,24 @@ import camper1 from '../../assets/camper-1.png';
 import camper2 from '../../assets/camper-2.png';
 import camper3 from '../../assets/camper-3.png';
 import camper4 from '../../assets/camper-4.png';
+import lark from '../../assets/cabins/lark.jpg';
+import humming from '../../assets/cabins/humming_bird.jpg';
+import spruce from '../../assets/cabins/spruce.jpg';
+import moose from '../../assets/cabins/moose.jpg';
+import bearCave from '../../assets/cabins/bear-cave.jpg';
+import blackBear1 from '../../assets/cabins/black-bear-1.jpg';
+import blackBear2 from '../../assets/cabins/black-bear-2.jpg';
+import rv from '../../assets/cabins/rv-site.jpg';
+import pine from '../../assets/cabins/pine.jpg';
+import jackalope from '../../assets/cabins/jackalope.jpg';
+import aspen from '../../assets/cabins/aspen.jpg';
+import sasquach from '../../assets/cabins/sasquach.jpg';
+import arapahoe from '../../assets/cabins/arapahoe.jpg';
+import crows1 from '../../assets/cabins/crows-nest-1.jpg';
+import crows2 from '../../assets/cabins/crows-nest-2.jpg';
+import crows3 from '../../assets/cabins/crows-nest-3.jpg';
+import crows4 from '../../assets/cabins/crows-nest-4.jpg';
+import crows5 from '../../assets/cabins/crows-nest-5.jpg';
 
 export const cabinInfo = [
 	{
@@ -19,8 +37,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/27489287?source_impression_id=p3_1632114843_UATJPgjNjdOLDbMx&guests=1&adults=1',
 		image: cabin1,
 		color: '#E3A335',
-		top: 53,
-		left: 18,
+		cabinImage: humming,
 	},
 	{
 		id: 'spruce-cabin',
@@ -31,8 +48,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/27489932?source_impression_id=p3_1632115344_6QLhlkaojfkhLhdI&guests=1&adults=1',
 		image: cabin2,
 		color: '#F7669B',
-		top: 56,
-		left: 18,
+		cabinImage: spruce,
 	},
 	{
 		id: 'lark-cabin',
@@ -43,8 +59,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/27491680?source_impression_id=p3_1632115505_xTGGkA65SWX6%2B80M&guests=1&adults=1',
 		image: cabin3,
 		color: '#6691F4',
-		top: 60,
-		left: 17,
+		cabinImage: lark,
 	},
 	{
 		id: 'moose-cabin',
@@ -55,8 +70,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/27980754?source_impression_id=p3_1632115583_dBIS6Ws3vPT7FPDY&guests=1&adults=1',
 		image: cabin4,
 		color: '#D0F766',
-		top: 64,
-		left: 19,
+		cabinImage: moose,
 	},
 	{
 		id: 'bears-cave-cabin',
@@ -67,8 +81,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/27485332?source_impression_id=p3_1632115646_Hhk3sSTEhuojapfZ&guests=1&adults=1',
 		image: cabin1,
 		color: '#E3A335',
-		top: 68,
-		left: 13,
+		cabinImage: bearCave,
 	},
 	{
 		id: 'crows-nest-cabin-1',
@@ -79,8 +92,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/30952771?source_impression_id=p3_1632163925_nj1%2B%2FmKu%2FDiKcXzh',
 		image: cabin2,
 		color: '#F7669B',
-		top: 63,
-		left: 13,
+		cabinImage: crows1,
 	},
 	{
 		id: 'crows-nest-cabin-2',
@@ -91,8 +103,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/30955078?source_impression_id=p3_1632163934_gd1oU1pECe8okPpz',
 		image: cabin3,
 		color: '#6691F4',
-		top: 63,
-		left: 13,
+		cabinImage: crows2,
 	},
 	{
 		id: 'crows-nest-cabin-3',
@@ -103,8 +114,7 @@ export const cabinInfo = [
 		image: cabin4,
 		link: 'https://www.airbnb.com/rooms/30956997/photos?source_impression_id=p3_1632163935_X1udqgTsta6l6HBW',
 		color: '#D0F766',
-		top: 63,
-		left: 13,
+		cabinImage: crows3,
 	},
 	{
 		id: 'crows-nest-cabin-4',
@@ -115,8 +125,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/27983954?source_impression_id=p3_1632163918_zeJBTUARRyz64vuj',
 		image: cabin1,
 		color: '#E3A335',
-		top: 63,
-		left: 13,
+		cabinImage: crows4,
 	},
 	{
 		id: 'crows-nest-cabin-5',
@@ -127,8 +136,7 @@ export const cabinInfo = [
 		image: cabin2,
 		link: 'https://www.airbnb.com/rooms/27984526?source_impression_id=p3_1632163930_C%2Fy%2FDtLbu5dybWtd',
 		color: '#F7669B',
-		top: 63,
-		left: 13,
+		cabinImage: crows5,
 	},
 	{
 		id: 'black-bear-1-cabin',
@@ -139,8 +147,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/30983763?source_impression_id=p3_1632116155_fIuBQib0fFuVq5qJ&guests=1&adults=1',
 		image: cabin3,
 		color: '#6691F4',
-		top: 71,
-		left: 16,
+		cabinImage: blackBear1,
 	},
 	{
 		id: 'black-bear-2-cabin',
@@ -151,8 +158,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/48132023?source_impression_id=p3_1632116438_22mRKHZKszuPiOEH&guests=1&adults=1',
 		image: cabin4,
 		color: '#D0F766',
-		top: 68,
-		left: 16,
+		cabinImage: blackBear2,
 	},
 	{
 		id: 'pine-cabin',
@@ -163,8 +169,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/37052122?source_impression_id=p3_1632162777_cWcUuAh93o0yRApg&guests=1&adults=1',
 		image: cabin1,
 		color: '#E3A335',
-		top: 85,
-		left: 18,
+		cabinImage: pine,
 	},
 	{
 		id: 'jackalope-cabin',
@@ -175,8 +180,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/37051111?source_impression_id=p3_1632162859_fooEpbL5BeWWH03Q&guests=1&adults=1',
 		image: cabin2,
 		color: '#F7669B',
-		top: 85,
-		left: 18,
+		cabinImage: jackalope,
 	},
 	{
 		id: 'arapahoe-cabin',
@@ -187,8 +191,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/30959681?source_impression_id=p3_1632162919_IgSowexqi0U9coMt&guests=1&adults=1',
 		image: cabin3,
 		color: '#6691F4',
-		top: 85,
-		left: 18,
+		cabinImage: arapahoe,
 	},
 	{
 		id: 'sasquach-cabin',
@@ -199,8 +202,7 @@ export const cabinInfo = [
 		link: 'airbnb.com/rooms/37053401?source_impression_id=p3_1632162654_Mdqd32o%2FEF1SbqzP&guests=1&adults=1',
 		image: cabin4,
 		color: '#D0F766',
-		top: 85,
-		left: 18,
+		cabinImage: sasquach,
 	},
 	{
 		id: 'aspen-cabin',
@@ -211,8 +213,7 @@ export const cabinInfo = [
 		link: 'https://www.airbnb.com/rooms/36794977?source_impression_id=p3_1632163793_FbV6QPb%2BgH6uigwE&guests=1&adults=1',
 		image: cabin1,
 		color: '#E3A335',
-		top: 85,
-		left: 18,
+		cabinImage: aspen,
 	},
 	{
 		id: 'rv-1',
@@ -221,8 +222,7 @@ export const cabinInfo = [
 		capacity: 1,
 		image: camper2,
 		color: '#F7669B',
-		top: 85,
-		left: 18,
+		cabinImage: rv,
 	},
 	{
 		id: 'rv-2',
@@ -231,8 +231,7 @@ export const cabinInfo = [
 		capacity: 1,
 		image: camper3,
 		color: '#6691F4',
-		top: 85,
-		left: 18,
+		cabinImage: rv,
 	},
 	{
 		id: 'rv-3',
@@ -241,8 +240,7 @@ export const cabinInfo = [
 		capacity: 1,
 		image: camper4,
 		color: '#D0F766',
-		top: 85,
-		left: 18,
+		cabinImage: rv,
 	},
 	{
 		id: 'rv-4',
@@ -251,8 +249,7 @@ export const cabinInfo = [
 		capacity: 1,
 		image: camper1,
 		color: '#E3A335',
-		top: 85,
-		left: 18,
+		cabinImage: rv,
 	},
 	{
 		id: 'rv-5',
@@ -261,8 +258,7 @@ export const cabinInfo = [
 		capacity: 1,
 		image: camper2,
 		color: '#F7669B',
-		top: 85,
-		left: 18,
+		cabinImage: rv,
 	},
 	{
 		id: 'rv-6',
@@ -271,7 +267,6 @@ export const cabinInfo = [
 		capacity: 1,
 		image: camper3,
 		color: '#6691F4',
-		top: 85,
-		left: 18,
+		cabinImage: rv,
 	},
 ];
