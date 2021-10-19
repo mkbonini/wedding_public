@@ -9,7 +9,7 @@ export const Title = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
-	margin: 2rem 0rem;
+	margin: 2rem 0rem 8rem 0rem;
 	h1 {
 		font-size: 45px;
 		font-family: 'Urbanist', sans-serif;
