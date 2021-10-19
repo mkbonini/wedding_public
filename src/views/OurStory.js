@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Slider from '../components/Slider';
 
 const StoryContainer = styled.div`
 	h3 {
@@ -53,19 +52,9 @@ export default function OurStory() {
 			<Title>
 				<h1>Our Story</h1>
 			</Title>
-			<ImageSection>
-				<ImageContainer>
-					<img src='https://i.ibb.co/pKchLfy/IMG-5645.jpg;=' alt='IMG-5645' />
-				</ImageContainer>
-				<ImageContainer>
-					<img src='https://i.ibb.co/P411nD3/IMG-2756.jpg' alt='IMG-5645' />
-				</ImageContainer>
-				<ImageContainer>
-					<img src='https://i.ibb.co/f2zL35x/IMG-2541.jpg' alt='IMG-5645' />
-				</ImageContainer>
-			</ImageSection>
+
 			<h3>Miwha's Side</h3>
-			<p>
+			{/* <p>
 				Mike and I first met in June of 2013 right on the front steps of my
 				family home. He was road tripping with friends, and through a mututal
 				friend (shoutout Emily!) got set up to stay with me. He got to my place
@@ -110,7 +99,7 @@ export default function OurStory() {
 				times I know we are tied together in a way I cant explain. And though I
 				can't explain it I am just grategul for it and so happy I get to spend
 				my life with him.
-			</p>
+			</p> */}
 			<h3>Mike'se Side</h3>
 			<p></p>
 		</StoryContainer>

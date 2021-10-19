@@ -17,7 +17,7 @@ export default function Home() {
 	return (
 		<HomePage className='App'>
 			<Hero />
-			<Countdown />
+			{/* <Countdown /> */}
 		</HomePage>
 	);
 }

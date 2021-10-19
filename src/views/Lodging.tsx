@@ -8,6 +8,7 @@ import coloradoMap from '../assets/map.png';
 import lodging from '../assets/lodging.png';
 import additional from '../assets/additional.png';
 import distance from '../assets/distance.png';
+import more from '../assets/more.png';
 import {
 	Title,
 	LodgingContainer,
@@ -69,24 +70,31 @@ export default function Lodging() {
 						<img src={map} alt='' />
 					</MapImageContainer>
 				</MapContainer>
+				<h2>Cabin Information</h2>
 				<CabinInfoContainer>
-					<h2>Cabin Information</h2>
 					{cabinInfo.map((cabin) => {
 						return (
 							<CabinCard
 								color={cabin.color}
 								onClick={() => handleClick(cabin.id)}
 							>
+								<img id='more' src={more} alt='' />
 								<ImageContainer>
-									<img src={cabin.image} alt='' />
+									<img src={cabin.cabinImage} alt='' />
 								</ImageContainer>
-								<h1>{cabin.name}</h1>
-								<h3>
-									{cabin.capacity}
-									{cabin.capacity === 1
-										? ' spot available'
-										: ' spots available'}
-								</h3>
+								<div id='cabin-card-copy'>
+									<p>
+										<div id='base' />
+										{cabin.capacity}
+										{cabin.capacity === 1
+											? `/ ${cabin.capacity} spot available`
+											: `/ ${cabin.capacity}  spots available`}
+									</p>
+									<h1>
+										{cabin.name} - <br />
+										{cabin.cardDescription}
+									</h1>
+								</div>
 							</CabinCard>
 						);
 					})}
@@ -138,30 +146,32 @@ export default function Lodging() {
 				<ImageContainer id='distance'>
 					<img src={distance} alt='' />
 				</ImageContainer>
-				<span>
-					<strong>Distance to Denver International Airport:</strong> <br />
-					67.8 miles - 1 hour 13 minutes
-				</span>
-				<br />
-				<span>
-					<strong>Distance to Downtown Denver:</strong>
-					<br /> 44.7 miles - 53 minutes{' '}
-				</span>
-				<br />
-				<span>
-					<strong>Distance to Golden, CO:</strong> <br />
-					36 miles - 43 minutes{' '}
-				</span>
-				<br />
-				<span>
-					<strong>Nearest major grocery store:</strong>
-					<br /> 13 miles - 20 minutes
-				</span>
-				<br />
-				<span>
-					<strong>Distance to local town:</strong>
-					<br /> 4.4 miles - 8 minutes
-				</span>
+				<div>
+					<span>
+						<strong>Denver International Airport: </strong>
+						67.8 miles - 1 hour 13 minutes
+					</span>
+					<br />
+					<span>
+						<strong>Downtown Denver: </strong>
+						44.7 miles - 53 minutes{' '}
+					</span>
+					<br />
+					<span>
+						<strong>Golden, CO: </strong>
+						36 miles - 43 minutes{' '}
+					</span>
+					<br />
+					<span>
+						<strong>Nearest major grocery store: </strong>
+						13 miles - 20 minutes
+					</span>
+					<br />
+					<span>
+						<strong>Main Street Bailey, CO : </strong>
+						4.4 miles - 8 minutes
+					</span>
+				</div>
 			</Title>
 		</>
 	);
