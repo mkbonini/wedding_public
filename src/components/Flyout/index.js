@@ -58,7 +58,7 @@ export default function Flyout({ visible, setVisible }) {
 								Home
 							</Link>
 						</MenuLink>
-						<MenuLink onClick={() => setActive('our-story')}>
+						{/* <MenuLink onClick={() => setActive('our-story')}>
 							<Link to='/our-story'>
 								{active === 'our-story' ? (
 									<img src={heartActive} alt='' />
@@ -67,7 +67,7 @@ export default function Flyout({ visible, setVisible }) {
 								)}
 								Our Story
 							</Link>
-						</MenuLink>
+						</MenuLink> */}
 						<MenuLink onClick={() => setActive('details')}>
 							<Link to='/details'>
 								{active === 'details' ? (

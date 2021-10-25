@@ -14,9 +14,9 @@ export const NavMenu = styled.div`
 		width: 100%;
 		text-align: center;
 		font-weight: 300;
-		font-size: 40px;
-		margin-left: 60px;
+		font-size: 25px;
 		color: white;
+		padding: 20px;
 	}
 `;
 

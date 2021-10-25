@@ -31,21 +31,6 @@ const Title = styled.div`
 	}
 `;
 
-const ImageContainer = styled.div`
-	max-width: 450px;
-	padding: 1rem;
-	img {
-		width: 100%;
-	}
-`;
-
-const ImageSection = styled.div`
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-`;
-
 export default function OurStory() {
 	return (
 		<StoryContainer>
