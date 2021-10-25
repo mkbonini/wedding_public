@@ -5,6 +5,8 @@ import Hero from '../components/Hero';
 import Countdown from '../components/Countdown';
 import styled from 'styled-components';
 import Hr from '../components/Hr';
+import mike from '../assets/mike.jpg';
+import miwha from '../assets/miwha.jpg';
 
 const HomePage = styled.div`
 	width: 100%;
@@ -23,16 +25,15 @@ const StoryContainer = styled.div`
 		font-family: 'Urbanist', sans-serif;
 		font-size: 30px;
 		color: #000;
-		font-weight: 800;
+		font-weight: 500;
 		text-transform: uppercase;
-		text-align: left;
-		margin-left: 2rem;
+		text-align: center;
 	}
 	h3 {
 		font-family: 'Urbanist', sans-serif;
 		font-size: 20px;
 		color: #000;
-		font-weight: 800;
+		font-weight: 500;
 		text-transform: uppercase;
 		text-align: center;
 		padding: 20px 0px 0px;
@@ -52,34 +53,55 @@ const Bubble = styled.div`
 	margin: 2rem;
 	&#left {
 		align-self: flex-start;
-		border: 3px dashed #ef7b9e;
+		border: 3px dashed #03989e;
 	}
 	&#right {
 		align-self: flex-end;
-		border: 3px dashed #03989e;
+		border: 3px dashed #ef7b9e;
+	}
+	img {
+		&#miwha-img {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border: 5px solid #03989e;
+		}
+		&#mike-img {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border: 5px solid #ef7b9e;
+		}
+	}
+	div {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		padding: 2rem;
+		@media only screen and (max-width: 1200px) {
+			flex-direction: column;
+			padding: 2rem 0.5rem;
+		}
 	}
 `;
 
-const Wave = styled.div`
-	&#wave {
-		position: relative;
-		height: 70px;
-		width: 100%;
-		background: #e0efe3;
-	}
-`;
 export default function Home() {
 	return (
 		<>
 			<HomePage className='App'>
 				<Hero />
 				<Hr />
+				<Countdown />
+				<Hr />
 				<StoryContainer>
 					<h1>Our Story</h1>
 					<Bubble id='left'>
-						<h3>MG</h3>
-						<p>
-							{/* Mike and I first met in June of 2013 right on the front steps of my
+						{/* <h3>MG</h3> */}
+						<div>
+							<img src={miwha} alt='' id='miwha-img' />
+							<p>
+								{/* Mike and I first met in June of 2013 right on the front steps of my
 						family home. He was road tripping with friends, and through a
 						mututal friend (shoutout Emily!) got set up to stay with me. He got
 						to my place late - but I remember walking out the door and seeing
@@ -103,45 +125,47 @@ export default function Home() {
 						times I know we are tied together in a way I cant explain. And
 						though I can't explain it I am just grateful for it and so happy I
 						get to spend my life with him. */}
-							Contrary to popular belief, Lorem Ipsum is not simply random text.
-							It has roots in a piece of classical Latin literature from 45 BC,
-							making it over 2000 years old. Richard McClintock, a Latin
-							professor at Hampden-Sydney College in Virginia, looked up one of
-							the more obscure Latin words, consectetur, from a Lorem Ipsum
-							passage, and going through the cites of the word in classical
-							literature, discovered the undoubtable source. Lorem Ipsum comes
-							from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-							Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
-							BC. This book is a treatise on the theory of ethics, very popular
-							during the Renaissance. The first line of Lorem Ipsum, "Lorem
-							ipsum dolor sit amet..", comes from a line in section 1.10.32.
-						</p>
+								Contrary to popular belief, Lorem Ipsum is not simply random
+								text. It has roots in a piece of classical Latin literature from
+								45 BC, making it over 2000 years old. Richard McClintock, a
+								Latin professor at Hampden-Sydney College in Virginia, looked up
+								one of the more obscure Latin words, consectetur, from a Lorem
+								Ipsum passage, and going through the cites of the word in
+								classical literature, discovered the undoubtable source. Lorem
+								Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
+								Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+								written in 45 BC. This book is a treatise on the theory of
+								ethics, very popular during the Renaissance. The first line of
+								Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
+								in section 1.10.32.
+							</p>
+						</div>
 					</Bubble>
 					<Bubble id='right'>
-						{' '}
-						<h3>MB</h3>
-						<p>
-							Contrary to popular belief, Lorem Ipsum is not simply random text.
-							It has roots in a piece of classical Latin literature from 45 BC,
-							making it over 2000 years old. Richard McClintock, a Latin
-							professor at Hampden-Sydney College in Virginia, looked up one of
-							the more obscure Latin words, consectetur, from a Lorem Ipsum
-							passage, and going through the cites of the word in classical
-							literature, discovered the undoubtable source.
-							<br />
-							<br />
-							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-							Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-							written in 45 BC. This book is a treatise on the theory of ethics,
-							very popular during the Renaissance. The first line of Lorem
-							Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-							section 1.10.32.
-						</p>
+						{/* <h3>MB</h3> */}
+						<div>
+							<img src={mike} alt='' id='mike-img' />
+							<p>
+								Contrary to popular belief, Lorem Ipsum is not simply random
+								text. It has roots in a piece of classical Latin literature from
+								45 BC, making it over 2000 years old. Richard McClintock, a
+								Latin professor at Hampden-Sydney College in Virginia, looked up
+								one of the more obscure Latin words, consectetur, from a Lorem
+								Ipsum passage, and going through the cites of the word in
+								classical literature, discovered the undoubtable source.
+								<br />
+								<br />
+								Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de
+								Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+								Cicero, written in 45 BC. This book is a treatise on the theory
+								of ethics, very popular during the Renaissance. The first line
+								of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+								line in section 1.10.32.
+							</p>
+						</div>
 					</Bubble>
 				</StoryContainer>
-				<Countdown />
 			</HomePage>
-			<Wave id='wave' />
 		</>
 	);
 }

@@ -6,8 +6,8 @@ import styled from 'styled-components';
 const Line = styled.div`
 	height: 2px;
 	width: 30%;
-	margin: 70px auto;
-	background-color: #b4b4b4;
+	margin: 50px auto;
+	background-color: #dddddd;
 `;
 
 export default function Hr() {

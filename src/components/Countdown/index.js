@@ -45,7 +45,7 @@ const CounterContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 5rem 0rem 5rem 0rem;
+	padding: 2rem 0rem;
 `;
 
 const ImageContainer = styled.div`
