@@ -1,7 +1,7 @@
 /** @format */
 import React from 'react';
 import styled from 'styled-components';
-import butterfly from '../../assets/butterfly.png';
+import heart from '../../assets/heart-inactive.png';
 
 var end = new Date('07/21/2023 4:0 PM');
 
@@ -29,7 +29,7 @@ function showRemaining() {
 timer = setInterval(showRemaining, 1000);
 
 const DaysLeft = styled.div`
-	font-size: 60px;
+	font-size: 40px;
 	font-family: 'Urbanist', sans-serif;
 `;
 
@@ -49,8 +49,7 @@ const CounterContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-	max-width: 70px;
-
+	max-width: 40px;
 	img {
 		width: 100%;
 	}
@@ -60,7 +59,7 @@ export default function Counntdown() {
 		<>
 			<CounterContainer>
 				<ImageContainer>
-					<img src={butterfly} alt='butterfly' />
+					<img src={heart} alt='' />
 				</ImageContainer>
 				<DaysLeft id='countdown' /> <Text>till the wedding</Text>
 			</CounterContainer>

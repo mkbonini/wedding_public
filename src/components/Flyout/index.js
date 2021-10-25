@@ -4,12 +4,9 @@ import { FlyoutContainer, MenuLink, LinkContainer } from './styled-components';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from '../../views/Home';
 import RSVP from '../../views/RSVP';
-import OurStory from '../../views/OurStory';
 import Details from '../../views/Details';
 import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging';
-import heartInactive from '../../assets/heart-inactive.png';
-import heartActive from '../../assets/heart-active.png';
 import homeInactive from '../../assets/home-inactive.png';
 import homeActive from '../../assets/home-active.png';
 import infoInactive from '../../assets/info-inactive.png';
@@ -58,16 +55,6 @@ export default function Flyout({ visible, setVisible }) {
 								Home
 							</Link>
 						</MenuLink>
-						{/* <MenuLink onClick={() => setActive('our-story')}>
-							<Link to='/our-story'>
-								{active === 'our-story' ? (
-									<img src={heartActive} alt='' />
-								) : (
-									<img src={heartInactive} alt='' />
-								)}
-								Our Story
-							</Link>
-						</MenuLink> */}
 						<MenuLink onClick={() => setActive('details')}>
 							<Link to='/details'>
 								{active === 'details' ? (
@@ -112,9 +99,6 @@ export default function Flyout({ visible, setVisible }) {
 				</FlyoutContainer>
 
 				<Switch>
-					<Route path='/our-story'>
-						<OurStory />
-					</Route>
 					<Route path='/details'>
 						<Details />
 					</Route>

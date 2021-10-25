@@ -13,6 +13,7 @@ const HomePage = styled.div`
 	flex-direction: column;
 	align-items: center;
 	background-color: aliceblue;
+	padding-bottom: 8rem;
 `;
 
 const StoryContainer = styled.div`
@@ -20,7 +21,7 @@ const StoryContainer = styled.div`
 	flex-direction: column;
 	h1 {
 		font-family: 'Urbanist', sans-serif;
-		font-size: 50px;
+		font-size: 30px;
 		color: #000;
 		font-weight: 800;
 		text-transform: uppercase;
@@ -29,7 +30,7 @@ const StoryContainer = styled.div`
 	}
 	h3 {
 		font-family: 'Urbanist', sans-serif;
-		font-size: 40px;
+		font-size: 20px;
 		color: #000;
 		font-weight: 800;
 		text-transform: uppercase;
@@ -58,17 +59,27 @@ const Bubble = styled.div`
 		border: 3px dashed #03989e;
 	}
 `;
+
+const Wave = styled.div`
+	&#wave {
+		position: relative;
+		height: 70px;
+		width: 100%;
+		background: #e0efe3;
+	}
+`;
 export default function Home() {
 	return (
-		<HomePage className='App'>
-			<Hero />
-			<Hr />
-			<StoryContainer>
-				<h1>Our Story</h1>
-				<Bubble id='left'>
-					<h3>MG</h3>
-					<p>
-						Mike and I first met in June of 2013 right on the front steps of my
+		<>
+			<HomePage className='App'>
+				<Hero />
+				<Hr />
+				<StoryContainer>
+					<h1>Our Story</h1>
+					<Bubble id='left'>
+						<h3>MG</h3>
+						<p>
+							{/* Mike and I first met in June of 2013 right on the front steps of my
 						family home. He was road tripping with friends, and through a
 						mututal friend (shoutout Emily!) got set up to stay with me. He got
 						to my place late - but I remember walking out the door and seeing
@@ -91,33 +102,46 @@ export default function Home() {
 						feeling I had. It's really never gone away - even through the hard
 						times I know we are tied together in a way I cant explain. And
 						though I can't explain it I am just grateful for it and so happy I
-						get to spend my life with him.
-					</p>
-				</Bubble>
-				<Bubble id='right'>
-					{' '}
-					<h3>MB</h3>
-					<p>
-						Contrary to popular belief, Lorem Ipsum is not simply random text.
-						It has roots in a piece of classical Latin literature from 45 BC,
-						making it over 2000 years old. Richard McClintock, a Latin professor
-						at Hampden-Sydney College in Virginia, looked up one of the more
-						obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-						going through the cites of the word in classical literature,
-						discovered the undoubtable source.
-						<br />
-						<br />
-						Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-						Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-						written in 45 BC. This book is a treatise on the theory of ethics,
-						very popular during the Renaissance. The first line of Lorem Ipsum,
-						"Lorem ipsum dolor sit amet..", comes from a line in section
-						1.10.32.
-					</p>
-				</Bubble>
-			</StoryContainer>
-
-			{/* <Countdown /> */}
-		</HomePage>
+						get to spend my life with him. */}
+							Contrary to popular belief, Lorem Ipsum is not simply random text.
+							It has roots in a piece of classical Latin literature from 45 BC,
+							making it over 2000 years old. Richard McClintock, a Latin
+							professor at Hampden-Sydney College in Virginia, looked up one of
+							the more obscure Latin words, consectetur, from a Lorem Ipsum
+							passage, and going through the cites of the word in classical
+							literature, discovered the undoubtable source. Lorem Ipsum comes
+							from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+							Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
+							BC. This book is a treatise on the theory of ethics, very popular
+							during the Renaissance. The first line of Lorem Ipsum, "Lorem
+							ipsum dolor sit amet..", comes from a line in section 1.10.32.
+						</p>
+					</Bubble>
+					<Bubble id='right'>
+						{' '}
+						<h3>MB</h3>
+						<p>
+							Contrary to popular belief, Lorem Ipsum is not simply random text.
+							It has roots in a piece of classical Latin literature from 45 BC,
+							making it over 2000 years old. Richard McClintock, a Latin
+							professor at Hampden-Sydney College in Virginia, looked up one of
+							the more obscure Latin words, consectetur, from a Lorem Ipsum
+							passage, and going through the cites of the word in classical
+							literature, discovered the undoubtable source.
+							<br />
+							<br />
+							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
+							Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+							written in 45 BC. This book is a treatise on the theory of ethics,
+							very popular during the Renaissance. The first line of Lorem
+							Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
+							section 1.10.32.
+						</p>
+					</Bubble>
+				</StoryContainer>
+				<Countdown />
+			</HomePage>
+			<Wave id='wave' />
+		</>
 	);
 }
