@@ -50,6 +50,7 @@ export const ImageContainer = styled.div`
 	&#lodging {
 		max-width: 400px;
 		border-radius: 5px;
+		padding-bottom: 20px;
 		img {
 			border-radius: 5px;
 		}
@@ -183,4 +184,8 @@ export const LodgingContainer = styled.div`
 		font-family: 'Urbanist', sans-serif;
 		font-weight: 300;
 	}
+`;
+
+export const LodgingPage = styled.div`
+	padding-bottom: 8rem;
 `;

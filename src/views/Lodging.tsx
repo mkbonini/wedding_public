@@ -16,6 +16,7 @@ import {
 	CabinCard,
 	CabinInfoContainer,
 	ImageContainer,
+	LodgingPage,
 } from './styled-components';
 
 export default function Lodging() {
@@ -34,7 +35,7 @@ export default function Lodging() {
 	};
 
 	return (
-		<>
+		<LodgingPage>
 			<Modal
 				setVisible={setVisible}
 				visible={visible}
@@ -148,6 +149,6 @@ export default function Lodging() {
 					<img src={distanceTo} alt='' />
 				</ImageContainer>
 			</Title>
-		</>
+		</LodgingPage>
 	);
 }

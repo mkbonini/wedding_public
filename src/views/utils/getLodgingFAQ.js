@@ -215,7 +215,7 @@ export const cabinInfo = [
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
-		link: 'airbnb.com/rooms/37053401?source_impression_id=p3_1632162654_Mdqd32o%2FEF1SbqzP&guests=1&adults=1',
+		link: 'https://www.airbnb.com/rooms/37053401?source_impression_id=p3_1635266856_ouS5%2Bb4NXILGMAQM',
 		image: cabin4,
 		color: '#D0F766',
 		cabinImage: sasquach,
