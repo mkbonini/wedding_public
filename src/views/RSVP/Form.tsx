@@ -7,10 +7,12 @@ interface IGuest {
 	name: string;
 	plusOne: boolean;
 	children: boolean;
+	code: string;
 }
 
 interface FormProps {
 	selectedGuest: IGuest;
+	verified: boolean;
 	handleInputRecieved: (input: any) => void;
 	childInputRecieved: boolean;
 	guestInputRecieved: boolean;
@@ -24,6 +26,7 @@ interface FormProps {
 
 export default function Form({
 	selectedGuest,
+	verified,
 	handleInputRecieved,
 	childInputRecieved,
 	guestInputRecieved,
@@ -36,7 +39,7 @@ export default function Form({
 }: FormProps) {
 	return (
 		<form action='/my-handling-form-page' method='post'>
-			{selectedGuest.name && (
+			{selectedGuest.name && verified && (
 				<>
 					<label
 						htmlFor='name'
@@ -54,7 +57,7 @@ export default function Form({
 					/>
 				</>
 			)}
-			{selectedGuest.plusOne && (
+			{selectedGuest.plusOne && verified && (
 				<>
 					<label
 						htmlFor='plus-one'
@@ -79,7 +82,7 @@ export default function Form({
 				</>
 			)}
 
-			{selectedGuest.children && (
+			{selectedGuest.children && verified && (
 				<>
 					<label
 						htmlFor='children'
@@ -103,7 +106,7 @@ export default function Form({
 					/>
 				</>
 			)}
-			{selectedGuest.name && (
+			{selectedGuest.name && verified && (
 				<>
 					<label
 						htmlFor='mail'

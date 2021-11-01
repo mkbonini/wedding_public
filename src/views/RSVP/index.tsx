@@ -22,13 +22,19 @@ export default function RSVP() {
 		name: string;
 		plusOne: boolean;
 		children: boolean;
+		code: string;
 	}
 	const [selectedGuest, setSelectedGuest] = useState<IGuest>({
 		name: '',
 		plusOne: false,
 		children: false,
+		code: '',
 	});
+
 	const [searchTerm, setSearchTerm] = useState('');
+	const [verified, setVarified] = useState(false);
+	const [code, setCode] = useState('');
+	const [error, setError] = useState(false);
 
 	const filterNames = guestList.filter((guest) => {
 		if (searchTerm === '') return null;
@@ -46,6 +52,7 @@ export default function RSVP() {
 				name: guest.name,
 				plusOne: guest.plusOne,
 				children: guest.children,
+				code: guest.code,
 			});
 	};
 
@@ -54,12 +61,24 @@ export default function RSVP() {
 			name: '',
 			plusOne: false,
 			children: false,
+			code: '',
 		});
 		setSearchTerm('');
 		setGuestInputRecieved(false);
 		setEmailInputRecieved(false);
 		setChildInputRecieved(false);
 		setNotesInputRecieved(false);
+		setCode('');
+		setVarified(false);
+	};
+
+	const verfifyGuest = (e: any) => {
+		if (selectedGuest.code === code) {
+			setError(false);
+			setVarified(true);
+		} else {
+			setError(true);
+		}
 	};
 
 	return (
@@ -90,7 +109,24 @@ export default function RSVP() {
 						</NamesContainer>
 					</>
 				)}
-				{selectedGuest.name && (
+				{selectedGuest.name && !verified && (
+					<>
+						{error && <p style={{ color: 'red' }}>Error: Code is invalid</p>}
+						<Input
+							type='text'
+							placeholder='Verification Code'
+							onChange={(e) => setCode(e.target.value)}
+						/>
+						<button
+							onClick={(e: any) => verfifyGuest(e)}
+							style={{ maxWidth: '200px', marginTop: '20px' }}
+						>
+							Submit
+						</button>
+					</>
+				)}
+
+				{selectedGuest.name && verified && (
 					<div style={{ paddingBottom: '20px' }}>
 						<span>
 							You are RSVP'ing as{' '}
@@ -106,6 +142,7 @@ export default function RSVP() {
 					</div>
 				)}
 				<Form
+					verified={verified}
 					selectedGuest={selectedGuest}
 					handleInputRecieved={handleInputRecieved}
 					childInputRecieved={childInputRecieved}
