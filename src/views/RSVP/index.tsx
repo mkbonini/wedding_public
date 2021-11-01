@@ -20,15 +20,15 @@ export default function RSVP() {
 
 	interface IGuest {
 		name: string;
+		code: string;
 		plusOne: boolean;
 		children: boolean;
-		code: string;
 	}
 	const [selectedGuest, setSelectedGuest] = useState<IGuest>({
 		name: '',
+		code: '',
 		plusOne: false,
 		children: false,
-		code: '',
 	});
 
 	const [searchTerm, setSearchTerm] = useState('');
@@ -70,6 +70,7 @@ export default function RSVP() {
 		setNotesInputRecieved(false);
 		setCode('');
 		setVarified(false);
+		setError(false);
 	};
 
 	const verfifyGuest = (e: any) => {
@@ -123,6 +124,18 @@ export default function RSVP() {
 						>
 							Submit
 						</button>
+						<button
+							onClick={(e: any) => handleGuestDeselection()}
+							style={{
+								maxWidth: '200px',
+								marginTop: '10px',
+								backgroundColor: 'white',
+								color: 'black',
+								boxShadow: '1px 2px 9px lightgrey',
+							}}
+						>
+							Back
+						</button>
 					</>
 				)}
 
@@ -133,17 +146,13 @@ export default function RSVP() {
 							<span style={{ fontWeight: 800 }}>{selectedGuest.name}</span>. To
 							deselect and return to search, click
 						</span>{' '}
-						<span
-							style={{ fontWeight: 800, cursor: 'pointer' }}
-							onClick={() => handleGuestDeselection()}
-						>
-							HERE
-						</span>
+						<span style={{ fontWeight: 800 }}>back</span>
 					</div>
 				)}
 				<Form
 					verified={verified}
 					selectedGuest={selectedGuest}
+					handleGuestDeselection={handleGuestDeselection}
 					handleInputRecieved={handleInputRecieved}
 					childInputRecieved={childInputRecieved}
 					guestInputRecieved={guestInputRecieved}

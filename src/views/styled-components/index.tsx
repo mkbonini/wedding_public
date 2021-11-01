@@ -138,15 +138,21 @@ export const CabinCard = styled.div<{ color: string }>`
 	p {
 		display: flex;
 		align-items: center;
-		margin-top: -19px;
 		font-size: 14px;
 	}
 	#cabin-card-copy {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		min-height: 100px;
 		margin-left: 5px;
+		padding-top: 10px;
+		#capacity {
+			display: flex;
+			flex-direction: row;
+			height: 20px;
+			padding-bottom: 10px;
+			align-items: center;
+		}
 		#base {
 			width: 10px;
 			height: 10px;

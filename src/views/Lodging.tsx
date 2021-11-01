@@ -25,7 +25,9 @@ export default function Lodging() {
 
 	const disableBody = () => {
 		let bodyStyle = document.getElementById('body')?.style.overflow;
-		bodyStyle = 'hidden';
+		if (bodyStyle) {
+			bodyStyle = 'hidden';
+		}
 	};
 
 	const handleClick = (id: string) => {
@@ -66,9 +68,10 @@ export default function Lodging() {
 			<LodgingContainer>
 				<h2>Cabin Information</h2>
 				<CabinInfoContainer>
-					{cabinInfo.map((cabin) => {
+					{cabinInfo.map((cabin, index) => {
 						return (
 							<CabinCard
+								key={index}
 								color={cabin.color}
 								onClick={() => handleClick(cabin.id)}
 							>
@@ -77,13 +80,15 @@ export default function Lodging() {
 									<img src={cabin.cabinImage} alt='' />
 								</ImageContainer>
 								<div id='cabin-card-copy'>
-									<p>
+									<div id='capacity'>
 										<div id='base' />
-										{cabin.capacity}
-										{cabin.capacity === 1
-											? `/ ${cabin.capacity} spot available`
-											: `/ ${cabin.capacity}  spots available`}
-									</p>
+										<p>
+											{cabin.capacity}
+											{cabin.capacity === 1
+												? `/ ${cabin.capacity} spot available`
+												: `/ ${cabin.capacity}  spots available`}
+										</p>
+									</div>
 									<h1>
 										{cabin.name} - <br />
 										{cabin.cardDescription}

@@ -87,9 +87,11 @@ export const SignUpForm = styled.div`
 	label {
 		&.radio-label {
 			opacity: 1;
+			height: 100%;
 		}
 		opacity: 0;
 		transition: opacity 1s, height 0 1s;
+		height: 0px;
 		&.label-visible {
 			align-self: flex-start;
 			font-size: 14px;
@@ -97,6 +99,7 @@ export const SignUpForm = styled.div`
 			opacity: 1;
 			transition: opacity 1s;
 			color: gray;
+			height: 100%;
 		}
 	}
 	input {
@@ -118,11 +121,12 @@ export const SignUpForm = styled.div`
 		}
 	}
 	button {
-		width: 90%;
+		width: 100%;
+		max-width: 200px;
 		height: 40px;
 		border: none;
 		border-radius: 25px;
-		margin-top: -10px;
+		margin: 10px;
 		font-weight: 500;
 		font-size: 12px;
 		background-color: #ef7b9e;
@@ -130,6 +134,14 @@ export const SignUpForm = styled.div`
 		color: white;
 		&:hover {
 			box-shadow: 1px 5px 8px lightgray;
+		}
+		&#back-button {
+			color: black;
+			background-color: white;
+			box-shadow: 1px 2px 9px lightgrey;
+			&:hover {
+				box-shadow: 1px 5px 8px lightgray;
+			}
 		}
 	}
 	@media only screen and (max-width: 1200px) {
@@ -145,14 +157,13 @@ export const Radio = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: row;
+	flex-direction: column;
+	padding-bottom: 2rem;
 	div {
-		width: 150px;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		padding-bottom: 40px;
 		label {
 			margin: 10px;
 		}

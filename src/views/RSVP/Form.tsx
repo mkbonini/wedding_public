@@ -14,6 +14,7 @@ interface FormProps {
 	selectedGuest: IGuest;
 	verified: boolean;
 	handleInputRecieved: (input: any) => void;
+	handleGuestDeselection: () => void;
 	childInputRecieved: boolean;
 	guestInputRecieved: boolean;
 	emailInputRecieved: boolean;
@@ -28,6 +29,7 @@ export default function Form({
 	selectedGuest,
 	verified,
 	handleInputRecieved,
+	handleGuestDeselection,
 	childInputRecieved,
 	guestInputRecieved,
 	emailInputRecieved,
@@ -132,15 +134,15 @@ export default function Form({
 						htmlFor='additional'
 						className={notesInputRecieved ? 'label-visible' : ''}
 					>
-						Notes? Diet/Allergies, special needs or anything important for us to
-						know?
+						Comments or Questions? Any diet/allergy or special needs we should
+						be aware of?
 					</label>
 					<input
 						className='form-input'
 						type='text'
 						id='additional'
 						name='additional'
-						placeholder='Any Notes?'
+						placeholder='Comments or Questions'
 						onChange={(e) =>
 							handleInputRecieved({
 								e,
@@ -149,6 +151,7 @@ export default function Form({
 							})
 						}
 					/>
+					<h3>Can you attend?</h3>
 					<Radio>
 						<div>
 							<input
@@ -159,7 +162,7 @@ export default function Form({
 								value='attending'
 							/>
 							<label className='radio-label' htmlFor='attending'>
-								Let's Party
+								Let's Party!
 							</label>
 						</div>
 						<div>
@@ -171,11 +174,17 @@ export default function Form({
 								value='not-attending'
 							/>
 							<label className='radio-label' htmlFor='not-attending'>
-								Can't Come
+								Sorry Can't Come
 							</label>
 						</div>
 					</Radio>
-					<button onClick={() => alert('signed up')}>SUBMIT</button>
+					<button onClick={() => alert('signed up')}>Submit</button>
+					<button
+						onClick={(e: any) => handleGuestDeselection()}
+						id='back-button'
+					>
+						Back
+					</button>
 				</>
 			)}
 		</form>
