@@ -1,0 +1,16 @@
+[
+	{ "name": "Hope Tranberg", "plusOne": true, "children": false},
+	{ "name": "Emily Cornier", "plusOne": true , "children": false},
+	{ "name": "Erika Hiramitsu", "plusOne": false , "children": false},
+	{ "name": "Rachael Compton", "plusOne": true , "children": false},
+	{ "name": "Carolyn Bonini", "plusOne": true, "children": false},
+	{ "name": "Arthur Bonini", "plusOne": true , "children": false}, 
+    { "name": "Elizabeth Bonini", "plusOne": true, "children": true}, 
+    { "name": "Garbagio", "plusOne": true, "children": false}, 
+    { "name": "Kojin Tranberg", "plusOne": true , "children": true}, 
+    { "name": "Kentaro Tranberg", "plusOne": false , "children": false}, 
+    { "name": "Kazuto Tranberg", "plusOne": false , "children": false}, 
+    { "name": "Hitomi Okada", "plusOne": true , "children": false}, 
+    { "name": "Clara Bobriky", "plusOne": true, "children": false}
+
+]

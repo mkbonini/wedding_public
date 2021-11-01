@@ -1,12 +1,48 @@
 /** @format */
 
-import React from 'react';
 import styled from 'styled-components';
 
-const Title = styled.div`
+//Search
+export const NamesContainer = styled.div`
+	width: 100%;
+	max-width: 600px;
+	height: 200px;
+	overflow-y: scroll;
+`;
+
+export const Name = styled.div`
+	height: 40px;
+	background-color: white;
+	border-bottom: 1px solid whitesmoke;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	&:hover {
+		background-color: #8bb88b;
+		color: white;
+		cursor: pointer;
+	}
+`;
+
+export const Input = styled.input`
+	height: 40px;
+	width: 99%;
+	border: none;
+	background-color: whitesmoke;
+	text-align: center;
+	max-width: 600px;
+	&:focus {
+		outline: none;
+	}
+`;
+
+//RSVP
+
+export const RsvpTitle = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	padding: 20px;
 	h1 {
 		font-family: 'Urbanist', sans-serif;
@@ -14,19 +50,19 @@ const Title = styled.div`
 		color: black;
 		font-weight: 300;
 		text-transform: uppercase;
+		margin-bottom: 0;
 	}
 `;
 
-const SignUpForm = styled.div`
+export const SignUpForm = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	min-width: 500px;
-	margin: 2rem;
-	padding: 4rem 0rem;
-	border: 1px solid lightgray;
 	border-radius: 5px;
+	margin: 1rem 0rem 4rem;
+	padding: 40px 0px;
 	form {
 		display: flex;
 		flex-direction: column;
@@ -47,6 +83,21 @@ const SignUpForm = styled.div`
 	}
 	li {
 		min-width: 240px;
+	}
+	label {
+		&.radio-label {
+			opacity: 1;
+		}
+		opacity: 0;
+		transition: opacity 1s, height 0 1s;
+		&.label-visible {
+			align-self: flex-start;
+			font-size: 14px;
+			margin-bottom: 5px;
+			opacity: 1;
+			transition: opacity 1s;
+			color: gray;
+		}
 	}
 	input {
 		&.form-input {
@@ -74,7 +125,7 @@ const SignUpForm = styled.div`
 		margin-top: -10px;
 		font-weight: 500;
 		font-size: 12px;
-		background-color: ${(p) => p.color && p.color};
+		background-color: #ef7b9e;
 		box-shadow: 1px 3px 4px lightgray;
 		color: white;
 		&:hover {
@@ -83,14 +134,14 @@ const SignUpForm = styled.div`
 	}
 	@media only screen and (max-width: 1200px) {
 		margin: 20px;
-		padding: 60px 0px;
+		padding: 20px 0px;
 		min-width: unset;
 		border: unset;
 		border-top: 1px solid whitesmoke;
 	}
 `;
 
-const Radio = styled.div`
+export const Radio = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -108,71 +159,7 @@ const Radio = styled.div`
 	}
 `;
 
-const RsvpContainer = styled.div`
+export const RsvpContainer = styled.div`
 	height: 100%;
 	padding-bottom: 8rem;
 `;
-
-export default function RSVP() {
-	return (
-		<RsvpContainer>
-			<SignUpForm>
-				<Title>
-					<h1>RSVP</h1>
-				</Title>
-				<form action='/my-handling-form-page' method='post'>
-					<label htmlFor='name'></label>
-					<input
-						className='form-input'
-						type='text'
-						id='name'
-						name='user_name'
-						placeholder='First and Last Name'
-					/>
-
-					<label htmlFor='plus-one'></label>
-					<input
-						className='form-input'
-						type='text'
-						id='plus-one-name'
-						name='plus_one'
-						placeholder='Plus One Name'
-					/>
-
-					<label htmlFor='mail'></label>
-					<input
-						className='form-input'
-						type='email'
-						id='mail'
-						name='user_email'
-						placeholder='Email'
-					/>
-
-					<Radio>
-						<div>
-							<input
-								className='radio-input'
-								type='radio'
-								id='attending'
-								name='rsvp'
-								value='attending'
-							/>
-							<label htmlFor='attending'>Attending</label>
-						</div>
-						<div>
-							<input
-								className='radio-input'
-								type='radio'
-								id='not-attending'
-								name='rsvp'
-								value='not-attending'
-							/>
-							<label htmlFor='not-attending'>Not Attending</label>
-						</div>
-					</Radio>
-					<button onClick={() => alert('signed up')}>SUBMIT</button>
-				</form>
-			</SignUpForm>
-		</RsvpContainer>
-	);
-}

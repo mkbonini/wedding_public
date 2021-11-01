@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FlyoutContainer, MenuLink, LinkContainer } from './styled-components';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from '../../views/Home';
-import RSVP from '../../views/RSVP';
+import RSVP from '../../views/RSVP/index';
 import Details from '../../views/Details';
 import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging';
