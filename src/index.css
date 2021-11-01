@@ -5,8 +5,13 @@
 body {
 	margin: 0;
 	font-family: 'DM Sans', sans-serif;
+	font-size: 16px;
 }
 
+input[type='text'],
+input[type='email'] {
+	font-size: inherit;
+}
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
