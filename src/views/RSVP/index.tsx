@@ -97,7 +97,12 @@ export default function RSVP() {
 							<span style={{ fontWeight: 800 }}>{selectedGuest.name}</span>. To
 							deselect and return to search, click
 						</span>{' '}
-						<span onClick={() => handleGuestDeselection()}>HERE</span>
+						<span
+							style={{ fontWeight: 800, cursor: 'pointer' }}
+							onClick={() => handleGuestDeselection()}
+						>
+							HERE
+						</span>
 					</div>
 				)}
 				<Form
