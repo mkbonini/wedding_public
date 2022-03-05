@@ -39,8 +39,12 @@ export default function Form({
 	setNotesInputRecieved,
 	setGuestInputRecieved,
 }: FormProps) {
+	const handleSubmit = (event: any) => {
+		alert('submitted');
+		event.preventDefault();
+	};
 	return (
-		<form action='/my-handling-form-page' method='post'>
+		<form onSubmit={(event) => handleSubmit(event)}>
 			{selectedGuest.name && verified && (
 				<>
 					<label
@@ -178,7 +182,7 @@ export default function Form({
 							</label>
 						</div>
 					</Radio>
-					<button onClick={() => alert('signed up')}>Submit</button>
+					<button type='submit'>Submit</button>
 					<button
 						onClick={(e: any) => handleGuestDeselection()}
 						id='back-button'

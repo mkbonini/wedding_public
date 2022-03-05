@@ -41,11 +41,12 @@ const Text = styled.div`
 
 const CounterContainer = styled.div`
 	width: 100%;
+	min-height: 350px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem 0rem;
+	background-color: floralwhite;
 `;
 
 const ImageContainer = styled.div`

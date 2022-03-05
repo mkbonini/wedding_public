@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-export const NavMenu = styled.div`
+export const Heading = styled.div`
 	height: 70px;
 	width: 100%;
 	display: flex;
@@ -22,4 +22,18 @@ export const NavMenu = styled.div`
 
 export const HamburgerContainer = styled.div`
 	padding-right: 10px;
+`;
+
+export const Footer = styled.div`
+	height: 120px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: #cae36f;
+	color: white;
+	padding-bottom: 8rem;
+	p {
+		padding: 10px;
+	}
 `;
