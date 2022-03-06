@@ -61,8 +61,6 @@ export const SignUpForm = styled.div`
 	flex-direction: column;
 	min-width: 500px;
 	border-radius: 5px;
-	margin: 1rem 0rem 4rem;
-	padding: 40px 0px;
 	form {
 		display: flex;
 		flex-direction: column;
@@ -145,11 +143,9 @@ export const SignUpForm = styled.div`
 		}
 	}
 	@media only screen and (max-width: 1200px) {
-		margin: 20px;
-		padding: 20px 0px;
 		min-width: unset;
 		border: unset;
-		border-top: 1px solid whitesmoke;
+		margin: 2rem 0rem;
 	}
 `;
 
@@ -171,6 +167,9 @@ export const Radio = styled.div`
 `;
 
 export const RsvpContainer = styled.div`
-	height: 100%;
-	padding-bottom: 8rem;
+	min-height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8rem 1rem 2rem;
 `;

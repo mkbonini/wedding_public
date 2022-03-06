@@ -1,5 +1,4 @@
 /** @format */
-import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../../views/Home';
 import RSVP from '../../views/RSVP/index';
@@ -8,10 +7,10 @@ import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging';
 import Flyout from './Flyout';
 
-export default function Navigation() {
+export default function Navigation({ visible, setVisible }) {
 	return (
 		<>
-			{/* <Flyout /> */}
+			<Flyout visible={visible} setVisible={setVisible} />
 			<Switch>
 				<Route path='/details'>
 					<Details />

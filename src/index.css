@@ -1,7 +1,5 @@
 /** @format */
 
-@import-normalize;
-
 body {
 	margin: 0;
 	font-family: 'DM Sans', sans-serif;
@@ -11,8 +9,4 @@ input[type='text'],
 input[type='email'] {
 	font-size: inherit;
 	font-family: 'DM Sans', sans-serif;
-}
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
 }

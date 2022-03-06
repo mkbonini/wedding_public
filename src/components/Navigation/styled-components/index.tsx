@@ -1,67 +1,40 @@
 /** @format */
 import styled from 'styled-components';
 
-// export const MobileMenu = styled.div`
-// 	position: fixed;
-// 	height: 80px;
-// 	width: 100%;
-// 	bottom: 0px;
-// 	right: 0;
-// 	background-color: white;
-// 	box-shadow: 0 -5px 5px -5px lightgray;
-// 	z-index: 100;
-// `;
-
-export const MobileMenu = styled.div`
+export const MobileMenu = styled.div<{ visible: boolean }>`
+	display: ${(p) => (p.visible ? 'block' : 'none')};
 	position: fixed;
 	height: 100vh;
-	width: 80%;
-	background-color: whitesmoke;
-	right: 0;
+	width: 100%;
+	max-width: 300px;
+	background-color: darkslategrey;
+	left: 0;
+	z-index: 100000;
+	padding-top: 2rem;
+	top: 70px;
 `;
 
-// export const LinkContainer = styled.div`
-// 	display: flex;
-// 	flex-direction: row;
-// 	justify-content: space-evenly;
-// 	height: 100%;
-// 	img {
-// 		width: 22px;
-// 		height: 22px;
-// 		margin-bottom: 2px;
-// 	}
-// `;
+export const LinkContainer = styled.div`
+	width: 50%;
+	border-radius: 50%;
+	img {
+		width: 20px;
+		height: 20px;
+		margin-bottom: 2px;
+		margin-right: 10px;
+	}
+`;
 
-export const LinkContainer = styled.div``;
-
-// export const MenuLink = styled.div<{ active: boolean }>`
-// 	box-shadow: ${(p) => (p.active ? '0px 5px 10px #E7E6E1' : 'white')};
-// 	padding: 10px 10px 25px 10px;
-// 	width: 100%;
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// 	a {
-// 		min-width: 40px;
-// 		display: flex;
-// 		flex-direction: column;
-// 		justify-content: center;
-// 		align-items: center;
-// 		text-decoration: none;
-// 		font-size: 12px;
-// 		color: black;
-// 		font-weight: 300;
-// 		font-family: 'Urbanist', sans-serif;
-
-// 		&:hover {
-// 			font-weight: 400;
-// 			cursor: pointer;
-// 		}
-// 		p {
-// 			padding-left: 5px;
-// 			margin: 0;
-// 		}
-// 	}
-// `;
-
-export const MenuLink = styled.div<{ active: boolean }>``;
+export const MenuLink = styled.div<{ active: boolean }>`
+	padding: 5px 0px;
+	a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: ${(p) => (p.active ? 'darkslategrey' : 'white')};
+		font-size: 16px;
+		background-color: ${(p) => (p.active ? 'white' : 'darkslategrey')};
+		border-radius: 0px 40px 40px 0px;
+		padding-left: 40px;
+	}
+`;

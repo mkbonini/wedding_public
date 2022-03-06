@@ -8,8 +8,7 @@ export const Title = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 20px;
-	margin: 2rem 0rem;
+	padding-top: 8rem;
 	h1 {
 		font-size: 45px;
 		font-family: 'Urbanist', sans-serif;

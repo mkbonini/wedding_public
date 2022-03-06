@@ -1,107 +1,63 @@
 /** @format */
 
 import React, { useState } from 'react';
-import homeInactive from '../../assets/home-inactive.png';
-import homeActive from '../../assets/home-active.png';
-import infoInactive from '../../assets/info-inactive.png';
-import infoActive from '../../assets/info-active.png';
-import sleepingInactive from '../../assets/sleeping-inactive.png';
-import sleepingActive from '../../assets/sleeping-active.png';
-import giftInactive from '../../assets/gift-inactive.png';
-import giftActive from '../../assets/gift-active.png';
-import rsvpInactive from '../../assets/rsvp-inactive.png';
-import rsvpActive from '../../assets/rsvp-active.png';
 import { MobileMenu, MenuLink, LinkContainer } from './styled-components/index';
 import { Link } from 'react-router-dom';
 
-export default function Flyout() {
+type FlyoutProps = {
+	visible: boolean;
+	setVisible: (arg: boolean) => null;
+};
+
+export default function Flyout({ visible, setVisible }: FlyoutProps) {
 	const [active, setActive] = useState('home');
+
+	const handleMenuClick = (path) => {
+		setActive(path);
+		setVisible(false);
+	};
 	return (
-		<MobileMenu>
+		<MobileMenu visible={visible}>
 			<LinkContainer>
-				<MenuLink onClick={() => setActive('home')} active={active === 'home'}>
-					<Link to='/'>Lodging</Link>
-					{/* <Link to='/'>
-						{active === 'home' ? (
-							<>
-								<img src={homeActive} alt='' />
-							</>
-						) : (
-							<>
-								<img src={homeInactive} alt='' />
-							</>
-						)}
+				<MenuLink
+					onClick={() => handleMenuClick('home')}
+					active={active === 'home'}
+				>
+					<Link to='/'>
 						<p>Home</p>
-					</Link> */}
+					</Link>
 				</MenuLink>
 				<MenuLink
-					onClick={() => setActive('details')}
+					onClick={() => handleMenuClick('details')}
 					active={active === 'details'}
 				>
-					<Link to='/'>Lodging</Link>
-					{/* <Link to='/details'>
-						{active === 'details' ? (
-							<>
-								<img src={infoActive} alt='' />
-							</>
-						) : (
-							<>
-								<img src={infoInactive} alt='' />
-							</>
-						)}
+					<Link to='/details'>
 						<p>Details</p>
-					</Link> */}
+					</Link>
 				</MenuLink>
 				<MenuLink
-					onClick={() => setActive('lodging')}
+					onClick={() => handleMenuClick('lodging')}
 					active={active === 'lodging'}
 				>
-					<Link to='/'>Lodging</Link>
-					{/* <Link to='/lodging'>
-						{active === 'lodging' ? (
-							<>
-								<img src={sleepingActive} alt='' />
-							</>
-						) : (
-							<>
-								<img src={sleepingInactive} alt='' />
-							</>
-						)}
+					<Link to='/lodging'>
 						<p>Lodging</p>
-					</Link> */}
+					</Link>
 				</MenuLink>
 				<MenuLink
-					onClick={() => setActive('registry')}
+					onClick={() => handleMenuClick('registry')}
 					active={active === 'registry'}
 				>
-					<Link to='/'>Lodging</Link>
-					{/* <Link to='/registry'>
-						{active === 'registry' ? (
-							<>
-								<img src={giftActive} alt='' />
-							</>
-						) : (
-							<>
-								<img src={giftInactive} alt='' />
-							</>
-						)}
+					<Link to='/registry'>
 						<p>Registry</p>
-					</Link> */}
+					</Link>
 				</MenuLink>
-				<MenuLink onClick={() => setActive('rsvp')} active={active === 'rsvp'}>
-					<Link to='/'>Lodging</Link>
-					{/* <Link to='/rsvp'>
-						{active === 'rsvp' ? (
-							<>
-								<img src={rsvpActive} alt='' />
-							</>
-						) : (
-							<>
-								<img src={rsvpInactive} alt='' />
-							</>
-						)}
+				<MenuLink
+					onClick={() => handleMenuClick('rsvp')}
+					active={active === 'rsvp'}
+				>
+					<Link to='/rsvp'>
 						<p>RSVP</p>
-					</Link> */}
+					</Link>
 				</MenuLink>
 			</LinkContainer>
 		</MobileMenu>
