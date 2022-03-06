@@ -58,18 +58,11 @@ export default function Lodging({ visible }) {
 						<h3>Deer Creek Mountain Camp - 228 S Pine Dr, Bailey, CO 80421</h3>
 						<p>
 							Deer Creek Mountain Camp is a stunning camp with near 120 beds in
-							cabins surrounded by aspens and wildlife. It is a truly beautiful
-							and unique venue, and our preference is that guests sleep onsite
-							if they can. We are asking $30 per person which covers the two
-							evenings (Friday and Saturday) which can be paid on the registry
-							tab.
+							cabins surrounded by aspens and wildlife. <br />
 							<br />
-							<br /> Note: If you are lodging on site, please reserve your spot
-							below. If you have any issues with reserving your spot, please
-							email Miwha at{' '}
-							<a href='mailto: miwha.geschwind@gmail.com'>
-								miwha.geschwind@gmail.com
-							</a>
+							It is a truly beautiful and unique venue, and our preference is
+							that guests sleep onsite if they can. Please see the FAQ section
+							for all your questions.
 						</p>
 					</Title>
 					<LodgingContainer>

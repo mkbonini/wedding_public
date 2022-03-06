@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { MobileMenu, MenuLink, LinkContainer } from './styled-components/index';
 import { Link } from 'react-router-dom';
 

@@ -34,9 +34,9 @@ export default function Body() {
 
 	useEffect(() => {
 		if (visible) {
-			document.getElementById('body').classList.add('disable');
+			document.getElementById('content').classList.add('disable');
 		} else {
-			document.getElementById('body').classList.remove('disable');
+			document.getElementById('content').classList.remove('disable');
 		}
 	}, [visible]);
 
