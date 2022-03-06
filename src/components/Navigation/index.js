@@ -4,7 +4,7 @@ import Home from '../../views/Home';
 import RSVP from '../../views/RSVP/index';
 import Details from '../../views/Details';
 import Registry from '../../views/Registry';
-import Lodging from '../../views/Lodging';
+import Lodging from '../../views/Lodging/index';
 import Flyout from './Flyout';
 
 export default function Navigation({ visible, setVisible }) {

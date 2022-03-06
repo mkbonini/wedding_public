@@ -43,7 +43,7 @@ export const Footer = styled.div`
 	align-items: flex-end;
 	background-color: #cae36f;
 	color: white;
-	padding-bottom: 8rem;
+	padding-bottom: 4rem;
 	p {
 		padding: 10px;
 	}

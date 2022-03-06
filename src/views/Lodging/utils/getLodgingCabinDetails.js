@@ -1,22 +1,22 @@
 /** @format */
-import lark from '../../assets/cabins/lark.jpg';
-import humming from '../../assets/cabins/humming_bird.jpg';
-import spruce from '../../assets/cabins/spruce.jpg';
-import moose from '../../assets/cabins/moose.jpg';
-import bearCave from '../../assets/cabins/bear-cave.jpg';
-import blackBear1 from '../../assets/cabins/black-bear-1.jpg';
-import blackBear2 from '../../assets/cabins/black-bear-2.jpg';
-import rv from '../../assets/cabins/rv-site.jpg';
-import pine from '../../assets/cabins/pine.jpg';
-import jackalope from '../../assets/cabins/jackalope.jpg';
-import aspen from '../../assets/cabins/aspen.jpg';
-import sasquach from '../../assets/cabins/sasquach.jpg';
-import arapahoe from '../../assets/cabins/arapahoe.jpg';
-import crows1 from '../../assets/cabins/crows-nest-1.jpg';
-import crows2 from '../../assets/cabins/crows-nest-2.jpg';
-import crows3 from '../../assets/cabins/crows-nest-3.jpg';
-import crows4 from '../../assets/cabins/crows-nest-4.jpg';
-import crows5 from '../../assets/cabins/crows-nest-5.jpg';
+import lark from '../../../assets/cabins/lark.jpg';
+import humming from '../../../assets/cabins/humming_bird.jpg';
+import spruce from '../../../assets/cabins/spruce.jpg';
+import moose from '../../../assets/cabins/moose.jpg';
+import bearCave from '../../../assets/cabins/bear-cave.jpg';
+import blackBear1 from '../../../assets/cabins/black-bear-1.jpg';
+import blackBear2 from '../../../assets/cabins/black-bear-2.jpg';
+import rv from '../../../assets/cabins/rv-site.jpg';
+import pine from '../../../assets/cabins/pine.jpg';
+import jackalope from '../../../assets/cabins/jackalope.jpg';
+import aspen from '../../../assets/cabins/aspen.jpg';
+import sasquach from '../../../assets/cabins/sasquach.jpg';
+import arapahoe from '../../../assets/cabins/arapahoe.jpg';
+import crows1 from '../../../assets/cabins/crows-nest-1.jpg';
+import crows2 from '../../../assets/cabins/crows-nest-2.jpg';
+import crows3 from '../../../assets/cabins/crows-nest-3.jpg';
+import crows4 from '../../../assets/cabins/crows-nest-4.jpg';
+import crows5 from '../../../assets/cabins/crows-nest-5.jpg';
 
 export const cabinInfo = [
 	{
