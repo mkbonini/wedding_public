@@ -13,19 +13,19 @@ export default function Navigation({ visible, setVisible }) {
 			<Flyout visible={visible} setVisible={setVisible} />
 			<Switch>
 				<Route path='/details'>
-					<Details />
+					<Details visible={visible} />
 				</Route>
 				<Route path='/rsvp'>
-					<RSVP />
+					<RSVP visible={visible} />
 				</Route>
 				<Route path='/registry'>
-					<Registry />
+					<Registry visible={visible} />
 				</Route>
 				<Route path='/lodging'>
-					<Lodging />
+					<Lodging visible={visible} />
 				</Route>
 				<Route path='/'>
-					<Home />
+					<Home visible={visible} />
 				</Route>
 			</Switch>
 		</>

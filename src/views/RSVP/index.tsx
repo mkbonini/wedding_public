@@ -13,7 +13,7 @@ import guestList from './utils/guestList.json';
 import { handleInputRecieved, editSearchTerm } from './utils';
 import Form from './Form';
 import ConstructionOverlay from '../../components/ConstructionOverlay';
-export default function RSVP() {
+export default function RSVP({ visible }) {
 	const underConstruction = false;
 	const [guestInputRecieved, setGuestInputRecieved] = useState(false);
 	const [emailInputRecieved, setEmailInputRecieved] = useState(false);
@@ -89,7 +89,7 @@ export default function RSVP() {
 			{underConstruction ? (
 				<ConstructionOverlay page={'RSVP'} />
 			) : (
-				<RsvpContainer>
+				<RsvpContainer visible={visible}>
 					<SignUpForm>
 						<RsvpTitle>
 							<h1>RSVP</h1>

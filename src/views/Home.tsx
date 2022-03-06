@@ -7,13 +7,14 @@ import styled from 'styled-components';
 import mike from '../assets/mike.jpg';
 import miwha from '../assets/miwha.jpg';
 
-const HomePage = styled.div`
+const HomePage = styled.div<{ visible: boolean }>`
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
 	background-color: floralwhite;
+	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 	h1 {
 		text-align: center;
 		font-size: 45px;
@@ -88,10 +89,10 @@ const MikeContentBlock = styled.div`
 	}
 `;
 
-export default function Home() {
+export default function Home({ visible }) {
 	return (
 		<>
-			<HomePage className='App'>
+			<HomePage visible={visible}>
 				<Hero />
 				<StoryContainer>
 					<MiwhaContentBlock>

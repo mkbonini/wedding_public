@@ -20,8 +20,8 @@ import {
 } from './styled-components';
 import ConstructionOverlay from '../components/ConstructionOverlay';
 
-export default function Lodging() {
-	const [visible, setVisible] = useState(false);
+export default function Lodging({ visible }) {
+	const [cabinModalVisible, setCabinModalVisible] = useState(false);
 	const [cabinClicked, setCabinClicked] = useState('');
 	const underConstruction = false;
 
@@ -33,7 +33,7 @@ export default function Lodging() {
 	};
 
 	const handleClick = (id: string) => {
-		setVisible(true);
+		setCabinModalVisible(true);
 		setCabinClicked(id);
 		disableBody();
 	};
@@ -43,10 +43,10 @@ export default function Lodging() {
 			{underConstruction ? (
 				<ConstructionOverlay page={'lodging'} />
 			) : (
-				<LodgingPage>
+				<LodgingPage visible={visible}>
 					<Modal
-						setVisible={setVisible}
-						visible={visible}
+						setVisible={setCabinModalVisible}
+						visible={cabinModalVisible}
 						data={cabinInfo}
 						cabinClicked={cabinClicked}
 					/>

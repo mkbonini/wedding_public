@@ -4,6 +4,14 @@ import React from 'react';
 import styled from 'styled-components';
 import ConstructionOverlay from '../components/ConstructionOverlay';
 
+const RegistryPage = styled.div<{ visible: boolean }>`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 600px;
+	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
+`;
+
 const Title = styled.div`
 	display: flex;
 	justify-content: center;
@@ -19,16 +27,18 @@ const Title = styled.div`
 	}
 `;
 
-export default function Details() {
+export default function Registry({ visible }) {
 	const underConstruction = false;
 	return (
 		<>
 			{underConstruction ? (
-				<ConstructionOverlay page={'details'} />
+				<ConstructionOverlay page={'registry'} />
 			) : (
-				<Title>
-					<h1>Details</h1>
-				</Title>
+				<RegistryPage visible={visible}>
+					<Title>
+						<h1>Registry</h1>
+					</Title>
+				</RegistryPage>
 			)}
 		</>
 	);

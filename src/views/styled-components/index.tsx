@@ -191,6 +191,8 @@ export const LodgingContainer = styled.div`
 	}
 `;
 
-export const LodgingPage = styled.div`
+export const LodgingPage = styled.div<{ visible: boolean }>`
 	padding-bottom: 8rem;
+	margin: 1rem;
+	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;
