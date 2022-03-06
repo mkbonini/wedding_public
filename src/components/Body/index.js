@@ -10,7 +10,7 @@ import { debounce } from '../../utils/index';
 export default function Body() {
 	const history = useHistory();
 
-	//Modal Visible state
+	//flyout Visible state
 	const [visible, setVisible] = useState(false);
 
 	//Nav Heading Visible State
@@ -31,6 +31,14 @@ export default function Body() {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [handleScroll, prevScrollPos, scrollVisible]);
+
+	useEffect(() => {
+		if (visible) {
+			document.getElementById('body').classList.add('disable');
+		} else {
+			document.getElementById('body').classList.remove('disable');
+		}
+	}, [visible]);
 
 	return (
 		<>

@@ -21,11 +21,13 @@ export const Heading = styled.div<{ scrollVisible: boolean }>`
 		font-size: 25px;
 		color: white;
 		padding: 20px;
+		margin-left: -65px;
 	}
 	img {
 		width: 25px;
 		height: 25px;
 		padding: 20px;
+		z-index: 99999;
 	}
 `;
 

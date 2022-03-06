@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { MobileMenu, MenuLink, LinkContainer } from './styled-components/index';
 import { Link } from 'react-router-dom';
 
@@ -12,12 +12,21 @@ type FlyoutProps = {
 export default function Flyout({ visible, setVisible }: FlyoutProps) {
 	const [active, setActive] = useState('home');
 
+	//closes flyout when clicking outside of the element
+	const flyout = useRef<HTMLInputElement>(null);
+	const closeOpenMenus = (e) => {
+		if (flyout.current && visible && !flyout.current.contains(e.target)) {
+			setVisible(false);
+		}
+	};
+	document.addEventListener('mousedown', closeOpenMenus);
+
 	const handleMenuClick = (path) => {
 		setActive(path);
 		setVisible(false);
 	};
 	return (
-		<MobileMenu visible={visible}>
+		<MobileMenu visible={visible} ref={flyout}>
 			<LinkContainer>
 				<MenuLink
 					onClick={() => handleMenuClick('home')}
