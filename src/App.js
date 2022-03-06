@@ -1,14 +1,10 @@
 /** @format */
 
-import Navbar from './components/Navbar';
+import Body from './components/Body';
 import './index.css';
 
 function App() {
-	return (
-		<>
-			<Navbar />
-		</>
-	);
+	return <Body />;
 }
 
 export default App;

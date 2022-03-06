@@ -39,10 +39,10 @@ export default function Modal({
 	setVisible,
 }: ModalProps) {
 	const modalInfo = () => {
-		return data.map((lodge: any) => {
+		return data.map((lodge: any, index: number) => {
 			if (lodge.id === cabinClicked && visible) {
 				return (
-					<ModalContainer>
+					<ModalContainer key={index}>
 						<Close onClick={() => setVisible(false)} color={lodge.color}>
 							<img src={close} alt='close button' />
 						</Close>
@@ -56,7 +56,7 @@ export default function Modal({
 									<p>{lodge.description}</p>
 									<span>
 										See photos of cabin{' '}
-										<a href={lodge.link} target='_blank'>
+										<a href={lodge.link} target='_blank' rel='noreferrer'>
 											here
 										</a>
 									</span>
@@ -76,6 +76,8 @@ export default function Modal({
 						</ModalContent>
 					</ModalContainer>
 				);
+			} else {
+				return null;
 			}
 		});
 	};

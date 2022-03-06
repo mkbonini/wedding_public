@@ -31,6 +31,7 @@ export const cabinInfo = [
 	{
 		id: 'humming-bird-cabin',
 		name: 'Humming Bird',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
@@ -42,6 +43,7 @@ export const cabinInfo = [
 	{
 		id: 'spruce-cabin',
 		name: 'Spruce',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
@@ -53,6 +55,7 @@ export const cabinInfo = [
 	{
 		id: 'lark-cabin',
 		name: 'Lark',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
@@ -64,6 +67,7 @@ export const cabinInfo = [
 	{
 		id: 'moose-cabin',
 		name: 'Moose',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
@@ -75,6 +79,7 @@ export const cabinInfo = [
 	{
 		id: 'bears-cave-cabin',
 		name: "Bear's Cave",
+		cardDescription: 'Private room for two',
 		description:
 			'There is parking for 1 vehicle below the apartment, and all other vehicles should be parked in the designated parking area below the gym. If you are a part of a wedding party, please check with the couple on where they would like you to park. The bedroom has a queen bed with an adjoining full bathroom. The lower room, where you walk in, has a full kitchen with gas range and full sized fridge. Water from every faucet on camp is safe to drink. Please be sure to wash all used dishes and utensils and either put them away or leave them in the drying rack.',
 		capacity: 2,
@@ -86,6 +91,7 @@ export const cabinInfo = [
 	{
 		id: 'crows-nest-cabin-1',
 		name: "Crow's Nest Apt 1",
+		cardDescription: 'Private apartment for two',
 		description:
 			'This cozy, natural lit apartment is located on 125 acres of beautiful mountain space. It is perfect for a couple or two single traveler to stay in comfort and enjoy all the beauty the outdoors has to offer, such as surrounding pine and aspen trees, and wildlife such as deer and chipmunks. The bathroom and showers for this apartment are located downstairs. The Women’s is at the front of the building and the Men’s is located in the back. Water from every faucet on camp is safe to drink. There is not WiFi available for guests',
 		capacity: 2,
@@ -97,6 +103,7 @@ export const cabinInfo = [
 	{
 		id: 'crows-nest-cabin-2',
 		name: "Crow's Nest Apt 2",
+		cardDescription: 'Private apartment for two',
 		description:
 			'This cozy, natural lit apartment is located on 125 acres of beautiful mountain space. It is perfect for a couple or two single traveler to stay in comfort and enjoy all the beauty the outdoors has to offer, such as surrounding pine and aspen trees, and wildlife such as deer and chipmunks. The bathroom and showers for this apartment are located downstairs. The Women’s is at the front of the building and the Men’s is located in the back. Water from every faucet on camp is safe to drink. There is not WiFi available for guests',
 		capacity: 2,
@@ -108,6 +115,7 @@ export const cabinInfo = [
 	{
 		id: 'crows-nest-cabin-3',
 		name: "Crow's Nest Apt 3",
+		cardDescription: 'Private apartment for two',
 		description:
 			'This cozy, natural lit apartment is located on 125 acres of beautiful mountain space. It is perfect for a couple or two single traveler to stay in comfort and enjoy all the beauty the outdoors has to offer, such as surrounding pine and aspen trees, and wildlife such as deer and chipmunks. The bathroom and showers for this apartment are located downstairs. The Women’s is at the front of the building and the Men’s is located in the back. Water from every faucet on camp is safe to drink. There is not WiFi available for guests',
 		capacity: 2,
@@ -119,6 +127,7 @@ export const cabinInfo = [
 	{
 		id: 'crows-nest-cabin-4',
 		name: "Crow's Nest Apt 4",
+		cardDescription: 'Private apartment for two',
 		description:
 			'This cozy, natural lit apartment is located on 125 acres of beautiful mountain space. It is perfect for a couple to stay in comfort and enjoy all the beauty the outdoors has to offer, such as surrounding pine and aspen trees, and wildlife such as deer and chipmunks. There is a bathroom in unit. Water from every faucet on camp is safe to drink. There is not WiFi available for guests',
 		capacity: 2,
@@ -130,6 +139,7 @@ export const cabinInfo = [
 	{
 		id: 'crows-nest-cabin-5',
 		name: "Crow's Nest Apt 5",
+		cardDescription: 'Private apartment for two',
 		description:
 			'This cozy, natural lit apartment is located on 125 acres of beautiful mountain space. It is perfect for a couple to stay in comfort and enjoy all the beauty the outdoors has to offer, such as surrounding pine and aspen trees, and wildlife such as deer and chipmunks. There is a bathroom in unit. Water from every faucet on camp is safe to drink. There is not WiFi available for guests',
 		capacity: 2,
@@ -141,6 +151,7 @@ export const cabinInfo = [
 	{
 		id: 'black-bear-1-cabin',
 		name: 'Black Bear 1',
+		cardDescription: 'Cozy suite perfect for a family',
 		description:
 			'This home, with natural light from the Eastern facing windows, is comfortable and cozy for a family or group of friends. It has 6 single beds (bunk style) and one queen bed, shared between two rooms. Black Bear sits on 125 acres of gorgeous mountain space perfect for enjoying the outdoors and everything it has to offer. It has a full kitchen, supplied with everything you could need to cook meals for the group. Water from every faucet at camp is safe to drink. There is no wifi available to guests.',
 		capacity: 8,
@@ -152,6 +163,7 @@ export const cabinInfo = [
 	{
 		id: 'black-bear-2-cabin',
 		name: 'Black Bear 2',
+		cardDescription: 'Private apartment for two',
 		description:
 			'With one queen bed, this cozy two room apartment is perfect for a couple or small family to enjoy the 125 acre camp facility available year round at Deer Creek Mountain Camp or as part of larger group rentals.',
 		capacity: 2,
@@ -163,6 +175,7 @@ export const cabinInfo = [
 	{
 		id: 'pine-cabin',
 		name: 'Pine',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
@@ -174,6 +187,7 @@ export const cabinInfo = [
 	{
 		id: 'jackalope-cabin',
 		name: 'Jackalope',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
@@ -185,6 +199,7 @@ export const cabinInfo = [
 	{
 		id: 'arapahoe-cabin',
 		name: 'Arapahoe',
+		cardDescription: 'Large cabin for wedding party',
 		description:
 			'This lodge fits 24 people, with three bedrooms that each have 4 bunk beds, a full kitchen stocked with cookware and utensils, a living room, a wood burning stove, and two bathrooms that each have two showers. Please be aware the cabin does not have bedding or toiletries provided. Water from every faucet on camp is safe to drink. There is not WiFi access on camp for guest use',
 		capacity: 24,
@@ -196,10 +211,11 @@ export const cabinInfo = [
 	{
 		id: 'sasquach-cabin',
 		name: 'Sasquach',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
-		link: 'airbnb.com/rooms/37053401?source_impression_id=p3_1632162654_Mdqd32o%2FEF1SbqzP&guests=1&adults=1',
+		link: 'https://www.airbnb.com/rooms/37053401?source_impression_id=p3_1635266856_ouS5%2Bb4NXILGMAQM',
 		image: cabin4,
 		color: '#D0F766',
 		cabinImage: sasquach,
@@ -207,6 +223,7 @@ export const cabinInfo = [
 	{
 		id: 'aspen-cabin',
 		name: 'Aspen',
+		cardDescription: 'Cozy bunk bed cabin',
 		description:
 			'This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave',
 		capacity: 10,
@@ -218,6 +235,7 @@ export const cabinInfo = [
 	{
 		id: 'rv-1',
 		name: 'RV #1',
+		cardDescription: 'RV site for one camper',
 		description: '',
 		capacity: 1,
 		image: camper2,
@@ -227,6 +245,7 @@ export const cabinInfo = [
 	{
 		id: 'rv-2',
 		name: 'RV #2',
+		cardDescription: 'RV site for one camper',
 		description: '',
 		capacity: 1,
 		image: camper3,
@@ -236,6 +255,7 @@ export const cabinInfo = [
 	{
 		id: 'rv-3',
 		name: 'RV #3',
+		cardDescription: 'RV site for one camper',
 		description: '',
 		capacity: 1,
 		image: camper4,
@@ -245,6 +265,7 @@ export const cabinInfo = [
 	{
 		id: 'rv-4',
 		name: 'RV #4',
+		cardDescription: 'RV site for one camper',
 		description: '',
 		capacity: 1,
 		image: camper1,
@@ -254,6 +275,7 @@ export const cabinInfo = [
 	{
 		id: 'rv-5',
 		name: 'RV #5',
+		cardDescription: 'RV site for one camper',
 		description: '',
 		capacity: 1,
 		image: camper2,
@@ -263,6 +285,7 @@ export const cabinInfo = [
 	{
 		id: 'rv-6',
 		name: 'RV #6',
+		cardDescription: 'RV site for one camper',
 		description: '',
 		capacity: 1,
 		image: camper3,

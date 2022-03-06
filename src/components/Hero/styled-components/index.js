@@ -3,7 +3,6 @@
 import styled from 'styled-components';
 
 export const HeroWrapper = styled.div`
-	margin: 20px;
-	max-width: 1300px;
-	padding-top: 2rem;
+	margin: 0px 20px;
+	padding: 6rem 0rem;
 `;

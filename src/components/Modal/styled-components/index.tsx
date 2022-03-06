@@ -13,6 +13,7 @@ export const ModalContainer = styled.div`
 	right: 0;
 	bottom: 0;
 	margin: auto;
+	padding-bottom: 8rem;
 	z-index: 1;
 	h1 {
 		font-size: 45px;
@@ -110,7 +111,8 @@ export const SignUpForm = styled.div<{ color: string }>`
 	min-width: 500px;
 	margin: 2rem;
 	padding: 4rem 0rem;
-	border: 1px solid whitesmoke;
+	border: 1px solid lightgray;
+	border-radius: 5px;
 	form {
 		display: flex;
 		flex-direction: column;
