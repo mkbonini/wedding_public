@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Hero from '../components/Hero';
-import Countdown from '../components/Countdown';
 import styled from 'styled-components';
 import mike from '../assets/mike.jpg';
 import miwha from '../assets/miwha.jpg';
+import ContentBlock from '../components/ContentBlock';
 
 const HomePage = styled.div<{ visible: boolean }>`
 	width: 100%;
@@ -28,85 +28,31 @@ const StoryContainer = styled.div`
 	width: 100%;
 `;
 
-const MiwhaContentBlock = styled.div`
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: center;
-	align-items: center;
-	background-color: darkcyan;
-	p {
-		color: white;
-		font-size: 30px;
-		padding: 20px;
-	}
-	img {
-		width: 50%;
-	}
-	div {
-		width: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	@media only screen and (max-width: 1000px) {
-		flex-direction: column;
-		img {
-			width: 100%;
-		}
-		div {
-			width: 100%;
-			min-height: 350px;
-		}
-	}
-`;
-
-const MikeContentBlock = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	background-color: floralwhite;
-	img {
-		width: 50%;
-	}
-	div {
-		width: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		p {
-			max-width: 400px;
-		}
-	}
-	@media only screen and (max-width: 1000px) {
-		flex-direction: column;
-		img {
-			width: 100%;
-		}
-		div {
-			width: 100%;
-		}
-	}
-`;
-
 export default function Home({ visible }) {
 	return (
 		<>
 			<HomePage visible={visible}>
 				<Hero />
 				<StoryContainer>
-					<MiwhaContentBlock>
-						<img src={miwha} alt='' />
-						<div>
-							<p>MORE COMING SOON</p>
-						</div>
-					</MiwhaContentBlock>
-					<MikeContentBlock>
-						<img src={mike} alt='' id='mike-img' />
-						<div>
-							<Countdown />
-						</div>
-					</MikeContentBlock>
+					<ContentBlock
+						image={miwha}
+						alt='miwha at gardens'
+						copy='MORE COMING SOON'
+						backgroundColor='darkcyan'
+						copyColor='white'
+						imagePosition='right'
+						countdown={false}
+						id='miwha'
+					/>
+					<ContentBlock
+						image={mike}
+						alt='mike at balloon festival'
+						countdown={true}
+						backgroundColor='floralwhite'
+						copyColor='black'
+						imagePosition='left'
+						id='mike'
+					/>
 				</StoryContainer>
 			</HomePage>
 		</>

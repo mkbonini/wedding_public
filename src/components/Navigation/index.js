@@ -2,7 +2,7 @@
 import { Switch, Route } from 'react-router-dom';
 import Home from '../../views/Home';
 import RSVP from '../../views/RSVP/index';
-import Details from '../../views/Details';
+import Details from '../../views/Details/index';
 import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging/index';
 import Flyout from './Flyout';

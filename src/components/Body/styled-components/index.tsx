@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-export const Heading = styled.div<{ scrollVisible: boolean }>`
+export const Heading = styled.div<{ scrollVisible: boolean; admin: boolean }>`
 	height: 70px;
 	width: 100%;
 	display: flex;
@@ -14,14 +14,14 @@ export const Heading = styled.div<{ scrollVisible: boolean }>`
 	top: ${(p) => (p.scrollVisible ? '0' : '-70px;')};
 	transition: top 0.6s;
 	h3 {
-		font-family: 'Urbanist', sans-serif;
+		font-family: 'Questrial', sans-serif;
 		width: 100%;
 		text-align: center;
 		font-weight: 300;
 		font-size: 25px;
 		color: white;
 		padding: 20px;
-		margin-left: -65px;
+		margin-left: ${(p) => (!p.admin ? '0px' : '-65px')};
 	}
 	img {
 		width: 25px;
@@ -39,12 +39,13 @@ export const Footer = styled.div`
 	height: 120px;
 	width: 100%;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 	background-color: #cae36f;
 	color: white;
-	padding-bottom: 4rem;
-	p {
-		padding: 10px;
+	padding: 2rem 0rem;
+	div {
+		padding: 0;
 	}
 `;

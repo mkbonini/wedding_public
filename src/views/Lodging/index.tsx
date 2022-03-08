@@ -8,6 +8,7 @@ import coloradoMap from '../../assets/map.png';
 import distanceTo from '../../assets/distance-to.png';
 import more from '../../assets/more.png';
 import { FAQ } from './utils/getLodgingFAQ';
+import Accordian from '../../components/Accordian';
 import {
 	SubTitles,
 	LodgingContainer,
@@ -20,18 +21,13 @@ import {
 	CabinContent,
 	ContentCenter,
 	AdditionalLodgingLinks,
-	Accordian,
-	Question,
-	Answer,
-	FAQSection,
-	AnswerContainer,
 	Description,
 } from './styled-components';
 
 export default function Lodging({ visible }) {
 	const [cabinModalVisible, setCabinModalVisible] = useState(false);
 	const [cabinClicked, setCabinClicked] = useState('');
-	const [answer, setAnswer] = useState(0);
+	const [clicked, setClicked] = useState(0);
 
 	const disableBody = () => {
 		let bodyStyle = document.getElementById('body')?.style.overflow;
@@ -47,10 +43,10 @@ export default function Lodging({ visible }) {
 	};
 
 	const displayAnswer = (index) => {
-		if (answer === index) {
-			return setAnswer(0);
+		if (clicked === index) {
+			return setClicked(0);
 		}
-		setAnswer(index);
+		setClicked(index);
 	};
 	return (
 		<>
@@ -62,7 +58,6 @@ export default function Lodging({ visible }) {
 					cabinClicked={cabinClicked}
 				/>
 				<LodgingContainer>
-					<h1>LODGING</h1>
 					<Description>
 						<div>
 							<p>
@@ -189,29 +184,7 @@ export default function Lodging({ visible }) {
 					</div>
 				</SubTitles>
 				<ContentCenter>
-					<FAQSection>
-						{FAQ.map((faq, index) => {
-							const active = answer === index;
-							return (
-								<Accordian>
-									<Question
-										active={active}
-										onClick={() => displayAnswer(index)}
-									>
-										<div>{faq.question}</div>
-										<div className='view-answer'>{active ? '-' : '+'}</div>
-									</Question>
-									{active && (
-										<AnswerContainer
-											className={`answer_wrapper ${active ? 'open' : ''}`}
-										>
-											<Answer>{faq.answer}</Answer>
-										</AnswerContainer>
-									)}
-								</Accordian>
-							);
-						})}
-					</FAQSection>
+					<Accordian FAQ={FAQ} clickEvent={displayAnswer} clicked={clicked} />
 				</ContentCenter>
 			</LodgingPage>
 		</>

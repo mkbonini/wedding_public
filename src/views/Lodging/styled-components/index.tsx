@@ -11,7 +11,7 @@ export const Description = styled.div`
 		p {
 			margin: 1rem;
 			max-width: 800px;
-			font-size: medium !important;
+			font-size: 16px !important;
 		}
 	}
 `;
@@ -322,6 +322,6 @@ export const Answer = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	padding-left: 10px;
+	padding: 10px;
 	margin: 0px 0px 1rem 0px;
 `;

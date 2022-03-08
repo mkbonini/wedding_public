@@ -30,12 +30,12 @@ timer = setInterval(showRemaining, 1000);
 
 const DaysLeft = styled.div`
 	font-size: 40px;
-	font-family: 'Urbanist', sans-serif;
+	font-family: 'Questrial', sans-serif;
 `;
 
 const Text = styled.div`
 	font-size: 30px;
-	font-family: 'Urbanist', sans-serif;
+	font-family: 'Questrial', sans-serif;
 	margin-left: 5px;
 `;
 
