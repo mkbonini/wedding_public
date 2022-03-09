@@ -1,10 +1,8 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ConstructionOverlay from '../../components/ConstructionOverlay';
-import Accordian from '../../components/Accordian';
-import { DetailsFAQ } from './utils/DetailsFAQ';
 import ContentBlock from '../../components/ContentBlock';
 import heartIcon from '../../assets/heart-inactive.png';
 import heart from '../../assets/icons/1.png';
@@ -71,14 +69,6 @@ const Break = styled.div`
 export default function Details({ visible }) {
 	const underConstruction = false;
 
-	const [detailsFAQClicked, setDetailsFAQClick] = useState(0);
-
-	const displayAnswer = (index) => {
-		if (setDetailsFAQClick === index) {
-			return setDetailsFAQClick(0);
-		}
-		setDetailsFAQClick(index);
-	};
 	return (
 		<>
 			{underConstruction ? (
@@ -97,23 +87,13 @@ export default function Details({ visible }) {
 							ceremony, activities and other important details. If you find any
 							questions unanswered on the site please let us know.
 						</p>
-						{/* <ContentBlock
-							imagePosition='right'
-							backgroundColor='#cae36f'
-							copyColor='white'
-							copy='July 21-23rd, 2023'
-							image={rings}
-							alt='left'
-							countdown={false}
-							id='rings'
-						/> */}
 						<Break />
 						<ContentWidth>
 							<h2>Our Wedding Weekend</h2>
 							<span style={{ paddingBottom: '20px' }}>
-								Oh yeah, you read that right. A whole weekend! We want to catch
-								up not just for 5 minutes during the wedding reception but over
-								the entire weekend!
+								Oh yeah, a whole weekend! We want to be able to catch up not
+								just for 5 minutes during the reception but over the entire
+								weekend!
 							</span>
 							<strong>Address:</strong>
 							228 S Pine Dr, Bailey, CO 80421
@@ -129,49 +109,41 @@ export default function Details({ visible }) {
 							Check out before 12:00 PM Sunday
 						</ContentWidth>
 						<Break />
-						<h2>The Ceremony and Reception</h2>
+						<h2>Wedding Ceremony</h2>
 						<span>
-							<strong>Wedding Day: </strong>
+							Our ceremony will be outside
 							<br />
-							July 22, 2023
-							<br />
-							<br />
+							under the aspen trees
+							<br /> <br />
 						</span>
-						<span>
-							<strong>Time of Ceremony:</strong>
-							<br />
-							3:00 PM
-							<br />
-							<br />
-						</span>
-						<span>
-							<strong>Cocktail Hour:</strong>
-							<br />
-							3:45 PM
-							<br />
-							<br />
-						</span>
-						<span>
-							<strong>Reception/Dinner:</strong>
-							<br />
-							5:00 PM
-							<br />
-							<br />
-						</span>
+						<strong>Date:</strong>
+						Saturday July 22, 2023
+						<br />
+						<br />
 						<strong>Attire:</strong>
 						Dress code is casual-semi formal
 						<br />
 						<br />
+						<strong>Time of Ceremony:</strong>
+						3:00 PM
+						<br />
 						<br />
 						<Break />
-						<h2>FAQ</h2>
+						<h2>Reception</h2>
+						<span>
+							Yard games, drinks, dinner and
+							<br />
+							dancing will follow the ceremony` `
+						</span>
+						<br />
+						<strong>Cocktail Hour:</strong>
+						3:45 PM - 5:00 PM
+						<br /> <br />
+						<strong>Reception</strong>
+						5:00 PM - 10:00 PM
+						<br /> <br />
+						<Break />
 					</ContentWidth>
-
-					<Accordian
-						FAQ={DetailsFAQ}
-						clickEvent={displayAnswer}
-						clicked={detailsFAQClicked}
-					/>
 					<ContentBlock
 						imagePosition='left'
 						backgroundColor='#f7669b'
@@ -184,6 +156,17 @@ export default function Details({ visible }) {
 					/>
 				</DetailsPage>
 			)}
+
+			{/* <ContentBlock
+							imagePosition='right'
+							backgroundColor='#cae36f'
+							copyColor='white'
+							copy='July 21-23rd, 2023'
+							image={rings}
+							alt='left'
+							countdown={false}
+							id='rings'
+						/> */}
 		</>
 	);
 }

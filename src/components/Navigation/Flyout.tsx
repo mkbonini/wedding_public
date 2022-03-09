@@ -37,19 +37,28 @@ export default function Flyout({ visible, setVisible }: FlyoutProps) {
 					</Link>
 				</MenuLink>
 				<MenuLink
-					onClick={() => handleMenuClick('details')}
-					active={active === 'details'}
+					onClick={() => handleMenuClick('schedule')}
+					active={active === 'schedule'}
 				>
-					<Link to='/details'>
-						<p>Details</p>
+					<Link to='/schedule'>
+						<p>Schedule</p>
 					</Link>
 				</MenuLink>
+
 				<MenuLink
 					onClick={() => handleMenuClick('lodging')}
 					active={active === 'lodging'}
 				>
 					<Link to='/lodging'>
 						<p>Lodging</p>
+					</Link>
+				</MenuLink>
+				<MenuLink
+					onClick={() => handleMenuClick('faq')}
+					active={active === 'faq'}
+				>
+					<Link to='/faq'>
+						<p>FAQ</p>
 					</Link>
 				</MenuLink>
 				<MenuLink

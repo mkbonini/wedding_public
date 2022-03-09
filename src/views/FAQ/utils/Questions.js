@@ -1,6 +1,6 @@
 /** @format */
 
-export const DetailsFAQ = [
+export const Questions = [
 	{
 		question: 'What should I wear? Is there a dress code?',
 		answer:
