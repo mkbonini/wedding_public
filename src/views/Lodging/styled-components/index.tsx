@@ -31,7 +31,7 @@ export const SubTitles = styled.div<{ direction: string }>`
 		margin: 3rem 0rem 1rem 0rem;
 		align-self: ${(p) => (p.direction === 'right' ? 'flex-end' : 'flex-start')};
 		h1 {
-			font-family: 'Urbanist', sans-serif;
+			/* font-family: 'Urbanist', sans-serif; */
 			text-transform: uppercase;
 			text-align: center;
 			font-weight: 300;
@@ -130,7 +130,7 @@ export const CabinCard = styled.div<{ color: string }>`
 		opacity: 1;
 	}
 	h1 {
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		font-size: 18px;
 		font-weight: 300;
 		margin: 0;
@@ -184,7 +184,7 @@ export const CabinInfoContainer = styled.div`
 	max-height: 700px;
 	padding-left: 1rem;
 	h2 {
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		text-transform: uppercase;
 	}
 
@@ -203,13 +203,13 @@ export const LodgingContainer = styled.div`
 	overflow: hidden;
 	h2 {
 		text-transform: uppercase;
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		font-weight: 300;
 	}
 	h1 {
 		font-size: 45px;
 		text-transform: uppercase;
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		font-weight: 300;
 		margin: 0;
 		padding: 0;

@@ -8,18 +8,20 @@ export const Heading = styled.div<{ scrollVisible: boolean; admin: boolean }>`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	background-color: rgba(78, 154, 152, 1);
+	background-color: #ffffff;
+	color: #000000;
 	position: fixed;
 	z-index: 10000;
 	top: ${(p) => (p.scrollVisible ? '0' : '-70px;')};
 	transition: top 0.6s;
+	border-bottom: 1px solid #cfd4eb;
 	h3 {
-		font-family: 'Questrial', sans-serif;
+		font-family: 'Lexend', sans-serif;
 		width: 100%;
 		text-align: center;
 		font-weight: 300;
 		font-size: 25px;
-		color: white;
+		color: #000000;
 		padding: 20px;
 		margin-left: ${(p) => (!p.admin ? '0px' : '-65px')};
 	}

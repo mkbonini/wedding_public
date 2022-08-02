@@ -15,7 +15,7 @@ export default function Flyout({ visible, setVisible }: FlyoutProps) {
 	//closes flyout when clicking outside of the element
 	const flyout = useRef<HTMLInputElement>(null);
 	const closeOpenMenus = (e) => {
-		if (flyout.current && visible && !flyout.current.contains(e.target)) {
+		if (flyout?.current && visible && !flyout.current.contains(e.target)) {
 			setVisible(false);
 		}
 	};

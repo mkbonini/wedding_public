@@ -12,7 +12,6 @@ export default function FAQ() {
 		}
 		setDetailsFAQClick(index);
 	};
-
 	const [detailsFAQClicked, setDetailsFAQClick] = useState(0);
 
 	const Container = styled.div`
@@ -23,7 +22,7 @@ export default function FAQ() {
 		flex-direction: column;
 		h2 {
 			font-size: 30px;
-			font-family: 'Questrial', sans-serif;
+			font-family: 'Lexend', sans-serif;
 		}
 	`;
 	return (

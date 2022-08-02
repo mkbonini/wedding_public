@@ -20,13 +20,13 @@ export default function RSVP({ visible }) {
 	const [childInputRecieved, setChildInputRecieved] = useState(false);
 	const [notesInputRecieved, setNotesInputRecieved] = useState(false);
 
-	interface IGuest {
-		name: string;
-		code: string;
-		plusOne: boolean;
-		children: boolean;
-	}
-	const [selectedGuest, setSelectedGuest] = useState<IGuest>({
+	// interface IGuest {
+	// 	name: string;
+	// 	code: string;
+	// 	plusOne: boolean;
+	// 	children: boolean;
+	// }
+	const [selectedGuest, setSelectedGuest] = useState({
 		name: '',
 		code: '',
 		plusOne: false,
@@ -47,7 +47,7 @@ export default function RSVP({ visible }) {
 		}
 	});
 
-	const handleGuestSelection = (guestSelected: any) => {
+	const handleGuestSelection = (guestSelected) => {
 		const guest = guestList.find((guest) => guest.name === guestSelected);
 		guest &&
 			setSelectedGuest({
@@ -75,7 +75,7 @@ export default function RSVP({ visible }) {
 		setError(false);
 	};
 
-	const verfifyGuest = (e: any) => {
+	const verfifyGuest = (e) => {
 		if (selectedGuest.code === code) {
 			setError(false);
 			setVarified(true);
@@ -100,7 +100,7 @@ export default function RSVP({ visible }) {
 								<Input
 									type='text'
 									placeholder='Search Your Name'
-									onChange={(e: any) => editSearchTerm(e, setSearchTerm)}
+									onChange={(e) => editSearchTerm(e, setSearchTerm)}
 								/>
 								<NamesContainer>
 									{filterNames.map((guest, i) => {
@@ -128,7 +128,7 @@ export default function RSVP({ visible }) {
 									onChange={(e) => setCode(e.target.value)}
 								/>
 								<button
-									onClick={(e: any) => verfifyGuest(e)}
+									onClick={(e) => verfifyGuest(e)}
 									style={{ maxWidth: '200px', marginTop: '20px' }}
 								>
 									Submit

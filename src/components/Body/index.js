@@ -9,14 +9,18 @@ import { debounce } from '../../utils/index';
 
 export default function Body() {
 	const history = useHistory();
-	const myStorage = window.localStorage;
 
 	//flyout Visible state
 	const [visible, setVisible] = useState(false);
-	const [admin, setAdmin] = useState(false);
+
 	//Nav Heading Visible State
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [scrollVisible, setScrollVisible] = useState(true);
+
+	const flyout = () => {
+		setVisible(!visible);
+		console.log(visible, 'visible');
+	};
 
 	const handleScroll = debounce(() => {
 		const currentScrollPos = window.pageYOffset;
@@ -41,30 +45,15 @@ export default function Body() {
 		}
 	}, [visible]);
 
-	useEffect(() => {
-		if (admin) {
-			myStorage.setItem('admin_view', true);
-		} else {
-			myStorage.removeItem('admin_view');
-		}
-	}, [admin, myStorage]);
-
 	return (
 		<>
-			<Heading scrollVisible={scrollVisible} admin={admin}>
-				{admin && (
-					<img
-						src={hamburger}
-						alt='hamburger'
-						onClick={() => setVisible(!visible)}
-					/>
-				)}
+			<Heading scrollVisible={scrollVisible}>
+				<img src={hamburger} alt='hamburger' onClick={() => flyout()} />
 				<h3 onClick={() => history.push('/')}>M + M</h3>
 			</Heading>
 			<Navigation visible={visible} setVisible={setVisible} />
 			<Footer>
-				<p> 2023 - Bailey, CO </p>
-				<div onClick={() => setAdmin(!admin)}>♡</div>
+				<p> developed by m + m </p>
 			</Footer>
 		</>
 	);

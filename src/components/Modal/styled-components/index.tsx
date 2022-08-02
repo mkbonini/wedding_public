@@ -18,12 +18,12 @@ export const ModalContainer = styled.div`
 	h1 {
 		font-size: 45px;
 		color: black;
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		font-weight: 300;
 		text-transform: uppercase;
 	}
 	h2 {
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		font-weight: 300;
 		text-transform: uppercase;
 	}
@@ -66,7 +66,7 @@ export const Content = styled.div`
 		padding: unset;
 	}
 	h3 {
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		text-transform: uppercase;
 		font-weight: 500;
 		font-size: 25px;
@@ -123,7 +123,7 @@ export const SignUpForm = styled.div<{ color: string }>`
 		color: black;
 		font-weight: 500;
 		text-align: center;
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 	}
 	ul {
 		list-style: none;

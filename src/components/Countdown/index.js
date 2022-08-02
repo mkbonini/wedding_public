@@ -1,7 +1,5 @@
 /** @format */
-import React from 'react';
 import styled from 'styled-components';
-import heart from '../../assets/heart-inactive.png';
 
 var end = new Date('07/21/2023 4:0 PM');
 
@@ -17,52 +15,46 @@ function showRemaining() {
 	var countdown = document.getElementById('countdown');
 	if (distance < 0 && countdown) {
 		clearInterval(timer);
-		countdown.innerHTML = 'EXPIRED!';
+		countdown.innerHTML = '0';
 		return;
 	}
 	if (countdown) {
 		var days = Math.floor(distance / _day);
-		countdown.innerHTML = days + ' days ';
+		countdown.innerHTML = days;
 	}
 }
 
 timer = setInterval(showRemaining, 1000);
 
 const DaysLeft = styled.div`
-	font-size: 40px;
-	font-family: 'Questrial', sans-serif;
+	font-size: 70px;
+	font-weight: 700;
+	margin: 0px 3rem;
+	line-height: 0.7;
+	color: #3366ff;
 `;
 
 const Text = styled.div`
-	font-size: 30px;
-	font-family: 'Questrial', sans-serif;
+	font-size: 50px;
+	margin: 0rem 3rem 3rem;
 	margin-left: 5px;
+	color: #3366ff;
 `;
 
 const CounterContainer = styled.div`
 	width: 100%;
-	min-height: 350px;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: floralwhite;
+	justify-content: flex-end;
+	align-items: flex-end;
 `;
 
-const ImageContainer = styled.div`
-	max-width: 40px;
-	img {
-		width: 100%;
-	}
-`;
-export default function Counntdown() {
+export default function Countdown() {
 	return (
 		<>
 			<CounterContainer>
-				<ImageContainer>
-					<img src={heart} alt='' />
-				</ImageContainer>
-				<DaysLeft id='countdown' /> <Text>till the wedding</Text>
+				<DaysLeft id='countdown' /> <Text>days till the wedding</Text>
 			</CounterContainer>
 		</>
 	);

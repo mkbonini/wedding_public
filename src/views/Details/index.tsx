@@ -3,9 +3,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import ConstructionOverlay from '../../components/ConstructionOverlay';
-import ContentBlock from '../../components/ContentBlock';
-import heartIcon from '../../assets/heart-inactive.png';
-import heart from '../../assets/icons/1.png';
+// import ContentBlock from '../../components/ContentBlock';
+// import heartIcon from '../../assets/heart-inactive.png';
+// import heart from '../../assets/icons/1.png';
+import note from '../../assets/note.png';
+
+
 
 const DetailsPage = styled.div<{ visible: boolean }>`
 	display: flex;
@@ -13,12 +16,12 @@ const DetailsPage = styled.div<{ visible: boolean }>`
 	align-items: center;
 	flex-direction: column;
 	min-height: 600px;
-	margin-top: 8rem;
+	padding-top: 7rem;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 	h1,
 	h2,
 	h3 {
-		font-family: 'Questrial', sans-serif;
+		font-family: 'Lexend', sans-serif;
 		weight: 500;
 		text-align: center;
 	}
@@ -40,11 +43,21 @@ const ImageContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	img {
+	overflow: hidden;
+	width: 100%;
+	img#heart {
 		width: 40px;
 		height: 40px;
 		margin: 0;
 		padding: 0;
+	}
+	img#note {
+		height: 270px;
+		margin: 0;
+		padding: 0;
+	}
+	img#paper {
+		max-width: 500px;
 	}
 `;
 
@@ -76,18 +89,21 @@ export default function Details({ visible }) {
 			) : (
 				<DetailsPage visible={visible}>
 					<ContentWidth>
-						<ImageContainer>
-							<img src={heartIcon} alt='heart' />
-						</ImageContainer>
+						{/* <ImageContainer>
+							<img src={heartIcon} alt='heart' id='heart' />
+						</ImageContainer> */}
 						<h2>
-							Ayoo, we're getting married! <br />
+							We're getting married! <br />
 						</h2>
-						<p style={{ margin: '1rem' }}>
+						<p style={{ margin: '0rem 1rem', textAlign: 'center' }}>
 							We can't wait to see you! Below are details about the weekend,
 							ceremony, activities and other important details. If you find any
 							questions unanswered on the site please let us know.
 						</p>
 						<Break />
+						<ImageContainer>
+							<img src={note} alt='note' id='note' />
+						</ImageContainer>
 						<ContentWidth>
 							<h2>Our Wedding Weekend</h2>
 							<span style={{ paddingBottom: '20px' }}>
@@ -133,7 +149,7 @@ export default function Details({ visible }) {
 						<span>
 							Yard games, drinks, dinner and
 							<br />
-							dancing will follow the ceremony` `
+							dancing will follow the ceremony
 						</span>
 						<br />
 						<strong>Cocktail Hour:</strong>
@@ -143,17 +159,31 @@ export default function Details({ visible }) {
 						5:00 PM - 10:00 PM
 						<br /> <br />
 						<Break />
+						
 					</ContentWidth>
-					<ContentBlock
+					{/* <ImageContainer>
+						<img src={paper} alt='paper' id='paper' />
+					</ImageContainer> */}
+					{/* <ContentBlock
 						imagePosition='left'
 						backgroundColor='#f7669b'
 						copyColor='white'
 						copy='228 S Pine Dr, Bailey, CO 80421'
 						image={heart}
 						alt='left'
-						countdown={false}
+						type='copy'
 						id='rings'
-					/>
+					/> */}
+					{/* <ContentBlock
+						imagePosition='left'
+						backgroundColor='white'
+						copyColor='black'
+						copy={`lorem <b>ipsum</b>`}
+						image={note}
+						alt='left'
+						type='copy-2'
+						id='rings'
+					/> */}
 				</DetailsPage>
 			)}
 

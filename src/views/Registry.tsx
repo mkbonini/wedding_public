@@ -19,7 +19,7 @@ const Title = styled.div`
 	padding: 20px;
 	height: 50vh;
 	h1 {
-		font-family: 'Urbanist', sans-serif;
+		/* font-family: 'Urbanist', sans-serif; */
 		font-size: 45px;
 		color: black;
 		font-weight: 300;

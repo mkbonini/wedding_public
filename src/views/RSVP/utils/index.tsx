@@ -1,14 +1,5 @@
 /** @format */
 
-interface InputProps {
-	e: any;
-	label: string;
-	setGuestInputRecieved?: (input: boolean) => void;
-	setEmailInputRecieved?: (input: boolean) => void;
-	setChildInputRecieved?: (input: boolean) => void;
-	setNotesInputRecieved?: (input: boolean) => void;
-}
-
 //handles the input recieved in the form. Notes if a input is recieved and then displays the cooresponding label.
 export const handleInputRecieved = ({
 	e,
@@ -17,7 +8,7 @@ export const handleInputRecieved = ({
 	setEmailInputRecieved,
 	setChildInputRecieved,
 	setNotesInputRecieved,
-}: InputProps) => {
+}) => {
 	if (label === 'guest') {
 		if (e.target.value.length === 0) {
 			setGuestInputRecieved && setGuestInputRecieved(false);
@@ -49,9 +40,6 @@ export const handleInputRecieved = ({
 };
 
 //Saves what is being searched when user inputs name
-export const editSearchTerm = (
-	e: any,
-	setSearchTerm: (input: string) => void
-) => {
+export const editSearchTerm = (e, setSearchTerm) => {
 	setSearchTerm(e.target.value);
 };
