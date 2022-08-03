@@ -27,7 +27,7 @@ const Title = styled.div`
 	}
 `;
 
-export default function Registry({ visible }) {
+export default function OurStory({ visible }) {
 	const [underConstruction, setUnderConstruction] = useState(true);
 	return (
 		<>

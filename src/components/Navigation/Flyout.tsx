@@ -31,6 +31,14 @@ export default function Flyout({ flyoutVisible, setFlyoutVisible }) {
 					</Link>
 				</FlyoutMenuLink>
 				<FlyoutMenuLink
+					onClick={() => handleMenuClick('story')}
+					active={active === 'our-story'}
+				>
+					<Link to='/our-story'>
+						<p>our story</p>
+					</Link>
+				</FlyoutMenuLink>
+				<FlyoutMenuLink
 					onClick={() => handleMenuClick('schedule')}
 					active={active === 'schedule'}
 				>
