@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Accordian from '../../components/Accordian';
 import { Questions } from './utils/Questions';
+import UnderConstruction from '../../components/UnderConstruction';
 
 export default function FAQ() {
 	const displayAnswer = (index) => {
@@ -13,6 +14,7 @@ export default function FAQ() {
 		setDetailsFAQClick(index);
 	};
 	const [detailsFAQClicked, setDetailsFAQClick] = useState(0);
+	const [underConstruction, setUnderConstruction] = useState(true);
 
 	const Container = styled.div`
 		margin-top: 8rem;
@@ -26,13 +28,19 @@ export default function FAQ() {
 		}
 	`;
 	return (
-		<Container>
-			<h2>FAQ</h2>
-			<Accordian
-				FAQ={Questions}
-				clickEvent={displayAnswer}
-				clicked={detailsFAQClicked}
-			/>
-		</Container>
+		<>
+			{underConstruction ? (
+				<UnderConstruction />
+			) : (
+				<Container>
+					<h2>FAQ</h2>
+					<Accordian
+						FAQ={Questions}
+						clickEvent={displayAnswer}
+						clicked={detailsFAQClicked}
+					/>
+				</Container>
+			)}
+		</>
 	);
 }

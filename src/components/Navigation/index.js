@@ -6,10 +6,14 @@ import Details from '../../views/Details/index';
 import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging/index';
 import FAQ from '../../views/FAQ/index';
+import OurStory from '../../views/OurStory';
 
 export default function Navigation({ flyoutVisible }) {
 	return (
 		<Switch>
+			<Route path='/our-story'>
+				<OurStory flyoutVisible={flyoutVisible} />
+			</Route>
 			<Route path='/details'>
 				<Details flyoutVisible={flyoutVisible} />
 			</Route>
