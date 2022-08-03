@@ -3,11 +3,12 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import styled from 'styled-components';
-import mike from '../assets/mike.jpg';
-import miwha from '../assets/miwha.jpg';
+import deerCreek from '../assets/deer_creek.jpg';
+import miwha from '../assets/bailey_sign.jpg';
 import ContentBlock from '../components/ContentBlock';
 import Button from '../components/Button';
 import Counntdown from '../components/Countdown';
+import flowerFooter from '../assets/flower-footer.svg';
 
 const HomePage = styled.div<{ visible: boolean }>`
 	width: 100%;
@@ -15,6 +16,8 @@ const HomePage = styled.div<{ visible: boolean }>`
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: -4rem;
+	overflow: hidden;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 	h1 {
 		text-align: center;
@@ -29,7 +32,6 @@ const StoryContainer = styled.div`
 	align-items: center;
 	width: 100%;
 	max-width: 1400px;
-	padding-bottom: 300px;
 `;
 
 const TitleContainer = styled.div`
@@ -45,15 +47,25 @@ const Title = styled.div`
 	max-width: 600px;
 	line-height: 55px;
 	margin: auto;
+	font-family: 'Gilroy-Bold';
 `;
 
 const CountdownContainer = styled.div`
 	height: 400px;
-	width: 100%;
+	width: 1200px;
 	max-width: 900px;
 	background-color: #e6eafe;
 	margin-bottom: 4rem;
 `;
+
+const FlowerContainer = styled.div`
+	position: relative;
+	top: -150px;
+	img {
+		max-width: 1021px;
+	}
+`;
+
 export default function Home({ visible }) {
 	return (
 		<>
@@ -62,7 +74,7 @@ export default function Home({ visible }) {
 				<StoryContainer>
 					<TitleContainer>
 						<Title>we're getting married!</Title>
-						<Button text='learn more' />
+						<Button text='learn more' location={'/schedule'} />
 					</TitleContainer>
 					<CountdownContainer>
 						<Counntdown />
@@ -78,7 +90,7 @@ export default function Home({ visible }) {
 						id='miwha'
 					/>
 					<ContentBlock
-						image={mike}
+						image={deerCreek}
 						alt='mike at balloon festival'
 						type='copy'
 						copy='july 21-23, 2023'
@@ -88,6 +100,9 @@ export default function Home({ visible }) {
 						id='mike'
 					/>
 				</StoryContainer>
+				<FlowerContainer>
+					<img src={flowerFooter} alt='' />
+				</FlowerContainer>
 			</HomePage>
 		</>
 	);

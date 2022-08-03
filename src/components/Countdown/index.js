@@ -32,6 +32,7 @@ const DaysLeft = styled.div`
 	margin: 0px 3rem;
 	line-height: 0.7;
 	color: #3366ff;
+	font-family: 'Gilroy-Bold';
 `;
 
 const Text = styled.div`
@@ -39,6 +40,7 @@ const Text = styled.div`
 	margin: 0rem 3rem 3rem;
 	margin-left: 5px;
 	color: #3366ff;
+	font-family: 'Gilroy';
 `;
 
 const CounterContainer = styled.div`

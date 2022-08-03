@@ -6,7 +6,6 @@ export const Heading = styled.div<{ scrollVisible: boolean; admin: boolean }>`
 	height: 70px;
 	width: 100%;
 	display: flex;
-	justify-content: flex-end;
 	align-items: center;
 	background-color: #ffffff;
 	color: #000000;
@@ -17,7 +16,6 @@ export const Heading = styled.div<{ scrollVisible: boolean; admin: boolean }>`
 	border-bottom: 1px solid #cfd4eb;
 	h3 {
 		font-family: 'Lexend', sans-serif;
-		width: 100%;
 		text-align: center;
 		font-weight: 300;
 		font-size: 25px;

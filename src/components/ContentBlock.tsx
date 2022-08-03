@@ -21,7 +21,7 @@ const ContentBlockContainer = styled.div<{
 		padding: 20px;
 		text-align: center;
 		max-width: 270px;
-		font-family: 'Lexend', sans-serif;
+		font-family: 'Gilroy';
 	}
 	img {
 		width: 50%;
