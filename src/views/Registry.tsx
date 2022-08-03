@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import ConstructionOverlay from '../components/ConstructionOverlay';
 
 const RegistryPage = styled.div<{ visible: boolean }>`
 	display: flex;
@@ -28,18 +27,11 @@ const Title = styled.div`
 `;
 
 export default function Registry({ visible }) {
-	const underConstruction = false;
 	return (
-		<>
-			{underConstruction ? (
-				<ConstructionOverlay page={'registry'} />
-			) : (
-				<RegistryPage visible={visible}>
-					<Title>
-						<h1>Registry</h1>
-					</Title>
-				</RegistryPage>
-			)}
-		</>
+		<RegistryPage visible={visible}>
+			<Title>
+				<h1>Registry</h1>
+			</Title>
+		</RegistryPage>
 	);
 }

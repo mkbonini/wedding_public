@@ -14,7 +14,7 @@ export default function Navigation({ visible, setVisible }) {
 		<>
 			<Flyout visible={visible} setVisible={setVisible} />
 			<Switch>
-				<Route path='/schedule'>
+				<Route path='/details'>
 					<Details visible={visible} />
 				</Route>
 				<Route path='/rsvp'>

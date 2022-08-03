@@ -123,10 +123,16 @@ export default function Navbar() {
 						</Link>
 					</MenuLink>
 					<MenuLink>
-						<Link to='/schedule'>
-							<p>schedule</p>
+						<Link to='/our-story'>
+							<p>our story</p>
 						</Link>
 					</MenuLink>
+					<MenuLink>
+						<Link to='/details'>
+							<p>details</p>
+						</Link>
+					</MenuLink>
+
 					<MenuLink>
 						<Link to='/lodging'>
 							<p>lodging</p>

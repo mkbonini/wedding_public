@@ -2,17 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import Navigation from '../Navigation';
-import { Heading, Footer } from './styled-components';
+import { Footer } from './styled-components';
 import Navbar from '../Navigation/Navbar';
 
 export default function Body() {
 	//flyout Visible state
 	const [visible, setVisible] = useState(false);
 
-	const flyout = () => {
-		setVisible(!visible);
-		console.log(visible, 'visible');
-	};
+	// const flyout = () => {
+	// 	setVisible(!visible);
+	// 	console.log(visible, 'visible');
+	// };
 
 	useEffect(() => {
 		if (visible) {
@@ -24,9 +24,8 @@ export default function Body() {
 
 	return (
 		<>
-			{/* <Heading scrollVisible={scrollVisible}> */}
 			<Navbar />
-			{/* </Heading> */}
+
 			<Navigation visible={visible} setVisible={setVisible} />
 			<Footer>
 				<p> developed by m + m </p>

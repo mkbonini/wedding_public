@@ -3,8 +3,7 @@
 import React, { useState } from 'react';
 import map from '../../assets/DeerCreekMap.jpg';
 import { cabinInfo } from './utils/getLodgingCabinDetails.js';
-import Modal from '../../components/Modal';
-import coloradoMap from '../../assets/map.png';
+
 import distanceTo from '../../assets/distance-to.png';
 import more from '../../assets/more.png';
 import { FAQ } from './utils/getLodgingFAQ';
@@ -25,22 +24,7 @@ import {
 } from './styled-components';
 
 export default function Lodging({ visible }) {
-	const [cabinModalVisible, setCabinModalVisible] = useState(false);
-	const [cabinClicked, setCabinClicked] = useState('');
 	const [clicked, setClicked] = useState(0);
-
-	const disableBody = () => {
-		let bodyStyle = document.getElementById('body')?.style.overflow;
-		if (bodyStyle) {
-			bodyStyle = 'hidden';
-		}
-	};
-
-	const handleClick = (id: string) => {
-		setCabinModalVisible(true);
-		setCabinClicked(id);
-		disableBody();
-	};
 
 	const displayAnswer = (index) => {
 		if (clicked === index) {
@@ -51,12 +35,6 @@ export default function Lodging({ visible }) {
 	return (
 		<>
 			<LodgingPage visible={visible}>
-				<Modal
-					setVisible={setCabinModalVisible}
-					visible={cabinModalVisible}
-					data={cabinInfo}
-					cabinClicked={cabinClicked}
-				/>
 				<LodgingContainer>
 					<Description>
 						<div>
@@ -81,11 +59,7 @@ export default function Lodging({ visible }) {
 						<CabinInfoContainer>
 							{cabinInfo.map((cabin, index) => {
 								return (
-									<CabinCard
-										key={index}
-										color={cabin.color}
-										onClick={() => handleClick(cabin.id)}
-									>
+									<CabinCard key={index} color={cabin.color}>
 										<img id='more' src={more} alt='' />
 										<ImageContainer>
 											<img src={cabin.cabinImage} alt='' />
@@ -126,9 +100,6 @@ export default function Lodging({ visible }) {
 					</div>
 				</Description>
 				<ContentCenter>
-					<ImageContainer id='colorado-map'>
-						<img src={coloradoMap} alt='colorado map' />
-					</ImageContainer>
 					<AdditionalLodgingLinks>
 						<span>
 							<a
