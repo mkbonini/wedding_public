@@ -12,13 +12,20 @@ const PrimaryButton = styled.div`
 	background-color: #000000;
 	color: #ffffff;
 	margin: 2rem 0rem;
-	border-radius: 8px;
+	border-radius: 2px;
 	position: relative;
 	top: 0;
 	transition: top ease 0.5s;
+	font-size: 14px;
 	&:hover {
 		cursor: pointer;
 		top: -5px;
+	}
+
+	@media only screen and (max-width: 900px) {
+		width: 150px;
+		height: 50px;
+		font-size: 14px;
 	}
 `;
 

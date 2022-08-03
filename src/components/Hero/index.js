@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { HeroWrapper } from './styled-components';
 import heroImage from '../../assets/hero2.png';
-import mobileImage from '../../assets/mobile-hero.png';
+import mobileImage from '../../assets/mobile_hero.png';
 
 export default function Hero() {
 	function getWindowDimensions() {
