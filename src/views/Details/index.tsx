@@ -1,157 +1,144 @@
 /** @format */
 
-import React from 'react';
 import styled from 'styled-components';
-// import ContentBlock from '../../components/ContentBlock';
-// import heartIcon from '../../assets/heart-inactive.png';
-// import heart from '../../assets/icons/1.png';
 import note from '../../assets/note.png';
 
-const DetailsPage = styled.div<{ visible: boolean }>`
+const DetailsPage = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	min-height: 600px;
-	padding-top: 7rem;
-	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
-	h1,
-	h2,
-	h3 {
-		font-family: 'Lexend', sans-serif;
-		weight: 500;
-		text-align: center;
+	padding: 7rem 1rem;
+`;
+
+const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
+	display: flex;
+	flex-direction: column;
+	align-items: ${(p) => p.align};
+	padding: 2rem 1rem;
+	max-width: 600px;
+	.eyebrow {
+		font-size: 30px;
+		color: ${(p) => p.eyebrowColor};
+		text-align: ${(p) => p.align};
+		font-family: 'Gilroy-Bold';
+		margin: 0;
 	}
 	h2 {
-		max-width: 250px;
-		margin: auto;
-		padding: 20px;
-		font-size: 30px;
+		font-size: 22px;
+		font-family: 'Gilroy-Bold';
+		text-align: ${(p) => p.align};
+		padding: 0;
+		margin: 0;
+		@media only screen and (min-width: 900px) {
+			font-size: 45px;
+		}
 	}
-	h1 {
-	}
-	strong {
+	h3 {
 		font-size: 20px;
-		padding-bottom: 5px;
+		font-family: 'Gilroy';
+		text-align: ${(p) => p.align};
+		padding: 0;
+		margin: 0;
+		@media only screen and (min-width: 900px) {
+			font-size: 30px;
+		}
+	}
+	p {
+		max-width: 550px;
+		text-align: start;
+		font-family: 'Nunito';
+		@media only screen and (min-width: 900px) {
+			text-align: ${(p) => p.align};
+		}
+	}
+	#reception {
+		margin-bottom: 3rem;
 	}
 `;
 
 const ImageContainer = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-	width: 100%;
-	img#heart {
-		width: 40px;
-		height: 40px;
-		margin: 0;
-		padding: 0;
-	}
-	img#note {
-		height: 270px;
-		margin: 0;
-		padding: 0;
-	}
-	img#paper {
-		max-width: 500px;
+	padding-top: 1rem;
+	max-width: 300px;
+	margin-bottom: -2rem;
+	img {
+		width: 100%;
 	}
 `;
 
-const ContentWidth = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	max-width: 900px;
-	margin: 0rem 1rem;
-	span {
-		text-align: center;
-	}
-`;
-
-const Break = styled.div`
-	border-bottom: 3px solid darkkhaki;
-	width: 95%;
-	margin: 3rem 0rem;
-`;
-
-export default function Details({ visible }) {
+export default function Details() {
 	return (
-		<>
-			<DetailsPage visible={visible}>
-				<ContentWidth>
-					{/* <ImageContainer>
-							<img src={heartIcon} alt='heart' id='heart' />
-						</ImageContainer> */}
-					<h2>
-						We're getting married! <br />
-					</h2>
-					<p style={{ margin: '0rem 1rem', textAlign: 'center' }}>
-						We can't wait to see you! Below are details about the weekend,
-						ceremony, activities and other important details. If you find any
-						questions unanswered on the site please let us know.
-					</p>
-					<Break />
-					<ImageContainer>
-						<img src={note} alt='note' id='note' />
-					</ImageContainer>
-					<ContentWidth>
-						<h2>Our Wedding Weekend</h2>
-						<span style={{ paddingBottom: '20px' }}>
-							Oh yeah, a whole weekend! We want to be able to catch up not just
-							for 5 minutes during the reception but over the entire weekend!
-						</span>
-						<strong>Address:</strong>
-						228 S Pine Dr, Bailey, CO 80421
-						<br />
-						<br />
-						<strong>Date:</strong>
-						July 21-23, 2023
-						<br />
-						<br />
-						<strong>Time:</strong>
-						Check in anytime after 12:00 PM Friday
-						<br />
-						Check out before 12:00 PM Sunday
-					</ContentWidth>
-					<Break />
-					<h2>Wedding Ceremony</h2>
-					<span>
-						Our ceremony will be outside
-						<br />
-						under the aspen trees
-						<br /> <br />
-					</span>
-					<strong>Date:</strong>
-					Saturday July 22, 2023
+		<DetailsPage>
+			<ImageContainer>
+				<img src={note} alt='' />
+			</ImageContainer>
+			<ContentContainer id='venue' eyebrowColor='#FF99FF' align='end'>
+				<div className='eyebrow'>the venue</div>
+				<h2>deer creek mountain camp</h2>
+				<h3>228 S Pine Dr, Bailey, CO 80421</h3>
+				<p>
+					Deer Creek Mountain Camp is a stunning venue surrounded by aspens and
+					wildlife. It sits on a 125 acre property, with plenty of activities
+					and views to enjoy. It is a little over an hour for DIA, and 45
+					minutes from Denver. It has plenty of lodging, beautiful halls, an
+					indoor gym, outdoor volleyball court, a disc golf course on site and
+					more! <br />
 					<br />
+					Everything is centrally located, however moving from the ceremony
+					site, to the dining hall and cabins does require some minimal walking.
+					See lodging page for a map of the camp.
+				</p>
+			</ContentContainer>
+			<ContentContainer id='weekend' eyebrowColor='#3366FF' align='start'>
+				<div className='eyebrow'>the weekend</div>
+				<h2>july 21-23, 2023</h2>
+				<h3>friday 3:00pm- sunday 10:00am</h3>
+				<p>
+					One of the reasons we loved the venue so much was that we were able to
+					book it for the entire weekend! In addition to that, there is lodging
+					on site, meaning you can come for the entire weekend and don’t need to
+					worry about driving to and from the venue and a potential air
+					bnb/hotel. Please check the <strong>Lodging</strong> page for more
+					details.
+				</p>
+			</ContentContainer>
+			<ContentContainer id='dodgeball' eyebrowColor='#C9E265' align='end'>
+				<div className='eyebrow'>the dodgeball tournament</div>
+				<h2>friday july 21</h2>
+				<h3>after dinner</h3>
+				<p>
+					If you know anything about m + m, it’s that they love a good friendly
+					competition. But even more when there are costumes involved! Event is
+					aged 17+. You can opt in via your RSVP - teams will be assigned as a
+					theme! <br />
 					<br />
-					<strong>Attire:</strong>
-					Dress code is casual-semi formal
-					<br />
-					<br />
-					<strong>Time of Ceremony:</strong>
-					3:00 PM
-					<br />
-					<br />
-					<Break />
-					<h2>Reception</h2>
-					<span>
-						Yard games, drinks, dinner and
-						<br />
-						dancing will follow the ceremony
-					</span>
-					<br />
-					<strong>Cocktail Hour:</strong>
-					3:45 PM - 5:00 PM
-					<br /> <br />
-					<strong>Reception</strong>
-					5:00 PM - 10:00 PM
-					<br /> <br />
-					<Break />
-				</ContentWidth>
-			</DetailsPage>
-		</>
+					We’ll play in the indoor gym, where there is plenty of
+					space/activities (pool table, foosball ec) for spectators & anybody
+					who wants to hang out but not necessarily compete. And yes there will
+					be a Purple Cobras team *clap* *clap* *hiss*
+				</p>
+			</ContentContainer>
+			<ContentContainer id='ceremony' eyebrowColor='#3366FF' align='start'>
+				<div className='eyebrow'>the ceremony</div>
+				<h2>satuday july 22</h2>
+				<h3>3:30 pm</h3>
+				<p>
+					The ceremony will take place outside among the beautiful aspens.
+					Attire is festive-casual. Think bright colors, fun dresses, florals.
+					However at the end of the day we want you to be comfortable and want
+					you to wear something you can get down in later on the dance floor!
+				</p>
+			</ContentContainer>
+			<ContentContainer id='reception' eyebrowColor='#FF99FF' align='end'>
+				<div className='eyebrow'>the reception</div>
+				<h2>following the ceremony</h2>
+				<h3>get ready to boogie</h3>
+				<p>
+					We can’t wait to celebrate with you! Cocktail hour, yard games,
+					drinks, dinner and dancing will follow the ceremony!
+				</p>
+			</ContentContainer>
+		</DetailsPage>
 	);
 }

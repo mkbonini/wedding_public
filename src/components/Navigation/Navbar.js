@@ -37,7 +37,7 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 	}, [handleScroll, prevScrollPos, scrollVisible]);
 
 	return (
-		<MainNav scrollVisible={scrollVisible}>
+		<MainNav scrollVisible={scrollVisible} flyoutVisible={flyoutVisible}>
 			<MobileMenu>
 				<div className='flex'>
 					<HamburgerContainer onClick={() => setFlyoutVisible(!flyoutVisible)}>
