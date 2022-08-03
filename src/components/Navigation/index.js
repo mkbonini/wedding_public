@@ -2,9 +2,11 @@
 import { Switch, Route } from 'react-router-dom';
 import Home from '../../views/Home';
 import RSVP from '../../views/RSVP/index';
-import Details from '../../views/Details';
+import Details from '../../views/Details/index';
 import Registry from '../../views/Registry';
-import Lodging from '../../views/Lodging';
+import Lodging from '../../views/Lodging/index';
+import FAQ from '../../views/FAQ/index';
+
 import Flyout from './Flyout';
 
 export default function Navigation({ visible, setVisible }) {
@@ -13,19 +15,22 @@ export default function Navigation({ visible, setVisible }) {
 			<Flyout visible={visible} setVisible={setVisible} />
 			<Switch>
 				<Route path='/details'>
-					<Details />
+					<Details visible={visible} />
 				</Route>
 				<Route path='/rsvp'>
-					<RSVP />
+					<RSVP visible={visible} />
 				</Route>
 				<Route path='/registry'>
-					<Registry />
+					<Registry visible={visible} />
 				</Route>
 				<Route path='/lodging'>
-					<Lodging />
+					<Lodging visible={visible} />
+				</Route>
+				<Route path='/faq'>
+					<FAQ visible={visible} />
 				</Route>
 				<Route path='/'>
-					<Home />
+					<Home visible={visible} />
 				</Route>
 			</Switch>
 		</>

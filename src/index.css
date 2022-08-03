@@ -1,12 +1,39 @@
 /** @format */
 
 body {
-	margin: 0;
 	font-family: 'DM Sans', sans-serif;
+	margin: 0;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+h1,
+h2 {
+	font-family: 'Lexend', sans-serif;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='email'],
+textarea {
 	font-size: 16px;
 }
-input[type='text'],
-input[type='email'] {
-	font-size: inherit;
-	font-family: 'DM Sans', sans-serif;
+
+#content.disable {
+	overflow: hidden;
+	position: fixed;
 }
+
+@font-face {
+	font-family: "Gilroy-Bold";
+	src: local("Gilroy"),
+	 url("./fonts/Gilroy/Gilroy-ExtraBold.otf") format("opentype");
+	}
+	
+	@font-face {
+		font-family: "Gilroy";
+		src: local("Gilroy"),
+		 url("./fonts/Gilroy/Gilroy-Light.otf") format("opentype");
+		}
+		
+	

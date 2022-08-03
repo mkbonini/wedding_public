@@ -166,10 +166,11 @@ export const Radio = styled.div`
 	}
 `;
 
-export const RsvpContainer = styled.div`
+export const RsvpContainer = styled.div<{ visible: boolean }>`
 	min-height: 600px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 8rem 1rem 2rem;
+	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;

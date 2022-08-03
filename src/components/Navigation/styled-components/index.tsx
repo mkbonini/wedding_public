@@ -2,7 +2,8 @@
 import styled from 'styled-components';
 
 export const MobileMenu = styled.div<{ visible: boolean }>`
-	display: ${(p) => (p.visible ? 'block' : 'none')};
+	transform: ${(p) => (p.visible ? 'translate(0)' : 'translate(-300px)')};
+	opacity: ${(p) => (p.visible ? '1' : '0')};
 	position: fixed;
 	height: 100vh;
 	width: 100%;
@@ -12,6 +13,7 @@ export const MobileMenu = styled.div<{ visible: boolean }>`
 	z-index: 100000;
 	padding-top: 2rem;
 	top: 70px;
+	transition: ease-in-out 0.2s;
 `;
 
 export const LinkContainer = styled.div`
