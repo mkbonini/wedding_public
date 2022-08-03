@@ -7,32 +7,27 @@ import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging/index';
 import FAQ from '../../views/FAQ/index';
 
-import Flyout from './Flyout';
-
-export default function Navigation({ visible, setVisible }) {
+export default function Routes({ flyoutVisible }) {
 	return (
-		<>
-			<Flyout visible={visible} setVisible={setVisible} />
-			<Switch>
-				<Route path='/details'>
-					<Details visible={visible} />
-				</Route>
-				<Route path='/rsvp'>
-					<RSVP visible={visible} />
-				</Route>
-				<Route path='/registry'>
-					<Registry visible={visible} />
-				</Route>
-				<Route path='/lodging'>
-					<Lodging visible={visible} />
-				</Route>
-				<Route path='/faq'>
-					<FAQ visible={visible} />
-				</Route>
-				<Route path='/'>
-					<Home visible={visible} />
-				</Route>
-			</Switch>
-		</>
+		<Switch>
+			<Route path='/details'>
+				<Details flyoutVisible={flyoutVisible} />
+			</Route>
+			<Route path='/rsvp'>
+				<RSVP flyoutVisible={flyoutVisible} />
+			</Route>
+			<Route path='/registry'>
+				<Registry flyoutVisible={flyoutVisible} />
+			</Route>
+			<Route path='/lodging'>
+				<Lodging flyoutVisible={flyoutVisible} />
+			</Route>
+			<Route path='/faq'>
+				<FAQ flyoutVisible={flyoutVisible} />
+			</Route>
+			<Route path='/'>
+				<Home flyoutVisible={flyoutVisible} />
+			</Route>
+		</Switch>
 	);
 }

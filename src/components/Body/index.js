@@ -1,32 +1,24 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Navigation from '../Navigation';
 import { Footer } from './styled-components';
 import Navbar from '../Navigation/Navbar';
+import Flyout from '../Navigation/Flyout';
 
 export default function Body() {
-	//flyout Visible state
-	const [visible, setVisible] = useState(false);
-
-	// const flyout = () => {
-	// 	setVisible(!visible);
-	// 	console.log(visible, 'visible');
-	// };
-
-	useEffect(() => {
-		if (visible) {
-			document.getElementById('content').classList.add('disable');
-		} else {
-			document.getElementById('content').classList.remove('disable');
-		}
-	}, [visible]);
-
+	const [flyoutVisible, setFlyoutVisible] = useState(false);
 	return (
 		<>
-			<Navbar />
-
-			<Navigation visible={visible} setVisible={setVisible} />
+			<Navbar
+				flyoutVisible={flyoutVisible}
+				setFlyoutVisible={setFlyoutVisible}
+			/>
+			<Flyout
+				flyoutVisible={flyoutVisible}
+				setFlyoutVisible={setFlyoutVisible}
+			/>
+			<Navigation flyoutVisible={flyoutVisible} />
 			<Footer>
 				<p> developed by m + m </p>
 			</Footer>

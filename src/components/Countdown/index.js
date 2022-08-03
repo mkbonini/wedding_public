@@ -38,9 +38,12 @@ const DaysLeft = styled.div`
 const Text = styled.div`
 	font-size: 50px;
 	margin: 0rem 3rem 3rem;
-	margin-left: 5px;
+	text-align: right;
 	color: #3366ff;
 	font-family: 'Gilroy';
+	@media only screen and (max-width: 900px) {
+		font-size: 35px;
+	}
 `;
 
 const CounterContainer = styled.div`

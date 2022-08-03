@@ -24,6 +24,9 @@ const HomePage = styled.div<{ visible: boolean }>`
 		font-size: 45px;
 		color: #03989e;
 	}
+	@media only screen and (max-width: 900px) {
+		margin-bottom: 0;
+	}
 `;
 
 const StoryContainer = styled.div`
@@ -48,21 +51,33 @@ const Title = styled.div`
 	line-height: 55px;
 	margin: auto;
 	font-family: 'Gilroy-Bold';
+	@media only screen and (max-width: 900px) {
+		font-size: 40px;
+		line-height: 30px;
+		max-width: 300px;
+	}
 `;
 
 const CountdownContainer = styled.div`
 	height: 400px;
-	width: 1200px;
+	width: 100%;
 	max-width: 900px;
 	background-color: #e6eafe;
 	margin-bottom: 4rem;
+	@media only screen and (max-width: 900px) {
+		margin-bottom: 0;
+	}
 `;
 
 const FlowerContainer = styled.div`
+	display: block;
 	position: relative;
 	top: -150px;
 	img {
 		max-width: 1021px;
+	}
+	@media only screen and (max-width: 900px) {
+		display: none;
 	}
 `;
 
@@ -74,7 +89,7 @@ export default function Home({ visible }) {
 				<StoryContainer>
 					<TitleContainer>
 						<Title>we're getting married!</Title>
-						<Button text='learn more' location={'/schedule'} />
+						<Button text='LEARN MORE' location={'/details'} />
 					</TitleContainer>
 					<CountdownContainer>
 						<Counntdown />
@@ -83,7 +98,7 @@ export default function Home({ visible }) {
 						image={miwha}
 						alt='miwha at gardens'
 						copy='bailey,co'
-						backgroundColor='#F5F5F5'
+						backgroundColor='#E6F4FE'
 						copyColor='#3366FF'
 						imagePosition='right'
 						type='copy'
