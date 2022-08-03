@@ -7,7 +7,7 @@ import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging/index';
 import FAQ from '../../views/FAQ/index';
 
-export default function Routes({ flyoutVisible }) {
+export default function Navigation({ flyoutVisible }) {
 	return (
 		<Switch>
 			<Route path='/details'>

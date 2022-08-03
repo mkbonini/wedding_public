@@ -35,13 +35,16 @@ export const NavAccent = styled.div`
 	width: 100%;
 `;
 
-export const MainNav = styled.div<{ scrollVisible }>`
+export const MainNav = styled.div<{
+	scrollVisible: boolean;
+	flyoutVisible: boolean;
+}>`
 	width: 100%;
 	height: 80px;
 	position: fixed;
 	z-index: 10000;
 	background-color: #ffffff;
-	top: ${(p) => (p.scrollVisible ? '0' : '-95px;')};
+	top: ${(p) => (p.scrollVisible || p.flyoutVisible ? '0' : '-95px;')};
 	transition: top 0.6s;
 `;
 export const MenuLink = styled.div`
@@ -106,15 +109,17 @@ export const MobileMenu = styled.div`
 `;
 
 export const HamburgerContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin: 15px;
-	.bar {
-		height: 2px;
-		border-radius: 10px;
-		background-color: #000000;
-		width: 35px;
-		margin: 3px 0px;
+	@media only screen and (max-width: 900px) {
+		display: flex;
+		flex-direction: column;
+		margin: 15px;
+		.bar {
+			height: 2px;
+			border-radius: 10px;
+			background-color: #000000;
+			width: 35px;
+			margin: 3px 0px;
+		}
 	}
 `;
 
@@ -126,14 +131,20 @@ export const FlyoutMobileMenu = styled.div<{ visible: boolean }>`
 	width: 100%;
 	background-color: #ffffff;
 	left: 0;
-	top: 0;
+	top: 80px;
 	z-index: 100000;
 	padding-top: 2rem;
 	transition: ease-in-out 0.2s;
+	@media only screen and (min-width: 900px) {
+		display: none;
+	}
 `;
 
 export const FlyoutLinkContainer = styled.div`
 	width: 50%;
+	@media only screen and (min-width: 900px) {
+		display: none;
+	}
 `;
 
 export const FlyoutMenuLink = styled.div<{ active: boolean }>`
@@ -146,11 +157,16 @@ export const FlyoutMenuLink = styled.div<{ active: boolean }>`
 		background-color: ${(p) => (p.active ? '#000000' : '#ffffff')};
 		font-size: 20px;
 		padding-left: 40px;
+		height: 40px;
+		border-radius: 0px 3px 3px 0px;
 		font-family: 'Gilroy';
 		p {
 			margin: 0;
 			margin: ${(p) => (p.active ? '0px 0px 0px -3px' : '0px')};
 		}
+	}
+	@media only screen and (min-width: 900px) {
+		display: none;
 	}
 `;
 
@@ -160,4 +176,7 @@ export const FlyoutExitButton = styled.div`
 	font-size: 35px;
 	font-family: 'Gilroy';
 	margin-right: 35px;
+	@media only screen and (min-width: 900px) {
+		display: none;
+	}
 `;
