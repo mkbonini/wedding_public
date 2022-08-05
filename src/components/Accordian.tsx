@@ -1,82 +1,106 @@
 /** @format */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 const FAQSection = styled.div`
 	width: 100%;
-	max-width: 1000px;
 `;
 const AccordianContainer = styled.div`
-	box-shadow: 0px 2px 4px lightgray;
+	border: 1px solid darkgray;
 	margin-bottom: 15px;
 	margin: 1rem;
+	transition: ease-in-out 0.2s;
 
-	&:nth-child(1n) {
-		border-left: 5px solid rgba(78, 154, 152, 1);
-	}
-	&:nth-child(2n) {
-		border-left: 5px solid #cae36f;
-	}
-	&:nth-child(3n) {
-		border-left: 5px solid #f7669b;
-	}
-	&:nth-child(4n) {
-		border-left: 5px solid #ffd32d;
+	&:hover {
+		cursor: pointer;
 	}
 `;
 const Question = styled.div<{ active: boolean }>`
-	font-weight: ${(p) => (p.active ? '900' : '300')};
-	height: 70px;
+	margin: -5px 5px 5px 20px;
+	height: 80px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-left: 10px;
-	div.view-answer {
-		font-size: 20px;
-		font-weight: 900;
-		padding: 10px 30px 10px;
-		&:hover {
-			cursor: pointer;
-		}
+	font-weight: 700;
+	font-size: 17px;
+	color: black;
+	svg {
+		color: #9bba1d;
+	}
+
+	@media only screen and (max-width: 900px) {
+		font-size: 15px;
+	}
+`;
+
+const ArrowContainer = styled.div`
+	font-size: 20px;
+	font-weight: 900;
+	padding: 10px 30px 10px;
+	transform: rotate(0deg);
+	transition: transform 0.1s linear;
+	&.arrow-up {
+		transform: rotate(180deg);
+		transition: transform 0.1s linear;
 	}
 `;
 
 const AnswerContainer = styled.div`
-	&.answer_wrapper {
-		height: 0;
-		overflow: hidden;
+	margin: -10px 0px 0px 30px;
+	height: 0px;
+	overflow: hidden;
+	max-width: 850px;
+	transition: height 0.5s ease;
+	&.open {
+		height: 100px;
 	}
-	&.answer_wrapper.open {
-		height: auto;
+	@media only screen and (max-width: 900px) {
+		max-width: 290px;
+		&.open {
+			height: 200px;
+		}
 	}
 `;
 const Answer = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	padding: 10px;
-	margin: 0px 0px 1rem 0px;
+	margin-bottom: 20px;
+	font-size: 15px;
+	font-family: 'Nunito';
 `;
 
 export default function Accordian({ FAQ, clickEvent, clicked }) {
+	const [openedPanel, setOpenPanel] = React.useState<any[]>([]);
+
+	const setClickedElement = (id) => {
+		if (openedPanel.includes(id)) {
+			setOpenPanel(openedPanel.filter((item) => item !== id));
+		} else {
+			setOpenPanel([...openedPanel, id]);
+		}
+	};
+
 	return (
 		<FAQSection>
 			{FAQ.map((faq, index) => {
-				const active = clicked === index;
+				let active = openedPanel.includes(index);
 				return (
-					<AccordianContainer key={index}>
-						<Question active={active} onClick={() => clickEvent(index)}>
+					<AccordianContainer
+						key={index}
+						onClick={() => setClickedElement(index)}
+					>
+						<Question active={active}>
 							<div>{faq.question}</div>
-							<div className='view-answer'>{active ? '-' : '+'}</div>
+							<ArrowContainer className={`${active && 'arrow-up'}`}>
+								<IoIosArrowDown />
+							</ArrowContainer>
 						</Question>
-						{active && (
-							<AnswerContainer
-								className={`answer_wrapper ${active ? 'open' : ''}`}
-							>
-								<Answer>{faq.answer}</Answer>
-							</AnswerContainer>
-						)}
+						<AnswerContainer className={` ${active && 'open'}`}>
+							<Answer>{faq.answer}</Answer>
+						</AnswerContainer>
 					</AccordianContainer>
 				);
 			})}
