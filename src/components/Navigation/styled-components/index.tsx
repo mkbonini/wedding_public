@@ -124,7 +124,7 @@ export const HamburgerContainer = styled.div`
 `;
 
 export const FlyoutMobileMenu = styled.div<{ visible: boolean }>`
-	transform: ${(p) => (p.visible ? 'translate(0)' : 'translate(-300px)')};
+	transform: ${(p) => (p.visible ? 'translate(0)' : 'translate(-1000px)')};
 	opacity: ${(p) => (p.visible ? '1' : '0')};
 	position: fixed;
 	height: 100%;

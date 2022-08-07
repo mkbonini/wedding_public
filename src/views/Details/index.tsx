@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import note from '../../assets/note.png';
 import UnderConstruction from '../../components/UnderConstruction';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 const DetailsPage = styled.div`
 	display: flex;
@@ -60,7 +61,6 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 `;
 
 const ImageContainer = styled.div`
-	padding-top: 1rem;
 	max-width: 300px;
 	margin-bottom: -2rem;
 	img {
@@ -69,13 +69,14 @@ const ImageContainer = styled.div`
 `;
 
 export default function Details() {
-	const [underConstruction, setUnderConstruction] = useState(true);
+	const [underConstruction, setUnderConstruction] = useState(false);
 	return (
 		<>
 			{underConstruction ? (
 				<UnderConstruction />
 			) : (
 				<DetailsPage>
+					<Breadcrumbs location={'details'} />
 					<ImageContainer>
 						<img src={note} alt='' />
 					</ImageContainer>
@@ -92,7 +93,7 @@ export default function Details() {
 							golf course on site and more! <br />
 							<br />
 							Everything is centrally located, however moving from the ceremony
-							site, to the dining hall and cabins does require some minimal
+							site to the dining hall and cabins does require some minimal
 							walking. See lodging page for a map of the camp.
 						</p>
 					</ContentContainer>
@@ -132,10 +133,9 @@ export default function Details() {
 						<h3>3:30 pm</h3>
 						<p>
 							The ceremony will take place outside among the beautiful aspens.
-							Attire is festive-casual. Think bright colors, fun dresses,
-							florals. However at the end of the day we want you to be
-							comfortable and want you to wear something you can get down in
-							later on the dance floor!
+							Attire is festive-casual. Think bright colors, fun dresses or
+							florals. At the end of the day though we also just want you to be
+							comfortable. So wear what you like!
 						</p>
 					</ContentContainer>
 					<ContentContainer id='reception' eyebrowColor='#FF99FF' align='end'>

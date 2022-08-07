@@ -49,12 +49,14 @@ export const ScrollButton = styled.div`
 	align-items: center;
 	&:hover {
 		cursor: pointer;
+		border-radius: 50%;
 	}
 	&#bottom-button {
 		width: 150px;
 		height: 40px;
 		&:hover {
 			cursor: pointer;
+			border-radius: 3px;
 		}
 	}
 	&:hover + #accent {
@@ -67,6 +69,9 @@ export const ScrollButton = styled.div`
 		width: 90%;
 		border-radius: 2px;
 		margin: 2px;
+		&:hover {
+			border-radius: 3px;
+		}
 	}
 `;
 

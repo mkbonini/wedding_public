@@ -12,6 +12,7 @@ import {
 	Accent,
 	ScrollToTopContainer,
 } from './styled-components';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 export default function FAQ() {
 	const displayAnswer = (index) => {
@@ -40,6 +41,7 @@ export default function FAQ() {
 				<UnderConstruction />
 			) : (
 				<Container>
+					<Breadcrumbs location={'faq'} />
 					<h2 id='title'>FAQ</h2>
 					<ScrollContainer>
 						{Object.keys(Questions).map((key) => (
