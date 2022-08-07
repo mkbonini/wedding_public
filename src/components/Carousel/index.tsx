@@ -38,15 +38,15 @@ const ImageContainer = styled.div`
 	&.thumb-container {
 		max-height: 135px;
 	}
-	@media only screen and ((min-width: 601px) and( max-width: 900px)) {
-		&.main-container {
-			max-height: 260px;
-		}
+	@media only screen and (min-width: 601px) and( max-width: 900px) {
 		&.thumb-container {
 			max-height: 100px;
 		}
 	}
 	@media only screen and (max-width: 600px) {
+		&.main-container {
+			max-height: 260px;
+		}
 		&.thumb-container {
 			max-height: 45px;
 		}
