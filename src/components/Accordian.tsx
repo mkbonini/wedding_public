@@ -9,7 +9,7 @@ const FAQSection = styled.div`
 `;
 const AccordianContainer = styled.div`
 	border: 1px solid darkgray;
-	margin-bottom: 25px;
+	margin: 1rem;
 	transition: ease-in-out 0.2s;
 	&:hover {
 		cursor: pointer;

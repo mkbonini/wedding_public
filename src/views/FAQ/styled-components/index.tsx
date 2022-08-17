@@ -17,6 +17,7 @@ export const Container = styled.div`
 	}
 	h3 {
 		align-self: flex-start;
+		margin-left: 1rem;
 		&#lodging {
 			color: #3366ff;
 		}
