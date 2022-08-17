@@ -19,7 +19,6 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 	flex-direction: column;
 	align-items: ${(p) => p.align};
 	padding: 2rem 1rem;
-	max-width: 600px;
 	.eyebrow {
 		font-size: 30px;
 		color: ${(p) => p.eyebrowColor};
@@ -48,7 +47,7 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 		}
 	}
 	p {
-		max-width: 550px;
+		max-width: 650px;
 		text-align: start;
 		font-family: 'Nunito';
 		@media only screen and (min-width: 900px) {
@@ -62,7 +61,7 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 
 const ImageContainer = styled.div`
 	max-width: 300px;
-	margin-bottom: -2rem;
+	margin-bottom: -1rem;
 	img {
 		width: 100%;
 	}

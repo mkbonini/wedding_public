@@ -7,7 +7,7 @@ export const LinkContainer = styled.div`
 	display: flex;
 	align-items: center;
 	background-color: #ffffff;
-	border-bottom: 0.5px solid #000000;
+	border-bottom: 0.5px solid lightgray;
 `;
 
 export const Title = styled.h3`
@@ -33,6 +33,7 @@ export const NavAccent = styled.div`
 	);
 	height: 10px;
 	width: 100%;
+	box-shadow: 0px 2px 6px lightgray;
 `;
 
 export const MainNav = styled.div<{

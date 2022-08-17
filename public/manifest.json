@@ -1,8 +1,8 @@
 {
-  "short_name": "M+M Wedding",
-  "name": "M + M Wedding Website",
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"short_name": "m + m wedding site",
+	"name": "m + m wedding site",
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
 }

@@ -1,18 +1,16 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowDown } from 'react-icons/io';
 
 const FAQSection = styled.div`
 	width: 100%;
 `;
 const AccordianContainer = styled.div`
 	border: 1px solid darkgray;
-	margin-bottom: 15px;
-	margin: 1rem;
+	margin-bottom: 25px;
 	transition: ease-in-out 0.2s;
-
 	&:hover {
 		cursor: pointer;
 	}

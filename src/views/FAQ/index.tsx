@@ -53,12 +53,6 @@ export default function FAQ() {
 							</ButtonContainer>
 						))}
 					</ScrollContainer>
-					<h3 id='general'>General</h3>
-					<Accordian
-						FAQ={Questions['general']}
-						clickEvent={displayAnswer}
-						clicked={detailsFAQClicked}
-					/>
 					<h3 id='lodging'>Lodging</h3>
 					<Accordian
 						FAQ={Questions['lodging']}
@@ -71,9 +65,9 @@ export default function FAQ() {
 						clickEvent={displayAnswer}
 						clicked={detailsFAQClicked}
 					/>
-					<h3 id='wedding'>Wedding</h3>
+					<h3 id='general'>General</h3>
 					<Accordian
-						FAQ={Questions['wedding']}
+						FAQ={Questions['general']}
 						clickEvent={displayAnswer}
 						clicked={detailsFAQClicked}
 					/>
@@ -83,7 +77,12 @@ export default function FAQ() {
 						clickEvent={displayAnswer}
 						clicked={detailsFAQClicked}
 					/>
-
+					<h3 id='wedding'>Wedding</h3>
+					<Accordian
+						FAQ={Questions['wedding']}
+						clickEvent={displayAnswer}
+						clicked={detailsFAQClicked}
+					/>
 					<ScrollToTopContainer>
 						<ScrollButton
 							onClick={() => scrollToSection('title')}

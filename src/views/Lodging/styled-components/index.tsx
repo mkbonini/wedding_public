@@ -29,33 +29,9 @@ export const ImageContainer = styled.div`
 		width: 100%;
 		height: 100%;
 	}
-	&#colorado-map {
-		max-width: 900px;
-		border-radius: 5px;
-		margin: 1rem;
-		img {
-			border-radius: 5px;
-		}
-	}
-	&#lodging {
-		max-width: 400px;
-		border-radius: 5px;
-		padding-bottom: 20px;
-		img {
-			border-radius: 5px;
-		}
-	}
 	&#airbnb {
 		max-width: 200px;
 		padding: 1rem 0rem 2rem 0rem;
-	}
-	&#additional {
-		max-width: 400px;
-		margin: 20px 0px;
-		border-radius: 5px;
-		img {
-			border-radius: 5px;
-		}
 	}
 	&#distance {
 		max-width: 600px;
@@ -68,6 +44,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const MapImageContainer = styled.div`
+	margin-top: 1rem;
 	max-width: 1200px;
 	img {
 		width: 100%;

@@ -81,7 +81,7 @@ export default function Lodging({ visible }) {
 									each cabin. Only downside is that guests will need to provide
 									their own bedding (sleeping bag, pillow, sheets if you
 									prefer). Staying at the venue will also cost $30/person which
-									but will cover the entire weekend (friday, saturday evening).
+									will cover the entire weekend (friday, saturday evening).
 									<br />
 									<br />
 									The venue lodging can also accomidate over 100+ guests so
@@ -89,10 +89,12 @@ export default function Lodging({ visible }) {
 									while also being safe and not have to worry about driving late
 									in the evening. However we also understand this might not be
 									everyone’s cup of tea, so there are links below to nearby air
-									bnb’s. You can reserve your spot in a cabin or RV spot when
-									you RSVP to the event. Payment for a spot can be made on the
-									registry site or through venmo. There will be more info about
-									this when you RSVP.
+									bnb’s.
+									<br />
+									<br /> If you are wanting to stay on site, you can reserve
+									your spot in a cabin or RV spot when you RSVP to the event.
+									Payment for a spot can be made on the registry site or through
+									venmo. There will be more info about this when you RSVP.
 								</p>
 							</div>
 						</SubTitles>
