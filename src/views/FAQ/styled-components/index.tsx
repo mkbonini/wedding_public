@@ -18,21 +18,6 @@ export const Container = styled.div`
 	h3 {
 		align-self: flex-start;
 		margin-left: 1rem;
-		&#lodging {
-			color: #3366ff;
-		}
-		&#rsvp {
-			color: #c9e265;
-		}
-		&#general {
-			color: #ff99ff;
-		}
-		&#weekend {
-			color: #3366ff;
-		}
-		&#wedding {
-			color: #c9e265;
-		}
 	}
 `;
 
