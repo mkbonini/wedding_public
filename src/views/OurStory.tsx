@@ -19,8 +19,8 @@ const ImageContainer = styled.div`
 	max-width: 500px;
 	display: block;
 	max-height: 545px;
-
 	&.miwha {
+		margin-left: -2rem;
 		img {
 			width: 100%;
 			margin-top: -450px;
@@ -45,13 +45,14 @@ const ImageContainer = styled.div`
 		}
 	}
 	&.mike {
+		margin-right: -2rem;
 		img {
 			width: 100%;
 			margin-top: -450px;
 			margin-left: -50px;
 			@media only screen and (max-width: 1000px) {
 				margin-top: -306px;
-				margin-left: 21px;
+				margin-left: -21px;
 			}
 		}
 		&::before {
@@ -70,7 +71,6 @@ const ImageContainer = styled.div`
 	}
 	@media only screen and (max-width: 1000px) {
 		max-width: 325px;
-		margin-left: -2rem;
 		padding-bottom: 2rem;
 	}
 `;
