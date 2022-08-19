@@ -1,21 +1,8 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react';
-import {
-	RsvpTitle,
-	SignUpForm,
-	RsvpContainer,
-	Input,
-	Name,
-	NamesContainer,
-	BackgroundAccent,
-	Accent,
-} from './styled-components';
-import Breadcrumbs from '../../components/Breadcrumbs';
-// import guestList from './utils/guestList.json';
-import { handleInputRecieved, editSearchTerm } from './utils';
-import Form from './Form';
-import UnderConstruction from '../../components/UnderConstruction';
+
+import StartPage from './Pages/StartPage';
 
 export default function RSVP({ visible }) {
 	const [guestList, setGuestList] = useState<any>([]);
@@ -61,7 +48,7 @@ export default function RSVP({ visible }) {
 		setError(false);
 	};
 
-	const verfifyGuest = (e) => {
+	const verifyGuest = (e) => {
 		if (code === '1234') {
 			setError(false);
 			setVarified(true);
@@ -101,115 +88,19 @@ export default function RSVP({ visible }) {
 		getGuests();
 	}, []);
 
-	console.log(selectedGuest, 'selected guest');
 	return (
-		<>
-			{underConstruction ? (
-				<UnderConstruction />
-			) : (
-				<>
-					<RsvpContainer>
-						<Breadcrumbs location={'rsvp'} />
-						<SignUpForm>
-							<RsvpTitle>
-								<h1>RSVP</h1>
-								<Accent />
-								<h2>Deadline is June 22, 2023</h2>
-								{selectedGuest === null ? (
-									<p>Enter your name below to find your invite.</p>
-								) : (
-									<p>You can find your verification code on your invite</p>
-								)}
-							</RsvpTitle>
-							{selectedGuest === null && (
-								<>
-									<Input
-										type='text'
-										placeholder='Search Your Name'
-										onChange={(e) => editSearchTerm(e, setSearchTerm)}
-									/>
-									<NamesContainer>
-										{filterNames.length > 0 &&
-											filterNames?.map((guest, i) => {
-												return (
-													<Name
-														key={i}
-														onClick={() => handleGuestSelection(guest)}
-													>
-														<p>{`${guest.first_name} ${guest.last_name}`}</p>
-													</Name>
-												);
-											})}
-									</NamesContainer>
-								</>
-							)}
-							{selectedGuest !== null && !verified && (
-								<>
-									{error && (
-										<p style={{ color: 'red' }}>Error: Code is invalid</p>
-									)}
-									<Input
-										type='text'
-										placeholder='Verification Code'
-										onChange={(e) => setCode(e.target.value)}
-									/>
-									<button
-										onClick={(e) => verfifyGuest(e)}
-										style={{ maxWidth: '200px', marginTop: '20px' }}
-									>
-										Submit
-									</button>
-									<button
-										onClick={(e) => handleGuestDeselection()}
-										style={{
-											maxWidth: '200px',
-											marginTop: '10px',
-											backgroundColor: 'white',
-											color: 'black',
-											boxShadow: '1px 2px 9px lightgrey',
-										}}
-									>
-										Back
-									</button>
-								</>
-							)}
-
-							{selectedGuest !== null && verified && (
-								<div style={{ paddingBottom: '20px' }}>
-									<span>
-										You are RSVP'ing as{' '}
-										<span style={{ fontWeight: 800 }}>
-											{`${selectedGuest.first_name} ${selectedGuest.last_name}`}
-										</span>
-										. To deselect and return to search, click{' '}
-									</span>
-									<span
-										onClick={() => handleGuestDeselection()}
-										style={{ fontWeight: 800 }}
-									>
-										back
-									</span>
-								</div>
-							)}
-							{/* <Form
-							verified={verified}
-							selectedGuest={selectedGuest}
-							handleGuestDeselection={handleGuestDeselection}
-							handleInputRecieved={handleInputRecieved}
-							childInputRecieved={childInputRecieved}
-							guestInputRecieved={guestInputRecieved}
-							emailInputRecieved={emailInputRecieved}
-							notesInputRecieved={notesInputRecieved}
-							setChildInputRecieved={setChildInputRecieved}
-							setEmailInputRecieved={setEmailInputRecieved}
-							setNotesInputRecieved={setNotesInputRecieved}
-							setGuestInputRecieved={setGuestInputRecieved}
-						/> */}
-						</SignUpForm>
-					</RsvpContainer>
-					<BackgroundAccent />
-				</>
-			)}
-		</>
+		<StartPage
+			verifyGuest={verifyGuest}
+			verified={verified}
+			handleGuestDeselection={handleGuestDeselection}
+			handleGuestSelection={handleGuestSelection}
+			guestList={guestList}
+			filterNames={filterNames}
+			selectedGuest={selectedGuest}
+			setGuestInputRecieved={setGuestInputRecieved}
+			setSearchTerm={setSearchTerm}
+			setCode={setCode}
+			error={error}
+		/>
 	);
 }
