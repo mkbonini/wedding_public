@@ -78,6 +78,14 @@ export default function Flyout({ flyoutVisible, setFlyoutVisible }) {
 						<p>rsvp</p>
 					</Link>
 				</FlyoutMenuLink>
+				<FlyoutMenuLink
+					onClick={() => handleMenuClick('map')}
+					active={active === 'map'}
+				>
+					<Link to='/map'>
+						<p>map</p>
+					</Link>
+				</FlyoutMenuLink>
 			</FlyoutLinkContainer>
 		</FlyoutMobileMenu>
 	);

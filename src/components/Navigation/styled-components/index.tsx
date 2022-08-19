@@ -21,6 +21,9 @@ export const Title = styled.h3`
 	font-size: 25px;
 	color: #000000;
 	padding: 0px 20px;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const NavAccent = styled.div`

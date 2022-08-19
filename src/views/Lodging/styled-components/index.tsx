@@ -6,18 +6,25 @@ export const SubTitles = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	div {
-		margin: 3rem 0rem 1rem 0rem;
+	&#main {
+		padding: 4rem 0rem 2rem 0rem;
+	}
+	.section {
+		max-width: 980px;
+		margin: auto;
 		h2 {
 			font-size: 22px;
 			font-family: 'Gilroy-Bold';
-			text-align: left;
+			text-align: center;
 			padding: 0;
 			margin: 0;
 			@media only screen and (min-width: 900px) {
 				font-size: 30px;
 			}
 		}
+	}
+	p {
+		padding: 1rem;
 	}
 `;
 
@@ -31,7 +38,8 @@ export const ImageContainer = styled.div`
 	}
 	&#airbnb {
 		max-width: 200px;
-		padding: 1rem 0rem 2rem 0rem;
+		padding: 1rem 0rem;
+		margin: auto;
 	}
 	&#distance {
 		max-width: 600px;
@@ -40,14 +48,6 @@ export const ImageContainer = styled.div`
 		img {
 			border-radius: 5px;
 		}
-	}
-`;
-
-export const MapImageContainer = styled.div`
-	margin-top: 1rem;
-	max-width: 1200px;
-	img {
-		width: 100%;
 	}
 `;
 
@@ -61,12 +61,6 @@ export const bounce = keyframes`
   100% {
 	transform: translateY(0px);
   }
-`;
-
-export const MapContainer = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
 `;
 
 export const LodgingContainer = styled.div`
@@ -112,7 +106,7 @@ export const AdditionalContainer = styled.div`
 	justify-content: space-between;
 	width: 100%;
 	max-width: 850px;
-	padding-bottom: 1rem;
+	padding-bottom: 3rem;
 
 	@media only screen and (max-width: 900px) {
 		display: flex;
@@ -173,4 +167,26 @@ export const ButtonContainer = styled.div`
 	align-items: center;
 	width: 100%;
 	margin: 10px;
+`;
+
+export const AccentSection = styled.div`
+	min-height: 650px;
+	background: rgba(169, 190, 255, 0.17);
+	margin-top: 4rem;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	p {
+		margin: 2rem;
+		padding: 0;
+	}
+	@media only screen and (max-width: 900px) {
+		min-height: 850px;
+	}
+`;
+
+export const Section = styled.div`
+	padding: 8rem 0rem;
 `;
