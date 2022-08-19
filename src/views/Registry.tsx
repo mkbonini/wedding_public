@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import UnderConstruction from '../components/UnderConstruction';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const RegistryPage = styled.div<{ visible: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
+	flex-direction: column;
 	min-height: 800px;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;
@@ -35,10 +36,11 @@ export default function Registry({ visible }) {
 				<UnderConstruction />
 			) : (
 				<RegistryPage visible={visible}>
+					<Breadcrumbs location={'registry'} />
 					<Title>
 						<h1>
 							We will open this page up <br />
-							closer to the wedding ♡
+							closer to the wedding <br />♡
 						</h1>
 					</Title>
 				</RegistryPage>
