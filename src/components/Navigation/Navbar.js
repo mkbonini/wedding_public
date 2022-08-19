@@ -57,11 +57,6 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 				<GroupedLinks>
 					<Title onClick={() => history.push('/')}>M + M</Title>
 					<MenuLink>
-						<Link to='/'>
-							<p>home</p>
-						</Link>
-					</MenuLink>
-					<MenuLink>
 						<Link to='/our-story'>
 							<p>our story</p>
 						</Link>
@@ -71,7 +66,6 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 							<p>details</p>
 						</Link>
 					</MenuLink>
-
 					<MenuLink>
 						<Link to='/lodging'>
 							<p>lodging</p>
@@ -85,6 +79,11 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 					<MenuLink>
 						<Link to='/registry'>
 							<p>registry</p>
+						</Link>
+					</MenuLink>
+					<MenuLink>
+						<Link to='/map'>
+							<p>map</p>
 						</Link>
 					</MenuLink>
 				</GroupedLinks>

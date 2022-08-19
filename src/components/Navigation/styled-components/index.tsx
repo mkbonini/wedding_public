@@ -21,6 +21,9 @@ export const Title = styled.h3`
 	font-size: 25px;
 	color: #000000;
 	padding: 0px 20px;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export const NavAccent = styled.div`
@@ -66,13 +69,17 @@ export const MenuLink = styled.div`
 
 	&.rsvp {
 		font-size: 16px;
-		border: 1px solid #000000;
+		background-color: #000000;
+
 		height: 25px;
 		margin-right: 10px;
 		position: relative;
 		border-radius: 2px;
 		top: 0;
 		transition: top ease 0.5s;
+		a {
+			color: #ffffff;
+		}
 		&:hover {
 			cursor: pointer;
 			top: -5px;

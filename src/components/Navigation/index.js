@@ -7,6 +7,7 @@ import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging/index';
 import FAQ from '../../views/FAQ/index';
 import OurStory from '../../views/OurStory';
+import Map from '../../views/Map';
 
 export default function Navigation({ flyoutVisible }) {
 	return (
@@ -25,6 +26,9 @@ export default function Navigation({ flyoutVisible }) {
 			</Route>
 			<Route path='/lodging'>
 				<Lodging flyoutVisible={flyoutVisible} />
+			</Route>
+			<Route path='/map'>
+				<Map flyoutVisible={flyoutVisible} />
 			</Route>
 			<Route path='/faq'>
 				<FAQ flyoutVisible={flyoutVisible} />

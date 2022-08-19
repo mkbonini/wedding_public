@@ -1,8 +1,6 @@
 /** @format */
 
 import React, { useState } from 'react';
-
-import map from '../../assets/DeerCreekMap.jpg';
 import UnderConstruction from '../../components/UnderConstruction';
 import distanceTo from '../../assets/distance-to.png';
 import moose from '../../assets/cabins/moose.jpg';
@@ -21,8 +19,6 @@ import airBnb from '../../assets/airbnb.png';
 import {
 	SubTitles,
 	LodgingContainer,
-	MapContainer,
-	MapImageContainer,
 	ImageContainer,
 	LodgingPage,
 	ContentCenter,
@@ -30,6 +26,8 @@ import {
 	AdditionalContainer,
 	Accent,
 	ButtonContainer,
+	AccentSection,
+	Section,
 } from './styled-components';
 
 export default function Lodging({ visible }) {
@@ -65,13 +63,21 @@ export default function Lodging({ visible }) {
 				<LodgingPage visible={visible}>
 					<Breadcrumbs location={'lodging'} />
 					<LodgingContainer>
-						<MapContainer>
-							<MapImageContainer>
-								<img src={map} alt='' />
-							</MapImageContainer>
-						</MapContainer>
-						<SubTitles>
-							<div>
+						<Carousel
+							images={[
+								moose,
+								door,
+								sasquach,
+								beds,
+								rv,
+								ceremony,
+								volleyball,
+								gym,
+								dining,
+							]}
+						/>
+						<SubTitles id='main'>
+							<div className='section'>
 								<h2>onsite cabins</h2>
 								<p>
 									We're so excited that this venue has lodging on site. It was
@@ -98,60 +104,51 @@ export default function Lodging({ visible }) {
 								</p>
 							</div>
 						</SubTitles>
-						<Carousel
-							images={[
-								moose,
-								door,
-								sasquach,
-								beds,
-								rv,
-								ceremony,
-								volleyball,
-								gym,
-								dining,
-							]}
-						/>
-						<SubTitles>
-							<div>
-								<h2>additional lodging</h2>
-								<p>
-									Below are links to Air bnb's in select towns nearby. All of
-									these towns are less than 1.25 hours away from the venue. The
-									closest being Baily (5-10 minutes from venue) and then Conifer
-									(20-25 minutes from venue).
-								</p>
-							</div>
-						</SubTitles>
-						<ContentCenter>
-							<ImageContainer id='airbnb'>
-								<img src={airBnb} alt='air bnb logo' />
-							</ImageContainer>
-							<AdditionalContainer>
-								{airBnbLinks.map((bnb, index) => {
-									return (
-										<>
-											<ButtonContainer
-												key={` links ${index}`}
-												onClick={() => window.open(bnb.href)}
-											>
-												<AdditionalButton>{bnb.name}</AdditionalButton>
-												<Accent id='accent' />
-											</ButtonContainer>
-										</>
-									);
-								})}
-							</AdditionalContainer>
-						</ContentCenter>
-						<SubTitles>
-							<div>
-								<h2>what's around?</h2>
-							</div>
-						</SubTitles>
-						<ContentCenter>
-							<ImageContainer id='distance'>
-								<img src={distanceTo} alt='' />
-							</ImageContainer>
-						</ContentCenter>
+						<AccentSection>
+							<SubTitles>
+								<div className='section'>
+									<ImageContainer id='airbnb'>
+										<img src={airBnb} alt='air bnb logo' />
+									</ImageContainer>
+									<h2>additional lodging</h2>
+									<p>
+										Below are links to Air bnb's in select towns nearby. All of
+										these towns are less than 1.25 hours away from the venue.
+										The closest being Baily (5-10 minutes from venue) and then
+										Conifer (20-25 minutes from venue).
+									</p>
+								</div>
+							</SubTitles>
+							<ContentCenter>
+								<AdditionalContainer>
+									{airBnbLinks.map((bnb, index) => {
+										return (
+											<>
+												<ButtonContainer
+													key={` links ${index}`}
+													onClick={() => window.open(bnb.href)}
+												>
+													<AdditionalButton>{bnb.name}</AdditionalButton>
+													<Accent id='accent' />
+												</ButtonContainer>
+											</>
+										);
+									})}
+								</AdditionalContainer>
+							</ContentCenter>
+						</AccentSection>
+						<Section>
+							<SubTitles>
+								<div className='section'>
+									<h2>what's around?</h2>
+								</div>
+							</SubTitles>
+							<ContentCenter>
+								<ImageContainer id='distance'>
+									<img src={distanceTo} alt='' />
+								</ImageContainer>
+							</ContentCenter>
+						</Section>
 					</LodgingContainer>
 				</LodgingPage>
 			)}
