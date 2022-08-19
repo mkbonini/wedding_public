@@ -37,7 +37,7 @@ export default function Registry({ visible }) {
 					<Breadcrumbs location={'registry'} />
 					<Title>
 						<h1>
-							Hi! Thanks for stopping by.
+							Hi! ☻
 							<br />
 							We will open this page up <br />
 							closer to the wedding <br />♡

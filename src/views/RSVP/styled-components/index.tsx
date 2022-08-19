@@ -8,28 +8,33 @@ export const NamesContainer = styled.div`
 	max-width: 600px;
 	height: 200px;
 	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
 
 export const Name = styled.div`
-	height: 40px;
+	height: 60px;
 	background-color: white;
 	border-bottom: 1px solid whitesmoke;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	&:hover {
-		background-color: #8bb88b;
+		background-color: #000000;
 		color: white;
 		cursor: pointer;
 	}
 `;
 
 export const Input = styled.input`
-	height: 40px;
+	height: 60px;
 	width: 99%;
 	border: none;
-	background-color: whitesmoke;
 	text-align: center;
+	border: 1px solid lightgray;
 	max-width: 600px;
 	&:focus {
 		outline: none;
@@ -45,8 +50,7 @@ export const RsvpTitle = styled.div`
 	flex-direction: column;
 	padding: 20px;
 	h1 {
-		font-family: 'Urbanist', sans-serif;
-		font-size: 45px;
+		font-size: 30px;
 		color: black;
 		font-weight: 300;
 		text-transform: uppercase;
@@ -59,8 +63,16 @@ export const SignUpForm = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	min-width: 500px;
-	border-radius: 5px;
+	max-width: 1000px;
+	padding: 5rem 2rem;
+	width: 100%;
+	min-height: 600px;
+	height: 100%;
+	margin: 6rem 0rem;
+	box-shadow: -24px -24px 0px 1px #a9beff;
+	margin-left: -24px;
+	border: 1px solid #e2e2e2;
+	background-color: white;
 	form {
 		display: flex;
 		flex-direction: column;
@@ -73,7 +85,6 @@ export const SignUpForm = styled.div`
 		color: black;
 		font-weight: 500;
 		text-align: center;
-		font-family: 'Urbanist', sans-serif;
 	}
 	ul {
 		list-style: none;
@@ -102,7 +113,7 @@ export const SignUpForm = styled.div`
 	}
 	input {
 		&.form-input {
-			height: 40px;
+			height: 60px;
 			width: 99%;
 			border: none;
 			background-color: whitesmoke;
@@ -121,13 +132,13 @@ export const SignUpForm = styled.div`
 	button {
 		width: 100%;
 		max-width: 200px;
-		height: 40px;
+		height: 50px;
 		border: none;
-		border-radius: 25px;
+		border-radius: 3px;
 		margin: 10px;
 		font-weight: 500;
 		font-size: 12px;
-		background-color: #ef7b9e;
+		background-color: #000000;
 		box-shadow: 1px 3px 4px lightgray;
 		color: white;
 		&:hover {
@@ -166,11 +177,25 @@ export const Radio = styled.div`
 	}
 `;
 
-export const RsvpContainer = styled.div<{ visible: boolean }>`
-	min-height: 600px;
+export const RsvpContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	padding: 8rem 1rem 2rem;
-	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
+`;
+
+export const BackgroundAccent = styled.div`
+	z-index: -7;
+	background: rgba(169, 190, 255, 0.17);
+	height: 600px;
+	width: 100%;
+	margin-top: -30rem;
+`;
+
+export const Accent = styled.div`
+	height: 0.5rem;
+	width: 100px;
+	margin: 10px 0px;
+	background-color: #ff99ff;
 `;
