@@ -8,7 +8,8 @@ const RegistryPage = styled.div<{ visible: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 600px;
+
+	min-height: 800px;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;
 
@@ -19,16 +20,15 @@ const Title = styled.div`
 	padding: 20px;
 	height: 50vh;
 	h1 {
-		/* font-family: 'Urbanist', sans-serif; */
-		font-size: 45px;
+		font-size: 25px;
 		color: black;
 		font-weight: 300;
-		text-transform: uppercase;
+		text-align: center;
 	}
 `;
 
 export default function Registry({ visible }) {
-	const [underConstruction, setUnderConstruction] = useState(true);
+	const [underConstruction, setUnderConstruction] = useState(false);
 	return (
 		<>
 			{underConstruction ? (
@@ -36,7 +36,10 @@ export default function Registry({ visible }) {
 			) : (
 				<RegistryPage visible={visible}>
 					<Title>
-						<h1>Registry</h1>
+						<h1>
+							We will open this page up <br />
+							closer to the wedding ♡
+						</h1>
 					</Title>
 				</RegistryPage>
 			)}
