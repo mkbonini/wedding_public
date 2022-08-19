@@ -10,16 +10,14 @@ const RegistryPage = styled.div<{ visible: boolean }>`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	min-height: 800px;
+	padding-top: 8rem;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;
 
 const Title = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	padding: 20px;
-	height: 50vh;
+	height: 500px;
+	padding-top: 8rem;
 	h1 {
 		font-size: 25px;
 		color: black;
@@ -39,6 +37,8 @@ export default function Registry({ visible }) {
 					<Breadcrumbs location={'registry'} />
 					<Title>
 						<h1>
+							Hi! Thanks for stopping by.
+							<br />
 							We will open this page up <br />
 							closer to the wedding <br />♡
 						</h1>
