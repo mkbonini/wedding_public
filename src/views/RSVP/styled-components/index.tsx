@@ -1,5 +1,6 @@
 /** @format */
 
+import { Verify } from 'crypto';
 import styled from 'styled-components';
 
 //Search
@@ -31,13 +32,41 @@ export const Name = styled.div`
 
 export const Input = styled.input`
 	height: 60px;
-	width: 99%;
+	width: 80%;
 	border: none;
 	text-align: center;
 	border: 1px solid lightgray;
 	max-width: 600px;
 	&:focus {
 		outline: none;
+	}
+`;
+
+export const FlatButtonContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	margin: 2rem 0rem;
+	.verify-button-back {
+		min-width: 200px;
+		margin: 2rem 0rem;
+		background-color: #ffffff;
+		color: #000000;
+		border: 1px solid darkgray;
+		box-shadow: unset;
+	}
+	.verify-button-submit {
+		min-width: 200px;
+		margin: 2rem 0rem;
+		background-color: #000000;
+		margin-right: 20px;
+	}
+
+	@media only screen and (max-width: 800px) {
+		flex-direction: column;
+		.verify-button-back,
+		.verify-button-submit {
+			margin: 10px 0px;
+		}
 	}
 `;
 
@@ -48,31 +77,31 @@ export const RsvpTitle = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding: 20px;
+	padding-top: 20px;
 	h1 {
-		font-size: 30px;
+		font-size: 25px;
 		color: black;
 		font-weight: 300;
 		text-transform: uppercase;
 		margin-bottom: 0;
 	}
+	h2 {
+		color: black;
+		font-weight: 500;
+		text-align: center;
+		font-size: 18px;
+	}
 `;
 
 export const SignUpForm = styled.div`
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
-	max-width: 1000px;
-	padding: 5rem 2rem;
+	align-items: center;
+	justify-content: center;
+	max-width: 900px;
 	width: 100%;
-	min-height: 600px;
-	height: 100%;
-	margin: 6rem 0rem;
-	box-shadow: -24px -24px 0px 1px #a9beff;
-	margin-left: -24px;
-	border: 1px solid #e2e2e2;
 	background-color: white;
+	padding-top: 3rem;
 	form {
 		display: flex;
 		flex-direction: column;
@@ -81,11 +110,7 @@ export const SignUpForm = styled.div`
 		max-width: 600px;
 		width: 100%;
 	}
-	h2 {
-		color: black;
-		font-weight: 500;
-		text-align: center;
-	}
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -153,10 +178,11 @@ export const SignUpForm = styled.div`
 			}
 		}
 	}
-	@media only screen and (max-width: 1200px) {
+	@media only screen and (max-width: 900px) {
 		min-width: unset;
 		border: unset;
 		margin: 2rem 0rem;
+		padding-top: 0rem;
 	}
 `;
 
@@ -179,10 +205,11 @@ export const Radio = styled.div`
 
 export const RsvpContainer = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	padding: 8rem 1rem 2rem;
+	height: 80vh;
+	padding: 8rem 1rem 0rem 1rem;
 `;
 
 export const BackgroundAccent = styled.div`
@@ -198,4 +225,13 @@ export const Accent = styled.div`
 	width: 100px;
 	margin: 10px 0px;
 	background-color: #ff99ff;
+`;
+
+export const ParagraphText = styled.p`
+	max-width: unset;
+	@media only screen and (max-width: 900px) {
+		max-width: 250px;
+		text-align: center;
+		padding-bottom: 10px;
+	}
 `;

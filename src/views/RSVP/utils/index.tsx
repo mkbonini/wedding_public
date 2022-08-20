@@ -40,6 +40,4 @@ export const handleInputRecieved = ({
 };
 
 //Saves what is being searched when user inputs name
-export const editSearchTerm = (e, setSearchTerm) => {
-	setSearchTerm(e.target.value);
-};
+

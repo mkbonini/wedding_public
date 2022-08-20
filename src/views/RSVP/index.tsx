@@ -1,106 +1,107 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react';
+import {
+	RsvpTitle,
+	Accent,
+	RsvpContainer,
+	SignUpForm,
+	BackgroundAccent,
+} from './styled-components';
+import Breadcrumbs from '../../components/Breadcrumbs';
+import StartPage from './View/StartPage';
+import VerifyPage from './View/VerifyPage';
+import ContactInfoPage from './View/ContactInfo';
+import { getGuests, steps } from './Model';
 
-import StartPage from './Pages/StartPage';
-
-export default function RSVP({ visible }) {
+export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
-	const [guestInputRecieved, setGuestInputRecieved] = useState(false);
-	const [emailInputRecieved, setEmailInputRecieved] = useState(false);
-	const [childInputRecieved, setChildInputRecieved] = useState(false);
-	const [notesInputRecieved, setNotesInputRecieved] = useState(false);
-	const [underConstruction, setUnderConstruction] = useState(false);
+	const [currentStep, setCurrentStep] = useState(steps.start);
+	// const [guestInputRecieved, setGuestInputRecieved] = useState(false);
+	// const [emailInputRecieved, setEmailInputRecieved] = useState(false);
+	// const [childInputRecieved, setChildInputRecieved] = useState(false);
+	// const [notesInputRecieved, setNotesInputRecieved] = useState(false);
+	// const [underConstruction, setUnderConstruction] = useState(false);
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
 
-	const [searchTerm, setSearchTerm] = useState('');
-	const [verified, setVarified] = useState(false);
-	const [code, setCode] = useState('1234');
-	const [error, setError] = useState(false);
+	// const [verified, setVarified] = useState(false);
 
-	const filterNames =
-		guestList.length > 0 &&
-		guestList?.filter((guest) => {
-			const fullName = `${guest.first_name} ${guest.last_name}`;
-			if (searchTerm === '') return null;
-			else if (fullName.toLowerCase().includes(searchTerm.toLowerCase())) {
-				return guest;
-			} else {
-				return null;
-			}
-		});
+	useEffect(() => {
+		getGuests(setGuestList);
+	}, []);
 
-	const handleGuestSelection = (guestSelected) => {
-		const guest = guestList.find((guest) => guest === guestSelected);
-		guest && setSelectedGuest(guest);
-	};
-
-	const handleGuestDeselection = () => {
-		setSelectedGuest(null);
-		setSearchTerm('');
-		setGuestInputRecieved(false);
-		setEmailInputRecieved(false);
-		setChildInputRecieved(false);
-		setNotesInputRecieved(false);
-		setCode('');
-		setVarified(false);
-		setError(false);
-	};
-
-	const verifyGuest = (e) => {
-		if (code === '1234') {
-			setError(false);
-			setVarified(true);
-		} else {
-			setError(true);
-		}
-	};
-
-	async function getGuests() {
-		try {
-			const response = await fetch(
-				'https://mm-wedding-backend.herokuapp.com/guests',
-				{
-					method: 'GET',
-					mode: 'cors',
-					headers: {
-						'Content-Type': 'application/json',
-						'Access-Control-Allow-Origin': '*',
-						accept: 'application/json',
-					},
-				}
-			);
-
-			if (!response.ok) {
-				throw new Error(`Error! status: ${response.status}`);
-			}
-
-			const result = await response.json();
-			setGuestList(result);
-			console.log('making request to guets api');
-		} catch (err) {
-			console.log(err);
+	function progressFlow() {
+		switch (currentStep) {
+			case steps.start:
+				setCurrentStep(steps.verify);
+				break;
+			case steps.verify:
+				setCurrentStep(steps.contact);
+				break;
+			default:
+				setCurrentStep(steps.start);
 		}
 	}
 
-	useEffect(() => {
-		getGuests();
-	}, []);
+	function regressFlow() {
+		switch (currentStep) {
+			case steps.verify:
+				setCurrentStep(steps.start);
+				break;
+			case steps.contact:
+				setCurrentStep(steps.verify);
+				break;
+			default:
+				setCurrentStep(steps.start);
+		}
+	}
+
+	function contentToDisplay() {
+		switch (currentStep) {
+			case steps.start:
+				return (
+					<StartPage
+						guestList={guestList}
+						setSelectedGuest={setSelectedGuest}
+						progressFlow={progressFlow}
+					/>
+				);
+			case steps.verify:
+				return (
+					<VerifyPage
+						setSelectedGuest={setSelectedGuest}
+						regressFlow={regressFlow}
+						progressFlow={progressFlow}
+						selectedGuest={selectedGuest}
+					/>
+				);
+			case steps.contact:
+				return (
+					<ContactInfoPage
+						selectedGuest={selectedGuest}
+						regressFlow={regressFlow}
+						progressFlow={progressFlow}
+					/>
+				);
+
+			default:
+				setCurrentStep(steps.start);
+		}
+	}
 
 	return (
-		<StartPage
-			verifyGuest={verifyGuest}
-			verified={verified}
-			handleGuestDeselection={handleGuestDeselection}
-			handleGuestSelection={handleGuestSelection}
-			guestList={guestList}
-			filterNames={filterNames}
-			selectedGuest={selectedGuest}
-			setGuestInputRecieved={setGuestInputRecieved}
-			setSearchTerm={setSearchTerm}
-			setCode={setCode}
-			error={error}
-		/>
+		<>
+			<RsvpContainer>
+				<Breadcrumbs location={'rsvp'} />
+				{/* <RsvpTitle>
+					<h1>RSVP</h1>
+					<Accent />
+					<h2>Deadline is June 22, 2023</h2>
+				</RsvpTitle> */}
+				<SignUpForm>{contentToDisplay()}</SignUpForm>
+				{/* <BackgroundAccent /> */}
+			</RsvpContainer>
+		</>
 	);
 }

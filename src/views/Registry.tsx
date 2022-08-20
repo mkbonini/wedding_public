@@ -7,17 +7,21 @@ import Breadcrumbs from '../components/Breadcrumbs';
 
 const RegistryPage = styled.div<{ visible: boolean }>`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	flex-direction: column;
 	padding-top: 8rem;
+	height: 80vh;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;
 
 const Title = styled.div`
-	padding: 20px;
-	height: 500px;
-	padding-top: 8rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
+	padding: 6rem 1rem;
+	height: 80vh;
 	h1 {
 		font-size: 25px;
 		color: black;

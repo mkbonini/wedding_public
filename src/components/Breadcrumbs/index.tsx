@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 const BreadcrumbContainer = styled.div`
-	display: flex;
 	width: 100%;
-	padding-top: 4rem;
+	padding-top: 8rem;
 	max-width: 1000px;
 	span {
 		color: lightgray;

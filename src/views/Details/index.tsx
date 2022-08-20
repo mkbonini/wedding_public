@@ -10,10 +10,10 @@ import smiley from '../../assets/smiley.png';
 
 const DetailsPage = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	padding: 7rem 1rem;
+	padding: 8rem 1rem;
 `;
 
 const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`

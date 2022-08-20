@@ -8,7 +8,7 @@ import map from '../assets/DeerCreekMap.jpg';
 
 const MapPage = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	flex-direction: column;
 	padding: 8rem 0rem;
