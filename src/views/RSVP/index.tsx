@@ -17,11 +17,6 @@ import { getGuests, steps } from './Model';
 export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
 	const [currentStep, setCurrentStep] = useState(steps.start);
-	// const [guestInputRecieved, setGuestInputRecieved] = useState(false);
-	// const [emailInputRecieved, setEmailInputRecieved] = useState(false);
-	// const [childInputRecieved, setChildInputRecieved] = useState(false);
-	// const [notesInputRecieved, setNotesInputRecieved] = useState(false);
-	// const [underConstruction, setUnderConstruction] = useState(false);
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
 

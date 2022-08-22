@@ -25,7 +25,7 @@ const BreadcrumbContainer = styled.div`
 	}
 `;
 
-export default function Button({ location }) {
+export default function Breadcrumbs({ location }) {
 	const history = useHistory();
 	return (
 		<BreadcrumbContainer>

@@ -102,58 +102,7 @@ export const SignUpForm = styled.div`
 	width: 100%;
 	background-color: white;
 	padding-top: 3rem;
-	form {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		max-width: 600px;
-		width: 100%;
-	}
 
-	ul {
-		list-style: none;
-		padding: 0;
-	}
-	li {
-		min-width: 240px;
-	}
-	label {
-		&.radio-label {
-			opacity: 1;
-			height: 100%;
-		}
-		opacity: 0;
-		transition: opacity 1s, height 0 1s;
-		height: 0px;
-		&.label-visible {
-			align-self: flex-start;
-			font-size: 14px;
-			margin-bottom: 5px;
-			opacity: 1;
-			transition: opacity 1s;
-			color: gray;
-			height: 100%;
-		}
-	}
-	input {
-		&.form-input {
-			height: 60px;
-			width: 99%;
-			border: none;
-			background-color: whitesmoke;
-			margin-bottom: 20px;
-			text-align: center;
-			&:focus {
-				outline: none;
-			}
-			border-bottom: ${(p) => p.color && `5px solid ${p.color}`};
-		}
-		&.radio-input {
-			width: 20px;
-			height: 20px;
-		}
-	}
 	button {
 		width: 100%;
 		max-width: 200px;
@@ -208,7 +157,7 @@ export const RsvpContainer = styled.div`
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	height: 80vh;
+
 	padding: 8rem 1rem 0rem 1rem;
 `;
 

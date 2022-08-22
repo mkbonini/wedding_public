@@ -17,6 +17,7 @@ interface Guest {
 	rsvp: string;
 	team_id: number;
 	updated_at: string;
+	host_id: number;
 }
 
 export const steps = {
