@@ -5,8 +5,6 @@ import Stepper from '../../../../components/Stepper';
 import Toggle from '../../../../components/Toggle';
 import { FaTrashAlt } from 'react-icons/fa';
 import { handleInputRecieved } from '../../utils';
-import React from 'react';
-import { utimes } from 'fs';
 import {
 	ContactFeild,
 	FormFeild,

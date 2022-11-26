@@ -9,8 +9,8 @@ const RegistryPage = styled.div<{ visible: boolean }>`
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	padding-top: 8rem;
-	height: 80vh;
+	padding-top: 12rem;
+	height: 70vh;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;
 
@@ -39,7 +39,7 @@ export default function Registry({ visible }) {
 				<RegistryPage visible={visible}>
 					<Title>
 						<h1>
-							Hi! ☻
+							Hello there!
 							<br />
 							We will open this page up <br />
 							closer to the wedding <br />♡

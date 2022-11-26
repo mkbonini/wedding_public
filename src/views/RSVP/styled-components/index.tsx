@@ -9,9 +9,10 @@ export const Input = styled.input`
 	height: 60px;
 	width: 100%;
 	border: none;
+	margin-bottom: 20px;
 	text-align: center;
 	border: 1px solid lightgray;
-	border-radius: 4px;
+	border-radius: 2px;
 	max-width: 495px;
 	margin-top: 10px;
 	&:focus {
@@ -81,29 +82,7 @@ export const SignUpForm = styled.div`
 	width: 100%;
 	background-color: white;
 	padding-top: 4rem;
-	button {
-		width: 100%;
-		max-width: 100px;
-		height: 50px;
-		border: none;
-		border-radius: 2px;
-		margin: 10px;
-		font-weight: 500;
-		font-size: 12px;
-		background-color: #000000;
-		color: white;
-		&:hover {
-			box-shadow: 1px 5px 8px lightgray;
-		}
-		&#back-button {
-			color: black;
-			background-color: white;
-			box-shadow: 1px 2px 9px lightgrey;
-			&:hover {
-				box-shadow: 1px 5px 8px lightgray;
-			}
-		}
-	}
+
 	@media only screen and (max-width: 900px) {
 		min-width: unset;
 		border: unset;

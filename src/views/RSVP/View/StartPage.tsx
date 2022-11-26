@@ -1,6 +1,6 @@
 /** @format */
 import { useState, useEffect } from 'react';
-
+import Button from '../../../components/Button';
 import { Input, Heading } from '../styled-components';
 
 export default function StartPage({
@@ -47,7 +47,7 @@ export default function StartPage({
 				placeholder='Search Your Name'
 				onChange={(e) => editSearchTerm(e)}
 			/>
-			<button onClick={() => handleClick()}>Find my reservation</button>
+			<Button text='Find my rsvp' onClick={() => handleClick()} />
 		</>
 	);
 }

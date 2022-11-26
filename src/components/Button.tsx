@@ -1,7 +1,6 @@
 /** @format */
 
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 
 const PrimaryButton = styled.div`
 	width: 200px;
@@ -17,6 +16,7 @@ const PrimaryButton = styled.div`
 	top: 0;
 	transition: top ease 0.5s;
 	font-size: 14px;
+	text-transform: uppercase;
 	&:hover {
 		cursor: pointer;
 		top: -5px;
@@ -29,10 +29,6 @@ const PrimaryButton = styled.div`
 	}
 `;
 
-export default function Button({ text, location }) {
-	const history = useHistory();
-
-	return (
-		<PrimaryButton onClick={() => history.push(location)}>{text}</PrimaryButton>
-	);
+export default function Button({ text, onClick }) {
+	return <PrimaryButton onClick={() => onClick()}>{text}</PrimaryButton>;
 }

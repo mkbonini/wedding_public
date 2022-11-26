@@ -131,7 +131,6 @@ export const ButtonContainer = styled.div`
 export const Button = styled.button`
 	height: 50px;
 	width: 200px;
-
 	&.main {
 		background-color: #000000;
 		color: #ffffff;

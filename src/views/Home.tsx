@@ -9,6 +9,7 @@ import ContentBlock from '../components/ContentBlock';
 import Button from '../components/Button';
 import Counntdown from '../components/Countdown';
 import flowerFooter from '../assets/flower-footer.svg';
+import { useHistory } from 'react-router-dom';
 
 const HomePage = styled.div<{ visible: boolean }>`
 	width: 100%;
@@ -82,6 +83,7 @@ const FlowerContainer = styled.div`
 `;
 
 export default function Home({ visible }) {
+	const history = useHistory();
 	return (
 		<>
 			<HomePage visible={visible}>
@@ -89,7 +91,10 @@ export default function Home({ visible }) {
 				<StoryContainer>
 					<TitleContainer>
 						<Title>we're getting married!</Title>
-						<Button text='LEARN MORE' location={'/details'} />
+						<Button
+							text='LEARN MORE'
+							onClick={() => history.push('/details')}
+						/>
 					</TitleContainer>
 					<CountdownContainer>
 						<Counntdown />
