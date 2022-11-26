@@ -24,6 +24,8 @@ export const steps = {
 	start: 'START',
 	verify: 'VERIFY',
 	contact: 'CONTACT',
+	cabin: 'CABIN',
+	confirm: 'CONFIRM',
 };
 export function handleGuestDeselection(
 	setSelectedGuest: Function,
@@ -47,7 +49,7 @@ export function handleGuestDeselection(
 	setError(false);
 }
 
-export async function getGuests(setGuestList: Function) {
+export async function getGuests() {
 	try {
 		const response = await fetch(
 			'https://mm-wedding-backend.herokuapp.com/guests',
@@ -67,8 +69,8 @@ export async function getGuests(setGuestList: Function) {
 		}
 
 		const result = await response.json();
-		setGuestList(result);
-		console.log('making request to guets api');
+		console.log('making request to guets api', result);
+		return result;
 	} catch (err) {
 		console.log(err);
 	}

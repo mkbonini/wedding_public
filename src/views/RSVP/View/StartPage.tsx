@@ -1,12 +1,7 @@
 /** @format */
 import { useState } from 'react';
 
-import {
-	Input,
-	Name,
-	NamesContainer,
-	ParagraphText,
-} from '../styled-components';
+import { Input, Name, NamesContainer, Heading } from '../styled-components';
 
 export default function StartPage({
 	guestList,
@@ -19,8 +14,15 @@ export default function StartPage({
 		setSearchTerm(e.target.value);
 	}
 
-	function handleClick(guest) {
-		setSelectedGuest(guest);
+	function findGuest() {
+		console.log(searchTerm.split(' '));
+		let foundGuest = guestList.find((guest: any) =>
+			searchTerm.includes(guest.first_name)
+		);
+		setSelectedGuest(foundGuest);
+	}
+	function handleClick() {
+		findGuest();
 		progressFlow();
 	}
 
@@ -38,13 +40,15 @@ export default function StartPage({
 
 	return (
 		<>
-			<ParagraphText>Enter your name below to find your invite.</ParagraphText>
+			<Heading>
+				<h1>RSVP</h1> <p>Enter your name below and select your name.</p>
+			</Heading>
 			<Input
 				type='text'
 				placeholder='Search Your Name'
 				onChange={(e) => editSearchTerm(e)}
 			/>
-			<NamesContainer>
+			{/* <NamesContainer>
 				{filteredNames &&
 					filteredNames?.map((guest, i) => {
 						return (
@@ -53,7 +57,8 @@ export default function StartPage({
 							</Name>
 						);
 					})}
-			</NamesContainer>
+			</NamesContainer> */}
+			<button onClick={() => handleClick()}>Find my reservation</button>
 		</>
 	);
 }

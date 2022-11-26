@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import UnderConstruction from '../components/UnderConstruction';
-import Breadcrumbs from '../components/Breadcrumbs';
 
 const RegistryPage = styled.div<{ visible: boolean }>`
 	display: flex;
@@ -38,7 +37,6 @@ export default function Registry({ visible }) {
 				<UnderConstruction />
 			) : (
 				<RegistryPage visible={visible}>
-					<Breadcrumbs location={'registry'} />
 					<Title>
 						<h1>
 							Hi! ☻

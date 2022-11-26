@@ -7,7 +7,7 @@ export const SubTitles = styled.div`
 	flex-direction: column;
 	width: 100%;
 	&#main {
-		padding: 4rem 0rem 2rem 0rem;
+		padding: 2rem 0rem;
 	}
 	.section {
 		max-width: 980px;
@@ -22,9 +22,6 @@ export const SubTitles = styled.div`
 				font-size: 30px;
 			}
 		}
-	}
-	p {
-		padding: 1rem;
 	}
 `;
 
@@ -89,8 +86,11 @@ export const LodgingContainer = styled.div`
 export const LodgingPage = styled.div<{ visible: boolean }>`
 	width: 100%;
 	max-width: 1000px;
-	padding: 8rem 0rem 2rem 0rem;
+	padding: 12rem 0rem 2rem 0rem;
 	margin: auto;
+	@media only screen and (max-width: 900px) {
+		padding: 8rem 0rem 2rem 0rem;
+	}
 `;
 
 export const ContentCenter = styled.div`

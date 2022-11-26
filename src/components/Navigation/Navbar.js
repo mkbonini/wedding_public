@@ -25,11 +25,11 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 		const currentScrollPos = window.pageYOffset;
 		setScrollVisible(
 			(prevScrollPos > currentScrollPos &&
-				prevScrollPos - currentScrollPos > 70) ||
+				prevScrollPos - currentScrollPos > 50) ||
 				currentScrollPos < 10
 		);
 		setPrevScrollPos(currentScrollPos);
-	}, 100);
+	}, 50);
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);

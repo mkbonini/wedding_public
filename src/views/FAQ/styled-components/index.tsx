@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	width: 100%;
 	max-width: 1000px;
-	padding: 8rem 0rem;
+	padding: 12rem 0rem 8rem 0rem;
 	margin: auto;
 	display: flex;
 	justify-content: center;
@@ -40,23 +40,26 @@ export const ScrollContainer = styled.div`
 export const ScrollButton = styled.div`
 	height: 150px;
 	width: 100%;
-	background-color: #000000;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: darkgray;
+	border: 1px solid darkgray;
 	border-radius: 3px;
 	margin: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 50%;
+	background-color: black;
 	&:hover {
 		cursor: pointer;
-		border-radius: 50%;
+		color: white;
 	}
 	&#bottom-button {
 		width: 150px;
 		height: 40px;
+		border-radius: 3px;
 		&:hover {
 			cursor: pointer;
-			border-radius: 3px;
 		}
 	}
 	&:hover + #accent {
@@ -69,6 +72,7 @@ export const ScrollButton = styled.div`
 		width: 90%;
 		border-radius: 2px;
 		margin: 2px;
+		color: white;
 		&:hover {
 			border-radius: 3px;
 		}

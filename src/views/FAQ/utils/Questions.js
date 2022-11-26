@@ -35,7 +35,7 @@ export const Questions = {
 		},
 		{
 			question: 'When is the RSVP deadline?',
-			answer: 'The RSVP deadline is June 10th 2023',
+			answer: 'The RSVP deadline is June 1st 2023',
 		},
 		{
 			question: ' Do I need to mail back my RSVP or can I do it online?',

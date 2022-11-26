@@ -6,7 +6,7 @@ import styled from 'styled-components';
 //Search
 export const NamesContainer = styled.div`
 	width: 100%;
-	max-width: 600px;
+	max-width: 500px;
 	height: 200px;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
@@ -23,6 +23,7 @@ export const Name = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	&:hover {
 		background-color: #000000;
 		color: white;
@@ -32,13 +33,18 @@ export const Name = styled.div`
 
 export const Input = styled.input`
 	height: 60px;
-	width: 80%;
+	width: 100%;
 	border: none;
 	text-align: center;
 	border: 1px solid lightgray;
-	max-width: 600px;
+	border-radius: 4px;
+	max-width: 495px;
+	margin-top: 10px;
 	&:focus {
 		outline: none;
+	}
+	&::placeholder {
+		font-family: 'Nunito';
 	}
 `;
 
@@ -47,18 +53,18 @@ export const FlatButtonContainer = styled.div`
 	flex-direction: row;
 	margin: 2rem 0rem;
 	.verify-button-back {
-		min-width: 200px;
-		margin: 2rem 0rem;
+		min-width: 140px;
+		margin: 0;
 		background-color: #ffffff;
 		color: #000000;
-		border: 1px solid darkgray;
+		border: 1px solid lightgray;
 		box-shadow: unset;
 	}
 	.verify-button-submit {
-		min-width: 200px;
-		margin: 2rem 0rem;
+		min-width: 140px;
+		margin: 0;
 		background-color: #000000;
-		margin-right: 20px;
+		margin-left: 20px;
 	}
 
 	@media only screen and (max-width: 800px) {
@@ -97,23 +103,20 @@ export const SignUpForm = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	max-width: 900px;
+	justify-content: start;
 	width: 100%;
 	background-color: white;
-	padding-top: 3rem;
-
+	padding-top: 4rem;
 	button {
 		width: 100%;
-		max-width: 200px;
+		max-width: 100px;
 		height: 50px;
 		border: none;
-		border-radius: 3px;
+		border-radius: 2px;
 		margin: 10px;
 		font-weight: 500;
 		font-size: 12px;
 		background-color: #000000;
-		box-shadow: 1px 3px 4px lightgray;
 		color: white;
 		&:hover {
 			box-shadow: 1px 5px 8px lightgray;
@@ -157,7 +160,7 @@ export const RsvpContainer = styled.div`
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-
+	min-height: 80vh;
 	padding: 8rem 1rem 0rem 1rem;
 `;
 
@@ -176,8 +179,19 @@ export const Accent = styled.div`
 	background-color: #ff99ff;
 `;
 
-export const ParagraphText = styled.p`
+export const Heading = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	max-width: unset;
+	h1 {
+		margin: 10px 0px 0px 0px;
+		padding: 0;
+	}
+	p {
+		margin: 20px 0px 20px 0px;
+	}
 	@media only screen and (max-width: 900px) {
 		max-width: 250px;
 		text-align: center;

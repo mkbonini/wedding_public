@@ -12,16 +12,8 @@ import {
 	Accent,
 	ScrollToTopContainer,
 } from './styled-components';
-import Breadcrumbs from '../../components/Breadcrumbs';
 
 export default function FAQ() {
-	const displayAnswer = (index) => {
-		if (setDetailsFAQClick === index) {
-			return setDetailsFAQClick(0);
-		}
-		setDetailsFAQClick(index);
-	};
-	const [detailsFAQClicked, setDetailsFAQClick] = useState(0);
 	const [underConstruction, setUnderConstruction] = useState(false);
 
 	const scrollToSection = (key) => {
@@ -41,7 +33,6 @@ export default function FAQ() {
 				<UnderConstruction />
 			) : (
 				<Container>
-					<Breadcrumbs location={'faq'} />
 					<h2 id='title'>FAQ</h2>
 					<ScrollContainer>
 						{Object.keys(Questions).map((key) => (
@@ -54,35 +45,15 @@ export default function FAQ() {
 						))}
 					</ScrollContainer>
 					<h3 id='lodging'>Lodging</h3>
-					<Accordian
-						FAQ={Questions['lodging']}
-						clickEvent={displayAnswer}
-						clicked={detailsFAQClicked}
-					/>
+					<Accordian FAQ={Questions['lodging']} />
 					<h3 id='rsvp'>RSVP</h3>
-					<Accordian
-						FAQ={Questions['rsvp']}
-						clickEvent={displayAnswer}
-						clicked={detailsFAQClicked}
-					/>
+					<Accordian FAQ={Questions['rsvp']} />
 					<h3 id='general'>General</h3>
-					<Accordian
-						FAQ={Questions['general']}
-						clickEvent={displayAnswer}
-						clicked={detailsFAQClicked}
-					/>
+					<Accordian FAQ={Questions['general']} />
 					<h3 id='weekend'>Weekend</h3>
-					<Accordian
-						FAQ={Questions['weekend']}
-						clickEvent={displayAnswer}
-						clicked={detailsFAQClicked}
-					/>
+					<Accordian FAQ={Questions['weekend']} />
 					<h3 id='wedding'>Wedding</h3>
-					<Accordian
-						FAQ={Questions['wedding']}
-						clickEvent={displayAnswer}
-						clicked={detailsFAQClicked}
-					/>
+					<Accordian FAQ={Questions['wedding']} />
 					<ScrollToTopContainer>
 						<ScrollButton
 							onClick={() => scrollToSection('title')}

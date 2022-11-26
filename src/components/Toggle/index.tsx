@@ -10,8 +10,7 @@ const Container = styled.div`
 	}
 
 	.button-cover:before {
-		counter-increment: button-counter;
-		content: counter(button-counter);
+		content: '';
 		position: absolute;
 		right: 0;
 		bottom: 0;
@@ -107,7 +106,7 @@ const Container = styled.div`
 	}
 `;
 
-export default function Toggle({ toggleActive }) {
+export default function Toggle({ toggleActive, onClick }) {
 	return (
 		<>
 			<Container>
@@ -120,6 +119,7 @@ export default function Toggle({ toggleActive }) {
 								id='checked'
 								checked={toggleActive}
 								onChange={(e) => {}}
+								onClick={() => onClick()}
 							/>
 							<div className='knobs'></div>
 							<div className='layer'></div>

@@ -11,25 +11,24 @@ const AccordianContainer = styled.div`
 	border: 1px solid darkgray;
 	margin: 1rem;
 	transition: ease-in-out 0.2s;
-	&:hover {
-		cursor: pointer;
-	}
 `;
 const Question = styled.div<{ active: boolean }>`
-	margin: -5px 5px 5px 20px;
+	margin: -5px 5px 5px 30px;
 	height: 80px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-weight: 700;
-	font-size: 17px;
+	font-size: 20px;
 	color: black;
 	svg {
 		color: #9bba1d;
 	}
-
+	&:hover {
+		cursor: pointer;
+	}
 	@media only screen and (max-width: 900px) {
 		font-size: 15px;
+		font-weight: 500;
 	}
 `;
 
@@ -70,7 +69,7 @@ const Answer = styled.div`
 	font-family: 'Nunito';
 `;
 
-export default function Accordian({ FAQ, clickEvent, clicked }) {
+export default function Accordian({ FAQ }) {
 	const [openedPanel, setOpenPanel] = React.useState<any[]>([]);
 
 	const setClickedElement = (id) => {
@@ -86,11 +85,8 @@ export default function Accordian({ FAQ, clickEvent, clicked }) {
 			{FAQ.map((faq, index) => {
 				let active = openedPanel.includes(index);
 				return (
-					<AccordianContainer
-						key={index}
-						onClick={() => setClickedElement(index)}
-					>
-						<Question active={active}>
+					<AccordianContainer key={index}>
+						<Question active={active} onClick={() => setClickedElement(index)}>
 							<div>{faq.question}</div>
 							<ArrowContainer className={`${active && 'arrow-up'}`}>
 								<IoIosArrowDown />

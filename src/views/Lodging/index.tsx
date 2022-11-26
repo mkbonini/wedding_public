@@ -12,7 +12,6 @@ import ceremony from '../../assets/cabins/ceremony.png';
 import dining from '../../assets/cabins/dining.png';
 import beds from '../../assets/cabins/beds.png';
 import gym from '../../assets/cabins/gym.png';
-import Breadcrumbs from '../../components/Breadcrumbs';
 import Carousel from '../../components/Carousel';
 import airBnb from '../../assets/airbnb.png';
 
@@ -61,7 +60,6 @@ export default function Lodging({ visible }) {
 				<UnderConstruction />
 			) : (
 				<LodgingPage visible={visible}>
-					<Breadcrumbs location={'lodging'} />
 					<LodgingContainer>
 						<Carousel
 							images={[
@@ -79,23 +77,21 @@ export default function Lodging({ visible }) {
 						<SubTitles id='main'>
 							<div className='section'>
 								<h2>onsite cabins</h2>
+
 								<p>
 									We're so excited that this venue has lodging on site. It was
 									another reason we loved the venue so much, and our preference
 									is that guests who are staying for the weekend stay in an
-									cabin. These cabins have bunk style beds that can sleep 10 in
-									each cabin. Only downside is that guests will need to provide
-									their own bedding (sleeping bag, pillow, sheets if you
-									prefer). Staying at the venue will also cost $30/person which
-									will cover the entire weekend (friday, saturday evening).
+									cabin if they can. It will cost $30/person which will cover
+									the entire weekend (friday, saturday evening), and while they
+									are pretty nice beds they do not come with bedding, so make
+									sure you bring a sleeping bag/pillow with you.
 									<br />
 									<br />
-									The venue lodging can also accomidate over 100+ guests so
-									there is plenty of space. We want guests to enjoy themselves
-									while also being safe and not have to worry about driving late
-									in the evening. However we also understand this might not be
-									everyone’s cup of tea, so there are links below to nearby air
-									bnb’s.
+									We want guests to enjoy themselves while also being safe and
+									not have to worry about driving late in the evening. However
+									we also understand this might not be everyone’s cup of tea, so
+									there are links below to nearby air bnb’s.
 									<br />
 									<br /> If you are wanting to stay on site, you can reserve
 									your spot in a cabin or RV spot when you RSVP to the event.
@@ -104,6 +100,7 @@ export default function Lodging({ visible }) {
 								</p>
 							</div>
 						</SubTitles>
+
 						<AccentSection>
 							<SubTitles>
 								<div className='section'>
