@@ -3,17 +3,16 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import note from '../../assets/note.png';
 import UnderConstruction from '../../components/UnderConstruction';
-import Breadcrumbs from '../../components/Breadcrumbs';
 import cobra from '../../assets/cobra.png';
 import heart from '../../assets/heart.png';
 import smiley from '../../assets/smiley.png';
 
 const DetailsPage = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	padding: 7rem 1rem;
+	padding: 8rem 1rem;
 `;
 
 const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
@@ -22,18 +21,19 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 	justify-content: center;
 	flex-direction: column;
 	padding: 0;
-	min-height: 600px;
+	padding: 2rem 0rem;
 	width: 100vw;
 	background-color: ${(p) =>
 		p.align === 'end' ? 'rgba(169, 190, 255, 0.17);' : '#ffffff'};
 
 	@media only screen and (min-width: 900px) {
-		padding: 2rem 1rem;
+		min-height: 650px;
+		margin-top: -5rem;
 	}
 	.eyebrow {
 		font-size: 30px;
 		color: ${(p) => p.eyebrowColor};
-		text-align: start;
+		text-align: center;
 		font-family: 'Gilroy-Bold';
 		margin: 0;
 		@media only screen and (min-width: 900px) {
@@ -43,7 +43,7 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 	h2 {
 		font-size: 22px;
 		font-family: 'Gilroy-Bold';
-		text-align: start;
+		text-align: center;
 		padding: 0;
 		margin: 0;
 		@media only screen and (min-width: 900px) {
@@ -54,8 +54,8 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 	h3 {
 		font-size: 20px;
 		font-family: 'Gilroy';
-		text-align: start;
-		padding: 0;
+		text-align: center;
+		padding: 10px;
 		margin: 0;
 		@media only screen and (min-width: 900px) {
 			font-size: 30px;
@@ -64,15 +64,10 @@ const ContentContainer = styled.div<{ eyebrowColor: string; align: string }>`
 	}
 	p {
 		max-width: 650px;
-		text-align: start;
+		text-align: center;
 		font-family: 'Nunito';
 		@media only screen and (min-width: 900px) {
 			text-align: ${(p) => p.align};
-		}
-	}
-	&#dodgeball {
-		@media only screen and (max-width: 500px) {
-			padding-top: 5rem;
 		}
 	}
 `;
@@ -82,30 +77,29 @@ const ImageContainer = styled.div`
 	@media only screen and (min-width: 900px) {
 		display: block;
 		max-width: 350px;
-		margin: -370px 0px 70px -350px;
+		margin: -350px 0px 19px -350px;
 		img {
 			width: 100%;
 		}
 		&#cobra {
 			max-width: 150px;
-			margin: -190px -400px 0px 0px;
+			margin: -250px -400px 0px 0px;
 		}
 		&#heart {
 			max-width: 150px;
+			margin: -415px 0px 19px -350px;
 		}
 		&#smiley {
 			max-width: 200px;
-			margin: -270px -400px 120px 0px;
+			margin: -350px -400px 120px 0px;
 		}
 	}
 `;
 
 const MobileImageContainer = styled.div`
 	max-width: 300px;
-	margin: 0rem 0rem -40px -30px;
 	z-index: 2;
 	transform: rotate(-16deg);
-	padding: 20px 0px 0px;
 	img {
 		width: 100%;
 	}
@@ -116,7 +110,7 @@ const MobileImageContainer = styled.div`
 
 const DetailSection = styled.div`
 	max-width: 650px;
-	margin: 2rem;
+	margin: 1rem;
 	@media only screen and (min-width: 900px) {
 		margin: 0;
 	}
@@ -130,7 +124,6 @@ export default function Details() {
 				<UnderConstruction />
 			) : (
 				<DetailsPage>
-					<Breadcrumbs location={'details'} />
 					<MobileImageContainer>
 						<img src={note} alt='' />
 					</MobileImageContainer>

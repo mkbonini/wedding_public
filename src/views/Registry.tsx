@@ -6,29 +6,31 @@ import UnderConstruction from '../components/UnderConstruction';
 
 const RegistryPage = styled.div<{ visible: boolean }>`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
-	min-height: 600px;
+	flex-direction: column;
+	padding-top: 8rem;
+	height: 80vh;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 `;
 
 const Title = styled.div`
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	padding: 20px;
-	height: 50vh;
+	justify-content: start;
+	padding: 6rem 1rem;
+	height: 80vh;
 	h1 {
-		/* font-family: 'Urbanist', sans-serif; */
-		font-size: 45px;
+		font-size: 25px;
 		color: black;
 		font-weight: 300;
-		text-transform: uppercase;
+		text-align: center;
 	}
 `;
 
 export default function Registry({ visible }) {
-	const [underConstruction, setUnderConstruction] = useState(true);
+	const [underConstruction, setUnderConstruction] = useState(false);
 	return (
 		<>
 			{underConstruction ? (
@@ -36,7 +38,12 @@ export default function Registry({ visible }) {
 			) : (
 				<RegistryPage visible={visible}>
 					<Title>
-						<h1>Registry</h1>
+						<h1>
+							Hi! ☻
+							<br />
+							We will open this page up <br />
+							closer to the wedding <br />♡
+						</h1>
 					</Title>
 				</RegistryPage>
 			)}

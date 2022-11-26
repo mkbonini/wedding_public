@@ -12,10 +12,6 @@ const SliderContainer = styled.div`
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
-	padding-top: 2rem;
-	@media only screen and (max-width: 600px) {
-		padding-top: 0rem;
-	}
 	.main-image {
 		height: 100%;
 		width: 100%;

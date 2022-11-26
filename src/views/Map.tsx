@@ -3,12 +3,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import UnderConstruction from '../components/UnderConstruction';
-import Breadcrumbs from '../components/Breadcrumbs';
 import map from '../assets/DeerCreekMap.jpg';
 
 const MapPage = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	flex-direction: column;
 	padding: 8rem 0rem;
@@ -42,7 +41,6 @@ export default function Map({ visible }) {
 				<UnderConstruction />
 			) : (
 				<MapPage>
-					<Breadcrumbs location={'map'} />
 					<MapContainer>
 						<MapImageContainer>
 							<img src={map} alt='' />

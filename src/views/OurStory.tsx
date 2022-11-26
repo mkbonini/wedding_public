@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import UnderConstruction from '../components/UnderConstruction';
-import Breadcrumbs from '../components/Breadcrumbs';
 import mike from '../assets/mike.jpg';
 import miwha from '../assets/miwha.jpg';
 
@@ -154,7 +153,6 @@ export default function OurStory() {
 				<UnderConstruction />
 			) : (
 				<OurStoryPage>
-					<Breadcrumbs location={'our story'} />
 					<ContentSection>
 						<AboutSection>
 							<ImageContainer className='miwha'>
@@ -164,25 +162,28 @@ export default function OurStory() {
 								<h1>miwhas side</h1>
 								<Accent className='miwha' />
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-									porta a velit at porttitor. Phasellus ultrices enim id justo
-									eleifend, ac pellentesque sapien interdum. Proin accumsan,
-									dolor porta auctor eleifend, leo ipsum hendrerit arcu, et
-									facilisis mauris arcu id sem. Phasellus tempor nisi vitae
-									lectus malesuada, eu viverra neque congue. Nam sapien massa,
-									dapibus nec varius sed, tempor quis diam. Fusce eget hendrerit
-									nunc.
-									<br /> <br />
-									In at ante eget arcu hendrerit finibus. Morbi quis blandit
-									augue. Duis faucibus condimentum sapien at fringilla.
-									Pellentesque mollis, velit eu accumsan consequat, metus urna
-									vestibulum justo, sodales eleifend orci turpis in nibh. Mauris
-									gravida eget lectus vitae posuere.
-									<br /> <br />
-									Curabitur rutrum fringilla velit, et pretium odio faucibus et.
-									Nulla viverra velit vel lorem rutrum, ut pulvinar est
-									hendrerit. Curabitur eget iaculis purus. Praesent vitae tempus
-									est.
+									Mike and I met in the summer of 2013, when he did a road trip
+									with friends and stayed at my place along the way. We had many
+									opportunities to meet prior to this since we had similar
+									friends from a gap year program we did after high school on
+									the east coast. Yet somehow our paths never crossed. The first
+									time I saw him, he was wearing an oversized Hawaiian shirt
+									with mismatched gym shorts, and very much looked like somebody
+									who had spent the last week road tripping in the back of a
+									Honda Civic. <br />
+									<br />
+									The long week road trip smell was no match to the connection
+									we had, which was immediate. I was so excited to see Mike, and
+									the next few days while he was in CO we were inseparable. He
+									made me laugh and didn’t mind my crude sailor talk. He was
+									sarcastic and hilarious and I couldn’t stop smiling after our
+									interactions. From there we stayed in touch, just as friends.
+									It wasn’t until I saw him again later in the summer that I
+									realized just how important Mike was to me.
+									<br />
+									<br />A few months passed and I finally told him how I felt.
+									Luckily at this point he felt the same way. He was undoubtedly
+									my best friend and from there the rest was history.
 								</p>
 							</Story>
 						</AboutSection>
