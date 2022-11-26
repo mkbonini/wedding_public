@@ -4,32 +4,6 @@ import { Verify } from 'crypto';
 import styled from 'styled-components';
 
 //Search
-export const NamesContainer = styled.div`
-	width: 100%;
-	max-width: 500px;
-	height: 200px;
-	overflow-y: scroll;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-	&::-webkit-scrollbar {
-		display: none;
-	}
-`;
-
-export const Name = styled.div`
-	height: 60px;
-	background-color: white;
-	border-bottom: 1px solid whitesmoke;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	&:hover {
-		background-color: #000000;
-		color: white;
-		cursor: pointer;
-	}
-`;
 
 export const Input = styled.input`
 	height: 60px;

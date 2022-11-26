@@ -63,6 +63,7 @@ export default function RSVP() {
 					<StartPage
 						guestList={guestList}
 						setSelectedGuest={setSelectedGuest}
+						selectedGuest={selectedGuest}
 						progressFlow={progressFlow}
 					/>
 				);
