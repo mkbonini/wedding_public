@@ -1,7 +1,8 @@
 /** @format */
 import { useState, useEffect } from 'react';
+import { Heading, ButtonContainer, ErrorMessage } from '../styled-components';
 import Button from '../../../components/Button';
-import { Input, Heading } from '../styled-components';
+import StandardTextField from '../../../components/StandardTextField';
 
 export default function StartPage({
 	guestList,
@@ -14,6 +15,7 @@ export default function StartPage({
 	});
 
 	const [searchTerm, setSearchTerm] = useState('');
+	const [displayError, setDisplayError] = useState(false);
 
 	function editSearchTerm(e) {
 		let term = e.target.value.toLowerCase();
@@ -21,7 +23,7 @@ export default function StartPage({
 	}
 
 	function findGuest() {
-		let foundGuest = guestList.find((guest) =>
+		let foundGuest = guestList?.find((guest) =>
 			searchTerm.includes(
 				guest.first_name.toLowerCase() + ' ' + guest.last_name.toLowerCase()
 			)
@@ -32,8 +34,9 @@ export default function StartPage({
 	function handleClick() {
 		if (selectedGuest) {
 			progressFlow();
+			setDisplayError(false);
 		} else {
-			alert('no user found');
+			setDisplayError(true);
 		}
 	}
 
@@ -42,12 +45,22 @@ export default function StartPage({
 			<Heading>
 				<h1>RSVP</h1> <p>Enter your full name below to find your reservation</p>
 			</Heading>
-			<Input
-				type='text'
-				placeholder='Search Your Name'
+			<StandardTextField
+				label='Search Your Name'
 				onChange={(e) => editSearchTerm(e)}
+				type='text'
+				required={true}
 			/>
-			<Button text='Find my rsvp' onClick={() => handleClick()} />
+			{displayError && (
+				<ErrorMessage>
+					oh no! we’re having trouble finding your invite. Make sure the
+					spelling is correct and if the problem persists contact m+m at
+					mikemiwha@gmail.com
+				</ErrorMessage>
+			)}
+			<ButtonContainer>
+				<Button onClick={() => handleClick()} text='Find My RSVP' />
+			</ButtonContainer>
 		</>
 	);
 }

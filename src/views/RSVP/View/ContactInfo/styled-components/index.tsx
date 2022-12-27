@@ -2,28 +2,40 @@
 
 import styled from 'styled-components';
 
+export const ToggleContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+`;
 export const ContactInfoSection = styled.div`
 	width: 100%;
-	max-width: 1200px;
-	min-height: 600px;
+	max-width: 1000px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-bottom: 8rem;
 	h1 {
 		font-size: 20px;
+		text-align: center;
 	}
 	h2 {
-		font-size: 17px;
+		font-size: 18px;
 		margin-left: 15px;
+		font-family: 'Gilroy-Bold';
 	}
 	p {
 		padding: 0;
 		margin: 0px 0px 10px 0px;
-
+		font-family: 'Nunito';
 		&.plus-one {
 			margin: 0px 0px 10px 15px;
 		}
+	}
+`;
+
+export const InputContainer = styled.div`
+	padding: 0px 20px;
+	&.no-gap {
+		padding: 0px;
 	}
 `;
 
@@ -32,22 +44,6 @@ export const Form = styled.form`
 	label {
 		font-size: 14px;
 		padding-bottom: 5px;
-	}
-	input {
-		&.form-input {
-			height: 50px;
-			min-width: 300px;
-			width: 100%;
-			border: 1px solid gray;
-			background-color: #ffffff;
-			border-radius: 3px;
-			text-align: start;
-			padding-left: 15px;
-			box-sizing: border-box;
-			&:focus {
-				outline: none;
-			}
-		}
 	}
 
 	&:focus {
@@ -59,9 +55,11 @@ export const ContactFeild = styled.div`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	padding-bottom: 1rem;
 	&.plus-one-feild {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
+		margin-left: 1rem;
 	}
 	&.children-feild {
 		display: flex;
@@ -72,10 +70,9 @@ export const ContactFeild = styled.div`
 		&.plus-one-feild {
 			display: flex;
 			flex-direction: column;
+			padding: 0rem 1rem;
+			justify-content: start;
 		}
-
-		display: flex;
-		flex-direction: column;
 	}
 `;
 
@@ -126,6 +123,7 @@ export const ButtonContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding-top: 3rem;
+	gap: 20px;
 `;
 
 export const Button = styled.button`

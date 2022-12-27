@@ -5,25 +5,56 @@ import { RsvpContainer, SignUpForm } from './styled-components';
 import StartPage from './View/StartPage';
 
 import ContactInfoPage from './View/ContactInfo/index';
-import CabinPage from './View/CabinPage';
+import CabinPage from './View/CabinPage/index';
 import ConfirmPage from './View/ConfirmPage';
-import { getGuests, steps } from './Model';
+import { getGuests, getLodgings, steps } from './Model';
+
+interface Guests {
+	first_name: string;
+	last_name: string;
+}
+
+interface Kid {
+	name: string;
+}
+
+interface PlusOne {
+	name: string;
+}
+interface Cabin {
+	id: number;
+	name: string;
+	lodging_type: string;
+	capacity: number;
+	url: string;
+	description: string;
+	created_at: string;
+	updated_at: string;
+	title: string;
+	image_url: string;
+	color: string;
+	guests: Guests[];
+	kids: Kid[];
+	plus_ones: PlusOne[];
+}
 
 export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
-	const [currentStep, setCurrentStep] = useState(steps.start);
+	const [currentStep, setCurrentStep] = useState(steps.contact);
 	// const [currentStep, setCurrentStep] = useState(steps.contact);
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
 	const [declineRSVP, setDeclineRSVP] = useState(true);
-	const [cabin, setCabin] = useState(false);
+	const [cabinList, setCabinList] = useState([]);
 
 	// const [verified, setVarified] = useState(false);
 
 	useEffect(() => {
 		(async () => {
-			let result = await getGuests();
-			setGuestList(result);
+			let guestResult = await getGuests();
+			let lodgingResult = await getLodgings();
+			setGuestList(guestResult);
+			setCabinList(lodgingResult);
 		})();
 	}, []);
 
@@ -56,6 +87,10 @@ export default function RSVP() {
 		}
 	}
 
+	function getOccupants(cabin) {
+		return cabin.guests.concat(cabin.kids, cabin.plus_ones);
+	}
+
 	function contentToDisplay() {
 		switch (currentStep) {
 			case steps.start:
@@ -84,8 +119,8 @@ export default function RSVP() {
 						selectedGuest={selectedGuest}
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
-						cabin={cabin}
-						setCabin={setCabin}
+						cabinList={cabinList}
+						setCabinList={setCabinList}
 					/>
 				);
 

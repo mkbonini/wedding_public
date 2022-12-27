@@ -87,11 +87,11 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 						</Link>
 					</MenuLink>
 				</GroupedLinks>
-				{/* <MenuLink className='desktop rsvp'>
+				<MenuLink className='desktop rsvp'>
 					<Link to='/rsvp'>
 						<p>RSVP</p>
 					</Link>
-				</MenuLink> */}
+				</MenuLink>
 			</LinkContainer>
 			<NavAccent />
 		</MainNav>

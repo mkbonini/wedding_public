@@ -82,7 +82,7 @@ export default function Stepper({ step }) {
 				<StepBubble completed={step > 3} currentStep={step === 3}>
 					{step > 3 ? <CheckMark /> : '3'}
 				</StepBubble>
-				<h1>Food</h1>
+				<h1>Other</h1>
 			</StepSection>
 
 			<BarContainer>
@@ -90,19 +90,8 @@ export default function Stepper({ step }) {
 			</BarContainer>
 
 			<StepSection>
-				<StepBubble completed={step > 4} currentStep={step === 4}>
-					{step > 4 ? <CheckMark /> : '4'}
-				</StepBubble>
-				<h1>Other</h1>
-			</StepSection>
-
-			<BarContainer>
-				<Bar completed={step > 5} nextStep={step === 5} />
-			</BarContainer>
-
-			<StepSection>
 				<StepBubble completed={step > 5} currentStep={step === 5}>
-					{step > 5 ? <CheckMark /> : '5'}
+					{step > 4 ? <CheckMark /> : '4'}
 				</StepBubble>
 				<h1>Confirm</h1>
 			</StepSection>

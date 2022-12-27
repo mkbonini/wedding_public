@@ -1,11 +1,23 @@
 /** @format */
 
-import { Verify } from 'crypto';
 import styled from 'styled-components';
 
+export const ButtonContainer = styled.div`
+	margin: 2rem 0px;
+`;
 //Search
 
+export const ErrorMessage = styled.p`
+	font-size: 14px;
+	color: #ff3333;
+	max-width: 350px;
+	@media only screen and (max-width: 600px) {
+		max-width: 270px;
+	}
+`;
+
 export const Input = styled.input`
+	//delete
 	height: 60px;
 	width: 100%;
 	border: none;
@@ -81,12 +93,11 @@ export const SignUpForm = styled.div`
 	justify-content: start;
 	width: 100%;
 	background-color: white;
-	padding-top: 4rem;
-
+	min-height: 900px;
+	margin-top: 8rem;
 	@media only screen and (max-width: 900px) {
 		min-width: unset;
 		border: unset;
-		margin: 2rem 0rem;
 		padding-top: 0rem;
 	}
 `;
@@ -110,11 +121,11 @@ export const Radio = styled.div`
 
 export const RsvpContainer = styled.div`
 	display: flex;
-	justify-content: start;
+	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	min-height: 80vh;
-	padding: 8rem 1rem 0rem 1rem;
+	padding: 1rem;
 `;
 
 export const BackgroundAccent = styled.div`
@@ -138,6 +149,7 @@ export const Heading = styled.div`
 	align-items: center;
 	flex-direction: column;
 	max-width: unset;
+	margin-top: -2rem;
 	h1 {
 		margin: 10px 0px 0px 0px;
 		padding: 0;
