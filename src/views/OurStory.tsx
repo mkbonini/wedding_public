@@ -175,15 +175,15 @@ export default function OurStory() {
 									The long week road trip smell was no match to the connection
 									we had, which was immediate. I was so excited to see Mike, and
 									the next few days while he was in CO we were inseparable. He
-									made me laugh and didn’t mind my crude sailor talk. He was
-									sarcastic and hilarious and I couldn’t stop smiling after our
-									interactions. From there we stayed in touch, just as friends.
-									It wasn’t until I saw him again later in the summer that I
-									realized just how important Mike was to me.
+									was sarcastic and hilarious and I couldn’t stop smiling after
+									our interactions. I laughed so much when I was with him. From
+									there we stayed in touch, just as friends. It wasn’t until I
+									saw him again later in the summer that I realized just how
+									important Mike was to me.
 									<br />
 									<br />A few months passed and I finally told him how I felt.
-									Luckily at this point he felt the same way. He was undoubtedly
-									my best friend and from there the rest was history.
+									Luckily at this point he felt the same way and the rest is
+									history.
 								</p>
 							</Story>
 						</AboutSection>
@@ -193,25 +193,27 @@ export default function OurStory() {
 									<h1>michaels side</h1>
 									<Accent className='mike' />
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Nulla porta a velit at porttitor. Phasellus ultrices enim id
-										justo eleifend, ac pellentesque sapien interdum. Proin
-										accumsan, dolor porta auctor eleifend, leo ipsum hendrerit
-										arcu, et facilisis mauris arcu id sem. Phasellus tempor nisi
-										vitae lectus malesuada, eu viverra neque congue. Nam sapien
-										massa, dapibus nec varius sed, tempor quis diam. Fusce eget
-										hendrerit nunc.
-										<br /> <br />
-										In at ante eget arcu hendrerit finibus. Morbi quis blandit
-										augue. Duis faucibus condimentum sapien at fringilla.
-										Pellentesque mollis, velit eu accumsan consequat, metus urna
-										vestibulum justo, sodales eleifend orci turpis in nibh.
-										Mauris gravida eget lectus vitae posuere.
-										<br /> <br />
-										Curabitur rutrum fringilla velit, et pretium odio faucibus
-										et. Nulla viverra velit vel lorem rutrum, ut pulvinar est
-										hendrerit. Curabitur eget iaculis purus. Praesent vitae
-										tempus est.
+										I don’t know why but I was really excited to meet Miwha. The
+										first time we met I was on a road trip with Aaron and Elliot
+										Smith and we were planning to spend the night at Miwha’s
+										family house in Colorado on our way from Pennsylvania to
+										California. Miwha and I had known of each other from life as
+										Moonies but had never actually met. We were only staying
+										with Miwha because of a mutual friend, Emily Cornier, who
+										connected us when I reached out for a place to stay. <br />
+										<br />
+										The Smiths and I were driving long hours from Indianapolis
+										to get into Denver late at night, we were tired. I remember
+										seeing her smiling face in the moonlight as I stepped out of
+										the car that first night, I felt awake. I was really excited
+										to meet Miwha. <br /> <br />
+										The next day we hung out as a group but it was like no one
+										else existed. Years have past since then, but even now Miwha
+										has a way of captivating me. I continue to find myself in
+										awe of her strength, creativity, and beauty. Together we
+										have built a life with laughter and joy and I am grateful to
+										have her as my partner. I am glad you will be there to
+										celebrate the start of our next chapter. Let’s Party!
 									</p>
 								</Story>
 								<ImageContainer className='mike'>

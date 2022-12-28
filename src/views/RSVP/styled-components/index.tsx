@@ -1,43 +1,30 @@
 /** @format */
 
-import { Verify } from 'crypto';
 import styled from 'styled-components';
 
-//Search
-export const NamesContainer = styled.div`
-	width: 100%;
-	max-width: 500px;
-	height: 200px;
-	overflow-y: scroll;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-	&::-webkit-scrollbar {
-		display: none;
-	}
+export const ButtonContainer = styled.div`
+	margin: 2rem 0px;
 `;
+//Search
 
-export const Name = styled.div`
-	height: 60px;
-	background-color: white;
-	border-bottom: 1px solid whitesmoke;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	&:hover {
-		background-color: #000000;
-		color: white;
-		cursor: pointer;
+export const ErrorMessage = styled.p`
+	font-size: 14px;
+	color: #ff3333;
+	max-width: 350px;
+	@media only screen and (max-width: 600px) {
+		max-width: 270px;
 	}
 `;
 
 export const Input = styled.input`
+	//delete
 	height: 60px;
 	width: 100%;
 	border: none;
+	margin-bottom: 20px;
 	text-align: center;
 	border: 1px solid lightgray;
-	border-radius: 4px;
+	border-radius: 2px;
 	max-width: 495px;
 	margin-top: 10px;
 	&:focus {
@@ -106,34 +93,11 @@ export const SignUpForm = styled.div`
 	justify-content: start;
 	width: 100%;
 	background-color: white;
-	padding-top: 4rem;
-	button {
-		width: 100%;
-		max-width: 100px;
-		height: 50px;
-		border: none;
-		border-radius: 2px;
-		margin: 10px;
-		font-weight: 500;
-		font-size: 12px;
-		background-color: #000000;
-		color: white;
-		&:hover {
-			box-shadow: 1px 5px 8px lightgray;
-		}
-		&#back-button {
-			color: black;
-			background-color: white;
-			box-shadow: 1px 2px 9px lightgrey;
-			&:hover {
-				box-shadow: 1px 5px 8px lightgray;
-			}
-		}
-	}
+	min-height: 900px;
+	margin-top: 10rem;
 	@media only screen and (max-width: 900px) {
 		min-width: unset;
 		border: unset;
-		margin: 2rem 0rem;
 		padding-top: 0rem;
 	}
 `;
@@ -157,11 +121,11 @@ export const Radio = styled.div`
 
 export const RsvpContainer = styled.div`
 	display: flex;
-	justify-content: start;
+	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	min-height: 80vh;
-	padding: 8rem 1rem 0rem 1rem;
+	padding: 1rem;
 `;
 
 export const BackgroundAccent = styled.div`
@@ -185,6 +149,7 @@ export const Heading = styled.div`
 	align-items: center;
 	flex-direction: column;
 	max-width: unset;
+	margin-top: 6rem;
 	h1 {
 		margin: 10px 0px 0px 0px;
 		padding: 0;

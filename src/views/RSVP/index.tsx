@@ -5,9 +5,39 @@ import { RsvpContainer, SignUpForm } from './styled-components';
 import StartPage from './View/StartPage';
 
 import ContactInfoPage from './View/ContactInfo/index';
-import CabinPage from './View/CabinPage';
+import CabinPage from './View/CabinPage/index';
 import ConfirmPage from './View/ConfirmPage';
-import { getGuests, steps } from './Model';
+import { getGuests, getLodgings, steps } from './Model';
+import AdditionalPage from './View/AdditionalPage';
+
+interface Guests {
+	first_name: string;
+	last_name: string;
+}
+
+interface Kid {
+	name: string;
+}
+
+interface PlusOne {
+	name: string;
+}
+interface Cabin {
+	id: number;
+	name: string;
+	lodging_type: string;
+	capacity: number;
+	url: string;
+	description: string;
+	created_at: string;
+	updated_at: string;
+	title: string;
+	image_url: string;
+	color: string;
+	guests: Guests[];
+	kids: Kid[];
+	plus_ones: PlusOne[];
+}
 
 export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
@@ -16,14 +46,16 @@ export default function RSVP() {
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
 	const [declineRSVP, setDeclineRSVP] = useState(true);
-	const [cabin, setCabin] = useState(false);
+	const [cabinList, setCabinList] = useState([]);
 
 	// const [verified, setVarified] = useState(false);
 
 	useEffect(() => {
 		(async () => {
-			let result = await getGuests();
-			setGuestList(result);
+			let guestResult = await getGuests();
+			let lodgingResult = await getLodgings();
+			setGuestList(guestResult);
+			setCabinList(lodgingResult);
 		})();
 	}, []);
 
@@ -35,6 +67,12 @@ export default function RSVP() {
 			case steps.contact:
 				setCurrentStep(steps.cabin);
 				break;
+			case steps.cabin:
+				setCurrentStep(steps.additional);
+				break;
+			case steps.additional:
+				setCurrentStep(steps.confirm);
+				break;
 			default:
 				setCurrentStep(steps.start);
 		}
@@ -42,14 +80,17 @@ export default function RSVP() {
 
 	function regressFlow() {
 		switch (currentStep) {
-			case steps.verify:
-				setCurrentStep(steps.start);
-				break;
 			case steps.contact:
-				setCurrentStep(steps.verify);
+				setCurrentStep(steps.start);
 				break;
 			case steps.cabin:
 				setCurrentStep(steps.contact);
+				break;
+			case steps.additional:
+				setCurrentStep(steps.cabin);
+				break;
+			case steps.confirm:
+				setCurrentStep(steps.additional);
 				break;
 			default:
 				setCurrentStep(steps.start);
@@ -63,6 +104,7 @@ export default function RSVP() {
 					<StartPage
 						guestList={guestList}
 						setSelectedGuest={setSelectedGuest}
+						selectedGuest={selectedGuest}
 						progressFlow={progressFlow}
 					/>
 				);
@@ -83,8 +125,19 @@ export default function RSVP() {
 						selectedGuest={selectedGuest}
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
-						cabin={cabin}
-						setCabin={setCabin}
+						cabinList={cabinList}
+						setCabinList={setCabinList}
+					/>
+				);
+
+			case steps.additional:
+				return (
+					<AdditionalPage
+						guestList={guestList}
+						setSelectedGuest={setSelectedGuest}
+						selectedGuest={selectedGuest}
+						progressFlow={progressFlow}
+						regressFlow={regressFlow}
 					/>
 				);
 

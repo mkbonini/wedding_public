@@ -3,12 +3,16 @@ import { useState, useEffect } from 'react';
 import { Heading, ButtonContainer, ErrorMessage } from '../styled-components';
 import Button from '../../../components/Button';
 import StandardTextField from '../../../components/StandardTextField';
+import ButtonSecondary from '../../../components/ButtonSecondary';
+
+import styled from 'styled-components';
 
 export default function StartPage({
 	guestList,
 	setSelectedGuest,
 	progressFlow,
 	selectedGuest,
+	regressFlow,
 }) {
 	useEffect(() => {
 		findGuest();
@@ -40,26 +44,27 @@ export default function StartPage({
 		}
 	}
 
+	const ButtonContainer = styled.div`
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 3rem;
+		gap: 20px;
+	`;
+
 	return (
 		<>
-			<Heading>
-				<h1>RSVP</h1> <p>Enter your full name below to find your reservation</p>
-			</Heading>
+			<Heading>ADDITIONAL</Heading>
 			<StandardTextField
 				label='Search Your Name'
 				onChange={(e) => editSearchTerm(e)}
 				type='text'
 				required={true}
 			/>
-			{displayError && (
-				<ErrorMessage>
-					oh no! we’re having trouble finding your invite. Make sure the
-					spelling is correct and if the problem persists contact m+m at
-					mikemiwha@gmail.com
-				</ErrorMessage>
-			)}
 			<ButtonContainer>
-				<Button onClick={() => handleClick()} text='Find My RSVP' />
+				<ButtonSecondary onClick={() => regressFlow()} text='Back' />
+				<Button onClick={() => progressFlow()} text='Submit Your RSVP' />
 			</ButtonContainer>
 		</>
 	);

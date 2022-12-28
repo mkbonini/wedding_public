@@ -26,6 +26,7 @@ export const steps = {
 	contact: 'CONTACT',
 	cabin: 'CABIN',
 	confirm: 'CONFIRM',
+	additional: 'ADDITIONAL',
 };
 export function handleGuestDeselection(
 	setSelectedGuest: Function,
@@ -51,18 +52,41 @@ export function handleGuestDeselection(
 
 export async function getGuests() {
 	try {
-		const response = await fetch(
-			'https://mm-wedding-backend.herokuapp.com/guests',
-			{
-				method: 'GET',
-				mode: 'cors',
-				headers: {
-					'Content-Type': 'application/json',
-					'Access-Control-Allow-Origin': '*',
-					accept: 'application/json',
-				},
-			}
-		);
+		const response = await fetch('https://wedding-backend.fly.dev/guests', {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				accept: 'application/json',
+				X_API_KEY: 'ad7c95ec-dc13-43a4-8b20-408d4314279b',
+			},
+		});
+
+		if (!response.ok) {
+			throw new Error(`Error! status: ${response.status}`);
+		}
+
+		const result = await response.json();
+		console.log('making request to guets api', result);
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+export async function getLodgings() {
+	try {
+		const response = await fetch('https://wedding-backend.fly.dev/lodgings', {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				accept: 'application/json',
+				X_API_KEY: 'ad7c95ec-dc13-43a4-8b20-408d4314279b',
+			},
+		});
 
 		if (!response.ok) {
 			throw new Error(`Error! status: ${response.status}`);

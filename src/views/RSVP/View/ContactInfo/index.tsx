@@ -3,20 +3,30 @@
 import { useState } from 'react';
 import Stepper from '../../../../components/Stepper';
 import Toggle from '../../../../components/Toggle';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt, FaPlus } from 'react-icons/fa';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+
 import { handleInputRecieved } from '../../utils';
-import React from 'react';
-import { utimes } from 'fs';
 import {
 	ContactFeild,
-	FormFeild,
+	FormFeild, //delete
 	ImageContainer,
 	ContactInfoSection,
 	Form,
 	AttendingContent,
-	Button,
 	ButtonContainer,
+	InputContainer,
+	ToggleContainer,
+	KidsContainer,
+	AddChildLink,
 } from './styled-components';
+import StandardTextField from '../../../../components/StandardTextField';
+import Button from '../../../../components/Button';
+import ButtonSecondary from '../../../../components/ButtonSecondary';
 
 export default function ContactInfo({
 	regressFlow,
@@ -67,130 +77,89 @@ export default function ContactInfo({
 
 	return (
 		<>
-			<Stepper step={1} />
 			<ContactInfoSection>
 				<h1>
-					Hello, {selectedGuest?.first_name || 'No User'} Verify Contact Info
+					Hello {selectedGuest?.first_name || 'No User'}, <br /> we found your
+					reservation!
 				</h1>
-				<p> Update any information that is relevant</p>
+				<p> Please update the information below</p>
 
 				<Form onSubmit={(event) => handleSubmit(event)}>
 					<h2>Your details:</h2>
 					<ContactFeild>
-						<FormFeild>
-							<label htmlFor='first_name' className='label-visible'>
-								First name
-							</label>
-							<input
-								className='form-input'
+						<InputContainer>
+							<StandardTextField
+								label='First Name'
+								required={true}
 								type='text'
-								id='first_name'
-								name='first_name'
-								required
 								defaultValue={selectedGuest?.first_name}
 							/>
-						</FormFeild>
-						<FormFeild>
-							<label htmlFor='first_name' className='label-visible'>
-								Last name
-							</label>
-							<input
-								className='form-input'
+						</InputContainer>
+						<InputContainer>
+							<StandardTextField
+								label='Last Name'
+								required={true}
 								type='text'
-								id='last_name'
-								name='last_name'
-								required
 								defaultValue={selectedGuest?.last_name}
 							/>
-						</FormFeild>
-						<FormFeild>
-							<label htmlFor='email' className='label-visible'>
-								Email
-							</label>
-							<input
-								className='form-input'
+						</InputContainer>
+						<InputContainer>
+							<StandardTextField
+								label='Email'
+								required={true}
 								type='text'
-								id='email'
-								name='email'
-								required
 								defaultValue={selectedGuest?.email}
 							/>
-						</FormFeild>
+						</InputContainer>
 					</ContactFeild>
 
-					<h2>Will you be attending the wedding?</h2>
-
-					<div>
+					<ToggleContainer>
+						<h2>Will you be attending the wedding?</h2>
 						<Toggle
-							toggleActive={declineRSVP}
-							onClick={() => setDeclineRSVP(!declineRSVP)}
+							toggleActive={!declineRSVP}
+							onChange={() => setDeclineRSVP(!declineRSVP)}
 						/>
-					</div>
+					</ToggleContainer>
 
 					{!declineRSVP && (
 						<AttendingContent child={children} plusOne={plusOne}>
-							<h2>Plus one:</h2>
-							<p className='plus-one'>
-								Your reservation includes a plus one. Will you be bringing
-								somebody?
-							</p>
-
-							<div>
+							<ToggleContainer>
+								<div>
+									<h2>
+										Your reservation includes a plus one. Will you be bringing
+										somebody?
+									</h2>
+								</div>
 								<Toggle
-									toggleActive={!plusOne}
-									onClick={() => setPlusOne(!plusOne)}
+									toggleActive={plusOne}
+									onChange={() => setPlusOne(!plusOne)}
 								/>
-							</div>
+							</ToggleContainer>
 							{plusOne && (
-								<ContactFeild className='plus-one-feild'>
-									<FormFeild>
-										<label
-											htmlFor='plus_one_first_name'
-											className='label-visible'
-										>
-											First name
-										</label>
-										<input
-											className='form-input'
+								<ContactFeild className='plus-one-field'>
+									<p>If yes, please enter their name below</p>
+									<InputContainer className='no-gap'>
+										<StandardTextField
+											label='Full Name'
+											required={false}
 											type='text'
-											id='plus_one_first_name'
-											name='plus_one_first_name'
 										/>
-									</FormFeild>
-									<FormFeild>
-										<label
-											htmlFor='plus_one_first_name'
-											className='label-visible'
-										>
-											Last name
-										</label>
-										<input
-											className='form-input'
-											type='text'
-											id='plus_one_last_name'
-											name='plus_one_last_name'
-										/>
-									</FormFeild>
+									</InputContainer>
 								</ContactFeild>
 							)}
 
-							<h2>Children:</h2>
-							<p className='plus-one'>
-								Do you have any children in your party?
-							</p>
-							<div>
+							<ToggleContainer>
+								<h2>Do you have any children in your party?</h2>
 								<Toggle
-									toggleActive={!children}
-									onClick={() => setChildren(!children)}
+									toggleActive={children}
+									onChange={() => setChildren(!children)}
 								/>
-							</div>
+							</ToggleContainer>
 							{children && (
-								<ContactFeild className={`children-feild`}>
-									<p className='plus-one'>
-										<span>
-											<br />
-											<strong>Important</strong>
-											<br /> <br />
+								<ContactFeild className={`children-field`}>
+									<div className='message-container'>
+										<p className='title'>Important Message for Parents</p>
+										<p className='description'>
 											We understand that leaving the kids at home for a whole
 											weekend might not be possible, and while we would love to
 											see them during the weekend, we are asking that young
@@ -200,69 +169,97 @@ export default function ContactInfo({
 											these times, or we can help coordinate some sort of on
 											site sitter situation. This expense would need to be paid
 											for by the parents however.
-										</span>
-									</p>
-									<p className='plus-one'>
-										<span>
-											<br />
-											<strong>
-												Who will watch the children during the ceremony /
-												dinner?
-											</strong>
-										</span>
-									</p>
-									<FormFeild className='dropdown'>
-										<select>
-											<option value='' disabled selected>
-												Select your option
-											</option>
-											<option value='sitter'>Sitter Service</option>
-											<option value='self'>Watching them myself</option>
-										</select>
-									</FormFeild>
-									{childList.map((element, index) => (
-										<ContactFeild>
-											<FormFeild>
-												<label htmlFor='name' className='label-visible'>
-													Name
-												</label>
-												<input
-													className='form-input'
-													type='text'
-													id='name'
-													name='name'
-													value={element.name || ''}
-													onChange={(e) => handleChildInputChange(index, e)}
-												/>
-											</FormFeild>
-											<FormFeild>
-												<label htmlFor='age' className='label-visible'>
-													Age
-												</label>
-												<input
-													className='form-input'
-													type='text'
-													id='age'
-													name='age'
-													value={element.age || ''}
-													onChange={(e) => handleChildInputChange(index, e)}
-												/>
-											</FormFeild>
-											<ImageContainer
-												className='delete-button'
-												onClick={() => removeChildFormField(index)}
-											>
-												<FaTrashAlt />
-											</ImageContainer>
-										</ContactFeild>
-									))}
-									{childList.length < 4 && (
-										<button
-											onClick={(e) => addChildFormField(e)}
-											style={{ marginTop: '30px' }}
+										</p>
+									</div>
+									<h2>
+										Who will watch the children during the ceremony & dinner?
+									</h2>
+									<FormFeild>
+										<FormControl
+											variant='standard'
+											sx={{ m: 1, maxWidth: 250, margin: 0 }}
 										>
+											<InputLabel id='child-care-label'>
+												Please select an option
+											</InputLabel>
+											<Select
+												labelId='child-care-label'
+												onChange={() => {}}
+												label='Please select an option'
+											>
+												<MenuItem value={'parents'}>A Parent</MenuItem>
+												<MenuItem value={'sitter service'}>
+													Sitters Service
+												</MenuItem>
+											</Select>
+										</FormControl>
+									</FormFeild>
+
+									<KidsContainer>
+										<h2 className='enter-info'>
+											Please enter their information below
+										</h2>
+
+										{childList.map((element, index) => (
+											<ContactFeild>
+												<FormFeild>
+													<InputContainer className='no-gap'>
+														<StandardTextField
+															label='Full Name'
+															required={false}
+															type='text'
+															onChange={(e) => handleChildInputChange(index, e)}
+															defaultValue={element.name || ''}
+														/>
+													</InputContainer>
+												</FormFeild>
+												<FormFeild>
+													<InputContainer>
+														<TextField
+															sx={{ maxWidth: 100 }}
+															label='Age'
+															required={false}
+															type='number'
+															variant='standard'
+															onChange={(e) => handleChildInputChange(index, e)}
+															defaultValue={element.age || ''}
+														/>
+													</InputContainer>
+												</FormFeild>
+
+												<FormFeild>
+													<FormControl
+														variant='standard'
+														sx={{ m: 1, minWidth: 250, margin: 0 }}
+													>
+														<InputLabel id='child-sleeping-label'>
+															Do they need their own bed?
+														</InputLabel>
+														<Select
+															labelId='child-sleeping-label'
+															onChange={() => {}}
+															label='Do they need their own bed?'
+														>
+															<MenuItem value='yes'>Yes</MenuItem>
+															<MenuItem value='no'>No</MenuItem>
+														</Select>
+													</FormControl>
+												</FormFeild>
+
+												<ImageContainer
+													className='delete-button'
+													onClick={() => removeChildFormField(index)}
+												>
+													<FaTrashAlt />
+												</ImageContainer>
+											</ContactFeild>
+										))}
+									</KidsContainer>
+									{childList.length < 4 && (
+										<AddChildLink onClick={(e) => addChildFormField(e)}>
+											<FaPlus />
 											Add Child
-										</button>
+										</AddChildLink>
 									)}
 								</ContactFeild>
 							)}
@@ -270,12 +267,8 @@ export default function ContactInfo({
 					)}
 
 					<ButtonContainer>
-						<Button className='secondary' onClick={() => regressFlow()}>
-							BACK
-						</Button>
-						<Button className='main' onClick={() => determineProgressFlow()}>
-							CONTINUE
-						</Button>
+						<ButtonSecondary onClick={() => regressFlow()} text='Back' />
+						<Button onClick={() => determineProgressFlow()} text='Continue' />
 					</ButtonContainer>
 				</Form>
 			</ContactInfoSection>

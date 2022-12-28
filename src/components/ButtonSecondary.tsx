@@ -3,9 +3,9 @@
 import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
-const Primary = styled(Button)<ButtonProps>(({ theme }) => ({
+const Secondary = styled(Button)<ButtonProps>(({ theme }) => ({
 	minWidth: '100px',
-	backgroundColor: '#3366FF',
+	backgroundColor: '#ffffff',
 	height: '50px',
 	borderRadius: '100px;',
 	textTransform: 'none',
@@ -13,14 +13,17 @@ const Primary = styled(Button)<ButtonProps>(({ theme }) => ({
 	fontFamily: 'Gilroy-Bold',
 	fontSize: '14px;',
 	lineHeight: '20px',
+	border: '1px solid #3366FF',
+	color: '#3366FF',
 	':hover': {
 		backgroundColor: '#6D7DE9',
+		color: '#fff',
 	},
 }));
 
-export default function PrimaryButton({ text, onClick }) {
+export default function SecondaryButton({ text, onClick }) {
 	return (
-		<Primary
+		<Secondary
 			variant='contained'
 			onClick={() => {
 				window.scrollTo(0, 0);
@@ -28,6 +31,6 @@ export default function PrimaryButton({ text, onClick }) {
 			}}
 		>
 			{text}
-		</Primary>
+		</Secondary>
 	);
 }

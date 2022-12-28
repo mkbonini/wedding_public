@@ -70,7 +70,6 @@ export const MenuLink = styled.div`
 	&.rsvp {
 		font-size: 16px;
 		background-color: #000000;
-
 		height: 25px;
 		margin-right: 10px;
 		position: relative;
