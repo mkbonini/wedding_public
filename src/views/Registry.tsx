@@ -2,14 +2,13 @@
 
 import styled from 'styled-components';
 
-const RegistryPage = styled.div<{ visible: boolean }>`
+const RegistryPage = styled.div`
 	display: flex;
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
 	padding-top: 12rem;
-	height: 70vh;
-	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
+	height: 90vh;
 `;
 
 const Title = styled.div`
@@ -29,7 +28,7 @@ const Title = styled.div`
 
 export default function Registry() {
 	return (
-		<RegistryPage visible={visible}>
+		<RegistryPage>
 			<Title>
 				<h1>
 					Hello there!

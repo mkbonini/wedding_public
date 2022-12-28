@@ -9,32 +9,32 @@ import FAQ from '../../views/FAQ/index';
 import OurStory from '../../views/OurStory';
 import Map from '../../views/Map';
 
-export default function Navigation({ flyoutVisible }) {
+export default function Navigation() {
 	return (
 		<Switch>
 			<Route path='/our-story'>
-				<OurStory flyoutVisible={flyoutVisible} />
+				<OurStory />
 			</Route>
 			<Route path='/details'>
-				<Details flyoutVisible={flyoutVisible} />
+				<Details />
 			</Route>
 			<Route path='/rsvp'>
-				<RSVP flyoutVisible={flyoutVisible} />
+				<RSVP />
 			</Route>
 			<Route path='/registry'>
-				<Registry flyoutVisible={flyoutVisible} />
+				<Registry />
 			</Route>
 			<Route path='/lodging'>
-				<Lodging flyoutVisible={flyoutVisible} />
+				<Lodging />
 			</Route>
 			<Route path='/map'>
-				<Map flyoutVisible={flyoutVisible} />
+				<Map />
 			</Route>
 			<Route path='/faq'>
-				<FAQ flyoutVisible={flyoutVisible} />
+				<FAQ />
 			</Route>
 			<Route path='/'>
-				<Home flyoutVisible={flyoutVisible} />
+				<Home />
 			</Route>
 		</Switch>
 	);

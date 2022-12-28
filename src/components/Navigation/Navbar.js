@@ -50,11 +50,11 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 						<div className='bar' />
 					</HamburgerContainer>
 					<Title onClick={() => history.push('/')}>M + M</Title>
-					{/* <MenuLink className='rsvp'>
+					<MenuLink className='rsvp'>
 						<Link to='/rsvp'>
 							<p>RSVP</p>
 						</Link>
-					</MenuLink> */}
+					</MenuLink>
 				</div>
 			</MobileMenu>
 			<LinkContainer>
