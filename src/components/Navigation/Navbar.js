@@ -13,6 +13,7 @@ import {
 	NavAccent,
 	HamburgerContainer,
 } from './styled-components';
+import ButtonSmall from '../ButtonSmall';
 
 export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 	const history = useHistory();
@@ -50,11 +51,7 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 						<div className='bar' />
 					</HamburgerContainer>
 					<Title onClick={() => history.push('/')}>M + M</Title>
-					<MenuLink className='rsvp'>
-						<Link to='/rsvp'>
-							<p>RSVP</p>
-						</Link>
-					</MenuLink>
+					<ButtonSmall text='RSVP' onClick={() => history.push('/rsvp')} />
 				</div>
 			</MobileMenu>
 			<LinkContainer>
@@ -91,10 +88,8 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 						</Link>
 					</MenuLink>
 				</GroupedLinks>
-				<MenuLink className='desktop rsvp'>
-					<Link to='/rsvp'>
-						<p>RSVP</p>
-					</Link>
+				<MenuLink className='desktop'>
+					<ButtonSmall text='RSVP' onClick={() => history.push('/rsvp')} />
 				</MenuLink>
 			</LinkContainer>
 			<NavAccent />

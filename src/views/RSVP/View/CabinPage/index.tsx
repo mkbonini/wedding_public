@@ -110,7 +110,7 @@ export default function CabinPage({
 							<h2>Available Cabins</h2>
 							{cabinList && (
 								<CabinCardsContainer>
-									{cabinList.map((cabin) => {
+									{cabinList.map((cabin, index) => {
 										if (cabin.lodging_type !== 'appartment') {
 											return (
 												<Card
@@ -119,6 +119,7 @@ export default function CabinPage({
 													type={cabin.lodging_type}
 													remaining={cabin.spots_remaining}
 													onClick={() => handleCardClick(cabin)}
+													key={`cabin-card-${index}`}
 												/>
 											);
 										}
@@ -134,6 +135,7 @@ export default function CabinPage({
 								setActiveModal={setActiveModal}
 								noCabinSelected={selectedCabin.id !== 0}
 								selectedCabin={selectedCabin}
+								key={`${selectedCabin.id}-popup`}
 							/>
 						)}
 					</div>

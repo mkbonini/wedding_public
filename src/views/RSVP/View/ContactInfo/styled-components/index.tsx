@@ -24,13 +24,17 @@ export const ToggleContainer = styled.div`
 	justify-content: space-between;
 	padding: 1rem 2rem 0rem 0rem;
 `;
-export const ContactInfoSection = styled.div`
+export const ContactInfoSection = styled.div<{
+	kids: boolean;
+	plusOne: boolean;
+}>`
 	width: 100%;
 	max-width: 1000px;
+	min-height: 75vh;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	margin-top: 17rem;
+	padding-top: 8rem;
+
 	h1 {
 		font-size: 20px;
 		text-align: center;
@@ -46,6 +50,9 @@ export const ContactInfoSection = styled.div`
 		margin: 0px 0px 10px 0px;
 		font-family: 'Nunito';
 		color: #343232;
+	}
+	p.heading {
+		text-align: center;
 	}
 `;
 

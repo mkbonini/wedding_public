@@ -21,7 +21,6 @@ export default function StandardTextField({
 		<Input
 			id='standard-basic'
 			label={label}
-			variant='standard'
 			onChange={(e) => onChange(e)}
 			required={required}
 			type={type}

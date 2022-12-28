@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 export const CabinListContainer = styled.div`
-	height: 670px;
+	height: 700px;
 	overflow: scroll;
 	border: 1px solid whitesmoke;
 	margin-bottom: 5rem;
@@ -30,12 +30,13 @@ export const ToggleContainer = styled.div`
 `;
 
 export const CabinInfoSection = styled.div`
-	max-width: 1400px;
+	max-width: 1200px;
+	min-height: 75vh;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
 	position: relative;
-	margin: 17rem 4rem 0rem 4rem;
+	margin-top: 8rem;
 	.stepper-container {
 		display: flex;
 		justify-content: center;
@@ -106,11 +107,12 @@ export const ViewMoreLink = styled.div`
 `;
 
 export const SelectedContent = styled.div`
+	padding: 1rem;
 	p {
 		margin: 0;
-		padding-right: 4rem;
 		font-size: 15px;
-		padding-right: 6rem;
+		max-width: 960px;
+		padding: 0rem 4rem 1rem 0rem;
 	}
 `;
 

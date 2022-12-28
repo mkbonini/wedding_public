@@ -4,12 +4,8 @@ import styled from 'styled-components';
 
 //RSVP Main
 export const RsvpContainer = styled.div`
-	display: flex;
-	justify-content: start;
-	align-items: center;
-	flex-direction: column;
-	min-height: 90vh;
-	padding: 1rem;
+	padding-top: 5rem;
+	min-height: 800px;
 `;
 
 export const SignUpForm = styled.div`
@@ -56,16 +52,17 @@ export const ButtonContainer = styled.div`
 export const ErrorMessage = styled.p`
 	font-size: 14px;
 	color: #ff3333;
-	max-width: 350px;
+	max-width: 340px;
+	text-align: center;
 	@media only screen and (max-width: 600px) {
 		max-width: 270px;
 	}
 `;
 
 export const StartPageContainer = styled.div`
-	margin-top: 25rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	padding-top: 10rem;
+	height: 75vh;
 `;
