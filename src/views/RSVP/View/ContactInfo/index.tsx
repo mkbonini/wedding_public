@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Stepper from '../../../../components/Stepper';
 import Toggle from '../../../../components/Toggle';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt, FaPlus } from 'react-icons/fa';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -21,6 +21,8 @@ import {
 	ButtonContainer,
 	InputContainer,
 	ToggleContainer,
+	KidsContainer,
+	AddChildLink,
 } from './styled-components';
 import StandardTextField from '../../../../components/StandardTextField';
 import Button from '../../../../components/Button';
@@ -80,7 +82,7 @@ export default function ContactInfo({
 					Hello {selectedGuest?.first_name || 'No User'}, <br /> we found your
 					reservation!
 				</h1>
-				<p> Please verify the information below</p>
+				<p> Please update the information below</p>
 
 				<Form onSubmit={(event) => handleSubmit(event)}>
 					<h2>Your details:</h2>
@@ -134,8 +136,8 @@ export default function ContactInfo({
 								/>
 							</ToggleContainer>
 							{plusOne && (
-								<ContactFeild className='plus-one-feild'>
-									<p>Please enter their name below</p>
+								<ContactFeild className='plus-one-field'>
+									<p>If yes, please enter their name below</p>
 									<InputContainer className='no-gap'>
 										<StandardTextField
 											label='Full Name'
@@ -154,12 +156,10 @@ export default function ContactInfo({
 								/>
 							</ToggleContainer>
 							{children && (
-								<ContactFeild className={`children-feild`}>
-									<p className='plus-one'>
-										<span>
-											<br />
-											<strong>Important</strong>
-											<br /> <br />
+								<ContactFeild className={`children-field`}>
+									<div className='message-container'>
+										<p className='title'>Important Message for Parents</p>
+										<p className='description'>
 											We understand that leaving the kids at home for a whole
 											weekend might not be possible, and while we would love to
 											see them during the weekend, we are asking that young
@@ -169,15 +169,15 @@ export default function ContactInfo({
 											these times, or we can help coordinate some sort of on
 											site sitter situation. This expense would need to be paid
 											for by the parents however.
-										</span>
-									</p>
+										</p>
+									</div>
 									<h2>
 										Who will watch the children during the ceremony & dinner?
 									</h2>
 									<FormFeild>
 										<FormControl
 											variant='standard'
-											sx={{ m: 1, maxWidth: 250 }}
+											sx={{ m: 1, maxWidth: 250, margin: 0 }}
 										>
 											<InputLabel id='child-care-label'>
 												Please select an option
@@ -195,62 +195,71 @@ export default function ContactInfo({
 										</FormControl>
 									</FormFeild>
 
-									{childList.map((element, index) => (
-										<ContactFeild>
-											<FormFeild>
-												<InputContainer>
-													<StandardTextField
-														label='Full Name'
-														required={false}
-														type='text'
-														onChange={(e) => handleChildInputChange(index, e)}
-														defaultValue={element.name || ''}
-													/>
-												</InputContainer>
-											</FormFeild>
-											<FormFeild>
-												<InputContainer>
-													<TextField
-														sx={{ maxWidth: 100 }}
-														label='Age'
-														required={false}
-														type='number'
+									<KidsContainer>
+										<h2 className='enter-info'>
+											Please enter their information below
+										</h2>
+
+										{childList.map((element, index) => (
+											<ContactFeild>
+												<FormFeild>
+													<InputContainer className='no-gap'>
+														<StandardTextField
+															label='Full Name'
+															required={false}
+															type='text'
+															onChange={(e) => handleChildInputChange(index, e)}
+															defaultValue={element.name || ''}
+														/>
+													</InputContainer>
+												</FormFeild>
+												<FormFeild>
+													<InputContainer>
+														<TextField
+															sx={{ maxWidth: 100 }}
+															label='Age'
+															required={false}
+															type='number'
+															variant='standard'
+															onChange={(e) => handleChildInputChange(index, e)}
+															defaultValue={element.age || ''}
+														/>
+													</InputContainer>
+												</FormFeild>
+
+												<FormFeild>
+													<FormControl
 														variant='standard'
-														onChange={(e) => handleChildInputChange(index, e)}
-														defaultValue={element.age || ''}
-													/>
-												</InputContainer>
-											</FormFeild>
-
-											<FormFeild>
-												<FormControl
-													variant='standard'
-													sx={{ m: 1, minWidth: 250 }}
-												>
-													<InputLabel id='child-sleeping-label'>
-														Do they need their own bed?
-													</InputLabel>
-													<Select
-														labelId='child-sleeping-label'
-														onChange={() => {}}
-														label='Do they need their own bed?'
+														sx={{ m: 1, minWidth: 250, margin: 0 }}
 													>
-														<MenuItem value='yes'>Yes</MenuItem>
-														<MenuItem value='no'>No</MenuItem>
-													</Select>
-												</FormControl>
-											</FormFeild>
+														<InputLabel id='child-sleeping-label'>
+															Do they need their own bed?
+														</InputLabel>
+														<Select
+															labelId='child-sleeping-label'
+															onChange={() => {}}
+															label='Do they need their own bed?'
+														>
+															<MenuItem value='yes'>Yes</MenuItem>
+															<MenuItem value='no'>No</MenuItem>
+														</Select>
+													</FormControl>
+												</FormFeild>
 
-											<ImageContainer
-												className='delete-button'
-												onClick={() => removeChildFormField(index)}
-											>
-												<FaTrashAlt />
-											</ImageContainer>
-										</ContactFeild>
-									))}
+												<ImageContainer
+													className='delete-button'
+													onClick={() => removeChildFormField(index)}
+												>
+													<FaTrashAlt />
+												</ImageContainer>
+											</ContactFeild>
+										))}
+									</KidsContainer>
 									{childList.length < 4 && (
-										<p onClick={(e) => addChildFormField(e)}>+ Add Child</p>
+										<AddChildLink onClick={(e) => addChildFormField(e)}>
+											<FaPlus />
+											Add Child
+										</AddChildLink>
 									)}
 								</ContactFeild>
 							)}

@@ -15,6 +15,10 @@ h2 {
 }
 
 
+body.modal-open {
+    overflow: hidden;
+}
+
 
 
 input[type='text'],
@@ -46,4 +50,17 @@ textarea {
 	src: local("Gilroy"),
 	url("./fonts/Gilroy/Gilroy-ExtraBold.otf") format("opentype");
 }
+
+@font-face {
+	font-family: "Gilroy-Medium";
+	src: local("Gilroy"),
+	url("./fonts/Gilroy/Gilroy-Medium.ttf") format("opentype");
+}
+
+@font-face {
+	font-family: "Gilroy-SemiBold";
+	src: local("Gilroy"),
+	url("./fonts/Gilroy/Gilroy-Semibold.ttf") format("opentype");
+}
+
 	

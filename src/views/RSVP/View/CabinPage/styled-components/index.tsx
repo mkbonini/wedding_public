@@ -1,59 +1,64 @@
 /** @format */
 import styled from 'styled-components';
 
+export const CabinListContainer = styled.div`
+	height: 650px;
+	overflow: scroll;
+	border: 1px solid whitesmoke;
+	h2 {
+		padding: 1rem;
+		background-color: whitesmoke;
+		position: sticky;
+	}
+`;
 export const ButtonContainer = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 3rem;
+	gap: 20px;
 `;
 
-export const Button = styled.button`
-	height: 50px;
-	width: 200px;
-
-	&.main {
-		background-color: #000000;
-		color: #ffffff;
-	}
-	&.secondary {
-		color: #000000;
-		background-color: #ffffff;
-		border: 1px solid #000000;
-	}
+export const ToggleContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 2rem 0rem 0rem;
+	width: 100%;
 `;
 
 export const CabinInfoSection = styled.div`
-	width: 100%;
 	max-width: 1200px;
 	min-height: 600px;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
 	padding-bottom: 8rem;
+	position: relative;
+	margin: 0rem 4rem;
 	h2 {
-		font-size: 20px;
+		font-size: 18px;
+		margin: 1rem 0rem;
+		font-family: 'Gilroy-SemiBold';
+		color: #343232;
 	}
 	p {
-		padding: 20px 0px;
+		padding: 0;
 		margin: 0px 0px 10px 0px;
-		&.plus-one {
-			margin: 0px 0px 10px 15px;
-		}
+		font-family: 'Nunito';
+		color: #343232;
+	}
+	p.description {
+		padding-right: 8rem;
 	}
 `;
 
 export const CabinCardsContainer = styled.div`
-	max-width: 1200px;
-	width: 100%;
+	max-width: 1400px;
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: start;
-	margin: 2rem 0rem;
-	overflow: hidden;
-	position: relative;
+	flex-wrap: wrap;
+	justify-content: center;
 `;
 
 export const FadeLeft = styled.div`
@@ -127,39 +132,6 @@ export const SelectCabinButton = styled.div`
 	cursor: pointer;
 `;
 
-export const CabinSpotContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	padding: 0rem 2rem;
-`;
-export const CabinSpot = styled.div<{ color: string }>`
-	display: flex;
-	flex-direction: row;
-	min-width: 170px;
-	padding: 10px;
-	div {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		&.spot-number-unavailable {
-			font-size: 12px;
-			background-color: ${(p) => p.color && p.color};
-			width: 25px;
-			height: 25px;
-			color: white;
-			margin-right: 10px;
-		}
-		&.spot-number-available {
-			font-size: 12px;
-			background-color: black;
-			width: 25px;
-			height: 25px;
-			color: white;
-			margin-right: 10px;
-		}
-	}
-`;
 export const IconContainer = styled.div`
 	display: flex;
 	flex-direction: column;

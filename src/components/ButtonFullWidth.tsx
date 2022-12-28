@@ -3,9 +3,10 @@
 import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
-const Primary = styled(Button)<ButtonProps>(({ theme }) => ({
-	minWidth: '100px',
-	backgroundColor: '#3366FF',
+const FullWidth = styled(Button)<ButtonProps>(({ theme }) => ({
+	maxWidth: '500px',
+	width: '100%',
+	backgroundColor: '#242424',
 	height: '50px',
 	borderRadius: '100px;',
 	textTransform: 'none',
@@ -13,14 +14,16 @@ const Primary = styled(Button)<ButtonProps>(({ theme }) => ({
 	fontFamily: 'Gilroy-Bold',
 	fontSize: '14px;',
 	lineHeight: '20px',
+	color: '#fff',
 	':hover': {
-		backgroundColor: '#6D7DE9',
+		backgroundColor: '#000',
+		color: '#fff',
 	},
 }));
 
-export default function PrimaryButton({ text, onClick }) {
+export default function ButtonFullWidth({ text, onClick }) {
 	return (
-		<Primary
+		<FullWidth
 			variant='contained'
 			onClick={() => {
 				window.scrollTo(0, 0);
@@ -28,6 +31,6 @@ export default function PrimaryButton({ text, onClick }) {
 			}}
 		>
 			{text}
-		</Primary>
+		</FullWidth>
 	);
 }

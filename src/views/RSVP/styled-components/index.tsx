@@ -94,7 +94,7 @@ export const SignUpForm = styled.div`
 	width: 100%;
 	background-color: white;
 	min-height: 900px;
-	margin-top: 8rem;
+	margin-top: 10rem;
 	@media only screen and (max-width: 900px) {
 		min-width: unset;
 		border: unset;
@@ -149,7 +149,7 @@ export const Heading = styled.div`
 	align-items: center;
 	flex-direction: column;
 	max-width: unset;
-	margin-top: -2rem;
+	margin-top: 6rem;
 	h1 {
 		margin: 10px 0px 0px 0px;
 		padding: 0;

@@ -26,6 +26,7 @@ export const steps = {
 	contact: 'CONTACT',
 	cabin: 'CABIN',
 	confirm: 'CONFIRM',
+	additional: 'ADDITIONAL',
 };
 export function handleGuestDeselection(
 	setSelectedGuest: Function,

@@ -3,9 +3,9 @@
 import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
-const Primary = styled(Button)<ButtonProps>(({ theme }) => ({
+const Error = styled(Button)<ButtonProps>(({ theme }) => ({
 	minWidth: '100px',
-	backgroundColor: '#3366FF',
+	backgroundColor: '#FF3333',
 	height: '50px',
 	borderRadius: '100px;',
 	textTransform: 'none',
@@ -13,21 +13,17 @@ const Primary = styled(Button)<ButtonProps>(({ theme }) => ({
 	fontFamily: 'Gilroy-Bold',
 	fontSize: '14px;',
 	lineHeight: '20px',
+	color: '#FFDDDD',
 	':hover': {
-		backgroundColor: '#6D7DE9',
+		backgroundColor: '#FFDDDD',
+		color: '#FF3333',
 	},
 }));
 
-export default function PrimaryButton({ text, onClick }) {
+export default function ButtonError({ text, onClick }) {
 	return (
-		<Primary
-			variant='contained'
-			onClick={() => {
-				window.scrollTo(0, 0);
-				onClick();
-			}}
-		>
+		<Error variant='contained' onClick={() => onClick()}>
 			{text}
-		</Primary>
+		</Error>
 	);
 }

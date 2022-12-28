@@ -1,11 +1,28 @@
 /** @format */
 
 import styled from 'styled-components';
+export const KidsContainer = styled.div`
+	padding-top: 2rem;
+`;
 
+export const AddChildLink = styled.a`
+	margin: 2rem 0rem;
+	max-width: 100px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
+	color: #3378cf;
+	:hover {
+		cursor: pointer;
+		color: #99bbe6;
+	}
+`;
 export const ToggleContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding: 1rem 2rem 0rem 0rem;
 `;
 export const ContactInfoSection = styled.div`
 	width: 100%;
@@ -19,28 +36,25 @@ export const ContactInfoSection = styled.div`
 	}
 	h2 {
 		font-size: 18px;
-		margin-left: 15px;
-		font-family: 'Gilroy-Bold';
+		margin: 1rem 0rem;
+		font-family: 'Gilroy-SemiBold';
+		color: #343232;
 	}
 	p {
 		padding: 0;
 		margin: 0px 0px 10px 0px;
 		font-family: 'Nunito';
-		&.plus-one {
-			margin: 0px 0px 10px 15px;
-		}
+		color: #343232;
 	}
 `;
 
 export const InputContainer = styled.div`
-	padding: 0px 20px;
-	&.no-gap {
-		padding: 0px;
-	}
+	padding-right: 20px;
 `;
 
 export const Form = styled.form`
 	width: 100%;
+	padding: 1rem;
 	label {
 		font-size: 14px;
 		padding-bottom: 5px;
@@ -55,23 +69,31 @@ export const ContactFeild = styled.div`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	padding-bottom: 1rem;
-	&.plus-one-feild {
+	&.plus-one-field {
 		display: flex;
 		flex-direction: column;
-		margin-left: 1rem;
+		padding: 0;
+		margin: 0;
 	}
-	&.children-feild {
+	&.children-field {
 		display: flex;
 		flex-direction: column;
-	}
-
-	@media only screen and (max-width: 900px) {
-		&.plus-one-feild {
-			display: flex;
-			flex-direction: column;
-			padding: 0rem 1rem;
-			justify-content: start;
+		.message-container {
+			background-color: whitesmoke;
+			padding: 0rem 2rem;
+			border-radius: 5px;
+			margin: 1.5rem 0rem;
+			max-width: 900px;
+		}
+		p.title {
+			font-weight: 700;
+			padding-top: 2rem;
+			font-size: 15px;
+		}
+		p.description {
+			line-height: 18px;
+			font-size: 15px;
+			padding: 0px 0px 20px 0px !important;
 		}
 	}
 `;
@@ -79,7 +101,7 @@ export const ContactFeild = styled.div`
 export const FormFeild = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin: 10px;
+	margin: 10px 0px;
 	select {
 		display: block;
 		padding: 10px;
@@ -122,25 +144,8 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-top: 3rem;
+	padding: 2rem 0rem 6rem 0rem;
 	gap: 20px;
-`;
-
-export const Button = styled.button`
-	height: 50px;
-	width: 200px;
-	&.main {
-		background-color: #000000;
-		color: #ffffff;
-	}
-	&.secondary {
-		color: #000000;
-		background-color: #ffffff;
-		border: 1px solid #000000;
-	}
-	&.add-child-button {
-		margin-top: 20px;
-	}
 `;
 
 export const AttendingContent = styled.div<{

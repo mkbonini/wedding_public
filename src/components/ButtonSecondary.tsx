@@ -13,16 +13,23 @@ const Secondary = styled(Button)<ButtonProps>(({ theme }) => ({
 	fontFamily: 'Gilroy-Bold',
 	fontSize: '14px;',
 	lineHeight: '20px',
-	border: '1px solid #6D7DE9',
-	color: '#6D7DE9',
+	border: '1px solid #3366FF',
+	color: '#3366FF',
 	':hover': {
-		backgroundColor: '#ffffff',
+		backgroundColor: '#6D7DE9',
+		color: '#fff',
 	},
 }));
 
 export default function SecondaryButton({ text, onClick }) {
 	return (
-		<Secondary variant='contained' onClick={() => onClick()}>
+		<Secondary
+			variant='contained'
+			onClick={() => {
+				window.scrollTo(0, 0);
+				onClick();
+			}}
+		>
 			{text}
 		</Secondary>
 	);

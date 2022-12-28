@@ -8,6 +8,7 @@ import ContactInfoPage from './View/ContactInfo/index';
 import CabinPage from './View/CabinPage/index';
 import ConfirmPage from './View/ConfirmPage';
 import { getGuests, getLodgings, steps } from './Model';
+import AdditionalPage from './View/AdditionalPage';
 
 interface Guests {
 	first_name: string;
@@ -40,7 +41,7 @@ interface Cabin {
 
 export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
-	const [currentStep, setCurrentStep] = useState(steps.contact);
+	const [currentStep, setCurrentStep] = useState(steps.start);
 	// const [currentStep, setCurrentStep] = useState(steps.contact);
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
@@ -66,6 +67,12 @@ export default function RSVP() {
 			case steps.contact:
 				setCurrentStep(steps.cabin);
 				break;
+			case steps.cabin:
+				setCurrentStep(steps.additional);
+				break;
+			case steps.additional:
+				setCurrentStep(steps.confirm);
+				break;
 			default:
 				setCurrentStep(steps.start);
 		}
@@ -73,22 +80,21 @@ export default function RSVP() {
 
 	function regressFlow() {
 		switch (currentStep) {
-			case steps.verify:
-				setCurrentStep(steps.start);
-				break;
 			case steps.contact:
-				setCurrentStep(steps.verify);
+				setCurrentStep(steps.start);
 				break;
 			case steps.cabin:
 				setCurrentStep(steps.contact);
 				break;
+			case steps.additional:
+				setCurrentStep(steps.cabin);
+				break;
+			case steps.confirm:
+				setCurrentStep(steps.additional);
+				break;
 			default:
 				setCurrentStep(steps.start);
 		}
-	}
-
-	function getOccupants(cabin) {
-		return cabin.guests.concat(cabin.kids, cabin.plus_ones);
 	}
 
 	function contentToDisplay() {
@@ -121,6 +127,17 @@ export default function RSVP() {
 						progressFlow={progressFlow}
 						cabinList={cabinList}
 						setCabinList={setCabinList}
+					/>
+				);
+
+			case steps.additional:
+				return (
+					<AdditionalPage
+						guestList={guestList}
+						setSelectedGuest={setSelectedGuest}
+						selectedGuest={selectedGuest}
+						progressFlow={progressFlow}
+						regressFlow={regressFlow}
 					/>
 				);
 
