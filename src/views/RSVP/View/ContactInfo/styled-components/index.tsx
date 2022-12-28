@@ -99,30 +99,6 @@ export const ContactFeild = styled.div`
 	}
 `;
 
-export const FormFeild = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin: 10px 0px;
-	select {
-		display: block;
-		padding: 10px;
-		height: 55px;
-		max-width: 330px;
-		font-size: 16px;
-		border: 1px solid gray;
-		background-color: #ffffff;
-		border-radius: 3px;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-		background-repeat: no-repeat;
-		background-position: right 1rem center;
-		background-size: 1em;
-	}
-`;
-
 export const ImageContainer = styled.div`
 	&.delete-button {
 		width: 40px;
@@ -148,8 +124,3 @@ export const ButtonContainer = styled.div`
 	padding: 2rem 0rem 6rem 0rem;
 	gap: 20px;
 `;
-
-export const AttendingContent = styled.div<{
-	child: boolean;
-	plusOne: boolean;
-}>``;

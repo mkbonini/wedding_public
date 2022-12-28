@@ -83,7 +83,7 @@ export const LodgingContainer = styled.div`
 	}
 `;
 
-export const LodgingPage = styled.div<{ visible: boolean }>`
+export const LodgingPage = styled.div`
 	width: 100%;
 	max-width: 1000px;
 	padding: 12rem 0rem 2rem 0rem;

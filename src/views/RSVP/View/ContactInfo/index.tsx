@@ -1,7 +1,6 @@
 /** @format */
 
 import { useState } from 'react';
-import Stepper from '../../../../components/Stepper';
 import Toggle from '../../../../components/Toggle';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
 import Select from '@mui/material/Select';
@@ -9,15 +8,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-
-import { handleInputRecieved } from '../../utils';
 import {
 	ContactFeild,
-	FormFeild, //delete
 	ImageContainer,
 	ContactInfoSection,
 	Form,
-	AttendingContent,
 	ButtonContainer,
 	InputContainer,
 	ToggleContainer,
@@ -35,10 +30,6 @@ export default function ContactInfo({
 	declineRSVP,
 	setDeclineRSVP,
 }) {
-	function handleBackButton() {
-		regressFlow();
-	}
-
 	const [childList, setChildList] = useState([{ name: '', age: '' }]);
 	const [plusOne, setPlusOne] = useState(false);
 	const [children, setChildren] = useState(false);
@@ -122,7 +113,7 @@ export default function ContactInfo({
 					</ToggleContainer>
 
 					{!declineRSVP && (
-						<AttendingContent child={children} plusOne={plusOne}>
+						<div>
 							<ToggleContainer>
 								<div>
 									<h2>
@@ -174,26 +165,25 @@ export default function ContactInfo({
 									<h2>
 										Who will watch the children during the ceremony & dinner?
 									</h2>
-									<FormFeild>
-										<FormControl
-											variant='standard'
-											sx={{ m: 1, maxWidth: 250, margin: 0 }}
+
+									<FormControl
+										variant='standard'
+										sx={{ m: 1, maxWidth: 250, margin: 0 }}
+									>
+										<InputLabel id='child-care-label'>
+											Please select an option
+										</InputLabel>
+										<Select
+											labelId='child-care-label'
+											onChange={() => {}}
+											label='Please select an option'
 										>
-											<InputLabel id='child-care-label'>
-												Please select an option
-											</InputLabel>
-											<Select
-												labelId='child-care-label'
-												onChange={() => {}}
-												label='Please select an option'
-											>
-												<MenuItem value={'parents'}>A Parent</MenuItem>
-												<MenuItem value={'sitter service'}>
-													Sitters Service
-												</MenuItem>
-											</Select>
-										</FormControl>
-									</FormFeild>
+											<MenuItem value={'parents'}>A Parent</MenuItem>
+											<MenuItem value={'sitter service'}>
+												Sitters Service
+											</MenuItem>
+										</Select>
+									</FormControl>
 
 									<KidsContainer>
 										<h2 className='enter-info'>
@@ -202,49 +192,44 @@ export default function ContactInfo({
 
 										{childList.map((element, index) => (
 											<ContactFeild>
-												<FormFeild>
-													<InputContainer className='no-gap'>
-														<StandardTextField
-															label='Full Name'
-															required={false}
-															type='text'
-															onChange={(e) => handleChildInputChange(index, e)}
-															defaultValue={element.name || ''}
-														/>
-													</InputContainer>
-												</FormFeild>
-												<FormFeild>
-													<InputContainer>
-														<TextField
-															sx={{ maxWidth: 100 }}
-															label='Age'
-															required={false}
-															type='number'
-															variant='standard'
-															onChange={(e) => handleChildInputChange(index, e)}
-															defaultValue={element.age || ''}
-														/>
-													</InputContainer>
-												</FormFeild>
+												<InputContainer className='no-gap'>
+													<StandardTextField
+														label='Full Name'
+														required={false}
+														type='text'
+														onChange={(e) => handleChildInputChange(index, e)}
+														defaultValue={element.name || ''}
+													/>
+												</InputContainer>
 
-												<FormFeild>
-													<FormControl
+												<InputContainer>
+													<TextField
+														sx={{ maxWidth: 100 }}
+														label='Age'
+														required={false}
+														type='number'
 														variant='standard'
-														sx={{ m: 1, minWidth: 250, margin: 0 }}
+														onChange={(e) => handleChildInputChange(index, e)}
+														defaultValue={element.age || ''}
+													/>
+												</InputContainer>
+
+												<FormControl
+													variant='standard'
+													sx={{ m: 1, minWidth: 250, margin: 0 }}
+												>
+													<InputLabel id='child-sleeping-label'>
+														Do they need their own bed?
+													</InputLabel>
+													<Select
+														labelId='child-sleeping-label'
+														onChange={() => {}}
+														label='Do they need their own bed?'
 													>
-														<InputLabel id='child-sleeping-label'>
-															Do they need their own bed?
-														</InputLabel>
-														<Select
-															labelId='child-sleeping-label'
-															onChange={() => {}}
-															label='Do they need their own bed?'
-														>
-															<MenuItem value='yes'>Yes</MenuItem>
-															<MenuItem value='no'>No</MenuItem>
-														</Select>
-													</FormControl>
-												</FormFeild>
+														<MenuItem value='yes'>Yes</MenuItem>
+														<MenuItem value='no'>No</MenuItem>
+													</Select>
+												</FormControl>
 
 												<ImageContainer
 													className='delete-button'
@@ -263,7 +248,7 @@ export default function ContactInfo({
 									)}
 								</ContactFeild>
 							)}
-						</AttendingContent>
+						</div>
 					)}
 
 					<ButtonContainer>

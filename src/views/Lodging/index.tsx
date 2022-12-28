@@ -1,7 +1,5 @@
 /** @format */
 
-import React, { useState } from 'react';
-import UnderConstruction from '../../components/UnderConstruction';
 import distanceTo from '../../assets/distance-to.png';
 import moose from '../../assets/cabins/moose.jpg';
 import sasquach from '../../assets/cabins/sasquach.jpg';
@@ -29,9 +27,7 @@ import {
 	Section,
 } from './styled-components';
 
-export default function Lodging({ visible }) {
-	const [underConstruction, setUnderConstruction] = useState(false);
-
+export default function Lodging() {
 	const airBnbLinks = [
 		{
 			href: 'https://www.airbnb.com/s/Bailey--CO/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&ne_lat=39.506147143646864&ne_lng=-105.38012221385952&sw_lat=39.340923016158364&sw_lng=-105.57374015380856&zoom=12&search_by_map=true&search_type=user_map_move&query=Bailey%2C%20CO',
@@ -55,100 +51,94 @@ export default function Lodging({ visible }) {
 	];
 
 	return (
-		<>
-			{underConstruction ? (
-				<UnderConstruction />
-			) : (
-				<LodgingPage visible={visible}>
-					<LodgingContainer>
-						<Carousel
-							images={[
-								moose,
-								door,
-								sasquach,
-								beds,
-								rv,
-								ceremony,
-								volleyball,
-								gym,
-								dining,
-							]}
-						/>
-						<SubTitles id='main'>
-							<div className='section'>
-								<h2>onsite cabins</h2>
+		<LodgingPage>
+			<LodgingContainer>
+				<Carousel
+					images={[
+						moose,
+						door,
+						sasquach,
+						beds,
+						rv,
+						ceremony,
+						volleyball,
+						gym,
+						dining,
+					]}
+				/>
+				<SubTitles id='main'>
+					<div className='section'>
+						<h2>onsite cabins</h2>
 
-								<p>
-									We're so excited that this venue has lodging on site. It was
-									another reason we loved the venue so much, and our preference
-									is that guests who are staying for the weekend stay in an
-									cabin if they can. It will cost $30/person which will cover
-									the entire weekend (friday, saturday evening), and while they
-									are pretty nice beds they do not come with bedding, so make
-									sure you bring a sleeping bag/pillow with you.
-									<br />
-									<br />
-									We want guests to enjoy themselves while also being safe and
-									not have to worry about driving late in the evening. However
-									we also understand this might not be everyone’s cup of tea, so
-									there are links below to nearby air bnb’s.
-									<br />
-									<br /> If you are wanting to stay on site, you can reserve
-									your spot in a cabin or RV spot when you RSVP to the event.
-									Payment for a spot can be made on the registry site or through
-									venmo. There will be more info about this when you RSVP.
-								</p>
-							</div>
-						</SubTitles>
+						<p>
+							We're so excited that this venue has lodging on site. It was
+							another reason we loved the venue so much, and our preference is
+							that guests who are staying for the weekend stay in an cabin if
+							they can. It will cost $30/person which will cover the entire
+							weekend (friday, saturday evening), and while they are pretty nice
+							beds they do not come with bedding, so make sure you bring a
+							sleeping bag/pillow with you.
+							<br />
+							<br />
+							We want guests to enjoy themselves while also being safe and not
+							have to worry about driving late in the evening. However we also
+							understand this might not be everyone’s cup of tea, so there are
+							links below to nearby air bnb’s.
+							<br />
+							<br /> If you are wanting to stay on site, you can reserve your
+							spot in a cabin or RV spot when you RSVP to the event. Payment for
+							a spot can be made on the registry site or through venmo. There
+							will be more info about this when you RSVP.
+						</p>
+					</div>
+				</SubTitles>
 
-						<AccentSection>
-							<SubTitles>
-								<div className='section'>
-									<ImageContainer id='airbnb'>
-										<img src={airBnb} alt='air bnb logo' />
-									</ImageContainer>
-									<h2>additional lodging</h2>
-									<p>
-										Below are links to Air bnb's in select towns nearby. All of
-										these towns are less than 1.25 hours away from the venue.
-										The closest being Baily (5-10 minutes from venue) and then
-										Conifer (20-25 minutes from venue).
-									</p>
-								</div>
-							</SubTitles>
-							<ContentCenter>
-								<AdditionalContainer>
-									{airBnbLinks.map((bnb, index) => {
-										return (
-											<>
-												<ButtonContainer
-													key={` links ${index}`}
-													onClick={() => window.open(bnb.href)}
-												>
-													<AdditionalButton>{bnb.name}</AdditionalButton>
-													<Accent id='accent' />
-												</ButtonContainer>
-											</>
-										);
-									})}
-								</AdditionalContainer>
-							</ContentCenter>
-						</AccentSection>
-						<Section>
-							<SubTitles>
-								<div className='section'>
-									<h2>what's around?</h2>
-								</div>
-							</SubTitles>
-							<ContentCenter>
-								<ImageContainer id='distance'>
-									<img src={distanceTo} alt='' />
-								</ImageContainer>
-							</ContentCenter>
-						</Section>
-					</LodgingContainer>
-				</LodgingPage>
-			)}
-		</>
+				<AccentSection>
+					<SubTitles>
+						<div className='section'>
+							<ImageContainer id='airbnb'>
+								<img src={airBnb} alt='air bnb logo' />
+							</ImageContainer>
+							<h2>additional lodging</h2>
+							<p>
+								Below are links to Air bnb's in select towns nearby. All of
+								these towns are less than 1.25 hours away from the venue. The
+								closest being Baily (5-10 minutes from venue) and then Conifer
+								(20-25 minutes from venue).
+							</p>
+						</div>
+					</SubTitles>
+					<ContentCenter>
+						<AdditionalContainer>
+							{airBnbLinks.map((bnb, index) => {
+								return (
+									<>
+										<ButtonContainer
+											key={` links ${index}`}
+											onClick={() => window.open(bnb.href)}
+										>
+											<AdditionalButton>{bnb.name}</AdditionalButton>
+											<Accent id='accent' />
+										</ButtonContainer>
+									</>
+								);
+							})}
+						</AdditionalContainer>
+					</ContentCenter>
+				</AccentSection>
+				<Section>
+					<SubTitles>
+						<div className='section'>
+							<h2>what's around?</h2>
+						</div>
+					</SubTitles>
+					<ContentCenter>
+						<ImageContainer id='distance'>
+							<img src={distanceTo} alt='' />
+						</ImageContainer>
+					</ContentCenter>
+				</Section>
+			</LodgingContainer>
+		</LodgingPage>
 	);
 }

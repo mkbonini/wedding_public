@@ -1,8 +1,6 @@
 /** @format */
 
-import React, { useState } from 'react';
 import styled from 'styled-components';
-import UnderConstruction from '../components/UnderConstruction';
 import map from '../assets/DeerCreekMap.jpg';
 
 const MapPage = styled.div`
@@ -33,21 +31,14 @@ const MapContainer = styled.div`
 	align-items: center;
 `;
 
-export default function Map({ visible }) {
-	const [underConstruction, setUnderConstruction] = useState(false);
+export default function Map() {
 	return (
-		<>
-			{underConstruction ? (
-				<UnderConstruction />
-			) : (
-				<MapPage>
-					<MapContainer>
-						<MapImageContainer>
-							<img src={map} alt='' />
-						</MapImageContainer>
-					</MapContainer>
-				</MapPage>
-			)}
-		</>
+		<MapPage>
+			<MapContainer>
+				<MapImageContainer>
+					<img src={map} alt='' />
+				</MapImageContainer>
+			</MapContainer>
+		</MapPage>
 	);
 }

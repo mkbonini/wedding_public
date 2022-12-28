@@ -2,27 +2,6 @@
 
 import styled from 'styled-components';
 
-//Search
-
-export const Input = styled.input`
-	//delete
-	height: 60px;
-	width: 100%;
-	border: none;
-	margin-bottom: 20px;
-	text-align: center;
-	border: 1px solid lightgray;
-	border-radius: 2px;
-	max-width: 495px;
-	margin-top: 10px;
-	&:focus {
-		outline: none;
-	}
-	&::placeholder {
-		font-family: 'Nunito';
-	}
-`;
-
 //RSVP Main
 export const RsvpContainer = styled.div`
 	display: flex;

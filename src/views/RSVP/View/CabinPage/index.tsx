@@ -1,20 +1,20 @@
 /** @format */
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import Toggle from '../../../../components/Toggle';
 import Stepper from '../../../../components/Stepper';
 import { FaArrowRight } from 'react-icons/fa';
 import {
 	CabinInfoSection,
 	CabinCardsContainer,
-	// FadeRight,
-	// ContentContainer,
-	// Title,
-	// CabinCard,
-	// SelectCabinButton,
 	ButtonContainer,
 	ToggleContainer,
 	CabinListContainer,
+	SelectedCabinContainer,
+	SelectedCabinSection,
+	Image,
+	LinkContainer,
+	ViewMoreLink,
+	SelectedContent,
 } from './styled-components';
 
 import Card from '../../../../components/Card';
@@ -22,22 +22,6 @@ import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Button from '../../../../components/Button';
 import Popup from '../../../../components/Popup';
 import ButtonError from '../../../../components/ButtonError';
-
-interface Cabin {
-	id: number;
-	name: string;
-	lodging_type: string;
-	capacity: number;
-	url: string;
-	description: string;
-	created_at: string;
-	updated_at: string;
-	title: string;
-	image_url: string;
-	color: string;
-	occupants: [];
-	spots_remaining: number;
-}
 
 export default function CabinPage({
 	regressFlow,
@@ -67,7 +51,6 @@ export default function CabinPage({
 	const [acceptLodging, setAcceptLodging] = useState(false);
 
 	useEffect(() => {
-		console.log(selectedCabin, 'selected cabin in use effect');
 		var body = document.body;
 		if (activeModal) {
 			body.classList.add('modal-open');
@@ -80,60 +63,6 @@ export default function CabinPage({
 		setActiveModal(true);
 		setActiveCard(cabin);
 	};
-
-	const SelectedCabinContainer = styled.div`
-		display: flex;
-		flex-direction: row;
-		border-radius: 4px;
-		box-shadow: 2px 2px 10px 3px rgba(0, 0, 1, 0.07);
-	`;
-
-	const Image = styled.div<{ image: string }>`
-		background-image: url(${(p) => p.image && p.image});
-		height: 200px;
-		max-width: 300px;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		margin: 20px;
-		border-radius: 5px;
-		width: 100%;
-	`;
-
-	const ViewMoreLink = styled.div`
-		display: flex;
-		justify-content: flex-end;
-		padding: 1rem 2rem 1rem 0rem;
-		align-items: center;
-		gap: 10px;
-		font-size: 14px;
-
-		:hover {
-			cursor: pointer;
-			color: #3378cf;
-		}
-	`;
-
-	const SelectedContent = styled.div`
-		p {
-			margin: 0;
-			padding-right: 4rem;
-			font-size: 15px;
-			padding-right: 6rem;
-		}
-	`;
-
-	const LinkContainer = styled.div`
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		padding-right: 3rem;
-	`;
-
-	const SelectedCabinSection = styled.div`
-		margin: 1rem 0rem 3rem 0rem;
-	`;
 
 	return (
 		<>
