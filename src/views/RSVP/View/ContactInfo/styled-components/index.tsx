@@ -30,6 +30,7 @@ export const ContactInfoSection = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 17rem;
 	h1 {
 		font-size: 20px;
 		text-align: center;

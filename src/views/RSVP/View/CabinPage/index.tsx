@@ -137,8 +137,11 @@ export default function CabinPage({
 
 	return (
 		<>
-			<Stepper step={2} />
 			<CabinInfoSection>
+				<div className='stepper-container'>
+					<Stepper step={2} />
+				</div>
+
 				<ToggleContainer>
 					<h2>Will you be staying onsite in a cabin?</h2>
 
@@ -149,14 +152,8 @@ export default function CabinPage({
 						/>
 					</div>
 				</ToggleContainer>
-				<p className='description'>
-					Staying in a cabin requires bringing your own bedding. While there are
-					enough beds for everyone to stay in at the property, sleeping
-					bags/pillows will need to be brought with you. In addition to the
-					bedding, the cost of staying at a cabin onsite is $30 per person for
-					the entire weekend.
-				</p>
-				{acceptLodging && (
+
+				{acceptLodging ? (
 					<div>
 						{selectedCabin.id !== 0 && (
 							<SelectedCabinSection>
@@ -211,6 +208,23 @@ export default function CabinPage({
 							/>
 						)}
 					</div>
+				) : (
+					<>
+						<p className='description'>
+							Staying in a cabin requires bringing your own bedding. While there
+							are enough beds for everyone to stay in at the property, sleeping
+							bags/pillows will need to be brought with you. In addition to the
+							bedding, the cost of staying at a cabin onsite is $30 per person
+							for the entire weekend.
+						</p>
+						<h3>By selecting "No"</h3>
+
+						<p className='description'>
+							By selecting no, you have opted out of lodging onsite and will
+							need to find another option for lodging. The lodging page on this
+							site offers some suggestions.
+						</p>
+					</>
 				)}
 				<ButtonContainer>
 					<ButtonSecondary onClick={() => regressFlow()} text='Back' />

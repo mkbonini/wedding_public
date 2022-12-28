@@ -131,24 +131,10 @@ export default function RSVP() {
 				);
 
 			case steps.additional:
-				return (
-					<AdditionalPage
-						guestList={guestList}
-						setSelectedGuest={setSelectedGuest}
-						selectedGuest={selectedGuest}
-						progressFlow={progressFlow}
-						regressFlow={regressFlow}
-					/>
-				);
+				return <AdditionalPage />;
 
 			case steps.confirm:
-				return (
-					<ConfirmPage
-						selectedGuest={selectedGuest}
-						regressFlow={regressFlow}
-						progressFlow={progressFlow}
-					/>
-				);
+				return <ConfirmPage regressFlow={regressFlow} />;
 			default:
 				setCurrentStep(steps.start);
 		}

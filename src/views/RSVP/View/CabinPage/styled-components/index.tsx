@@ -2,9 +2,10 @@
 import styled from 'styled-components';
 
 export const CabinListContainer = styled.div`
-	height: 650px;
+	height: 670px;
 	overflow: scroll;
 	border: 1px solid whitesmoke;
+	margin-bottom: 5rem;
 	h2 {
 		padding: 1rem;
 		background-color: whitesmoke;
@@ -16,7 +17,7 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 3rem;
+	margin: 1rem 0rem 3rem 0rem;
 	gap: 20px;
 `;
 
@@ -29,19 +30,29 @@ export const ToggleContainer = styled.div`
 `;
 
 export const CabinInfoSection = styled.div`
-	max-width: 1200px;
-	min-height: 600px;
+	max-width: 1400px;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
-	padding-bottom: 8rem;
 	position: relative;
-	margin: 0rem 4rem;
+	margin: 17rem 4rem 0rem 4rem;
+	.stepper-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
 	h2 {
 		font-size: 18px;
 		margin: 1rem 0rem;
 		font-family: 'Gilroy-SemiBold';
 		color: #343232;
+	}
+	h3 {
+		font-size: 17px;
+		font-family: 'Gilroy-SemiBold';
+		padding: 0;
+		margin: 20px 0px 10px 0px;
 	}
 	p {
 		padding: 0;

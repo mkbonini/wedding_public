@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { FaArrowRight } from 'react-icons/fa';
 
 const CardStyles = styled.div`
-	max-width: 350px;
+	max-width: 320px;
 	width: 100%;
 	margin: 0.7rem;
 	border-radius: 4px;

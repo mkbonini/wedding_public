@@ -1,6 +1,11 @@
 /** @format */
 import { useState, useEffect } from 'react';
-import { Heading, ButtonContainer, ErrorMessage } from '../styled-components';
+import {
+	Heading,
+	ButtonContainer,
+	ErrorMessage,
+	StartPageContainer,
+} from '../styled-components';
 import Button from '../../../components/Button';
 import StandardTextField from '../../../components/StandardTextField';
 
@@ -41,7 +46,7 @@ export default function StartPage({
 	}
 
 	return (
-		<>
+		<StartPageContainer>
 			<Heading>
 				<h1>RSVP</h1> <p>Enter your full name below to find your reservation</p>
 			</Heading>
@@ -61,6 +66,6 @@ export default function StartPage({
 			<ButtonContainer>
 				<Button onClick={() => handleClick()} text='Find My RSVP' />
 			</ButtonContainer>
-		</>
+		</StartPageContainer>
 	);
 }
