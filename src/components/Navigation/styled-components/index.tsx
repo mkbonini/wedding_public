@@ -181,7 +181,7 @@ export const FlyoutExitButton = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	font-size: 35px;
-	font-family: 'Circular-Booky';
+	font-family: 'Circular-Book';
 	margin-right: 35px;
 	@media only screen and (min-width: 900px) {
 		display: none;
