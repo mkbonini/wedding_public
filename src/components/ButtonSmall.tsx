@@ -10,7 +10,7 @@ const Small = styled(Button)<ButtonProps>(({ theme }) => ({
 	borderRadius: '100px;',
 	textTransform: 'none',
 	padding: '0px 30px',
-	fontFamily: 'Gilroy-Bold',
+	fontFamily: 'Circular-Book',
 	fontSize: '13px;',
 	lineHeight: '20px',
 	marginRight: '10px',

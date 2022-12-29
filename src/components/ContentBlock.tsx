@@ -21,7 +21,7 @@ const ContentBlockContainer = styled.div<{
 		padding: 20px;
 		text-align: center;
 		max-width: 270px;
-		font-family: 'Gilroy';
+		font-family: 'Circular-Book';
 	}
 	img {
 		width: 50%;

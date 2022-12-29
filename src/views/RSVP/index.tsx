@@ -45,7 +45,7 @@ export default function RSVP() {
 	// const [currentStep, setCurrentStep] = useState(steps.contact);
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
-	const [declineRSVP, setDeclineRSVP] = useState(true);
+	const [rsvp, setRsvp] = useState(false);
 	const [cabinList, setCabinList] = useState([]);
 
 	// const [verified, setVarified] = useState(false);
@@ -59,18 +59,17 @@ export default function RSVP() {
 		})();
 	}, []);
 
-	function progressFlow(declinedRSVP: boolean) {
+	function progressFlow(rsvp: boolean) {
 		switch (currentStep) {
 			case steps.start:
 				setCurrentStep(steps.contact);
 				break;
 			case steps.contact:
-				if (declinedRSVP) {
+				if (!rsvp) {
 					setCurrentStep(steps.confirm);
 				} else {
 					setCurrentStep(steps.cabin);
 				}
-
 				break;
 			case steps.cabin:
 				setCurrentStep(steps.additional);
@@ -119,8 +118,8 @@ export default function RSVP() {
 						selectedGuest={selectedGuest}
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
-						declineRSVP={declineRSVP}
-						setDeclineRSVP={setDeclineRSVP}
+						rsvp={rsvp}
+						setRsvp={setRsvp}
 					/>
 				);
 
@@ -144,7 +143,7 @@ export default function RSVP() {
 				);
 
 			case steps.confirm:
-				return <ConfirmPage declinedRSVP={declineRSVP} />;
+				return <ConfirmPage rsvp={rsvp} />;
 			default:
 				setCurrentStep(steps.start);
 		}

@@ -13,7 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const AdditionalPageContainer = styled.div`
-	margin-top: 10rem;
+	margin: 8rem 1rem 0rem 1rem;
 `;
 
 const StepperContainer = styled.div`
@@ -30,6 +30,11 @@ const ButtonContainer = styled.div`
 	align-items: center;
 	padding: 2rem 0rem 6rem 0rem;
 	gap: 20px;
+	@media only screen and (max-width: 900px) {
+		flex-direction: column;
+		align-items: center;
+		padding: 20px 0px 40px 0px;
+	}
 `;
 
 const ToggleContainer = styled.div`
@@ -37,6 +42,11 @@ const ToggleContainer = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	padding: 1rem 2rem 0rem 0rem;
+	@media only screen and (max-width: 900px) {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 0px 0px 10px 0px;
+	}
 `;
 
 const LineBreak = styled.div`
@@ -61,14 +71,14 @@ const ContentContainer = styled.div`
 	h2 {
 		font-size: 18px;
 		margin: 1rem 0rem;
-		font-family: 'Gilroy-SemiBold';
+		font-family: 'Circular-Book';
 		color: #343232;
 		text-align: start;
 	}
 	p {
 		padding: 0;
 		margin: 0px 0px 10px 0px;
-		font-family: 'Nunito';
+		font-family: 'Circular-Light';
 		color: #343232;
 	}
 `;
@@ -111,7 +121,7 @@ export default function StartPage({ regressFlow, progressFlow }) {
 					</h2>
 					<p>If yes, please describe below otherwise leave blank</p>
 					<TextField
-						sx={{ maxWidth: 350, width: '100%' }}
+						sx={{ maxWidth: 400, width: '100%' }}
 						id='outlined-multiline-flexible'
 						label='Any Allergies?'
 						multiline

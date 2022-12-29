@@ -18,6 +18,7 @@ import {
 	ToggleContainer,
 	KidsContainer,
 	AddChildLink,
+	RsvpContainer,
 } from './styled-components';
 import StandardTextField from '../../../../components/StandardTextField';
 import Button from '../../../../components/Button';
@@ -27,8 +28,8 @@ export default function ContactInfo({
 	regressFlow,
 	progressFlow,
 	selectedGuest,
-	declineRSVP,
-	setDeclineRSVP,
+	rsvp,
+	setRsvp,
 }) {
 	const [childList, setChildList] = useState([{ name: '', age: '' }]);
 	const [plusOne, setPlusOne] = useState(false);
@@ -58,14 +59,6 @@ export default function ContactInfo({
 		alert(JSON.stringify(childList));
 	};
 
-	let determineProgressFlow = () => {
-		if (declineRSVP) {
-			progressFlow(declineRSVP);
-		} else {
-			progressFlow();
-		}
-	};
-
 	return (
 		<ContactInfoSection kids={children} plusOne={plusOne}>
 			<h1>
@@ -74,10 +67,26 @@ export default function ContactInfo({
 			</h1>
 			<p className='heading'> Please update the information below</p>
 
+			<RsvpContainer>
+				<h2>Will you be attending the wedding?</h2>
+				<FormControl sx={{ m: 1, maxWidth: 200, margin: 0, width: '100%' }}>
+					<InputLabel id='rsvp-label'>Please select</InputLabel>
+					<Select
+						labelId='rsvp-label'
+						onChange={() => setRsvp(!rsvp)}
+						label='Please select'
+						value={rsvp ? 'yes' : 'no'}
+					>
+						<MenuItem value={'yes'}>Yes</MenuItem>
+						<MenuItem value={'no'}>No</MenuItem>
+					</Select>
+				</FormControl>
+			</RsvpContainer>
+
 			<Form onSubmit={(event) => handleSubmit(event)}>
 				<h2>Your details:</h2>
 				<ContactFeild>
-					<InputContainer>
+					<InputContainer className='input-group'>
 						<StandardTextField
 							label='First Name'
 							required={true}
@@ -85,7 +94,7 @@ export default function ContactInfo({
 							defaultValue={selectedGuest?.first_name}
 						/>
 					</InputContainer>
-					<InputContainer>
+					<InputContainer className='input-group'>
 						<StandardTextField
 							label='Last Name'
 							required={true}
@@ -93,7 +102,7 @@ export default function ContactInfo({
 							defaultValue={selectedGuest?.last_name}
 						/>
 					</InputContainer>
-					<InputContainer>
+					<InputContainer className='input-group'>
 						<StandardTextField
 							label='Email'
 							required={true}
@@ -103,15 +112,7 @@ export default function ContactInfo({
 					</InputContainer>
 				</ContactFeild>
 
-				<ToggleContainer>
-					<h2>Will you be attending the wedding?</h2>
-					<Toggle
-						toggleActive={!declineRSVP}
-						onChange={() => setDeclineRSVP(!declineRSVP)}
-					/>
-				</ToggleContainer>
-
-				{!declineRSVP && (
+				{rsvp === true && (
 					<div>
 						<ToggleContainer>
 							<div>
@@ -188,7 +189,7 @@ export default function ContactInfo({
 
 									{childList.map((element, index) => (
 										<ContactFeild key={`${index}-child`}>
-											<InputContainer className='no-gap'>
+											<InputContainer className='no-gap input-gap'>
 												<StandardTextField
 													label='Full Name'
 													required={false}
@@ -198,7 +199,7 @@ export default function ContactInfo({
 												/>
 											</InputContainer>
 
-											<InputContainer>
+											<InputContainer className='input-gap'>
 												<TextField
 													sx={{ maxWidth: 100 }}
 													label='Age'
@@ -245,7 +246,7 @@ export default function ContactInfo({
 
 				<ButtonContainer>
 					<ButtonSecondary onClick={() => regressFlow()} text='Back' />
-					<Button onClick={() => determineProgressFlow()} text='Continue' />
+					<Button onClick={() => progressFlow(rsvp)} text='Continue' />
 				</ButtonContainer>
 			</Form>
 		</ContactInfoSection>

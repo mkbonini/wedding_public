@@ -4,9 +4,11 @@ import { TextField, TextFieldProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const Input = styled(TextField)<TextFieldProps>(({ theme }) => ({
-	minWidth: '310px',
+	minWidth: '300px',
+	maxWidth: '320px',
+	width: '100%',
 	[theme.breakpoints.down('sm')]: {
-		minWidth: '250px',
+		minWidth: '320px',
 	},
 }));
 
