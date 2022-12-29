@@ -59,13 +59,18 @@ export default function RSVP() {
 		})();
 	}, []);
 
-	function progressFlow() {
+	function progressFlow(declinedRSVP: boolean) {
 		switch (currentStep) {
 			case steps.start:
 				setCurrentStep(steps.contact);
 				break;
 			case steps.contact:
-				setCurrentStep(steps.cabin);
+				if (declinedRSVP) {
+					setCurrentStep(steps.confirm);
+				} else {
+					setCurrentStep(steps.cabin);
+				}
+
 				break;
 			case steps.cabin:
 				setCurrentStep(steps.additional);
@@ -133,22 +138,13 @@ export default function RSVP() {
 			case steps.additional:
 				return (
 					<AdditionalPage
-						guestList={guestList}
-						setSelectedGuest={setSelectedGuest}
-						selectedGuest={selectedGuest}
 						progressFlow={progressFlow}
 						regressFlow={regressFlow}
 					/>
 				);
 
 			case steps.confirm:
-				return (
-					<ConfirmPage
-						selectedGuest={selectedGuest}
-						regressFlow={regressFlow}
-						progressFlow={progressFlow}
-					/>
-				);
+				return <ConfirmPage declinedRSVP={declineRSVP} />;
 			default:
 				setCurrentStep(steps.start);
 		}

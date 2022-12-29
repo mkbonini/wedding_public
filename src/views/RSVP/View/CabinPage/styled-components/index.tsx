@@ -2,9 +2,10 @@
 import styled from 'styled-components';
 
 export const CabinListContainer = styled.div`
-	height: 650px;
+	height: 700px;
 	overflow: scroll;
 	border: 1px solid whitesmoke;
+	margin-bottom: 5rem;
 	h2 {
 		padding: 1rem;
 		background-color: whitesmoke;
@@ -16,7 +17,7 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 3rem;
+	margin: 1rem 0rem 3rem 0rem;
 	gap: 20px;
 `;
 
@@ -30,18 +31,29 @@ export const ToggleContainer = styled.div`
 
 export const CabinInfoSection = styled.div`
 	max-width: 1200px;
-	min-height: 600px;
+	min-height: 75vh;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
-	padding-bottom: 8rem;
 	position: relative;
-	margin: 0rem 4rem;
+	margin-top: 8rem;
+	.stepper-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
 	h2 {
 		font-size: 18px;
 		margin: 1rem 0rem;
 		font-family: 'Gilroy-SemiBold';
 		color: #343232;
+	}
+	h3 {
+		font-size: 17px;
+		font-family: 'Gilroy-SemiBold';
+		padding: 0;
+		margin: 20px 0px 10px 0px;
 	}
 	p {
 		padding: 0;
@@ -61,108 +73,57 @@ export const CabinCardsContainer = styled.div`
 	justify-content: center;
 `;
 
-export const FadeLeft = styled.div`
-	position: absolute;
-	z-index: 1000;
-	height: 100%;
-	width: 150px;
-	left: 0;
-	background: rgb(255, 255, 255);
-	background: linear-gradient(
-		90deg,
-		rgba(240, 240, 240, 0.6) 0%,
-		rgba(255, 255, 255, 0) 100%
-	);
-`;
-
-export const FadeRight = styled.div`
-	position: absolute;
-	z-index: 1000;
-	height: 100%;
-	width: 150px;
-	right: 0;
-	background: rgb(255, 255, 255);
-	background: linear-gradient(
-		90deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(240, 240, 240, 0.6) 100%
-	);
-`;
-export const CabinCard = styled.div`
-	margin: 1rem;
-	height: 950px;
-	min-width: 450px;
-	outline: 1px solid lightgray;
-	position: relative;
-
-	img {
-		width: 100%;
-	}
-`;
-
-export const Title = styled.div`
+export const SelectedCabinContainer = styled.div`
 	display: flex;
-	flex-direction: column;
-	h1 {
-		font-size: 40px;
-		margin: 0;
-		font-family: 'Gilroy-Bold';
-	}
-	h2 {
-		font-size: 17px;
-		font-family: 'Gilroy';
-		margin: 5px 5px 5px 0px;
-	}
+	flex-direction: row;
+	border-radius: 4px;
+	box-shadow: 2px 2px 10px 3px rgba(0, 0, 1, 0.07);
 `;
 
-export const ContentContainer = styled.div`
-	padding: 2rem 2rem 0rem 2rem;
-`;
-
-export const SelectCabinButton = styled.div`
+export const Image = styled.div<{ image: string }>`
+	background-image: url(${(p) => p.image && p.image});
+	height: 200px;
+	max-width: 300px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	margin: 20px;
+	border-radius: 5px;
 	width: 100%;
-	height: 60px;
-	background-color: black;
-	color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	bottom: 0;
-	cursor: pointer;
 `;
 
-export const IconContainer = styled.div`
+export const ViewMoreLink = styled.div`
 	display: flex;
-	flex-direction: column;
-	align-items: end;
-	justify-content: center;
+	justify-content: flex-end;
+	padding: 1rem 2rem 1rem 0rem;
+	align-items: center;
+	gap: 10px;
+	font-size: 14px;
+
+	:hover {
+		cursor: pointer;
+		color: #3378cf;
+	}
 `;
 
-export const Icon = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	right: 0;
-	top: 37%;
-	padding-right: 40px;
-	cursor: pointer;
-	&:hover {
-		color: #ff5a5f;
-	}
-	#airbnb-icon {
-		font-size: 30px;
-		padding: 5px;
-		margin: 0;
-	}
+export const SelectedContent = styled.div`
+	padding: 1rem;
 	p {
-		font-size: 14px;
 		margin: 0;
-		padding: 0;
-		text-align: center;
-		max-width: 50px;
-		line-height: 14px;
+		font-size: 15px;
+		max-width: 960px;
+		padding: 0rem 4rem 1rem 0rem;
 	}
+`;
+
+export const LinkContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: 3rem;
+`;
+
+export const SelectedCabinSection = styled.div`
+	margin: 1rem 0rem 3rem 0rem;
 `;

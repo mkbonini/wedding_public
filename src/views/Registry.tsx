@@ -1,17 +1,14 @@
 /** @format */
 
-import React, { useState } from 'react';
 import styled from 'styled-components';
-import UnderConstruction from '../components/UnderConstruction';
 
-const RegistryPage = styled.div<{ visible: boolean }>`
+const RegistryPage = styled.div`
 	display: flex;
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
 	padding-top: 12rem;
-	height: 70vh;
-	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
+	height: 90vh;
 `;
 
 const Title = styled.div`
@@ -29,24 +26,17 @@ const Title = styled.div`
 	}
 `;
 
-export default function Registry({ visible }) {
-	const [underConstruction, setUnderConstruction] = useState(false);
+export default function Registry() {
 	return (
-		<>
-			{underConstruction ? (
-				<UnderConstruction />
-			) : (
-				<RegistryPage visible={visible}>
-					<Title>
-						<h1>
-							Hello there!
-							<br />
-							We will open this page up <br />
-							closer to the wedding <br />♡
-						</h1>
-					</Title>
-				</RegistryPage>
-			)}
-		</>
+		<RegistryPage>
+			<Title>
+				<h1>
+					Hello there!
+					<br />
+					We will open this page up <br />
+					closer to the wedding <br />♡
+				</h1>
+			</Title>
+		</RegistryPage>
 	);
 }

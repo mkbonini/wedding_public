@@ -46,7 +46,7 @@ export const MainNav = styled.div<{
 	width: 100%;
 	height: 80px;
 	position: fixed;
-	z-index: 10000;
+	z-index: 100000;
 	background-color: #ffffff;
 	top: ${(p) => (p.scrollVisible || p.flyoutVisible ? '0' : '-95px;')};
 	transition: top 0.6s;
