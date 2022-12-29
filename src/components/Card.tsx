@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { FaArrowRight } from 'react-icons/fa';
 
 const CardStyles = styled.div`
-	max-width: 270px;
+	max-width: 320px;
 	width: 100%;
 	margin: 0.7rem;
 	border-radius: 4px;
@@ -18,6 +18,9 @@ const CardStyles = styled.div`
 	:hover {
 		transform: scale(1.01);
 		cursor: pointer;
+	}
+	@media only screen and (min-width: 900px) {
+		max-width: 270px;
 	}
 `;
 
@@ -32,11 +35,15 @@ const Image = styled.div<{ image: string }>`
 const Title = styled.div`
 	padding: 1rem 1rem 0rem 1rem;
 	h1 {
-		font-family: 'Gilroy-Bold';
+		font-family: 'Circular-Book';
 		font-size: 17px;
 	}
 	p.spots-remaining {
 		font-size: 14px;
+		font-family: 'Circular-Light';
+	}
+	span.number {
+		font-family: 'Circular-Medium';
 	}
 `;
 
@@ -79,7 +86,7 @@ export default function Card({ image, name, type, remaining, onClick }) {
 					<p className='spots-remaining'>
 						There are{' '}
 						<span>
-							<strong>{remaining}</strong>
+							<span className='number'>{remaining}</span>
 						</span>{' '}
 						spots remaining in this cabin
 					</p>

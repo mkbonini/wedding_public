@@ -14,7 +14,7 @@ export const SubTitles = styled.div`
 		margin: auto;
 		h2 {
 			font-size: 22px;
-			font-family: 'Gilroy-Bold';
+			font-family: 'Circular-Book';
 			text-align: center;
 			padding: 0;
 			margin: 0;

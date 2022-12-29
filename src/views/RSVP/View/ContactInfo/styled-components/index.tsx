@@ -23,6 +23,12 @@ export const ToggleContainer = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	padding: 1rem 2rem 0rem 0rem;
+
+	@media only screen and (max-width: 900px) {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 0;
+	}
 `;
 export const ContactInfoSection = styled.div<{
 	kids: boolean;
@@ -38,17 +44,18 @@ export const ContactInfoSection = styled.div<{
 	h1 {
 		font-size: 20px;
 		text-align: center;
+		font-family: 'Circular-Book';
 	}
 	h2 {
 		font-size: 18px;
 		margin: 1rem 0rem;
-		font-family: 'Gilroy-SemiBold';
+		font-family: 'Circular-Book';
 		color: #343232;
 	}
 	p {
 		padding: 0;
 		margin: 0px 0px 10px 0px;
-		font-family: 'Nunito';
+		font-family: 'Circular-Light';
 		color: #343232;
 	}
 	p.heading {
@@ -58,10 +65,15 @@ export const ContactInfoSection = styled.div<{
 
 export const InputContainer = styled.div`
 	padding-right: 20px;
+	&.input-group {
+		margin: 10px 0px;
+	}
+	&.input-gap {
+		padding-bottom: 15px;
+	}
 `;
 
 export const Form = styled.form`
-	width: 100%;
 	padding: 1rem;
 	label {
 		font-size: 14px;
@@ -77,6 +89,7 @@ export const ContactFeild = styled.div`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: start;
 	&.plus-one-field {
 		display: flex;
 		flex-direction: column;
@@ -94,13 +107,13 @@ export const ContactFeild = styled.div`
 			max-width: 900px;
 		}
 		p.title {
-			font-weight: 700;
+			font-family: 'Circular-Medium';
 			padding-top: 2rem;
-			font-size: 15px;
+			font-size: 16px;
 		}
 		p.description {
 			line-height: 18px;
-			font-size: 15px;
+			font-size: 16px;
 			padding: 0px 0px 20px 0px !important;
 		}
 	}
@@ -130,4 +143,11 @@ export const ButtonContainer = styled.div`
 	align-items: center;
 	padding: 2rem 0rem 6rem 0rem;
 	gap: 20px;
+`;
+
+export const RsvpContainer = styled.div`
+	padding: 1rem 1rem 0rem 1rem;
+	h2 {
+		margin: 1rem 0rem 2rem 0rem;
+	}
 `;

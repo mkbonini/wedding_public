@@ -15,6 +15,7 @@ import {
 	LinkContainer,
 	ViewMoreLink,
 	SelectedContent,
+	DeselectButton,
 } from './styled-components';
 
 import Card from '../../../../components/Card';
@@ -49,6 +50,7 @@ export default function CabinPage({
 	const [activeCard, setActiveCard] = useState(null);
 	const [selectedCabin, setSelectedCabin] = useState(noCabin);
 	const [acceptLodging, setAcceptLodging] = useState(false);
+	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		var body = document.body;
@@ -62,18 +64,17 @@ export default function CabinPage({
 	const handleCardClick = (cabin) => {
 		setActiveModal(true);
 		setActiveCard(cabin);
+		setOpen(true);
 	};
 
 	return (
 		<>
 			<CabinInfoSection>
-				<div className='stepper-container'>
+				{/* <div className='stepper-container'>
 					<Stepper step={2} />
-				</div>
-
+				</div> */}
 				<ToggleContainer>
 					<h2>Will you be staying onsite in a cabin?</h2>
-
 					<div>
 						<Toggle
 							toggleActive={acceptLodging}
@@ -81,6 +82,13 @@ export default function CabinPage({
 						/>
 					</div>
 				</ToggleContainer>
+				<p className='description'>
+					Staying in a cabin requires bringing your own bedding. While there are
+					enough beds for everyone to stay in at the property, sleeping
+					bags/pillows will need to be brought with you. In addition to the
+					bedding, the cost of staying at a cabin onsite is $30 per person for
+					the entire weekend.
+				</p>
 
 				{acceptLodging ? (
 					<div>
@@ -91,15 +99,14 @@ export default function CabinPage({
 									<Image image={selectedCabin.image_url} />
 									<SelectedContent>
 										<h1>{selectedCabin.name}</h1>
-										<p>{selectedCabin.description}</p>
+										<p className='selected-p'>{selectedCabin.description}</p>
 										<LinkContainer>
 											<ViewMoreLink onClick={() => setActiveModal(true)}>
 												View Details <FaArrowRight />
 											</ViewMoreLink>
-											<ButtonError
-												text='Deselect This Cabin'
-												onClick={() => setSelectedCabin(noCabin)}
-											/>
+											<DeselectButton onClick={() => setSelectedCabin(noCabin)}>
+												Deselect Button
+											</DeselectButton>
 										</LinkContainer>
 									</SelectedContent>
 								</SelectedCabinContainer>
@@ -136,18 +143,13 @@ export default function CabinPage({
 								noCabinSelected={selectedCabin.id !== 0}
 								selectedCabin={selectedCabin}
 								key={`${selectedCabin.id}-popup`}
+								open={open}
+								setOpen={setOpen}
 							/>
 						)}
 					</div>
 				) : (
 					<>
-						<p className='description'>
-							Staying in a cabin requires bringing your own bedding. While there
-							are enough beds for everyone to stay in at the property, sleeping
-							bags/pillows will need to be brought with you. In addition to the
-							bedding, the cost of staying at a cabin onsite is $30 per person
-							for the entire weekend.
-						</p>
 						<h3>By selecting "No"</h3>
 
 						<p className='description'>

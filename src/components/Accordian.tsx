@@ -66,7 +66,7 @@ const Answer = styled.div`
 	align-items: center;
 	margin-bottom: 20px;
 	font-size: 15px;
-	font-family: 'Nunito';
+	font-family: 'Circular-Book';
 `;
 
 export default function Accordian({ FAQ }) {

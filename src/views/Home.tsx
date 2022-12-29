@@ -51,7 +51,7 @@ const Title = styled.div`
 	max-width: 600px;
 	line-height: 55px;
 	margin: auto;
-	font-family: 'Gilroy-Bold';
+	font-family: 'Circular-Book';
 	@media only screen and (max-width: 900px) {
 		font-size: 40px;
 		line-height: 30px;

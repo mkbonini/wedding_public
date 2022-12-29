@@ -166,7 +166,7 @@ export const FlyoutMenuLink = styled.div<{ active: boolean }>`
 		padding-left: 40px;
 		height: 40px;
 		border-radius: 0px 3px 3px 0px;
-		font-family: 'Gilroy';
+		font-family: 'Circular-Book';
 		p {
 			margin: 0;
 			margin: ${(p) => (p.active ? '0px 0px 0px -3px' : '0px')};
@@ -181,7 +181,7 @@ export const FlyoutExitButton = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	font-size: 35px;
-	font-family: 'Gilroy';
+	font-family: 'Circular-Booky';
 	margin-right: 35px;
 	@media only screen and (min-width: 900px) {
 		display: none;

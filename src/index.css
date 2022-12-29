@@ -36,7 +36,7 @@ textarea {
 @font-face {
 	font-family: "Gilroy-Bold";
 	src: local("Gilroy"),
-	 url("./fonts/Gilroy/Gilroy-Bold.ttf") format("opentype");
+	 url("./fonts/Circular/CircularStd-Medium.otf") format("opentype");
 	}
 	
 @font-face {
@@ -60,7 +60,27 @@ textarea {
 @font-face {
 	font-family: "Gilroy-SemiBold";
 	src: local("Gilroy"),
-	url("./fonts/Gilroy/Gilroy-Semibold.ttf") format("opentype");
+	url("./fonts/Circular/CircularStd-Medium.otf") format("opentype");
 }
 
-	
+
+@font-face {
+	font-family: "Circular-Medium";
+	src: local("Circular"),
+	url("./fonts/Circular/CircularStd-Medium.otf") format("opentype");
+}
+
+
+@font-face {
+	font-family: "Circular-Book";
+	src: local("Circular"),
+	url("./fonts/Circular/CircularStd-Book.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Circular-Light";
+	src: local("Circular"),
+	url("./fonts/Circular/CircularStd-Light.otf") format("opentype");
+}
+
+

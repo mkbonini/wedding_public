@@ -33,7 +33,7 @@ export const ContentContainer = styled.div<{
 		font-size: 30px;
 		color: ${(p) => p.eyebrowColor};
 		text-align: center;
-		font-family: 'Gilroy-Bold';
+		font-family: 'Circular-Book';
 		margin: 0;
 		@media only screen and (min-width: 900px) {
 			text-align: ${(p) => p.align};
@@ -41,7 +41,7 @@ export const ContentContainer = styled.div<{
 	}
 	h2 {
 		font-size: 22px;
-		font-family: 'Gilroy-Bold';
+		font-family: 'Circular-Book';
 		text-align: center;
 		padding: 0;
 		margin: 0;
@@ -52,7 +52,7 @@ export const ContentContainer = styled.div<{
 	}
 	h3 {
 		font-size: 20px;
-		font-family: 'Gilroy';
+		font-family: 'Circular-Book';
 		text-align: center;
 		padding: 10px;
 		margin: 0;
@@ -64,7 +64,7 @@ export const ContentContainer = styled.div<{
 	p {
 		max-width: 650px;
 		text-align: center;
-		font-family: 'Nunito';
+		font-family: 'Circular-Book';
 		@media only screen and (min-width: 900px) {
 			text-align: ${(p) => p.align};
 		}

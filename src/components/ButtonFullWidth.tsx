@@ -11,13 +11,16 @@ const FullWidth = styled(Button)<ButtonProps>(({ theme }) => ({
 	borderRadius: '100px;',
 	textTransform: 'none',
 	padding: '0px 50px',
-	fontFamily: 'Gilroy-Bold',
+	fontFamily: 'Circular-Book',
 	fontSize: '14px;',
 	lineHeight: '20px',
 	color: '#fff',
 	':hover': {
 		backgroundColor: '#000',
 		color: '#fff',
+	},
+	[theme.breakpoints.down('sm')]: {
+		maxWidth: '300px',
 	},
 }));
 

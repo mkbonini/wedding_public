@@ -32,7 +32,7 @@ const DaysLeft = styled.div`
 	margin: 0px 3rem;
 	line-height: 0.7;
 	color: #3366ff;
-	font-family: 'Gilroy-Bold';
+	font-family: 'Circular-Book';
 `;
 
 const Text = styled.div`
@@ -40,7 +40,7 @@ const Text = styled.div`
 	margin: 0rem 3rem 3rem;
 	text-align: right;
 	color: #3366ff;
-	font-family: 'Gilroy';
+	font-family: 'Circular-Book';
 	@media only screen and (max-width: 900px) {
 		font-size: 35px;
 	}
