@@ -26,14 +26,14 @@ export default function Details() {
 						<p>
 							Deer Creek Mountain Camp is a stunning venue surrounded by aspens
 							and wildlife. It sits on a 125 acre property, with plenty of
-							activities and views to enjoy. It is a little over an hour for
-							DIA, and 45 minutes from Denver. It has plenty of lodging,
-							beautiful halls, an indoor gym, outdoor volleyball court, a disc
-							golf course on site and more! <br />
+							activities and views to enjoy. It is about 1.5 hours from DIA, and
+							45 minutes from Denver. It has plenty of lodging, beautiful halls,
+							an indoor gym, outdoor volleyball court, a disc golf course on
+							site and more! <br />
 							<br />
 							Everything is centrally located, however moving from the ceremony
 							site to the dining hall and cabins does require some minimal
-							walking. See lodging page for a map of the camp.
+							walking. See Lodging page for more information.
 						</p>
 					</DetailSection>
 				</ContentContainer>
@@ -50,7 +50,7 @@ export default function Details() {
 							able to book it for the entire weekend! In addition to that, there
 							is lodging on site, meaning you can come for the entire weekend
 							and don’t need to worry about driving to and from the venue and a
-							potential air bnb/hotel. Please check the <strong>Lodging</strong>{' '}
+							potential airbnb/hotel. Please check the <strong>Lodging</strong>{' '}
 							page for more details.
 						</p>
 					</DetailSection>
@@ -86,7 +86,7 @@ export default function Details() {
 						<h2>satuday july 22</h2>
 						<h3>3:30 pm</h3>
 						<p>
-							The ceremony will take place outside among the beautiful aspens.
+							The ceremony will take place outside among beautiful aspens.
 							Attire is festive-casual. Think bright colors, fun dresses or
 							florals. At the end of the day though we also just want you to be
 							comfortable. So wear what you like!

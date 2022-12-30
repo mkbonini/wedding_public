@@ -10,7 +10,7 @@ export const SubTitles = styled.div`
 		padding: 2rem 0rem;
 	}
 	.section {
-		max-width: 980px;
+		max-width: 1200px;
 		margin: auto;
 		h2 {
 			font-size: 22px;
@@ -18,6 +18,11 @@ export const SubTitles = styled.div`
 			text-align: center;
 			padding: 0;
 			margin: 0;
+			&.cabin-title {
+				text-align: start;
+				padding: 2rem 0rem 0rem 0rem;
+				font-size: 20x;
+			}
 			@media only screen and (min-width: 900px) {
 				font-size: 30px;
 			}
@@ -66,8 +71,10 @@ export const LodgingContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	padding: 0rem 1rem;
-	h2 {
-		font-weight: 300;
+	h1 {
+		font-family: 'Circular-Book';
+		margin: 1rem 0px 1rem 0px;
+		padding: 0;
 	}
 	#lodging-description {
 		width: 100%;
@@ -85,7 +92,7 @@ export const LodgingContainer = styled.div`
 
 export const LodgingPage = styled.div`
 	width: 100%;
-	max-width: 1000px;
+	max-width: 1200px;
 	padding: 12rem 0rem 2rem 0rem;
 	margin: auto;
 	@media only screen and (max-width: 900px) {

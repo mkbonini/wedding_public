@@ -35,7 +35,7 @@ export const Questions = {
 		},
 		{
 			question: 'When is the RSVP deadline?',
-			answer: 'The RSVP deadline is June 1st 2023',
+			answer: 'The RSVP deadline is May 21st 2023',
 		},
 		{
 			question: ' Do I need to mail back my RSVP or can I do it online?',
@@ -47,21 +47,21 @@ export const Questions = {
 		{
 			question: 'What is the name and address of the venue?',
 			answer:
-				'The venue is Deer Creek Mountain Camp at 228 S Pine Dr, Bailey, CO 80421',
+				'The venue is Deer Creek Mountain Camp at 228 S Pine Dr, Bailey, CO 80421. Please type in the address carefully and follow Google Map directions to the venue. There is another Deer Creek Venue close by, and if you pull up to a venue with a white barn, you are not at the right location.',
 		},
 		{
 			question: 'What airport should I fly into?',
 			answer:
-				'Denver International Airport is the closest major airport. It is roughly 1 hour and 15 minutes from the venue.',
+				'Denver International Airport is the closest major airport. It is roughly 1 hour an 20 minutes from the venue.',
 		},
 		{
 			question: 'What time should I arrive?',
-			answer: `You can arrive at the venue as early as 3:00pm on Friday. There is also plenty to see and do in Bailey if you fly in early, however we can't have guests at the venue until 3pm. Just know we & the wedding party will likely be busy setting up. `,
+			answer: `You can arrive at the venue as early as 3:00pm on Friday. There is also plenty to see and do in Bailey if you fly in early, however we can't have guests at the venue until 3pm. Just know we & the wedding party will likely be busy setting up during the day. Dinner will be around 6pm, and following dinner will be the dodgeball tournament. `,
 		},
 		{
 			question: 'Where should guests park? Is parking free?',
 			answer:
-				'Parking is free, and there is a large lot on the venue property for guests to use. Some lodging has additional parking attached, however these are for family memebers or those who are hard of walking. See venue map on Lodging Page for parking location.',
+				'Parking is free, and there is a large lot on the venue property for guests to use. Some cabins additional parking attached, however these are for family memebers or those who are hard of walking. See venue map on Lodging Page for parking location.',
 		},
 		{
 			question: 'Can I bring my children?',
@@ -92,16 +92,15 @@ export const Questions = {
 		{
 			question: 'Are dogs allowed?',
 			answer:
-				'No dogs are allowed on the property. There is a very delicate ecosystem at this venue with tons of deer and small creatures. The oweners are strict about no dogs.',
+				'No dogs are allowed on the property. There is a very delicate ecosystem at this venue with tons of deer and small creatures. The owners are strict about no dogs.',
 		},
 		{
 			question: 'Can we have cannabis on the property?',
-			answer:
-				'Sorry, no cannabis smoking allowed on the property. Owners rules.',
+			answer: 'Sorry, no cannabis smoking allowed on the property.',
 		},
 		{
 			question: 'I still have questions, what is the best way to contact you?',
-			answer: 'Please email Miwha at miwhag@gmail.com or text at 720-240-3984.',
+			answer: 'Please email us at mikemiwha@gmail.com ',
 		},
 	],
 	weekend: [
@@ -118,7 +117,7 @@ export const Questions = {
 		{
 			question: 'How can I join a dodgeball team?',
 			answer:
-				'To join a dodgeball team, you simply specify in your RSVP that you would like to participate. The tournament is for ages 17+ and will happen Friday evening after dinner.',
+				'To join a dodgeball team, you simply specify in your RSVP that you would like to participate. You will recieve a follow up email once teams are created. The tournament is for ages 17+ and will happen Friday evening after dinner.',
 		},
 		{
 			question: 'What else is there to do around the property?',
@@ -133,7 +132,7 @@ export const Questions = {
 
 		{
 			question: 'What meals will be provided over the weekend?',
-			answer: `Friday: dinner, Saturday: breakfast & dinner and Sunday: breakfast. We are asking for a $10 donation for the meals outside of the reception. We won't have a formal lunch on Saturday, however will have some simple snacks out. If you would like a full meal we suggest going into town which is only 10 min away.`,
+			answer: `We will provide Friday dinner, Saturday dinner and Sunday breakfast. We are also asking for a $5 donation to cover Sunday breakfast. Since we won't have a formal breakfast or lunch on Saturday, we recommend going into town for food since it's only 10 minutes away. However we will have plenty of snacks out as well incase people can't get to town.`,
 		},
 	],
 	wedding: [
@@ -149,7 +148,7 @@ export const Questions = {
 		},
 		{
 			question: 'Where are the ceremony and the reception taking place?',
-			answer: `As long as weather permits, the ceremony will be taking place outside next to the dining hall (see map on Lodging page). It's a beautiful spot surrounded by aspens and wildlife. The start of the reception and dinner will be in the main lodge and cocktail hour/dancing will be in the dining hall.`,
+			answer: `As long as weather permits, the ceremony will be taking place outside next to the dining hall (see map on the Map page). It's a beautiful spot surrounded by aspens and wildlife. The start of the reception and dinner will be in the main lodge and cocktail hour/dancing will be in the dining hall.`,
 		},
 		{
 			question: 'Will the ceremony and reception be indoors or outdoors?',

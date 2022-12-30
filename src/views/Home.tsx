@@ -23,7 +23,9 @@ const HomePage = styled.div<{ visible: boolean }>`
 	h1 {
 		text-align: center;
 		font-size: 45px;
+
 		color: #03989e;
+		margin-bottom: 1rem;
 	}
 	@media only screen and (max-width: 900px) {
 		margin-bottom: 0;
@@ -50,8 +52,8 @@ const Title = styled.div`
 	font-size: 70px;
 	max-width: 600px;
 	line-height: 55px;
-	margin: auto;
-	font-family: 'Circular-Book';
+	font-family: 'Circular-Medium';
+	margin-bottom: 1rem;
 	@media only screen and (max-width: 900px) {
 		font-size: 40px;
 		line-height: 30px;

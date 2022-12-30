@@ -18,8 +18,9 @@ const Question = styled.div<{ active: boolean }>`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 20px;
+	font-size: 18px;
 	color: black;
+	font-family: 'Circular-Book';
 	svg {
 		color: #9bba1d;
 	}
@@ -65,8 +66,8 @@ const Answer = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	margin-bottom: 20px;
-	font-size: 15px;
-	font-family: 'Circular-Book';
+	font-size: 16px;
+	font-family: 'Circular-Light';
 `;
 
 export default function Accordian({ FAQ }) {

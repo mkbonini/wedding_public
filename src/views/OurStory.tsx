@@ -175,8 +175,8 @@ export default function OurStory() {
 							me.
 							<br />
 							<br />A few months passed and I finally told him how I felt.
-							Luckily at this point he felt the same way and the rest is
-							history.
+							Luckily at this point he felt the same way and the rest is history
+							:)
 						</p>
 					</Story>
 				</AboutSection>
