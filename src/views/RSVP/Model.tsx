@@ -52,16 +52,19 @@ export function handleGuestDeselection(
 
 export async function getGuests() {
 	try {
-		const response = await fetch('https://wedding-backend.fly.dev/guest_list', {
-			method: 'GET',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				accept: 'application/json',
-				X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
-			},
-		});
+		const response = await fetch(
+			'https://mm-wedding-backend.herokuapp.com//guest_list',
+			{
+				method: 'GET',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					accept: 'application/json',
+					X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+				},
+			}
+		);
 
 		if (!response.ok) {
 			throw new Error(`Error! status: ${response.status}`);
@@ -78,7 +81,7 @@ export async function getGuests() {
 export async function getSelectedGuest(id) {
 	try {
 		const response = await fetch(
-			`https://wedding-backend.fly.dev/guests/${id}`,
+			`https://mm-wedding-backend.herokuapp.com//guests/${id}`,
 			{
 				method: 'GET',
 				mode: 'cors',
@@ -103,16 +106,19 @@ export async function getSelectedGuest(id) {
 
 export async function getLodgings() {
 	try {
-		const response = await fetch('https://wedding-backend.fly.dev/lodgings', {
-			method: 'GET',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				accept: 'application/json',
-				X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
-			},
-		});
+		const response = await fetch(
+			'https://mm-wedding-backend.herokuapp.com//lodgings',
+			{
+				method: 'GET',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					accept: 'application/json',
+					X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+				},
+			}
+		);
 
 		if (!response.ok) {
 			throw new Error(`Error! status: ${response.status}`);
@@ -124,4 +130,17 @@ export async function getLodgings() {
 	} catch (err) {
 		console.log(err);
 	}
+}
+
+export function updateGuest(id, body) {
+	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}`, {
+		method: 'PATCH',
+		body: JSON.stringify({ body }),
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			accept: 'application/json',
+			X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+		},
+	});
 }
