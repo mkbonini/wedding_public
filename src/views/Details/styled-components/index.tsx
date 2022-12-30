@@ -110,6 +110,17 @@ export const MobileImageContainer = styled.div`
 export const DetailSection = styled.div`
 	max-width: 650px;
 	margin: 1rem;
+	p {
+		font-family: 'Circular-Light';
+	}
+	h2 {
+		font-family: 'Circular-Medium';
+	}
+	h3 {
+		padding: 0;
+		margin: 0;
+	}
+
 	@media only screen and (min-width: 900px) {
 		margin: 0;
 	}

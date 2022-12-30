@@ -53,42 +53,37 @@ export default function Lodging() {
 	return (
 		<LodgingPage>
 			<LodgingContainer>
-				<Carousel
-					images={[
-						moose,
-						door,
-						sasquach,
-						beds,
-						rv,
-						ceremony,
-						volleyball,
-						gym,
-						dining,
-					]}
-				/>
+				<h1>LODGING</h1>
 				<SubTitles id='main'>
 					<div className='section'>
-						<h2>onsite cabins</h2>
-
+						<Carousel
+							images={[
+								moose,
+								door,
+								sasquach,
+								beds,
+								rv,
+								ceremony,
+								volleyball,
+								gym,
+								dining,
+							]}
+						/>
+						<h2 className='cabin-title'>onsite cabins</h2>
 						<p>
 							We're so excited that this venue has lodging on site. It was
 							another reason we loved the venue so much, and our preference is
-							that guests who are staying for the weekend stay in an cabin if
-							they can. It will cost $30/person which will cover the entire
-							weekend (friday, saturday evening), and while they are pretty nice
-							beds they do not come with bedding, so make sure you bring a
-							sleeping bag/pillow with you.
+							that guests who are staying for the weekend stay in a cabin. It
+							will cost $30/person which will cover the entire weekend (friday,
+							saturday evening), and while they are pretty nice beds they do not
+							come with bedding, so make sure you bring a sleeping bag/pillow
+							with you.
+							<br /> <br />
+							If you are wanting to stay on site, you can reserve your spot in a
+							cabin when you RSVP to the event. There are also 6 RV spots
+							available if you happen to have an RV. Payment for a spot can be
+							made on the registry site or through venmo. <br />
 							<br />
-							<br />
-							We want guests to enjoy themselves while also being safe and not
-							have to worry about driving late in the evening. However we also
-							understand this might not be everyone’s cup of tea, so there are
-							links below to nearby air bnb’s.
-							<br />
-							<br /> If you are wanting to stay on site, you can reserve your
-							spot in a cabin or RV spot when you RSVP to the event. Payment for
-							a spot can be made on the registry site or through venmo. There
-							will be more info about this when you RSVP.
 						</p>
 					</div>
 				</SubTitles>

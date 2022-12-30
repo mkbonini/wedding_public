@@ -13,11 +13,12 @@ export const Container = styled.div`
 	flex-direction: column;
 	h2 {
 		font-size: 30px;
-		font-family: 'Lexend', sans-serif;
+		font-family: 'Circular-Book';
 	}
 	h3 {
 		align-self: flex-start;
 		margin-left: 1rem;
+		font-family: 'Circular-Book';
 	}
 `;
 
