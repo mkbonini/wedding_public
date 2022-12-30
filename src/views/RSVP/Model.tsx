@@ -52,14 +52,14 @@ export function handleGuestDeselection(
 
 export async function getGuests() {
 	try {
-		const response = await fetch('https://wedding-backend.fly.dev/guests', {
+		const response = await fetch('https://wedding-backend.fly.dev/guest_list', {
 			method: 'GET',
 			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': '*',
 				accept: 'application/json',
-				X_API_KEY: 'ad7c95ec-dc13-43a4-8b20-408d4314279b',
+				X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
 			},
 		});
 
@@ -68,7 +68,33 @@ export async function getGuests() {
 		}
 
 		const result = await response.json();
-		console.log('making request to guets api', result);
+		console.log('guests:', result);
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+export async function getSelectedGuest(id) {
+	try {
+		const response = await fetch(
+			`https://wedding-backend.fly.dev/guests/${id}`,
+			{
+				method: 'GET',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					accept: 'application/json',
+					X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+				},
+			}
+		);
+		if (!response.ok) {
+			throw new Error(`Error! status: ${response.status}`);
+		}
+		const result = await response.json();
+		console.log('selectedGuest:', result);
 		return result;
 	} catch (err) {
 		console.log(err);
@@ -84,7 +110,7 @@ export async function getLodgings() {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': '*',
 				accept: 'application/json',
-				X_API_KEY: 'ad7c95ec-dc13-43a4-8b20-408d4314279b',
+				X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
 			},
 		});
 
@@ -93,7 +119,7 @@ export async function getLodgings() {
 		}
 
 		const result = await response.json();
-		console.log('making request to guets api', result);
+		console.log('lodging', result);
 		return result;
 	} catch (err) {
 		console.log(err);

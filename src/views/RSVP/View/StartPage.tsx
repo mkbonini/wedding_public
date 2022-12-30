@@ -1,5 +1,5 @@
 /** @format */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
 	Heading,
 	ButtonContainer,
@@ -8,6 +8,7 @@ import {
 } from '../styled-components';
 import Button from '../../../components/Button';
 import StandardTextField from '../../../components/StandardTextField';
+import { getSelectedGuest } from '../Model';
 
 export default function StartPage({
 	guestList,
@@ -15,10 +16,6 @@ export default function StartPage({
 	progressFlow,
 	selectedGuest,
 }) {
-	useEffect(() => {
-		findGuest();
-	});
-
 	const [searchTerm, setSearchTerm] = useState('');
 	const [displayError, setDisplayError] = useState(false);
 
@@ -27,22 +24,29 @@ export default function StartPage({
 		setSearchTerm(term);
 	}
 
-	function findGuest() {
+	async function getSelectedGuestInfo() {
 		let foundGuest = guestList?.find((guest) =>
-			searchTerm.includes(
-				guest.first_name.toLowerCase() + ' ' + guest.last_name.toLowerCase()
-			)
+			searchTerm.includes(guest.name.toLowerCase())
 		);
-		setSelectedGuest(foundGuest);
+		if (!!foundGuest) {
+			let promise = new Promise((resolve) => {
+				resolve(getSelectedGuest(foundGuest?.guest_id));
+			});
+			let result = await promise;
+			setSelectedGuest(result);
+			return result;
+		}
 	}
 
 	function handleClick() {
-		if (selectedGuest) {
-			progressFlow();
-			setDisplayError(false);
-		} else {
-			setDisplayError(true);
-		}
+		getSelectedGuestInfo().then(function (result) {
+			if (!!result) {
+				progressFlow();
+				setDisplayError(false);
+			} else {
+				setDisplayError(true);
+			}
+		});
 	}
 
 	return (
