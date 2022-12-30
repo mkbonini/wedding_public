@@ -1,6 +1,7 @@
 /** @format */
 
 import { useState } from 'react';
+import { updateGuest } from '../../Model';
 import Toggle from '../../../../components/Toggle';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
 import Select from '@mui/material/Select';
@@ -59,6 +60,9 @@ export default function ContactInfo({
 		alert(JSON.stringify(childList));
 	};
 
+	function handleContinue() {
+		progressFlow(rsvp);
+	}
 	return (
 		<ContactInfoSection kids={children} plusOne={plusOne}>
 			<h1>
@@ -246,7 +250,7 @@ export default function ContactInfo({
 
 				<ButtonContainer>
 					<ButtonSecondary onClick={() => regressFlow()} text='Back' />
-					<Button onClick={() => progressFlow(rsvp)} text='Continue' />
+					<Button onClick={() => handleContinue()} text='Continue' />
 				</ButtonContainer>
 			</Form>
 		</ContactInfoSection>
