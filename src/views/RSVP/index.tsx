@@ -22,33 +22,14 @@ interface Kid {
 interface PlusOne {
 	name: string;
 }
-interface Cabin {
-	id: number;
-	name: string;
-	lodging_type: string;
-	capacity: number;
-	url: string;
-	description: string;
-	created_at: string;
-	updated_at: string;
-	title: string;
-	image_url: string;
-	color: string;
-	guests: Guests[];
-	kids: Kid[];
-	plus_ones: PlusOne[];
-}
 
 export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
 	const [currentStep, setCurrentStep] = useState(steps.start);
-	// const [currentStep, setCurrentStep] = useState(steps.contact);
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
 	const [rsvp, setRsvp] = useState(false);
 	const [cabinList, setCabinList] = useState([]);
-
-	// const [verified, setVarified] = useState(false);
 
 	useEffect(() => {
 		(async () => {
