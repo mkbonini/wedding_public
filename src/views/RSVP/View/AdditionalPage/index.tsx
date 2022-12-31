@@ -1,100 +1,58 @@
 /** @format */
 
 import { useState } from 'react';
-import Stepper from '../../../components/Stepper';
-import styled from 'styled-components';
-import ButtonSecondary from '../../../components/ButtonSecondary';
-import Button from '../../../components/Button';
+import Stepper from '../../../../components/Stepper';
+import ButtonSecondary from '../../../../components/ButtonSecondary';
+import Button from '../../../../components/Button';
 import TextField from '@mui/material/TextField';
-import Toggle from '../../../components/Toggle';
+import Toggle from '../../../../components/Toggle';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { getFormValues } from './utils';
+import { updateGuest } from '../../Model';
+import {
+	ButtonContainer,
+	AdditionalPageContainer,
+	StepperContainer,
+	ContentContainer,
+	SectionBreaks,
+	LineBreak,
+	ToggleContainer,
+} from './styled-components';
 
-const AdditionalPageContainer = styled.div`
-	margin: 8rem 1rem 0rem 1rem;
-`;
-
-const StepperContainer = styled.div`
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const ButtonContainer = styled.div`
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 2rem 0rem 6rem 0rem;
-	gap: 20px;
-	@media only screen and (max-width: 900px) {
-		flex-direction: column;
-		align-items: center;
-		padding: 20px 0px 40px 0px;
-	}
-`;
-
-const ToggleContainer = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 1rem 2rem 0rem 0rem;
-	@media only screen and (max-width: 900px) {
-		flex-direction: column;
-		align-items: flex-start;
-		padding: 0px 0px 10px 0px;
-	}
-`;
-
-const LineBreak = styled.div`
-	height: 1px;
-	background-color: whitesmoke;
-	width: 100%;
-	max-width: '800px';
-	margin: 1rem 0rem;
-`;
-
-const ContentContainer = styled.div`
-	width: 100%;
-	max-width: 1000px;
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	justify-content: start;
-	h1 {
-		font-size: 20px;
-		text-align: center;
-	}
-	h2 {
-		font-size: 18px;
-		margin: 1rem 0rem;
-		font-family: 'Circular-Book';
-		color: #343232;
-		text-align: start;
-	}
-	p {
-		padding: 0;
-		margin: 0px 0px 10px 0px;
-		font-family: 'Circular-Light';
-		color: #343232;
-	}
-`;
-
-const SectionBreaks = styled.div`
-	margin: 10px 0px;
-	width: 100%;
-`;
-export default function StartPage({ regressFlow, progressFlow }) {
-	const [breakfast, setBreakfast] = useState(false);
+export default function StartPage({
+	regressFlow,
+	progressFlow,
+	selectedGuest,
+}) {
+	// const [breakfast, setBreakfast] = useState('no');
 	const [dodgeball, setDodgeball] = useState(false);
 	const [arrivalDay, setArrivalDay] = useState('');
 
 	const handleArrivalChange = (event: SelectChangeEvent) => {
 		setArrivalDay(event.target.value as string);
 	};
+
+	// const handleBreakfastChange = (event: SelectChangeEvent) => {
+	// 	if (breakfast === 'no') {
+	// 		setBreakfast('yes');
+	// 	} else {
+	// 		setBreakfast('no');
+	// 	}
+	// };
+
+	const handleSubmit = () => {
+		let formValues = getFormValues();
+		updateGuest(selectedGuest.id, {
+			...formValues,
+			// breakfast: breakfast,
+			arrivalDay: arrivalDay,
+		});
+		progressFlow();
+	};
+
 	return (
 		<AdditionalPageContainer>
 			<StepperContainer>
@@ -121,22 +79,19 @@ export default function StartPage({ regressFlow, progressFlow }) {
 					</h2>
 					<p>If yes, please describe below otherwise leave blank</p>
 					<TextField
+						id='allergy-text-feild'
 						sx={{ maxWidth: 400, width: '100%' }}
-						id='outlined-multiline-flexible'
 						label='Any Allergies?'
 						multiline
 						maxRows={4}
 					/>
 				</SectionBreaks>
-				<SectionBreaks>
+				{/* <SectionBreaks>
 					<ToggleContainer>
 						<h2>Do you want breakfast on Sunday morning?</h2>
-						<Toggle
-							toggleActive={breakfast}
-							onChange={() => setBreakfast(!breakfast)}
-						/>
+						<Toggle toggleActive={breakfast} onChange={handleBreakfastChange} />
 					</ToggleContainer>
-				</SectionBreaks>
+				</SectionBreaks> */}
 				<LineBreak />
 				<SectionBreaks>
 					<h2>What day will you be arriving?</h2>
@@ -168,15 +123,37 @@ export default function StartPage({ regressFlow, progressFlow }) {
 						The dodgeball tournament will be held on{' '}
 						<strong>Friday evening</strong>. Due to the nature of the game, we
 						are currently only allowing contestants who are{' '}
-						<strong>17 years old or older</strong>. There is however a section
-						of the gym that overlooks the court and those who are interested in
-						hanging out but not playing can still participate by watching and
-						cheering for a team.
+						<strong>17 years old or older to compete</strong>. There is however
+						a section of the gym that overlooks the court and those who are
+						interested in hanging out but not playing can still participate by
+						watching and cheering for a team.
 					</p>
 				</SectionBreaks>
+				<SectionBreaks>
+					<p>Please add any participants name(s) below</p>
+					<TextField
+						sx={{ maxWidth: 400, width: '100%' }}
+						id='dodgeball-participants'
+						label='Participant Names'
+						multiline
+						maxRows={4}
+					/>
+				</SectionBreaks>
+
+				<SectionBreaks>
+					<h2>Any final questions or comments?</h2>
+					<TextField
+						sx={{ maxWidth: 700, width: '100%' }}
+						id='questions-comments'
+						label='Comments or Questions'
+						multiline
+						maxRows={4}
+					/>
+				</SectionBreaks>
+
 				<ButtonContainer>
 					<ButtonSecondary onClick={() => regressFlow()} text='Back' />
-					<Button onClick={() => progressFlow()} text='Submit My RSVP' />
+					<Button onClick={() => handleSubmit()} text='Submit My RSVP' />
 				</ButtonContainer>
 			</ContentContainer>
 		</AdditionalPageContainer>

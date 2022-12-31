@@ -8,7 +8,7 @@ import ContactInfoPage from './View/ContactInfo/index';
 import CabinPage from './View/CabinPage/index';
 import ConfirmPage from './View/ConfirmPage';
 import { getGuests, getLodgings, steps } from './Model';
-import AdditionalPage from './View/AdditionalPage';
+import AdditionalPage from './View/AdditionalPage/index';
 
 export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
@@ -16,7 +16,13 @@ export default function RSVP() {
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
 	const [rsvp, setRsvp] = useState('no');
-	const [cabinList, setCabinList] = useState([]);
+	const [cabinList, setCabinList] = useState<any>([]);
+
+	const selectedCabin = () => {
+		if (cabinList) {
+			return cabinList.find((cabin) => cabin?.id === selectedGuest?.lodging_id);
+		}
+	};
 
 	useEffect(() => {
 		(async () => {
@@ -99,12 +105,14 @@ export default function RSVP() {
 						progressFlow={progressFlow}
 						cabinList={cabinList}
 						setCabinList={setCabinList}
+						selectedCabin={selectedCabin}
 					/>
 				);
 
 			case steps.additional:
 				return (
 					<AdditionalPage
+						selectedGuest={selectedGuest}
 						progressFlow={progressFlow}
 						regressFlow={regressFlow}
 					/>

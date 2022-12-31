@@ -31,6 +31,7 @@ export default function CabinPage({
 	progressFlow,
 	cabinList,
 	setCabinList,
+	selectedCabin,
 }) {
 	const noCabin = {
 		id: 0,
@@ -49,13 +50,11 @@ export default function CabinPage({
 	};
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState(null);
-	const [internalSelectedCabin, setInternalSelectedCabin] = useState(noCabin);
-	const [selectedCabin, setSelectedCabin] = useState(noCabin);
+	const [internalCabin, setInternalCabin] = useState(selectedCabin || noCabin);
 	const [acceptLodging, setAcceptLodging] = useState(false);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
-		findSelectedCabinDetails(selectedGuest.lodging_id);
 		var body = document.body;
 		if (activeModal) {
 			body.classList.add('modal-open');
@@ -71,13 +70,8 @@ export default function CabinPage({
 	};
 
 	const handleContinue = () => {
-		updateGuest(selectedGuest.id, { lodging_id: internalSelectedCabin.id });
+		updateGuest(selectedGuest.id, { lodging_id: internalCabin.id });
 		progressFlow();
-	};
-
-	const findSelectedCabinDetails = (id) => {
-		let assignedCabin = cabinList.find((cabin) => cabin.id === id);
-		setSelectedCabin(assignedCabin);
 	};
 
 	return (
@@ -105,42 +99,26 @@ export default function CabinPage({
 
 				{acceptLodging ? (
 					<div>
-						{internalSelectedCabin.id !== 0 ||
-							(selectedCabin.id !== 0 && (
-								<SelectedCabinSection>
-									<h2>You and your party are assigned to: </h2>
-									<SelectedCabinContainer>
-										<Image
-											image={
-												internalSelectedCabin.image_url ||
-												selectedCabin.image_url
-											}
-										/>
-										<SelectedContent>
-											<h1>
-												{internalSelectedCabin.name || selectedCabin.name}
-											</h1>
-											<p className='selected-p'>
-												{internalSelectedCabin.description ||
-													selectedCabin.description}
-											</p>
-											<LinkContainer>
-												<ViewMoreLink onClick={() => setActiveModal(true)}>
-													View Details <FaArrowRight />
-												</ViewMoreLink>
-												<DeselectButton
-													onClick={() => {
-														setInternalSelectedCabin(noCabin);
-														setSelectedCabin(noCabin);
-													}}
-												>
-													Deselect Button
-												</DeselectButton>
-											</LinkContainer>
-										</SelectedContent>
-									</SelectedCabinContainer>
-								</SelectedCabinSection>
-							))}
+						{internalCabin.id !== 0 && (
+							<SelectedCabinSection>
+								<h2>You and your party are assigned to: </h2>
+								<SelectedCabinContainer>
+									<Image image={internalCabin.image_url} />
+									<SelectedContent>
+										<h1>{internalCabin.name}</h1>
+										<p className='selected-p'>{internalCabin.description}</p>
+										<LinkContainer>
+											<ViewMoreLink onClick={() => setActiveModal(true)}>
+												View Details <FaArrowRight />
+											</ViewMoreLink>
+											<DeselectButton onClick={() => setInternalCabin(noCabin)}>
+												Deselect Button
+											</DeselectButton>
+										</LinkContainer>
+									</SelectedContent>
+								</SelectedCabinContainer>
+							</SelectedCabinSection>
+						)}
 
 						<CabinListContainer>
 							<h2>Available Cabins</h2>
@@ -167,13 +145,11 @@ export default function CabinPage({
 						{activeModal && (
 							<Popup
 								activeCard={activeCard}
-								setSelectedCabin={setInternalSelectedCabin}
+								setSelectedCabin={setInternalCabin}
 								setActiveModal={setActiveModal}
-								noCabinSelected={
-									internalSelectedCabin.id !== 0 || selectedCabin.id !== 0
-								}
-								selectedCabin={internalSelectedCabin || selectedCabin}
-								key={`${internalSelectedCabin.id}-popup`}
+								noCabinSelected={internalCabin.id !== 0}
+								selectedCabin={internalCabin}
+								key={`${internalCabin.id}-popup`}
 								open={open}
 								setOpen={setOpen}
 							/>

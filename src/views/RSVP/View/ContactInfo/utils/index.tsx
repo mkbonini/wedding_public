@@ -9,8 +9,6 @@ export const getFormValues = () => {
 	).value;
 	let email = (document.getElementById('email-input') as HTMLInputElement)
 		.value;
-	// let plusOne = (document.getElementById('plus-one-input') as HTMLInputElement)
-	// 	.value;
 	return {
 		first_name: first_name,
 		last_name: last_name,
