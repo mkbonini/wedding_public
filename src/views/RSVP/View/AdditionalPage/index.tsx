@@ -29,10 +29,10 @@ export default function StartPage({
 }) {
 	// const [breakfast, setBreakfast] = useState('no');
 	const [dodgeball, setDodgeball] = useState(false);
-	const [arrivalDay, setArrivalDay] = useState('');
+	const [arrivalDate, setArrivalDate] = useState('');
 
 	const handleArrivalChange = (event: SelectChangeEvent) => {
-		setArrivalDay(event.target.value as string);
+		setArrivalDate(event.target.value as string);
 	};
 
 	// const handleBreakfastChange = (event: SelectChangeEvent) => {
@@ -47,8 +47,7 @@ export default function StartPage({
 		let formValues = getFormValues();
 		updateGuest(selectedGuest.id, {
 			...formValues,
-			// breakfast: breakfast,
-			arrivalDay: arrivalDay,
+			arrival_date: arrivalDate,
 		});
 		progressFlow();
 	};
@@ -101,10 +100,10 @@ export default function StartPage({
 							labelId='day-label'
 							label='Select a day'
 							onChange={handleArrivalChange}
-							value={arrivalDay}
+							value={arrivalDate}
 						>
-							<MenuItem value={'Friday'}>Friday</MenuItem>
-							<MenuItem value={'Saturday'}>Saturday</MenuItem>
+							<MenuItem value={'friday'}>Friday</MenuItem>
+							<MenuItem value={'saturday'}>Saturday</MenuItem>
 						</Select>
 					</FormControl>
 				</SectionBreaks>

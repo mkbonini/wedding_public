@@ -8,7 +8,7 @@ export const getFormValues = () => {
 		document.getElementById('questions-comments') as HTMLInputElement
 	).value;
 	return {
-		allergy: allergy,
-		questions_comments: questions_comments,
+		diet: allergy,
+		comments: questions_comments,
 	};
 };
