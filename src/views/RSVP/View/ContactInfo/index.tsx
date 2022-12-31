@@ -39,17 +39,24 @@ export default function ContactInfo({
 	selectedGuest,
 }) {
 	const [rsvp, setRsvp] = useState(selectedGuest?.rsvp || '');
-	const [childList, setChildList] = useState([
-		{ name: '', age: '', needs_bed: '', guest_id: selectedGuest.id },
-	]);
 	const [plusOneName, setPlusOneName] = useState('');
 	const [plusOneToggle, setPlusOneToggle] = useState(false);
 	const [children, setChildren] = useState(false);
-	const [childCare, setChildCare] = useState('sitter service');
+	const [childCare, setChildCare] = useState('');
+	const [childList, setChildList] = useState([
+		{
+			name: '',
+			age: '',
+			needs_bed: '',
+			guest_id: selectedGuest.id,
+			child_care: childCare,
+		},
+	]);
 
 	let handleChildInputChange = (i, e) => {
 		let newChildList = [...childList];
 		newChildList[i][e.target.name] = e.target.value;
+		newChildList[i].child_care = childCare;
 		setChildList(newChildList);
 	};
 
@@ -61,7 +68,13 @@ export default function ContactInfo({
 		if (childList.length < 4) {
 			setChildList([
 				...childList,
-				{ name: '', age: '', needs_bed: '', guest_id: selectedGuest.id },
+				{
+					name: '',
+					age: '',
+					needs_bed: '',
+					guest_id: selectedGuest.id,
+					child_care: childCare,
+				},
 			]);
 		}
 		e.preventDefault();
@@ -114,6 +127,7 @@ export default function ContactInfo({
 	}
 
 	console.log(childList);
+	console.log(childCare, 'childcare');
 
 	return (
 		<ContactInfoSection>
@@ -240,10 +254,8 @@ export default function ContactInfo({
 										label='Please select an option'
 										value={childCare ? childCare : ''}
 									>
-										<MenuItem value={'parents'}>A Parent</MenuItem>
-										<MenuItem value={'sitter service'}>
-											Sitters Service
-										</MenuItem>
+										<MenuItem value={'guardian'}>A Parent</MenuItem>
+										<MenuItem value={'sitter'}>Sitters Service</MenuItem>
 									</Select>
 								</FormControl>
 								<KidsContainer>
