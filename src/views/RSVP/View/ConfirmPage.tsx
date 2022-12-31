@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-export default function ConfirmPage({ rsvp }) {
+export default function ConfirmPage({ selectedGuest }) {
 	const ConfirmationPage = styled.div`
 		margin-top: 4rem;
 		max-width: 600px;
@@ -38,11 +38,11 @@ export default function ConfirmPage({ rsvp }) {
 				Thank You <br />
 				For Your RSVP
 			</h1>
-			<h2>
-				{!rsvp
+			{/* <h2>
+				{selectedGuest.rsvp === 'no'
 					? `We're sad we won't see you there! You will be missed.`
 					: `We can't wait to celebrate with you!`}
-			</h2>
+			</h2> */}
 			<p>
 				Expect to receive a confirmation email with details of your RSVP. You
 				can also always come back to this RSVP portal (so long as the deadline

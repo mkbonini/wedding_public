@@ -143,6 +143,7 @@ export default function Popup({
 	setActiveModal,
 	noCabinSelected,
 	selectedCabin,
+	id,
 }) {
 	const {
 		name,
@@ -171,7 +172,7 @@ export default function Popup({
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
 	return (
-		<div>
+		<div key={id}>
 			<Dialog
 				fullScreen={fullScreen}
 				open={open}
@@ -201,6 +202,7 @@ export default function Popup({
 								{occupants.map((occupant, index) => {
 									return (
 										<CabinSpot
+											key={index}
 											color={occupant !== 'Spot Available' ? color : '#242424'}
 										>
 											<div className='spot-number'>{index + 1}</div>

@@ -22,14 +22,14 @@ import Card from '../../../../components/Card';
 import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Button from '../../../../components/Button';
 import Popup from '../../../../components/Popup';
-import ButtonError from '../../../../components/ButtonError';
+import { updateGuest } from '../../Model';
 
 export default function CabinPage({
 	regressFlow,
 	selectedGuest,
 	progressFlow,
+	selectedCabin,
 	cabinList,
-	setCabinList,
 }) {
 	const noCabin = {
 		id: 0,
@@ -47,19 +47,21 @@ export default function CabinPage({
 		spots_remaining: '',
 	};
 	const [activeModal, setActiveModal] = useState(false);
-	const [activeCard, setActiveCard] = useState(null);
-	const [selectedCabin, setSelectedCabin] = useState(noCabin);
-	const [acceptLodging, setAcceptLodging] = useState(false);
+	const [activeCard, setActiveCard] = useState(selectedCabin);
+	const [internalCabin, setInternalCabin] = useState(selectedCabin);
+	const [acceptLodging, setAcceptLodging] = useState(!!selectedCabin);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		var body = document.body;
 		if (activeModal) {
+			setOpen(true);
 			body.classList.add('modal-open');
 		} else {
+			setOpen(false);
 			body.classList.remove('modal-open');
 		}
-	});
+	}, [activeModal]);
 
 	const handleCardClick = (cabin) => {
 		setActiveModal(true);
@@ -67,12 +69,17 @@ export default function CabinPage({
 		setOpen(true);
 	};
 
+	const handleContinue = () => {
+		updateGuest(selectedGuest.id, { lodging_id: internalCabin.id });
+		progressFlow();
+	};
+
 	return (
 		<>
 			<CabinInfoSection>
-				{/* <div className='stepper-container'>
+				<div className='stepper-container'>
 					<Stepper step={2} />
-				</div> */}
+				</div>
 				<ToggleContainer>
 					<h2>Will you be staying onsite in a cabin?</h2>
 					<div>
@@ -92,19 +99,19 @@ export default function CabinPage({
 
 				{acceptLodging ? (
 					<div>
-						{selectedCabin.id !== 0 && (
+						{internalCabin.id !== 0 && (
 							<SelectedCabinSection>
 								<h2>You and your party are assigned to: </h2>
 								<SelectedCabinContainer>
-									<Image image={selectedCabin.image_url} />
+									<Image image={internalCabin.image_url} />
 									<SelectedContent>
-										<h1>{selectedCabin.name}</h1>
-										<p className='selected-p'>{selectedCabin.description}</p>
+										<h1>{internalCabin.name}</h1>
+										<p className='selected-p'>{internalCabin.description}</p>
 										<LinkContainer>
 											<ViewMoreLink onClick={() => setActiveModal(true)}>
 												View Details <FaArrowRight />
 											</ViewMoreLink>
-											<DeselectButton onClick={() => setSelectedCabin(noCabin)}>
+											<DeselectButton onClick={() => setInternalCabin(noCabin)}>
 												Deselect Button
 											</DeselectButton>
 										</LinkContainer>
@@ -138,11 +145,11 @@ export default function CabinPage({
 						{activeModal && (
 							<Popup
 								activeCard={activeCard}
-								setSelectedCabin={setSelectedCabin}
+								setSelectedCabin={setInternalCabin}
 								setActiveModal={setActiveModal}
-								noCabinSelected={selectedCabin.id !== 0}
-								selectedCabin={selectedCabin}
-								key={`${selectedCabin.id}-popup`}
+								noCabinSelected={internalCabin.id !== 0}
+								selectedCabin={internalCabin}
+								id={`${internalCabin.id}-popup`}
 								open={open}
 								setOpen={setOpen}
 							/>
@@ -161,7 +168,7 @@ export default function CabinPage({
 				)}
 				<ButtonContainer>
 					<ButtonSecondary onClick={() => regressFlow()} text='Back' />
-					<Button onClick={() => progressFlow()} text='Continue' />
+					<Button onClick={() => handleContinue()} text='Continue' />
 				</ButtonContainer>
 			</CabinInfoSection>
 		</>

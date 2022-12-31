@@ -7,46 +7,34 @@ import StartPage from './View/StartPage';
 import ContactInfoPage from './View/ContactInfo/index';
 import CabinPage from './View/CabinPage/index';
 import ConfirmPage from './View/ConfirmPage';
-import { getGuests, getLodgings, steps } from './Model';
-import AdditionalPage from './View/AdditionalPage';
-
-interface Guests {
-	first_name: string;
-	last_name: string;
-}
-
-interface Kid {
-	name: string;
-}
-
-interface PlusOne {
-	name: string;
-}
+import { getLodgings, steps } from './Model';
+import AdditionalPage from './View/AdditionalPage/index';
 
 export default function RSVP() {
-	const [guestList, setGuestList] = useState<any>([]);
 	const [currentStep, setCurrentStep] = useState(steps.start);
-
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
-	const [rsvp, setRsvp] = useState(false);
-	const [cabinList, setCabinList] = useState([]);
+	const [cabinList, setCabinList] = useState<any>([]);
+
+	const selectedCabin = () => {
+		if (cabinList) {
+			return cabinList.find((cabin) => cabin?.id === selectedGuest?.lodging_id);
+		}
+	};
 
 	useEffect(() => {
 		(async () => {
-			let guestResult = await getGuests();
 			let lodgingResult = await getLodgings();
-			setGuestList(guestResult);
 			setCabinList(lodgingResult);
 		})();
 	}, []);
 
-	function progressFlow(rsvp: boolean) {
+	function progressFlow(rsvp) {
 		switch (currentStep) {
 			case steps.start:
 				setCurrentStep(steps.contact);
 				break;
 			case steps.contact:
-				if (!rsvp) {
+				if (rsvp === 'no') {
 					setCurrentStep(steps.confirm);
 				} else {
 					setCurrentStep(steps.cabin);
@@ -87,9 +75,7 @@ export default function RSVP() {
 			case steps.start:
 				return (
 					<StartPage
-						guestList={guestList}
 						setSelectedGuest={setSelectedGuest}
-						selectedGuest={selectedGuest}
 						progressFlow={progressFlow}
 					/>
 				);
@@ -99,8 +85,6 @@ export default function RSVP() {
 						selectedGuest={selectedGuest}
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
-						rsvp={rsvp}
-						setRsvp={setRsvp}
 					/>
 				);
 
@@ -111,20 +95,21 @@ export default function RSVP() {
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
 						cabinList={cabinList}
-						setCabinList={setCabinList}
+						selectedCabin={selectedCabin}
 					/>
 				);
 
 			case steps.additional:
 				return (
 					<AdditionalPage
+						selectedGuest={selectedGuest}
 						progressFlow={progressFlow}
 						regressFlow={regressFlow}
 					/>
 				);
 
 			case steps.confirm:
-				return <ConfirmPage rsvp={rsvp} />;
+				return <ConfirmPage selectedGuest={selectedGuest} />;
 			default:
 				setCurrentStep(steps.start);
 		}

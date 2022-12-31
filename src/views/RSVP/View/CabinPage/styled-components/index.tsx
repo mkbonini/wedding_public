@@ -48,7 +48,6 @@ export const CabinInfoSection = styled.div`
 		align-items: center;
 		width: 100%;
 		padding-bottom: 2rem;
-		margin-top: -2rem;
 	}
 	h2 {
 		font-size: 18px;
