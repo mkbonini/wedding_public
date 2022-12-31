@@ -22,16 +22,14 @@ import Card from '../../../../components/Card';
 import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Button from '../../../../components/Button';
 import Popup from '../../../../components/Popup';
-import ButtonError from '../../../../components/ButtonError';
 import { updateGuest } from '../../Model';
 
 export default function CabinPage({
 	regressFlow,
 	selectedGuest,
 	progressFlow,
-	cabinList,
-	setCabinList,
 	selectedCabin,
+	cabinList,
 }) {
 	const noCabin = {
 		id: 0,
@@ -49,19 +47,21 @@ export default function CabinPage({
 		spots_remaining: '',
 	};
 	const [activeModal, setActiveModal] = useState(false);
-	const [activeCard, setActiveCard] = useState(null);
-	const [internalCabin, setInternalCabin] = useState(selectedCabin || noCabin);
-	const [acceptLodging, setAcceptLodging] = useState(false);
+	const [activeCard, setActiveCard] = useState(selectedCabin);
+	const [internalCabin, setInternalCabin] = useState(selectedCabin);
+	const [acceptLodging, setAcceptLodging] = useState(!!selectedCabin);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		var body = document.body;
 		if (activeModal) {
+			setOpen(true);
 			body.classList.add('modal-open');
 		} else {
+			setOpen(false);
 			body.classList.remove('modal-open');
 		}
-	});
+	}, [activeModal]);
 
 	const handleCardClick = (cabin) => {
 		setActiveModal(true);
@@ -77,9 +77,9 @@ export default function CabinPage({
 	return (
 		<>
 			<CabinInfoSection>
-				{/* <div className='stepper-container'>
+				<div className='stepper-container'>
 					<Stepper step={2} />
-				</div> */}
+				</div>
 				<ToggleContainer>
 					<h2>Will you be staying onsite in a cabin?</h2>
 					<div>
@@ -149,7 +149,7 @@ export default function CabinPage({
 								setActiveModal={setActiveModal}
 								noCabinSelected={internalCabin.id !== 0}
 								selectedCabin={internalCabin}
-								key={`${internalCabin.id}-popup`}
+								id={`${internalCabin.id}-popup`}
 								open={open}
 								setOpen={setOpen}
 							/>

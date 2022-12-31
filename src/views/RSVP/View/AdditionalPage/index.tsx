@@ -83,6 +83,7 @@ export default function StartPage({
 						label='Any Allergies?'
 						multiline
 						maxRows={4}
+						defaultValue={selectedGuest.diet ? selectedGuest.diet : ''}
 					/>
 				</SectionBreaks>
 				{/* <SectionBreaks>
@@ -100,7 +101,11 @@ export default function StartPage({
 							labelId='day-label'
 							label='Select a day'
 							onChange={handleArrivalChange}
-							value={arrivalDate}
+							defaultValue={
+								selectedGuest.arrival_date
+									? selectedGuest.arrival_date
+									: arrivalDate
+							}
 						>
 							<MenuItem value={'friday'}>Friday</MenuItem>
 							<MenuItem value={'saturday'}>Saturday</MenuItem>
@@ -147,6 +152,7 @@ export default function StartPage({
 						label='Comments or Questions'
 						multiline
 						maxRows={4}
+						defaultValue={selectedGuest.comments && selectedGuest.comments}
 					/>
 				</SectionBreaks>
 

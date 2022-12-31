@@ -30,10 +30,7 @@ export const ToggleContainer = styled.div`
 		padding: 0;
 	}
 `;
-export const ContactInfoSection = styled.div<{
-	kids: boolean;
-	plusOne: boolean;
-}>`
+export const ContactInfoSection = styled.div`
 	width: 100%;
 	max-width: 1000px;
 	min-height: 75vh;
@@ -96,6 +93,11 @@ export const ContactFeild = styled.div`
 		padding: 0;
 		margin: 0;
 	}
+	&.child-inputs {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 0rem 2rem 0rem;
+	}
 	&.children-field {
 		display: flex;
 		flex-direction: column;
@@ -150,4 +152,12 @@ export const RsvpContainer = styled.div`
 	h2 {
 		margin: 1rem 0rem 2rem 0rem;
 	}
+`;
+
+export const LineBreak = styled.div`
+	height: 1px;
+	background-color: whitesmoke;
+	width: 100%;
+	max-width: '800px';
+	margin: 1rem 0rem;
 `;

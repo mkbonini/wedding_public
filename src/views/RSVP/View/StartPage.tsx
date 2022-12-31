@@ -1,5 +1,5 @@
 /** @format */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	Heading,
 	ButtonContainer,
@@ -8,16 +8,19 @@ import {
 } from '../styled-components';
 import Button from '../../../components/Button';
 import StandardTextField from '../../../components/StandardTextField';
-import { getSelectedGuest } from '../Model';
+import { getGuests, getSelectedGuest } from '../Model';
 
-export default function StartPage({
-	guestList,
-	setSelectedGuest,
-	progressFlow,
-	selectedGuest,
-}) {
+export default function StartPage({ setSelectedGuest, progressFlow }) {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [displayError, setDisplayError] = useState(false);
+	const [guestList, setGuestList] = useState<any>([]);
+
+	useEffect(() => {
+		(async () => {
+			let guestResult = await getGuests();
+			setGuestList(guestResult);
+		})();
+	}, []);
 
 	function editSearchTerm(e) {
 		let term = e.target.value.toLowerCase();

@@ -15,3 +15,12 @@ export const getFormValues = () => {
 		email: email,
 	};
 };
+
+export const plusOneFormValue = () => {
+	let plusOne = (document?.getElementById('plus-one-input') as HTMLInputElement)
+		?.value;
+
+	return {
+		name: plusOne,
+	};
+};

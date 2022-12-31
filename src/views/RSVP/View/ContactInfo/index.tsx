@@ -1,7 +1,13 @@
 /** @format */
 
 import { useState } from 'react';
-import { updateGuest } from '../../Model';
+import {
+	createPlusOne,
+	deletePlusOne,
+	updateGuest,
+	updatePlusOne,
+	createKids,
+} from '../../Model';
 import Toggle from '../../../../components/Toggle';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -9,8 +15,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
-import { getFormValues } from './utils';
+import { getFormValues, plusOneFormValue } from './utils';
 import {
 	ContactFeild,
 	ImageContainer,
@@ -22,6 +27,7 @@ import {
 	KidsContainer,
 	AddChildLink,
 	RsvpContainer,
+	LineBreak,
 } from './styled-components';
 import StandardTextField from '../../../../components/StandardTextField';
 import Button from '../../../../components/Button';
@@ -31,14 +37,15 @@ export default function ContactInfo({
 	regressFlow,
 	progressFlow,
 	selectedGuest,
-	rsvp,
-	setRsvp,
 }) {
-	const [childList, setChildList] = useState([{ name: '', age: '' }]);
+	const [rsvp, setRsvp] = useState(selectedGuest?.rsvp || '');
+	const [childList, setChildList] = useState([
+		{ name: '', age: '', needs_bed: '', guest_id: selectedGuest.id },
+	]);
 	const [plusOneName, setPlusOneName] = useState('');
-	const [plusOne, setPlusOne] = useState(false);
+	const [plusOneToggle, setPlusOneToggle] = useState(false);
 	const [children, setChildren] = useState(false);
-	const [childCare, setChildCare] = useState('');
+	const [childCare, setChildCare] = useState('sitter service');
 
 	let handleChildInputChange = (i, e) => {
 		let newChildList = [...childList];
@@ -52,7 +59,10 @@ export default function ContactInfo({
 
 	let addChildFormField = (e) => {
 		if (childList.length < 4) {
-			setChildList([...childList, { name: '', age: '' }]);
+			setChildList([
+				...childList,
+				{ name: '', age: '', needs_bed: '', guest_id: selectedGuest.id },
+			]);
 		}
 		e.preventDefault();
 	};
@@ -73,12 +83,40 @@ export default function ContactInfo({
 
 	function handleContinue() {
 		let formValues = getFormValues();
-		updateGuest(selectedGuest.id, { ...formValues, rsvp: rsvp });
+		let plusOne = selectedGuest?.plus_ones.length === 1;
+		let noPlusOne = selectedGuest?.plus_ones?.length === 0;
+		let plusOneId = selectedGuest?.plus_ones[0]?.id;
+		let plusOneInput = plusOneFormValue();
+
+		updateGuest(selectedGuest.id, {
+			...formValues,
+			rsvp: rsvp,
+		});
+
+		if (children) {
+			createKids(childList);
+		}
+
+		if (selectedGuest.plus_one_count !== 0) {
+			if (rsvp === null || rsvp === 'no') {
+				progressFlow(rsvp);
+			} else if (noPlusOne && plusOneToggle) {
+				createPlusOne({ ...plusOneInput, guest_id: selectedGuest.id });
+			} else if (plusOne && plusOneToggle) {
+				updatePlusOne(plusOneId, plusOneInput);
+			} else if (plusOne && !plusOneToggle) {
+				deletePlusOne(plusOneId);
+			} else {
+				console.log('no plus one');
+			}
+		}
 		progressFlow(rsvp);
 	}
 
+	console.log(childList);
+
 	return (
-		<ContactInfoSection kids={children} plusOne={plusOne}>
+		<ContactInfoSection>
 			<h1>
 				Hello {selectedGuest?.first_name || 'No User'}, <br /> we found your
 				reservation!
@@ -93,7 +131,7 @@ export default function ContactInfo({
 						labelId='rsvp-label'
 						label='Please Select'
 						onChange={handleRsvpChange}
-						value={rsvp}
+						defaultValue={selectedGuest?.rsvp}
 					>
 						<MenuItem value={'yes'}>Yes</MenuItem>
 						<MenuItem value={'no'}>No</MenuItem>
@@ -135,19 +173,21 @@ export default function ContactInfo({
 
 				{rsvp === 'yes' && (
 					<div>
-						<ToggleContainer>
-							<div>
-								<h2>
-									Your reservation includes a plus one. Will you be bringing
-									somebody?
-								</h2>
-							</div>
-							<Toggle
-								toggleActive={plusOne}
-								onChange={() => setPlusOne(!plusOne)}
-							/>
-						</ToggleContainer>
-						{plusOne && (
+						{selectedGuest.plus_one_count !== 0 && (
+							<ToggleContainer>
+								<div>
+									<h2>
+										Your reservation includes a plus one. Will you be bringing
+										somebody?
+									</h2>
+								</div>
+								<Toggle
+									toggleActive={plusOneToggle}
+									onChange={() => setPlusOneToggle(!plusOneToggle)}
+								/>
+							</ToggleContainer>
+						)}
+						{plusOneToggle && (
 							<ContactFeild className='plus-one-field'>
 								<p>If yes, please enter their name below</p>
 								<InputContainer className='no-gap'>
@@ -156,7 +196,7 @@ export default function ContactInfo({
 										label='Full Name'
 										required={false}
 										type='text'
-										defaultValue={plusOneName}
+										defaultValue={selectedGuest?.plus_ones[0]?.name}
 										onChange={(e) => handlePlusOneInputChange(e)}
 									/>
 								</InputContainer>
@@ -198,6 +238,7 @@ export default function ContactInfo({
 										labelId='child-care-label'
 										onChange={handleChildCare}
 										label='Please select an option'
+										value={childCare ? childCare : ''}
 									>
 										<MenuItem value={'parents'}>A Parent</MenuItem>
 										<MenuItem value={'sitter service'}>
@@ -205,42 +246,75 @@ export default function ContactInfo({
 										</MenuItem>
 									</Select>
 								</FormControl>
-
 								<KidsContainer>
 									<h2 className='enter-info'>
 										Please enter their information below
 									</h2>
 
 									{childList.map((element, index) => (
-										<ContactFeild key={`${index}-child`}>
-											<InputContainer className='no-gap input-gap'>
-												<StandardTextField
-													label='Full Name'
-													required={false}
-													type='text'
-													onChange={(e) => handleChildInputChange(index, e)}
-													defaultValue={element.name || ''}
-												/>
-											</InputContainer>
-
-											<InputContainer className='input-gap'>
-												<TextField
-													sx={{ maxWidth: 100 }}
-													label='Age'
-													required={false}
-													type='number'
-													onChange={(e) => handleChildInputChange(index, e)}
-													defaultValue={element.age || ''}
-												/>
-											</InputContainer>
-
-											<ImageContainer
-												className='delete-button'
-												onClick={() => removeChildFormField(index)}
-											>
-												<FaTrashAlt />
-											</ImageContainer>
-										</ContactFeild>
+										<div key={`${index}-child`}>
+											<ContactFeild className='child-inputs'>
+												<div style={{ display: 'flex' }}>
+													<InputContainer className='no-gap input-gap'>
+														<StandardTextField
+															label='Full Name'
+															required={false}
+															type='text'
+															name='name'
+															onChange={(e) => handleChildInputChange(index, e)}
+															defaultValue={element.name || ''}
+														/>
+													</InputContainer>
+													<InputContainer className='input-gap'>
+														<TextField
+															sx={{ maxWidth: 100 }}
+															label='Age'
+															required={false}
+															type='number'
+															name='age'
+															onChange={(e) => handleChildInputChange(index, e)}
+															defaultValue={element.age || ''}
+														/>
+													</InputContainer>
+												</div>
+												<div style={{ display: 'flex', flexDirection: 'row' }}>
+													<div>
+														<p>Does your child need their own bed?</p>
+														<FormControl
+															sx={{
+																m: 1,
+																maxWidth: 300,
+																margin: 0,
+																width: '100%',
+															}}
+														>
+															<InputLabel id='kid-bed-label'>
+																Please Select
+															</InputLabel>
+															<Select
+																labelId='kid-bed-label'
+																label='Please Select'
+																name='needs_bed'
+																onChange={(e) =>
+																	handleChildInputChange(index, e)
+																}
+																defaultValue={element.needs_bed || ''}
+															>
+																<MenuItem value={'yes'}>Yes</MenuItem>
+																<MenuItem value={'no'}>No</MenuItem>
+															</Select>
+														</FormControl>
+													</div>
+													<ImageContainer
+														className='delete-button'
+														onClick={() => removeChildFormField(index)}
+													>
+														<FaTrashAlt />
+													</ImageContainer>
+												</div>
+											</ContactFeild>
+											<LineBreak />
+										</div>
 									))}
 								</KidsContainer>
 								{childList.length < 4 && (

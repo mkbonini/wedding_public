@@ -19,6 +19,7 @@ export default function StandardTextField({
 	type,
 	defaultValue = '',
 	id = '',
+	name = '',
 }) {
 	return (
 		<Input
@@ -28,6 +29,7 @@ export default function StandardTextField({
 			required={required}
 			type={type}
 			defaultValue={defaultValue}
+			name={name}
 		/>
 	);
 }

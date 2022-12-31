@@ -7,15 +7,12 @@ import StartPage from './View/StartPage';
 import ContactInfoPage from './View/ContactInfo/index';
 import CabinPage from './View/CabinPage/index';
 import ConfirmPage from './View/ConfirmPage';
-import { getGuests, getLodgings, steps } from './Model';
+import { getLodgings, steps } from './Model';
 import AdditionalPage from './View/AdditionalPage/index';
 
 export default function RSVP() {
-	const [guestList, setGuestList] = useState<any>([]);
 	const [currentStep, setCurrentStep] = useState(steps.start);
-
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
-	const [rsvp, setRsvp] = useState('no');
 	const [cabinList, setCabinList] = useState<any>([]);
 
 	const selectedCabin = () => {
@@ -26,9 +23,7 @@ export default function RSVP() {
 
 	useEffect(() => {
 		(async () => {
-			let guestResult = await getGuests();
 			let lodgingResult = await getLodgings();
-			setGuestList(guestResult);
 			setCabinList(lodgingResult);
 		})();
 	}, []);
@@ -80,9 +75,7 @@ export default function RSVP() {
 			case steps.start:
 				return (
 					<StartPage
-						guestList={guestList}
 						setSelectedGuest={setSelectedGuest}
-						selectedGuest={selectedGuest}
 						progressFlow={progressFlow}
 					/>
 				);
@@ -92,8 +85,6 @@ export default function RSVP() {
 						selectedGuest={selectedGuest}
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
-						rsvp={rsvp}
-						setRsvp={setRsvp}
 					/>
 				);
 
@@ -104,7 +95,6 @@ export default function RSVP() {
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
 						cabinList={cabinList}
-						setCabinList={setCabinList}
 						selectedCabin={selectedCabin}
 					/>
 				);
@@ -119,7 +109,7 @@ export default function RSVP() {
 				);
 
 			case steps.confirm:
-				return <ConfirmPage rsvp={rsvp} />;
+				return <ConfirmPage selectedGuest={selectedGuest} />;
 			default:
 				setCurrentStep(steps.start);
 		}
