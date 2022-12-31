@@ -10,25 +10,12 @@ import ConfirmPage from './View/ConfirmPage';
 import { getGuests, getLodgings, steps } from './Model';
 import AdditionalPage from './View/AdditionalPage';
 
-interface Guests {
-	first_name: string;
-	last_name: string;
-}
-
-interface Kid {
-	name: string;
-}
-
-interface PlusOne {
-	name: string;
-}
-
 export default function RSVP() {
 	const [guestList, setGuestList] = useState<any>([]);
 	const [currentStep, setCurrentStep] = useState(steps.start);
 
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
-	const [rsvp, setRsvp] = useState(false);
+	const [rsvp, setRsvp] = useState('no');
 	const [cabinList, setCabinList] = useState([]);
 
 	useEffect(() => {
@@ -40,13 +27,13 @@ export default function RSVP() {
 		})();
 	}, []);
 
-	function progressFlow(rsvp: boolean) {
+	function progressFlow(rsvp) {
 		switch (currentStep) {
 			case steps.start:
 				setCurrentStep(steps.contact);
 				break;
 			case steps.contact:
-				if (!rsvp) {
+				if (rsvp === 'no') {
 					setCurrentStep(steps.confirm);
 				} else {
 					setCurrentStep(steps.cabin);

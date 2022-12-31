@@ -18,10 +18,11 @@ export default function StandardTextField({
 	required,
 	type,
 	defaultValue = '',
+	id = '',
 }) {
 	return (
 		<Input
-			id='standard-basic'
+			id={id}
 			label={label}
 			onChange={(e) => onChange(e)}
 			required={required}

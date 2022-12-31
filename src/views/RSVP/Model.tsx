@@ -135,7 +135,7 @@ export async function getLodgings() {
 export function updateGuest(id, body) {
 	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}`, {
 		method: 'PATCH',
-		body: JSON.stringify({ body }),
+		body: JSON.stringify(body),
 		headers: {
 			'Content-Type': 'application/json',
 			'Access-Control-Allow-Origin': '*',

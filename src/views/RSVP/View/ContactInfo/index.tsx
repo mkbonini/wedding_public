@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { updateGuest } from '../../Model';
 import Toggle from '../../../../components/Toggle';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
-import Select from '@mui/material/Select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
+import { getFormValues } from './utils';
 import {
 	ContactFeild,
 	ImageContainer,
@@ -33,13 +35,19 @@ export default function ContactInfo({
 	setRsvp,
 }) {
 	const [childList, setChildList] = useState([{ name: '', age: '' }]);
+	const [plusOneName, setPlusOneName] = useState('');
 	const [plusOne, setPlusOne] = useState(false);
 	const [children, setChildren] = useState(false);
+	const [childCare, setChildCare] = useState('');
 
 	let handleChildInputChange = (i, e) => {
 		let newChildList = [...childList];
 		newChildList[i][e.target.name] = e.target.value;
 		setChildList(newChildList);
+	};
+
+	let handlePlusOneInputChange = (e) => {
+		setPlusOneName(e.target.value);
 	};
 
 	let addChildFormField = (e) => {
@@ -55,14 +63,20 @@ export default function ContactInfo({
 		setChildList(newChildList);
 	};
 
-	let handleSubmit = (e) => {
-		e.preventDefault();
-		alert(JSON.stringify(childList));
+	const handleChildCare = (event: SelectChangeEvent) => {
+		setChildCare(event.target.value as string);
+	};
+
+	const handleRsvpChange = (event: SelectChangeEvent) => {
+		setRsvp(event.target.value as string);
 	};
 
 	function handleContinue() {
+		let formValues = getFormValues();
+		updateGuest(selectedGuest.id, { ...formValues, rsvp: rsvp });
 		progressFlow(rsvp);
 	}
+
 	return (
 		<ContactInfoSection kids={children} plusOne={plusOne}>
 			<h1>
@@ -77,9 +91,9 @@ export default function ContactInfo({
 					<InputLabel id='rsvp-label'>Please select</InputLabel>
 					<Select
 						labelId='rsvp-label'
-						onChange={() => setRsvp(!rsvp)}
-						label='Please select'
-						value={rsvp ? 'yes' : 'no'}
+						label='Please Select'
+						onChange={handleRsvpChange}
+						value={rsvp}
 					>
 						<MenuItem value={'yes'}>Yes</MenuItem>
 						<MenuItem value={'no'}>No</MenuItem>
@@ -87,11 +101,12 @@ export default function ContactInfo({
 				</FormControl>
 			</RsvpContainer>
 
-			<Form onSubmit={(event) => handleSubmit(event)}>
+			<Form>
 				<h2>Your details:</h2>
 				<ContactFeild>
 					<InputContainer className='input-group'>
 						<StandardTextField
+							id='first-name-input'
 							label='First Name'
 							required={true}
 							type='text'
@@ -100,6 +115,7 @@ export default function ContactInfo({
 					</InputContainer>
 					<InputContainer className='input-group'>
 						<StandardTextField
+							id='last-name-input'
 							label='Last Name'
 							required={true}
 							type='text'
@@ -108,6 +124,7 @@ export default function ContactInfo({
 					</InputContainer>
 					<InputContainer className='input-group'>
 						<StandardTextField
+							id='email-input'
 							label='Email'
 							required={true}
 							type='text'
@@ -116,7 +133,7 @@ export default function ContactInfo({
 					</InputContainer>
 				</ContactFeild>
 
-				{rsvp === true && (
+				{rsvp === 'yes' && (
 					<div>
 						<ToggleContainer>
 							<div>
@@ -135,9 +152,12 @@ export default function ContactInfo({
 								<p>If yes, please enter their name below</p>
 								<InputContainer className='no-gap'>
 									<StandardTextField
+										id='plus-one-input'
 										label='Full Name'
 										required={false}
 										type='text'
+										defaultValue={plusOneName}
+										onChange={(e) => handlePlusOneInputChange(e)}
 									/>
 								</InputContainer>
 							</ContactFeild>
@@ -176,7 +196,7 @@ export default function ContactInfo({
 									</InputLabel>
 									<Select
 										labelId='child-care-label'
-										onChange={() => {}}
+										onChange={handleChildCare}
 										label='Please select an option'
 									>
 										<MenuItem value={'parents'}>A Parent</MenuItem>
@@ -213,20 +233,6 @@ export default function ContactInfo({
 													defaultValue={element.age || ''}
 												/>
 											</InputContainer>
-
-											<FormControl sx={{ m: 1, minWidth: 250, margin: 0 }}>
-												<InputLabel id='child-sleeping-label'>
-													Do they need their own bed?
-												</InputLabel>
-												<Select
-													labelId='child-sleeping-label'
-													onChange={() => {}}
-													label='Do they need their own bed?'
-												>
-													<MenuItem value='yes'>Yes</MenuItem>
-													<MenuItem value='no'>No</MenuItem>
-												</Select>
-											</FormControl>
 
 											<ImageContainer
 												className='delete-button'

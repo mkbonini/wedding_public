@@ -39,7 +39,7 @@ export default function ConfirmPage({ rsvp }) {
 				For Your RSVP
 			</h1>
 			<h2>
-				{!rsvp
+				{rsvp === 'no'
 					? `We're sad we won't see you there! You will be missed.`
 					: `We can't wait to celebrate with you!`}
 			</h2>
