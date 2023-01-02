@@ -18,6 +18,8 @@ export default function RSVP() {
 	const selectedCabin = () => {
 		if (cabinList) {
 			return cabinList.find((cabin) => cabin?.id === selectedGuest?.lodging_id);
+		} else {
+			return null;
 		}
 	};
 
@@ -95,7 +97,7 @@ export default function RSVP() {
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
 						cabinList={cabinList}
-						selectedCabin={selectedCabin}
+						selectedCabin={selectedCabin()}
 					/>
 				);
 
