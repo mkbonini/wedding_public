@@ -23,6 +23,7 @@ import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Button from '../../../../components/Button';
 import Popup from '../../../../components/Popup';
 import { updateGuest } from '../../Model';
+import ConfirmationCabin from '../../../../components/ConfirmationCabin';
 
 export default function CabinPage({
 	regressFlow,
@@ -31,26 +32,12 @@ export default function CabinPage({
 	selectedCabin,
 	cabinList,
 }) {
-	const noCabin = {
-		id: 0,
-		name: '',
-		lodging_type: '',
-		capacity: 0,
-		url: '',
-		description: '',
-		created_at: '',
-		updated_at: '',
-		title: '',
-		image_url: '',
-		color: '',
-		occupants: [],
-		spots_remaining: '',
-	};
 	const [activeModal, setActiveModal] = useState(false);
-	const [activeCard, setActiveCard] = useState(selectedCabin);
+	const [activeCard, setActiveCard] = useState();
 	const [internalCabin, setInternalCabin] = useState(selectedCabin);
-	const [acceptLodging, setAcceptLodging] = useState(!!selectedCabin);
+	const [acceptLodging, setAcceptLodging] = useState(false);
 	const [open, setOpen] = useState(false);
+	const [selectCabinNotice, setSelectCabinNotice] = useState(false);
 
 	useEffect(() => {
 		var body = document.body;
@@ -70,8 +57,13 @@ export default function CabinPage({
 	};
 
 	const handleContinue = () => {
-		updateGuest(selectedGuest.id, { lodging_id: internalCabin.id });
-		progressFlow();
+		if (internalCabin === undefined) {
+			setSelectCabinNotice(true);
+		} else {
+			updateGuest(selectedGuest?.id, { lodging_id: internalCabin?.id });
+			progressFlow();
+			setSelectCabinNotice(false);
+		}
 	};
 
 	return (
@@ -89,6 +81,13 @@ export default function CabinPage({
 						/>
 					</div>
 				</ToggleContainer>
+
+				<ConfirmationCabin
+					setState={setSelectCabinNotice}
+					state={selectCabinNotice}
+					text='You have not selected a cabin. Please choose one before
+					continuing.'
+				/>
 				<p className='description'>
 					Staying in a cabin requires bringing your own bedding. While there are
 					enough beds for everyone to stay in at the property, sleeping
@@ -99,19 +98,25 @@ export default function CabinPage({
 
 				{acceptLodging ? (
 					<div>
-						{internalCabin.id !== 0 && (
+						{internalCabin && (
 							<SelectedCabinSection>
 								<h2>You and your party are assigned to: </h2>
 								<SelectedCabinContainer>
-									<Image image={internalCabin.image_url} />
+									<Image
+										image={
+											internalCabin?.image_url ? internalCabin?.image_url : ''
+										}
+									/>
 									<SelectedContent>
-										<h1>{internalCabin.name}</h1>
-										<p className='selected-p'>{internalCabin.description}</p>
+										<h1>{internalCabin?.name}</h1>
+										<p className='selected-p'>{internalCabin?.description}</p>
 										<LinkContainer>
 											<ViewMoreLink onClick={() => setActiveModal(true)}>
 												View Details <FaArrowRight />
 											</ViewMoreLink>
-											<DeselectButton onClick={() => setInternalCabin(noCabin)}>
+											<DeselectButton
+												onClick={() => setInternalCabin(undefined)}
+											>
 												Deselect Button
 											</DeselectButton>
 										</LinkContainer>
@@ -147,9 +152,9 @@ export default function CabinPage({
 								activeCard={activeCard}
 								setSelectedCabin={setInternalCabin}
 								setActiveModal={setActiveModal}
-								noCabinSelected={internalCabin.id !== 0}
+								noCabinSelected={internalCabin?.id !== 0}
 								selectedCabin={internalCabin}
-								id={`${internalCabin.id}-popup`}
+								id={`${internalCabin?.id}-popup`}
 								open={open}
 								setOpen={setOpen}
 							/>

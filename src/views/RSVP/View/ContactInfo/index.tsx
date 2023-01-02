@@ -8,9 +8,11 @@ import {
 	updatePlusOne,
 	createKids,
 } from '../../Model';
+import Confirmation from '../../../../components/Confirmation';
+import ConfirmationCabin from '../../../../components/ConfirmationCabin';
 import Toggle from '../../../../components/Toggle';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -43,6 +45,8 @@ export default function ContactInfo({
 	const [plusOneToggle, setPlusOneToggle] = useState(false);
 	const [children, setChildren] = useState(false);
 	const [childCare, setChildCare] = useState('');
+	const [submitRsvpDecline, setSubmitRsvpDecline] = useState(false);
+	const [needsRsvpInfo, setNeedsRsvpInfo] = useState(false);
 	const [childList, setChildList] = useState([
 		{
 			name: '',
@@ -86,48 +90,54 @@ export default function ContactInfo({
 		setChildList(newChildList);
 	};
 
-	const handleChildCare = (event: SelectChangeEvent) => {
-		setChildCare(event.target.value as string);
+	const handleChildCare = (event) => {
+		setChildCare(event.target.value);
 	};
 
-	const handleRsvpChange = (event: SelectChangeEvent) => {
-		setRsvp(event.target.value as string);
+	const handleRsvpChange = (event) => {
+		setRsvp(event.target.value);
 	};
 
 	function handleContinue() {
-		let formValues = getFormValues();
-		let plusOne = selectedGuest?.plus_ones.length === 1;
-		let noPlusOne = selectedGuest?.plus_ones?.length === 0;
-		let plusOneId = selectedGuest?.plus_ones[0]?.id;
-		let plusOneInput = plusOneFormValue();
+		if (rsvp === 'no') {
+			setSubmitRsvpDecline(true);
+		} else if (rsvp === '') {
+			setNeedsRsvpInfo(true);
+		} else {
+			setNeedsRsvpInfo(false);
+			setSubmitRsvpDecline(false);
 
-		updateGuest(selectedGuest.id, {
-			...formValues,
-			rsvp: rsvp,
-		});
+			let formValues = getFormValues();
+			let plusOne = selectedGuest?.plus_ones.length === 1;
+			let noPlusOne = selectedGuest?.plus_ones?.length === 0;
+			let plusOneId = selectedGuest?.plus_ones[0]?.id;
+			let plusOneInput = plusOneFormValue();
 
-		if (children) {
-			createKids(childList);
-		}
+			updateGuest(selectedGuest.id, {
+				...formValues,
+				rsvp: rsvp,
+			});
 
-		if (selectedGuest.plus_one_count !== 0) {
-			if (rsvp === null || rsvp === 'no') {
-				progressFlow(rsvp);
-			} else if (noPlusOne && plusOneToggle) {
-				createPlusOne({ ...plusOneInput, guest_id: selectedGuest.id });
-			} else if (plusOne && plusOneToggle) {
-				updatePlusOne(plusOneId, plusOneInput);
-			} else if (plusOne && !plusOneToggle) {
-				deletePlusOne(plusOneId);
-			} else {
-				console.log('no plus one');
+			if (children) {
+				createKids(childList);
 			}
-		}
-		progressFlow(rsvp);
-	}
 
-	console.log(childList);
-	console.log(childCare, 'childcare');
+			if (selectedGuest.plus_one_count !== 0) {
+				if (rsvp === null || rsvp === 'no') {
+					progressFlow(rsvp);
+				} else if (noPlusOne && plusOneToggle) {
+					createPlusOne({ ...plusOneInput, guest_id: selectedGuest.id });
+				} else if (plusOne && plusOneToggle) {
+					updatePlusOne(plusOneId, plusOneInput);
+				} else if (plusOne && !plusOneToggle) {
+					deletePlusOne(plusOneId);
+				} else {
+					console.log('no plus one');
+				}
+			}
+			progressFlow(rsvp);
+		}
+	}
 
 	return (
 		<ContactInfoSection>
@@ -136,6 +146,22 @@ export default function ContactInfo({
 				reservation!
 			</h1>
 			<p className='heading'> Please update the information below</p>
+
+			{needsRsvpInfo && (
+				<ConfirmationCabin
+					setState={setNeedsRsvpInfo}
+					state={needsRsvpInfo}
+					text='You selected an rsvp option from the dropdown. Please select before continuing.'
+				/>
+			)}
+			{submitRsvpDecline && (
+				<Confirmation
+					submitRsvpDecline={submitRsvpDecline}
+					setSubmitRsvpDecline={setSubmitRsvpDecline}
+					rsvp={rsvp}
+					progressFlow={progressFlow}
+				/>
+			)}
 
 			<RsvpContainer>
 				<h2>Will you be attending the wedding?</h2>
