@@ -31,13 +31,13 @@ export const ToggleContainer = styled.div`
 	}
 `;
 export const ContactInfoSection = styled.div`
-	width: 100%;
 	max-width: 1000px;
+	width: 100%;
 	min-height: 75vh;
 	display: flex;
 	flex-direction: column;
 	padding-top: 8rem;
-
+	margin: 1rem;
 	h1 {
 		font-size: 20px;
 		text-align: center;
@@ -64,6 +64,10 @@ export const InputContainer = styled.div`
 	padding-right: 20px;
 	&.input-group {
 		margin: 10px 0px;
+		width: 100%;
+		@media only screen and (min-width: 900px) {
+			max-width: 300px;
+		}
 	}
 	&.input-gap {
 		padding-bottom: 15px;
@@ -160,4 +164,21 @@ export const LineBreak = styled.div`
 	width: 100%;
 	max-width: '800px';
 	margin: 1rem 0rem;
+`;
+
+export const SubmitButton = styled.button`
+	min-width: 100px;
+	background-color: #3366ff;
+	height: 50px;
+	border-radius: 100px;
+	text-transform: none;
+	padding: 0px 50px;
+	font-family: 'Circular-Book';
+	font-size: 14px;
+	line-height: 20px;
+	color: #fff;
+	border: none;
+	:hover {
+		background-color: #6d7de9;
+	}
 `;

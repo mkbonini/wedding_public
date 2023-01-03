@@ -30,7 +30,6 @@ export const Heading = styled.div`
 	align-items: center;
 	flex-direction: column;
 	max-width: unset;
-
 	h1 {
 		margin: 10px 0px 0px 0px;
 		padding: 0;
