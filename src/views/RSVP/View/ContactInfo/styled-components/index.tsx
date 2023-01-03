@@ -27,7 +27,7 @@ export const ToggleContainer = styled.div`
 	@media only screen and (max-width: 900px) {
 		flex-direction: column;
 		align-items: flex-start;
-		padding: 0;
+		padding: 1rem 0rem;
 	}
 `;
 export const ContactInfoSection = styled.div`
@@ -36,27 +36,36 @@ export const ContactInfoSection = styled.div`
 	min-height: 75vh;
 	display: flex;
 	flex-direction: column;
-	padding-top: 8rem;
+	padding-top: 3rem;
 	margin: 1rem;
-	h1 {
-		font-size: 20px;
-		text-align: center;
-		font-family: 'Circular-Book';
+
+	@media only screen and (min-width: 900px) {
+		padding-top: 8rem;
 	}
-	h2 {
+
+	.sub-heading {
 		font-size: 18px;
-		margin: 1rem 0rem;
-		font-family: 'Circular-Book';
+		font-weight: 500;
+		padding: 1rem 0rem;
+		padding-bottom: 20px;
 		color: #343232;
 	}
+
+	.heading {
+		font-size: 20px;
+		text-align: center;
+		font-weight: 700;
+	}
+
 	p {
 		padding: 0;
 		margin: 0px 0px 10px 0px;
 		font-family: 'Circular-Light';
 		color: #343232;
 	}
-	p.heading {
+	p.main-sub-heading {
 		text-align: center;
+		padding-top: 10px;
 	}
 `;
 
@@ -127,7 +136,7 @@ export const ContactFeild = styled.div`
 
 export const ImageContainer = styled.div`
 	&.delete-button {
-		width: 40px;
+		border-radius: 4px;
 		height: 40px;
 		display: flex;
 		justify-content: center;
@@ -136,8 +145,16 @@ export const ImageContainer = styled.div`
 		padding: 5px;
 		cursor: pointer;
 		align-self: center;
+		background-color: #000;
+		color: #fff;
+		font-size: 15px;
 		svg {
-			font-size: 20px;
+			font-size: 15px;
+			color: #fff;
+			margin-left: 10px;
+		}
+		:hover {
+			box-shadow: 2px 2px 10px 2px lightgray;
 		}
 	}
 `;
@@ -153,9 +170,6 @@ export const ButtonContainer = styled.div`
 
 export const RsvpContainer = styled.div`
 	padding: 1rem 1rem 0rem 1rem;
-	h2 {
-		margin: 1rem 0rem 2rem 0rem;
-	}
 `;
 
 export const LineBreak = styled.div`

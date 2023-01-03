@@ -70,14 +70,14 @@ export default function Flyout({ flyoutVisible, setFlyoutVisible }) {
 						<p>registry</p>
 					</Link>
 				</FlyoutMenuLink>
-				<FlyoutMenuLink
+				{/* <FlyoutMenuLink
 					onClick={() => handleMenuClick('rsvp')}
 					active={active === 'rsvp'}
 				>
 					<Link to='/rsvp'>
 						<p>rsvp</p>
 					</Link>
-				</FlyoutMenuLink>
+				</FlyoutMenuLink> */}
 				<FlyoutMenuLink
 					onClick={() => handleMenuClick('map')}
 					active={active === 'map'}

@@ -4,9 +4,10 @@ import styled from 'styled-components';
 export const CabinListContainer = styled.div`
 	height: 700px;
 	overflow: scroll;
-	border: 1px solid whitesmoke;
 	margin-bottom: 5rem;
-	h2 {
+	.sticky {
+		font-size: 20px;
+		font-weight: 700;
 		padding: 1rem;
 		background: rgba(230, 234, 254, 0.26);
 		position: sticky;
@@ -30,7 +31,7 @@ export const ToggleContainer = styled.div`
 	@media only screen and (max-width: 900px) {
 		flex-direction: column;
 		align-items: flex-start;
-		padding: 0;
+		padding: 0px 0px 10px 0px;
 	}
 `;
 
@@ -42,6 +43,10 @@ export const CabinInfoSection = styled.div`
 	align-items: start;
 	position: relative;
 	margin: 8rem 1rem 1rem 1rem;
+	@media only screen and (max-width: 900px) {
+		margin: 1rem;
+	}
+
 	.stepper-container {
 		display: flex;
 		justify-content: center;
@@ -49,22 +54,17 @@ export const CabinInfoSection = styled.div`
 		width: 100%;
 		padding-bottom: 2rem;
 	}
-	h2 {
+	.sub-heading {
 		font-size: 18px;
 		margin: 1rem 0rem;
-		font-family: 'Circular-Book';
 		color: #343232;
+		font-weight: 500;
 	}
-	h3 {
-		font-size: 17px;
-		font-family: 'Circular-Book';
-		padding: 0;
-		margin: 20px 0px 10px 0px;
-	}
+
 	p {
 		padding: 0;
 		margin: 0px 0px 10px 0px;
-		font-family: 'Circular-Light';
+		font-weight: 300;
 		color: #343232;
 	}
 	p.description {
@@ -145,7 +145,6 @@ export const SelectedContent = styled.div`
 		font-size: 15px;
 		max-width: 960px;
 		padding-right: 4rem;
-		font-family: 'Circular-Light';
 	}
 `;
 
@@ -172,7 +171,7 @@ export const DeselectButton = styled.div`
 	background-color: #ff3333;
 	height: 50px;
 	text-transform: none;
-	font-family: 'Circular-Book';
+	/* font-family: 'Circular-Book'; */
 	font-size: 14px;
 	color: #ffdddd;
 	padding-right: 0;

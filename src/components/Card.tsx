@@ -6,11 +6,11 @@ import { FaArrowRight } from 'react-icons/fa';
 
 const CardStyles = styled.div`
 	max-width: 320px;
+	padding: 1rem;
+	margin: 1rem 0rem;
 	width: 100%;
-	margin: 0.7rem;
 	border-radius: 4px;
-	height: 420px;
-	box-shadow: 2px 2px 10px 3px rgba(0, 0, 1, 0.07);
+	border-bottom: 1px solid whitesmoke;
 
 	img {
 		width: 100%;
@@ -20,16 +20,22 @@ const CardStyles = styled.div`
 		cursor: pointer;
 	}
 	@media only screen and (min-width: 900px) {
-		max-width: 270px;
+		max-width: 250px;
 	}
 `;
 
 const Image = styled.div<{ image: string }>`
 	background-image: url(${(p) => p.image && p.image});
-	height: 220px;
+	height: 290px;
+	width: 290px;
 	background-repeat: no-repeat;
 	background-size: cover;
-	border-radius: 4px 4px 0px 0px;
+	border-radius: 10px;
+	padding: 1rem;
+	@media only screen and (min-width: 900px) {
+		height: 230px;
+		width: 230px;
+	}
 `;
 
 const Title = styled.div`

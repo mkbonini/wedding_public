@@ -157,13 +157,13 @@ export default function ContactInfo({
 					progressFlow={progressFlow}
 				/>
 			)}
-			<h1>
+			<div className='heading'>
 				Hello {internalGuest?.first_name || 'No User'}, <br /> we found your
 				reservation!
-			</h1>
-			<p className='heading'> Please update the information below</p>
+			</div>
+			<p className='main-sub-heading'> Please update the information below</p>
 			<RsvpContainer>
-				<h2>Will you be attending the wedding?</h2>
+				<div className='sub-heading'>Will you be attending the wedding?</div>
 				<FormControl
 					sx={{ m: 1, maxWidth: 200, margin: 0, width: '100%' }}
 					error={rsvpError}
@@ -200,10 +200,10 @@ export default function ContactInfo({
 						{internalGuest.plus_one_count !== 0 && (
 							<ToggleContainer>
 								<div>
-									<h2>
-										Your reservation includes a plus one. Will you be bringing
+									<div className='sub-heading'>
+										Your rsvp includes a plus one. Will you be bringing
 										somebody?
-									</h2>
+									</div>
 								</div>
 								<Toggle
 									toggleActive={plusOneToggle}
@@ -226,8 +226,12 @@ export default function ContactInfo({
 								</InputContainer>
 							</ContactFeild>
 						)}
+
 						<ToggleContainer>
-							<h2>Do you have any children in your party?</h2>
+							<div className='sub-heading'>
+								Do you have any children in your party?
+							</div>
+
 							<Toggle
 								toggleActive={children}
 								onChange={() => setChildren(!children)}

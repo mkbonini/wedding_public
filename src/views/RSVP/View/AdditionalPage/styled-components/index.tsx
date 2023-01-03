@@ -2,6 +2,11 @@
 import styled from 'styled-components';
 export const AdditionalPageContainer = styled.div`
 	margin: 8rem 1rem 0rem 1rem;
+	.sub-heading {
+		font-size: 18px;
+		font-weight: 500;
+		padding-bottom: 1.2rem;
+	}
 `;
 
 export const StepperContainer = styled.div`
@@ -56,13 +61,6 @@ export const ContentContainer = styled.div`
 		font-size: 20px;
 		text-align: center;
 	}
-	h2 {
-		font-size: 18px;
-		margin: 1rem 0rem;
-		font-family: 'Circular-Book';
-		color: #343232;
-		text-align: start;
-	}
 	p {
 		padding: 0;
 		margin: 0px 0px 10px 0px;
@@ -70,15 +68,10 @@ export const ContentContainer = styled.div`
 		color: #343232;
 	}
 `;
-
 export const SectionBreaks = styled.div`
 	margin: 10px 0px;
 	width: 100%;
 	padding: 1rem 0rem;
-	h3 {
-		font-size: 16px;
-		font-family: 'Circular-Book';
-	}
 	&.checkmark-section {
 		padding: 0rem 0rem 1rem 0rem;
 	}
