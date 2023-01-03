@@ -78,7 +78,9 @@ export default function CabinPage({
 					<Stepper step={2} />
 				</div>
 				<ToggleContainer>
-					<h2>Will you be staying onsite in a cabin?</h2>
+					<div className='sub-heading'>
+						Will you be staying onsite in a cabin?
+					</div>
 					<div>
 						<Toggle
 							toggleActive={acceptLodging}
@@ -105,7 +107,9 @@ export default function CabinPage({
 					<div>
 						{internalCabin && (
 							<SelectedCabinSection>
-								<h2>You and your party are assigned to: </h2>
+								<div className='sub-heading'>
+									You and your party are assigned to:
+								</div>
 								<SelectedCabinContainer>
 									<Image
 										image={
@@ -131,7 +135,7 @@ export default function CabinPage({
 						)}
 
 						<CabinListContainer>
-							<h2>Available Cabins</h2>
+							<div className='sticky'>Available Cabins</div>
 							{cabinList && (
 								<CabinCardsContainer>
 									{cabinList.map((cabin, index) => {
@@ -167,7 +171,7 @@ export default function CabinPage({
 					</div>
 				) : (
 					<>
-						<h3>By selecting "No"</h3>
+						<div className='sub-heading'>By selecting "No"</div>
 
 						<p className='description'>
 							By selecting no, you have opted out of lodging onsite and will

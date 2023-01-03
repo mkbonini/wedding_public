@@ -51,7 +51,7 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 						<div className='bar' />
 					</HamburgerContainer>
 					<Title onClick={() => history.push('/')}>M + M</Title>
-					<ButtonSmall text='RSVP' onClick={() => history.push('/rsvp')} />
+					{/* <ButtonSmall text='RSVP' onClick={() => history.push('/rsvp')} /> */}
 				</div>
 			</MobileMenu>
 			<LinkContainer>
@@ -88,9 +88,9 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 						</Link>
 					</MenuLink>
 				</GroupedLinks>
-				<MenuLink className='desktop'>
+				{/* <MenuLink className='desktop'>
 					<ButtonSmall text='RSVP' onClick={() => history.push('/rsvp')} />
-				</MenuLink>
+				</MenuLink> */}
 			</LinkContainer>
 			<NavAccent />
 		</MainNav>

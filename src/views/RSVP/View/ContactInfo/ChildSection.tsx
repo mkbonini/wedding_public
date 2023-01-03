@@ -70,9 +70,11 @@ export default function ChildSection({
 					however.
 				</p>
 			</div>
-			<h2>Who will watch the children during the ceremony & dinner?</h2>
+			<div className='sub-heading'>
+				Who will watch the children during the ceremony and dinner?
+			</div>
 
-			<FormControl sx={{ m: 1, maxWidth: 250, margin: 0 }}>
+			<FormControl sx={{ m: 1, maxWidth: 230, margin: 0 }}>
 				<InputLabel id='child-care-label'>Please select an option</InputLabel>
 				<Select
 					labelId='child-care-label'
@@ -85,63 +87,72 @@ export default function ChildSection({
 				</Select>
 			</FormControl>
 			<KidsContainer>
-				<h2 className='enter-info'>Please enter their information below</h2>
+				<div className='sub-heading'>Please enter their information below</div>
 				{childList?.map((element, index) => (
 					<div key={`${index}-child`}>
 						<ContactFeild className='child-inputs'>
-							<div style={{ display: 'flex' }}>
-								<InputContainer className='no-gap input-gap'>
-									<StandardTextField
-										label='Full Name'
-										required={false}
-										type='text'
-										name='name'
-										onChange={(e) => handleChildInputChange(index, e)}
-										defaultValue={element.name || ''}
-									/>
-								</InputContainer>
-								<InputContainer className='input-gap'>
-									<TextField
-										sx={{ maxWidth: 100 }}
-										label='Age'
-										required={false}
-										type='number'
-										name='age'
-										onChange={(e) => handleChildInputChange(index, e)}
-										defaultValue={element.age || ''}
-									/>
-								</InputContainer>
-							</div>
+							<InputContainer className='no-gap input-gap'>
+								<TextField
+									sx={{ width: '100%', maxWidth: 340 }}
+									label='Full Name'
+									required={false}
+									type='text'
+									name='name'
+									onChange={(e) => handleChildInputChange(index, e)}
+									defaultValue={element.name || ''}
+								/>
+							</InputContainer>
 							<div style={{ display: 'flex', flexDirection: 'row' }}>
 								<div>
-									<p>Does your child need their own bed?</p>
-									<FormControl
-										sx={{
-											m: 1,
-											maxWidth: 300,
-											margin: 0,
-											width: '100%',
-										}}
+									<div style={{ display: 'flex' }}>
+										<div>
+											<p>Do they need their own bed?</p>
+											<FormControl
+												sx={{
+													m: 1,
+													maxWidth: 270,
+													margin: 0,
+													width: '100%',
+												}}
+											>
+												<InputLabel id='kid-bed-label'>
+													Please Select
+												</InputLabel>
+												<Select
+													labelId='kid-bed-label'
+													label='Please Select'
+													name='needs_bed'
+													onChange={(e) => handleChildInputChange(index, e)}
+													defaultValue={element.needs_bed || ''}
+												>
+													<MenuItem value={'yes'}>Yes</MenuItem>
+													<MenuItem value={'no'}>No</MenuItem>
+												</Select>
+											</FormControl>
+										</div>
+										<InputContainer className='input-gap'>
+											<TextField
+												sx={{
+													marginTop: '33px',
+													marginLeft: '10px',
+													maxWidth: 100,
+												}}
+												label='Age'
+												required={false}
+												type='number'
+												name='age'
+												onChange={(e) => handleChildInputChange(index, e)}
+												defaultValue={element.age || ''}
+											/>
+										</InputContainer>
+									</div>
+									<ImageContainer
+										className='delete-button'
+										onClick={() => removeChildFormField(index)}
 									>
-										<InputLabel id='kid-bed-label'>Please Select</InputLabel>
-										<Select
-											labelId='kid-bed-label'
-											label='Please Select'
-											name='needs_bed'
-											onChange={(e) => handleChildInputChange(index, e)}
-											defaultValue={element.needs_bed || ''}
-										>
-											<MenuItem value={'yes'}>Yes</MenuItem>
-											<MenuItem value={'no'}>No</MenuItem>
-										</Select>
-									</FormControl>
+										Delete <FaTrashAlt />
+									</ImageContainer>
 								</div>
-								<ImageContainer
-									className='delete-button'
-									onClick={() => removeChildFormField(index)}
-								>
-									<FaTrashAlt />
-								</ImageContainer>
 							</div>
 						</ContactFeild>
 						<LineBreak />

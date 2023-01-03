@@ -14,7 +14,7 @@ export default function MainDetailsSection({
 }) {
 	return (
 		<div>
-			<h2>Your details:</h2>
+			<div className='sub-heading'>Your Details:</div>
 			<ContactFeild>
 				<InputContainer className='input-group '>
 					<TextField

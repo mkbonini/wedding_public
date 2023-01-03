@@ -109,7 +109,7 @@ export default function StartPage({
 			</StepperContainer>
 			<ContentContainer>
 				<SectionBreaks>
-					<h2>Important Information About Meals</h2>
+					<div className='sub-heading'>Important Information About Meals</div>
 					<p className='description'>
 						We will provide dinner on Friday evening (think grilling / bbq),
 						dinner Saturday evening (Reception Dinner), and breakfast on Sunday
@@ -122,10 +122,10 @@ export default function StartPage({
 				</SectionBreaks>
 				<form noValidate autoComplete='off' onSubmit={handleSubmit}>
 					<SectionBreaks>
-						<h2>
+						<div className='sub-heading'>
 							Do you or anyone in your party have any food allergies that we
 							should be aware of?
-						</h2>
+						</div>
 						<p>If yes, please describe below otherwise leave blank</p>
 						<TextField
 							id='allergy-text-feild'
@@ -137,7 +137,9 @@ export default function StartPage({
 						/>
 					</SectionBreaks>
 					<SectionBreaks>
-						<h2>Do you and your party want breakfast on Sunday morning?</h2>
+						<div className='sub-heading'>
+							Do you and your party want breakfast on Sunday morning?
+						</div>
 						<FormControl sx={{ m: 1, maxWidth: 200, margin: 0, width: '100%' }}>
 							<InputLabel id='breakfast-label'>Please select</InputLabel>
 							<Select
@@ -154,7 +156,7 @@ export default function StartPage({
 					</SectionBreaks>
 					<LineBreak />
 					<SectionBreaks>
-						<h2>What day will you be arriving?</h2>
+						<div className='sub-heading'>What day will you be arriving?</div>
 						<FormControl
 							sx={{ m: 1, maxWidth: 260, margin: 0, width: '100%' }}
 							error={arrivalDropdownError}
@@ -181,10 +183,10 @@ export default function StartPage({
 					</SectionBreaks>
 					<SectionBreaks className='dodgeball-section'>
 						<ToggleContainer>
-							<h2>
+							<div className='sub-heading'>
 								Do you or anybody in your party wish to participate in the
 								dodgeball tournament?
-							</h2>
+							</div>
 							<Toggle
 								toggleActive={dodgeball}
 								onChange={() => setDodgeball(!dodgeball)}
@@ -218,7 +220,7 @@ export default function StartPage({
 					)}
 
 					<SectionBreaks>
-						<h2>Any final questions or comments?</h2>
+						<div className='sub-heading'>Any final questions or comments?</div>
 						<TextField
 							sx={{ maxWidth: 700, width: '100%' }}
 							id='questions-comments'
