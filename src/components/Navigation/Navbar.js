@@ -22,20 +22,20 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [scrollVisible, setScrollVisible] = useState(true);
 
-	const handleScroll = debounce(() => {
-		const currentScrollPos = window.pageYOffset;
-		setScrollVisible(
-			(prevScrollPos > currentScrollPos &&
-				prevScrollPos - currentScrollPos > 50) ||
-				currentScrollPos < 10
-		);
-		setPrevScrollPos(currentScrollPos);
-	}, 50);
+	// const handleScroll = debounce(() => {
+	// 	const currentScrollPos = window.pageYOffset;
+	// 	setScrollVisible(
+	// 		(prevScrollPos > currentScrollPos &&
+	// 			prevScrollPos - currentScrollPos > 50) ||
+	// 			currentScrollPos < 10
+	// 	);
+	// 	setPrevScrollPos(currentScrollPos);
+	// }, 50);
 
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, [handleScroll, prevScrollPos, scrollVisible]);
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', handleScroll);
+	// 	return () => window.removeEventListener('scroll', handleScroll);
+	// }, [handleScroll, prevScrollPos, scrollVisible]);
 
 	return (
 		<MainNav

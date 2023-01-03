@@ -27,10 +27,10 @@ import ConfirmationCabin from '../../../../components/ConfirmationCabin';
 
 export default function CabinPage({
 	regressFlow,
-	selectedGuest,
 	progressFlow,
-	selectedCabin,
 	cabinList,
+	selectedCabin,
+	internalGuest,
 }) {
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState();
@@ -57,10 +57,15 @@ export default function CabinPage({
 	};
 
 	const handleContinue = () => {
-		if (internalCabin === undefined) {
+		if (internalCabin === undefined && !acceptLodging) {
+			progressFlow();
+		} else if (internalCabin === undefined && acceptLodging) {
 			setSelectCabinNotice(true);
-		} else {
-			updateGuest(selectedGuest?.id, { lodging_id: internalCabin?.id });
+		} else if (internalCabin.id && !acceptLodging) {
+			setInternalCabin(undefined);
+			progressFlow();
+		} else if (acceptLodging && internalCabin.id) {
+			updateGuest(internalGuest?.id, { lodging_id: internalCabin?.id });
 			progressFlow();
 			setSelectCabinNotice(false);
 		}

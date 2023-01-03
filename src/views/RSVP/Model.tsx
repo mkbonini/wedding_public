@@ -195,3 +195,16 @@ export async function createKids(body) {
 		},
 	});
 }
+
+export async function updateDodgeball(body) {
+	fetch('https://mm-wedding-backend.herokuapp.com/dodgeball', {
+		method: 'PATCH',
+		body: JSON.stringify(body),
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			accept: 'application/json',
+			X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+		},
+	});
+}

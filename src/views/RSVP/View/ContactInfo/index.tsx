@@ -1,159 +1,154 @@
 /** @format */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
 	createPlusOne,
 	deletePlusOne,
 	updateGuest,
 	updatePlusOne,
 	createKids,
+	getSelectedGuest,
 } from '../../Model';
 import Confirmation from '../../../../components/Confirmation';
-import ConfirmationCabin from '../../../../components/ConfirmationCabin';
 import Toggle from '../../../../components/Toggle';
-import { FaTrashAlt, FaPlus } from 'react-icons/fa';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import { getFormValues, plusOneFormValue } from './utils';
+import FormHelperText from '@mui/material/FormHelperText';
+
 import {
 	ContactFeild,
-	ImageContainer,
 	ContactInfoSection,
 	Form,
 	ButtonContainer,
 	InputContainer,
 	ToggleContainer,
-	KidsContainer,
-	AddChildLink,
 	RsvpContainer,
-	LineBreak,
+	SubmitButton,
 } from './styled-components';
 import StandardTextField from '../../../../components/StandardTextField';
-import Button from '../../../../components/Button';
 import ButtonSecondary from '../../../../components/ButtonSecondary';
+import ChildSection from './ChildSection';
+import MainDetailsSection from './MainDetailsSection';
 
 export default function ContactInfo({
 	regressFlow,
 	progressFlow,
-	selectedGuest,
+	internalGuest,
+	setInternalGuest,
 }) {
-	const [rsvp, setRsvp] = useState(selectedGuest?.rsvp || '');
+	const [rsvp, setRsvp] = useState(internalGuest?.rsvp || '');
 	const [plusOneName, setPlusOneName] = useState('');
-	const [plusOneToggle, setPlusOneToggle] = useState(false);
-	const [children, setChildren] = useState(false);
-	const [childCare, setChildCare] = useState('');
+	const [plusOneToggle, setPlusOneToggle] = useState(
+		internalGuest?.plus_ones[0] ? true : false
+	);
+	const [children, setChildren] = useState(
+		internalGuest?.kids?.length > 0 ? true : false
+	);
+
 	const [submitRsvpDecline, setSubmitRsvpDecline] = useState(false);
-	const [needsRsvpInfo, setNeedsRsvpInfo] = useState(false);
-	const [childList, setChildList] = useState([
-		{
-			name: '',
-			age: '',
-			needs_bed: '',
-			guest_id: selectedGuest.id,
-			child_care: childCare,
-		},
-	]);
 
-	let handleChildInputChange = (i, e) => {
-		let newChildList = [...childList];
-		newChildList[i][e.target.name] = e.target.value;
-		newChildList[i].child_care = childCare;
-		setChildList(newChildList);
-	};
+	const [firstName, setFirstName] = useState(internalGuest?.first_name);
+	const [lastName, setLastName] = useState(internalGuest?.last_name);
+	const [email, setEmail] = useState(internalGuest?.email || '');
 
-	let handlePlusOneInputChange = (e) => {
-		setPlusOneName(e.target.value);
-	};
+	const [firstNameError, setFirstNameError] = useState(false);
+	const [lastNameError, setLastNameError] = useState(false);
+	const [emailError, setEmailError] = useState(false);
+	const [rsvpError, setRsvpError] = useState(false);
 
-	let addChildFormField = (e) => {
-		if (childList.length < 4) {
-			setChildList([
-				...childList,
-				{
-					name: '',
-					age: '',
-					needs_bed: '',
-					guest_id: selectedGuest.id,
-					child_care: childCare,
-				},
-			]);
-		}
-		e.preventDefault();
-	};
-
-	let removeChildFormField = (i) => {
-		let newChildList = [...childList];
-		newChildList.splice(i, 1);
-		setChildList(newChildList);
-	};
-
-	const handleChildCare = (event) => {
-		setChildCare(event.target.value);
-	};
+	const [childCare, setChildCare] = useState('');
+	const [childList, setChildList] = useState(
+		internalGuest?.kids?.length > 0
+			? internalGuest?.kids
+			: [
+					{
+						name: '',
+						age: '',
+						needs_bed: '',
+						guest_id: internalGuest.id,
+						child_care: childCare,
+					},
+			  ]
+	);
 
 	const handleRsvpChange = (event) => {
 		setRsvp(event.target.value);
 	};
 
-	function handleContinue() {
-		if (rsvp === 'no') {
-			setSubmitRsvpDecline(true);
-		} else if (rsvp === '') {
-			setNeedsRsvpInfo(true);
+	const checkForErrors = () => {
+		setFirstNameError(false);
+		setLastNameError(false);
+		setEmailError(false);
+		setRsvpError(false);
+
+		if (rsvp === '') {
+			setRsvpError(true);
+		}
+		if (firstName === '') {
+			setFirstNameError(true);
+		}
+		if (lastName === '') {
+			setLastNameError(true);
+		}
+		if (email === '' || !email) {
+			setEmailError(true);
+		}
+		if (firstName === '' || lastName === '' || email === '' || rsvp === '') {
+			return true;
 		} else {
-			setNeedsRsvpInfo(false);
-			setSubmitRsvpDecline(false);
+			console.log(email, lastName, firstName, rsvp);
+		}
+	};
 
-			let formValues = getFormValues();
-			let plusOne = selectedGuest?.plus_ones.length === 1;
-			let noPlusOne = selectedGuest?.plus_ones?.length === 0;
-			let plusOneId = selectedGuest?.plus_ones[0]?.id;
-			let plusOneInput = plusOneFormValue();
+	const handlePlusOne = () => {
+		let hasPlusOne = internalGuest?.plus_ones.length === 1;
+		let noPlusOne = internalGuest?.plus_ones?.length === 0;
+		let plusOneId = internalGuest?.plus_ones[0]?.id;
 
-			updateGuest(selectedGuest.id, {
-				...formValues,
-				rsvp: rsvp,
-			});
-
-			if (children) {
-				createKids(childList);
-			}
-
-			if (selectedGuest.plus_one_count !== 0) {
-				if (rsvp === null || rsvp === 'no') {
-					progressFlow(rsvp);
-				} else if (noPlusOne && plusOneToggle) {
-					createPlusOne({ ...plusOneInput, guest_id: selectedGuest.id });
-				} else if (plusOne && plusOneToggle) {
-					updatePlusOne(plusOneId, plusOneInput);
-				} else if (plusOne && !plusOneToggle) {
-					deletePlusOne(plusOneId);
-				} else {
-					console.log('no plus one');
-				}
-			}
+		if (rsvp === null || rsvp === 'no') {
 			progressFlow(rsvp);
+			setPlusOneToggle(false);
+		} else if (noPlusOne && plusOneToggle) {
+			createPlusOne({ name: plusOneName, guest_id: internalGuest.id });
+		} else if (hasPlusOne && plusOneToggle) {
+			updatePlusOne(plusOneId, { name: plusOneName });
+		} else if (hasPlusOne && !plusOneToggle) {
+			deletePlusOne(plusOneId);
+		} else {
+			return;
+		}
+	};
+
+	function handleContinue(e) {
+		e.preventDefault();
+		let error = checkForErrors();
+		console.log(error, 'errors');
+		if (!error) {
+			if (rsvp === 'no') {
+				setSubmitRsvpDecline(true);
+			} else {
+				setSubmitRsvpDecline(false);
+				updateGuest(internalGuest.id, {
+					first_name: firstName,
+					last_name: lastName,
+					email: email,
+					rsvp: rsvp,
+				});
+				if (children) {
+					createKids(childList);
+				}
+				if (internalGuest.plus_one_count !== 0) {
+					handlePlusOne();
+				}
+				progressFlow(rsvp);
+			}
 		}
 	}
-
+	console.log(plusOneToggle, 'plus one toggle');
 	return (
 		<ContactInfoSection>
-			<h1>
-				Hello {selectedGuest?.first_name || 'No User'}, <br /> we found your
-				reservation!
-			</h1>
-			<p className='heading'> Please update the information below</p>
-
-			{needsRsvpInfo && (
-				<ConfirmationCabin
-					setState={setNeedsRsvpInfo}
-					state={needsRsvpInfo}
-					text='You selected an rsvp option from the dropdown. Please select before continuing.'
-				/>
-			)}
 			{submitRsvpDecline && (
 				<Confirmation
 					submitRsvpDecline={submitRsvpDecline}
@@ -162,58 +157,47 @@ export default function ContactInfo({
 					progressFlow={progressFlow}
 				/>
 			)}
-
+			<h1>
+				Hello {internalGuest?.first_name || 'No User'}, <br /> we found your
+				reservation!
+			</h1>
+			<p className='heading'> Please update the information below</p>
 			<RsvpContainer>
 				<h2>Will you be attending the wedding?</h2>
-				<FormControl sx={{ m: 1, maxWidth: 200, margin: 0, width: '100%' }}>
+				<FormControl
+					sx={{ m: 1, maxWidth: 200, margin: 0, width: '100%' }}
+					error={rsvpError}
+					required
+				>
 					<InputLabel id='rsvp-label'>Please select</InputLabel>
 					<Select
 						labelId='rsvp-label'
 						label='Please Select'
 						onChange={handleRsvpChange}
-						defaultValue={selectedGuest?.rsvp}
+						defaultValue={internalGuest?.rsvp}
+						required
 					>
 						<MenuItem value={'yes'}>Yes</MenuItem>
 						<MenuItem value={'no'}>No</MenuItem>
 					</Select>
+					{rsvpError && (
+						<FormHelperText>Please select an option</FormHelperText>
+					)}
 				</FormControl>
 			</RsvpContainer>
-
-			<Form>
-				<h2>Your details:</h2>
-				<ContactFeild>
-					<InputContainer className='input-group'>
-						<StandardTextField
-							id='first-name-input'
-							label='First Name'
-							required={true}
-							type='text'
-							defaultValue={selectedGuest?.first_name}
-						/>
-					</InputContainer>
-					<InputContainer className='input-group'>
-						<StandardTextField
-							id='last-name-input'
-							label='Last Name'
-							required={true}
-							type='text'
-							defaultValue={selectedGuest?.last_name}
-						/>
-					</InputContainer>
-					<InputContainer className='input-group'>
-						<StandardTextField
-							id='email-input'
-							label='Email'
-							required={true}
-							type='text'
-							defaultValue={selectedGuest?.email}
-						/>
-					</InputContainer>
-				</ContactFeild>
-
+			<Form noValidate autoComplete='off' onSubmit={handleContinue}>
+				<MainDetailsSection
+					internalGuest={internalGuest}
+					setLastName={setLastName}
+					setFirstName={setFirstName}
+					setEmail={setEmail}
+					firstNameError={firstNameError}
+					lastNameError={lastNameError}
+					emailError={emailError}
+				/>
 				{rsvp === 'yes' && (
 					<div>
-						{selectedGuest.plus_one_count !== 0 && (
+						{internalGuest.plus_one_count !== 0 && (
 							<ToggleContainer>
 								<div>
 									<h2>
@@ -236,13 +220,12 @@ export default function ContactInfo({
 										label='Full Name'
 										required={false}
 										type='text'
-										defaultValue={selectedGuest?.plus_ones[0]?.name}
-										onChange={(e) => handlePlusOneInputChange(e)}
+										defaultValue={internalGuest?.plus_ones[0]?.name}
+										onChange={(e) => setPlusOneName(e.target.value)}
 									/>
 								</InputContainer>
 							</ContactFeild>
 						)}
-
 						<ToggleContainer>
 							<h2>Do you have any children in your party?</h2>
 							<Toggle
@@ -251,124 +234,20 @@ export default function ContactInfo({
 							/>
 						</ToggleContainer>
 						{children && (
-							<ContactFeild className={`children-field`}>
-								<div className='message-container'>
-									<p className='title'>Important Message for Parents</p>
-									<p className='description'>
-										We understand that leaving the kids at home for a whole
-										weekend might not be possible, and while we would love to
-										see them during the weekend, we are asking that young
-										children (under 8 years old and outside of immediate family)
-										not be present during the ceremony and dinner. This means
-										either one parent will need to step out during these times,
-										or we can help coordinate some sort of on site sitter
-										situation. This expense would need to be paid for by the
-										parents however.
-									</p>
-								</div>
-								<h2>
-									Who will watch the children during the ceremony & dinner?
-								</h2>
-
-								<FormControl sx={{ m: 1, maxWidth: 250, margin: 0 }}>
-									<InputLabel id='child-care-label'>
-										Please select an option
-									</InputLabel>
-									<Select
-										labelId='child-care-label'
-										onChange={handleChildCare}
-										label='Please select an option'
-										value={childCare ? childCare : ''}
-									>
-										<MenuItem value={'guardian'}>A Parent</MenuItem>
-										<MenuItem value={'sitter'}>Sitters Service</MenuItem>
-									</Select>
-								</FormControl>
-								<KidsContainer>
-									<h2 className='enter-info'>
-										Please enter their information below
-									</h2>
-
-									{childList.map((element, index) => (
-										<div key={`${index}-child`}>
-											<ContactFeild className='child-inputs'>
-												<div style={{ display: 'flex' }}>
-													<InputContainer className='no-gap input-gap'>
-														<StandardTextField
-															label='Full Name'
-															required={false}
-															type='text'
-															name='name'
-															onChange={(e) => handleChildInputChange(index, e)}
-															defaultValue={element.name || ''}
-														/>
-													</InputContainer>
-													<InputContainer className='input-gap'>
-														<TextField
-															sx={{ maxWidth: 100 }}
-															label='Age'
-															required={false}
-															type='number'
-															name='age'
-															onChange={(e) => handleChildInputChange(index, e)}
-															defaultValue={element.age || ''}
-														/>
-													</InputContainer>
-												</div>
-												<div style={{ display: 'flex', flexDirection: 'row' }}>
-													<div>
-														<p>Does your child need their own bed?</p>
-														<FormControl
-															sx={{
-																m: 1,
-																maxWidth: 300,
-																margin: 0,
-																width: '100%',
-															}}
-														>
-															<InputLabel id='kid-bed-label'>
-																Please Select
-															</InputLabel>
-															<Select
-																labelId='kid-bed-label'
-																label='Please Select'
-																name='needs_bed'
-																onChange={(e) =>
-																	handleChildInputChange(index, e)
-																}
-																defaultValue={element.needs_bed || ''}
-															>
-																<MenuItem value={'yes'}>Yes</MenuItem>
-																<MenuItem value={'no'}>No</MenuItem>
-															</Select>
-														</FormControl>
-													</div>
-													<ImageContainer
-														className='delete-button'
-														onClick={() => removeChildFormField(index)}
-													>
-														<FaTrashAlt />
-													</ImageContainer>
-												</div>
-											</ContactFeild>
-											<LineBreak />
-										</div>
-									))}
-								</KidsContainer>
-								{childList.length < 4 && (
-									<AddChildLink onClick={(e) => addChildFormField(e)}>
-										<FaPlus />
-										Add Child
-									</AddChildLink>
-								)}
-							</ContactFeild>
+							<ChildSection
+								internalGuest={internalGuest}
+								childList={childList}
+								setChildList={setChildList}
+								childCare={childCare}
+								setChildCare={setChildCare}
+							/>
 						)}
 					</div>
 				)}
 
 				<ButtonContainer>
 					<ButtonSecondary onClick={() => regressFlow()} text='Back' />
-					<Button onClick={() => handleContinue()} text='Continue' />
+					<SubmitButton type='submit'>Continue</SubmitButton>
 				</ButtonContainer>
 			</Form>
 		</ContactInfoSection>

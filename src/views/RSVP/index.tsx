@@ -14,6 +14,7 @@ export default function RSVP() {
 	const [currentStep, setCurrentStep] = useState(steps.start);
 	const [selectedGuest, setSelectedGuest] = useState<any>(null);
 	const [cabinList, setCabinList] = useState<any>([]);
+	const [internalGuest, setInternalGuest] = useState();
 
 	const selectedCabin = () => {
 		if (cabinList) {
@@ -72,39 +73,42 @@ export default function RSVP() {
 		}
 	}
 
+	console.log(internalGuest, 'internal guest');
 	function contentToDisplay() {
 		switch (currentStep) {
 			case steps.start:
 				return (
 					<StartPage
 						setSelectedGuest={setSelectedGuest}
+						setInternalGuest={setInternalGuest}
 						progressFlow={progressFlow}
 					/>
 				);
 			case steps.contact:
 				return (
 					<ContactInfoPage
-						selectedGuest={selectedGuest}
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
+						internalGuest={internalGuest}
+						setInternalGuest={setInternalGuest}
 					/>
 				);
 
 			case steps.cabin:
 				return (
 					<CabinPage
-						selectedGuest={selectedGuest}
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
 						cabinList={cabinList}
-						selectedCabin={selectedCabin()}
+						selectedCabin={selectedCabin}
+						internalGuest={internalGuest}
 					/>
 				);
 
 			case steps.additional:
 				return (
 					<AdditionalPage
-						selectedGuest={selectedGuest}
+						internalGuest={internalGuest}
 						progressFlow={progressFlow}
 						regressFlow={regressFlow}
 					/>

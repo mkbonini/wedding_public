@@ -7,10 +7,14 @@ import {
 	StartPageContainer,
 } from '../styled-components';
 import Button from '../../../components/Button';
-import StandardTextField from '../../../components/StandardTextField';
 import { getGuests, getSelectedGuest } from '../Model';
+import TextField from '@mui/material/TextField';
 
-export default function StartPage({ setSelectedGuest, progressFlow }) {
+export default function StartPage({
+	setSelectedGuest,
+	progressFlow,
+	setInternalGuest,
+}) {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [displayError, setDisplayError] = useState(false);
 	const [guestList, setGuestList] = useState<any>([]);
@@ -37,6 +41,7 @@ export default function StartPage({ setSelectedGuest, progressFlow }) {
 			});
 			let result = await promise;
 			setSelectedGuest(result);
+			setInternalGuest(result);
 			return result;
 		}
 	}
@@ -57,11 +62,13 @@ export default function StartPage({ setSelectedGuest, progressFlow }) {
 			<Heading>
 				<h1>RSVP</h1> <p>Enter your full name below to find your reservation</p>
 			</Heading>
-			<StandardTextField
+			<TextField
 				label='Search Your Name'
 				onChange={(e) => editSearchTerm(e)}
 				type='text'
-				required={true}
+				required
+				error={displayError}
+				fullWidth
 			/>
 			{displayError && (
 				<ErrorMessage>

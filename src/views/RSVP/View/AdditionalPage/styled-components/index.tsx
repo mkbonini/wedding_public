@@ -74,4 +74,35 @@ export const ContentContainer = styled.div`
 export const SectionBreaks = styled.div`
 	margin: 10px 0px;
 	width: 100%;
+	padding: 1rem 0rem;
+	h3 {
+		font-size: 16px;
+		font-family: 'Circular-Book';
+	}
+	&.checkmark-section {
+		padding: 0rem 0rem 1rem 0rem;
+	}
+`;
+
+export const SubmitButton = styled.button`
+	min-width: 100px;
+	background-color: #3366ff;
+	height: 50px;
+	border-radius: 100px;
+	text-transform: none;
+	padding: 0px 50px;
+	font-family: 'Circular-Book';
+	font-size: 14px;
+	line-height: 20px;
+	color: #fff;
+	border: none;
+	:hover {
+		background-color: #6d7de9;
+	}
+`;
+
+export const CheckboxContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 `;

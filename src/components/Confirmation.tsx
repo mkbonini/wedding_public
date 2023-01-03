@@ -68,7 +68,6 @@ export default function Popup({
 				onClose={handleExit}
 				aria-labelledby='responsive-dialog-title'
 				scroll='body'
-				sx={{ marginTop: '5rem' }}
 				maxWidth={'sm'}
 			>
 				<ExitButton>
