@@ -1,6 +1,6 @@
 /** @format */
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
 	createPlusOne,
 	deletePlusOne,
@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
+import { checkForErrors } from './utils';
 
 import {
 	ContactFeild,
@@ -83,81 +84,6 @@ export default function ContactInfo({
 		setRsvp(event.target.value);
 	};
 
-	function validateEmail(email) {
-		var re = /\S+@\S+\.\S+/;
-		return re.test(email);
-	}
-
-	// const checkForErrors = () => {
-	// 	setFirstNameError(false);
-	// 	setLastNameError(false);
-	// 	setEmailError(false);
-	// 	setRsvpError(false);
-	// 	setPlusOneError(false);
-
-	// 	if (rsvp === '') {
-	// 		setRsvpError(true);
-	// 	}
-	// 	if (firstName === '') {
-	// 		setFirstNameError(true);
-	// 	}
-	// 	if (lastName === '') {
-	// 		setLastNameError(true);
-	// 	}
-	// 	if (!validateEmail(email)) {
-	// 		setEmailError(true);
-	// 	}
-	// 	if (plusOneToggle && plusOneName === '') {
-	// 		setPlusOneError(true);
-	// 	}
-	// };
-
-	function checkForErrors() {
-		if (children && childCare === '') {
-			setChildCareError(true);
-		} else {
-			setChildCareError(false);
-		}
-		if (rsvp === '') {
-			setRsvpError(true);
-		} else {
-			setRsvpError(false);
-		}
-		if (firstName === '') {
-			setFirstNameError(true);
-		} else {
-			setFirstNameError(false);
-		}
-		if (lastName === '') {
-			setLastNameError(true);
-		} else {
-			setLastNameError(false);
-		}
-		if (!validateEmail(email)) {
-			setEmailError(true);
-		} else {
-			setEmailError(false);
-		}
-		if (plusOneToggle && plusOneName === '') {
-			setPlusOneError(true);
-		} else {
-			setPlusOneError(false);
-		}
-
-		if (
-			(children && childCare === '') ||
-			rsvp === '' ||
-			firstName === '' ||
-			lastName === '' ||
-			(plusOneToggle && plusOneName === '') ||
-			!validateEmail(email)
-		) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	// const handlePlusOne = () => {
 	// 	let hasPlusOne = internalGuest?.plus_ones.length === 1;
 	// 	let noPlusOne = internalGuest?.plus_ones?.length === 0;
@@ -177,43 +103,66 @@ export default function ContactInfo({
 	// 	}
 	// };
 
+	function updateInternalData() {
+		let data = {
+			first_name: firstName,
+			last_name: lastName,
+			email: email,
+			rsvp: rsvp,
+			kids: children ? childList : [],
+			plus_ones: plusOneName
+				? [
+						{
+							id: null,
+							name: plusOneName,
+							lodging_id: null,
+							team_id: null,
+						},
+				  ]
+				: [],
+		};
+		setInternalGuest({ ...internalGuest, ...data });
+	}
+
+	function updateDatabase() {
+		updateGuest(internalGuest.id, {
+			first_name: firstName,
+			last_name: lastName,
+			email: email,
+			rsvp: rsvp,
+		});
+	}
+
 	function handleContinue(e) {
 		e.preventDefault();
-		let error = checkForErrors();
+		let error = checkForErrors({
+			children,
+			childCare,
+			setChildCareError,
+			setRsvpError,
+			setFirstNameError,
+			setLastNameError,
+			rsvp,
+			firstName,
+			lastName,
+			email,
+			setEmailError,
+			plusOneToggle,
+			plusOneName,
+			setPlusOneError,
+		});
+
 		if (!error) {
 			if (rsvp === 'no') {
 				setSubmitRsvpDecline(true);
 			} else {
 				setSubmitRsvpDecline(false);
-				// updateGuest(internalGuest.id, {
-				// 	first_name: firstName,
-				// 	last_name: lastName,
-				// 	email: email,
-				// 	rsvp: rsvp,
-				// });
+				updateInternalData();
+				let result = updateDatabase();
+				console.log(result);
 
-				let data = {
-					first_name: firstName,
-					last_name: lastName,
-					email: email,
-					rsvp: rsvp,
-					kids: children ? childList : [],
-					plus_ones: plusOneName
-						? [
-								{
-									id: null,
-									name: plusOneName,
-									lodging_id: null,
-									team_id: null,
-								},
-						  ]
-						: [],
-				};
-
-				setInternalGuest({ ...internalGuest, ...data });
-
-				progressFlow(rsvp);
-				window.scrollTo(0, 0);
+				// progressFlow(rsvp);
+				// window.scrollTo(0, 0);
 			}
 		}
 	}

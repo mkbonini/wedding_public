@@ -57,7 +57,6 @@ export default function ChildSection({
 		setChildCare(e.target.value);
 	};
 
-	console.log(childCare, 'child are in child section');
 	return (
 		<ContactFeild className={`children-field`}>
 			<div className='message-container'>

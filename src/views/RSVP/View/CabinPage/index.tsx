@@ -91,9 +91,6 @@ export default function CabinPage({
 		progressFlow();
 	};
 
-	console.log(internalGuest, 'internalGuest from cabinPage');
-	console.log(internalCabin);
-
 	return (
 		<>
 			<CabinInfoSection>
