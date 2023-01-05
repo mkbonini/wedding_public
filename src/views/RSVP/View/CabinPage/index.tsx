@@ -29,15 +29,30 @@ export default function CabinPage({
 	regressFlow,
 	progressFlow,
 	cabinList,
-	selectedCabin,
 	internalGuest,
+	setInternalGuest,
 }) {
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState();
-	const [internalCabin, setInternalCabin] = useState(selectedCabin);
-	const [acceptLodging, setAcceptLodging] = useState(false);
+	const [internalCabin, setInternalCabin] = useState<any>(undefined);
+	const [acceptLodging, setAcceptLodging] = useState(
+		internalGuest.lodging_id > 0 ? true : false
+	);
 	const [open, setOpen] = useState(false);
 	const [selectCabinNotice, setSelectCabinNotice] = useState(false);
+
+	const selectedCabin = () => {
+		if (cabinList) {
+			return cabinList.find((cabin) => cabin?.id === internalGuest?.lodging_id);
+		} else {
+			return null;
+		}
+	};
+
+	useEffect(() => {
+		let cabin = selectedCabin();
+		setInternalCabin(cabin);
+	}, [selectedCabin]);
 
 	useEffect(() => {
 		var body = document.body;
@@ -57,19 +72,27 @@ export default function CabinPage({
 	};
 
 	const handleContinue = () => {
-		if (internalCabin === undefined && !acceptLodging) {
-			progressFlow();
-		} else if (internalCabin === undefined && acceptLodging) {
-			setSelectCabinNotice(true);
-		} else if (internalCabin.id && !acceptLodging) {
-			setInternalCabin(undefined);
-			progressFlow();
-		} else if (acceptLodging && internalCabin.id) {
-			updateGuest(internalGuest?.id, { lodging_id: internalCabin?.id });
-			progressFlow();
-			setSelectCabinNotice(false);
-		}
+		// if (internalCabin === undefined && !acceptLodging) {
+		// 	progressFlow();
+		// } else if (internalCabin === undefined && acceptLodging) {
+		// 	setSelectCabinNotice(true);
+		// } else if (internalCabin.id && !acceptLodging) {
+		// 	setInternalCabin(undefined);
+		// 	progressFlow();
+		// } else if (acceptLodging && internalCabin.id) {
+		// 	// updateGuest(internalGuest?.id, { lodging_id: internalCabin?.id });
+
+		// 	setSelectCabinNotice(false);
+		// 	window.scrollTo(0, 0);
+		// }
+
+		setInternalGuest({ ...internalGuest, lodging_id: internalCabin?.id });
+
+		progressFlow();
 	};
+
+	console.log(internalGuest, 'internalGuest from cabinPage');
+	console.log(internalCabin);
 
 	return (
 		<>
@@ -111,11 +134,7 @@ export default function CabinPage({
 									You and your party are assigned to:
 								</div>
 								<SelectedCabinContainer>
-									<Image
-										image={
-											internalCabin?.image_url ? internalCabin?.image_url : ''
-										}
-									/>
+									<Image image={internalCabin?.image_url ?? ''} />
 									<SelectedContent>
 										<h1>{internalCabin?.name}</h1>
 										<p className='selected-p'>{internalCabin?.description}</p>

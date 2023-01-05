@@ -18,7 +18,7 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 1rem 0rem 3rem 0rem;
+	margin: 3rem 0rem;
 	gap: 20px;
 `;
 
@@ -44,7 +44,7 @@ export const CabinInfoSection = styled.div`
 	position: relative;
 	margin: 8rem 1rem 1rem 1rem;
 	@media only screen and (max-width: 900px) {
-		margin: 1rem;
+		margin: 5rem 1rem 1rem 1rem;
 	}
 
 	.stepper-container {

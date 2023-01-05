@@ -82,7 +82,7 @@ export default function Stepper({ step }) {
 				<StepBubble completed={step > 3} currentStep={step === 3}>
 					{step > 3 ? <CheckMark /> : '3'}
 				</StepBubble>
-				<h1>Additional</h1>
+				<h1>Other</h1>
 			</StepSection>
 		</StepperContainer>
 	);
