@@ -90,7 +90,7 @@ export default function Lodging() {
 
 				<AccentSection>
 					<SubTitles>
-						<div className='section'>
+						<div className='section airbnb-block'>
 							<ImageContainer id='airbnb'>
 								<img src={airBnb} alt='air bnb logo' />
 							</ImageContainer>

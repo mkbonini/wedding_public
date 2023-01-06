@@ -84,24 +84,24 @@ export default function ContactInfo({
 		setRsvp(event.target.value);
 	};
 
-	// const handlePlusOne = () => {
-	// 	let hasPlusOne = internalGuest?.plus_ones.length === 1;
-	// 	let noPlusOne = internalGuest?.plus_ones?.length === 0;
-	// 	let plusOneId = internalGuest?.plus_ones[0]?.id;
+	const handlePlusOne = () => {
+		let hasPlusOne = internalGuest?.plus_ones.length === 1;
+		let noPlusOne = internalGuest?.plus_ones?.length === 0;
+		let plusOneId = internalGuest?.plus_ones[0]?.id;
 
-	// 	if (rsvp === null || rsvp === 'no') {
-	// 		progressFlow(rsvp);
-	// 		setPlusOneToggle(false);
-	// 	} else if (noPlusOne && plusOneToggle) {
-	// 		// createPlusOne({ name: plusOneName||  guest_id: internalGuest.id });
-	// 	} else if (hasPlusOne && plusOneToggle) {
-	// 		// updatePlusOne(plusOneId, { name: plusOneName });
-	// 	} else if (hasPlusOne && !plusOneToggle) {
-	// 		// deletePlusOne(plusOneId);
-	// 	} else {
-	// 		return;
-	// 	}
-	// };
+		if (rsvp === null || rsvp === 'no') {
+			progressFlow(rsvp);
+			setPlusOneToggle(false);
+		} else if (noPlusOne && plusOneToggle) {
+			createPlusOne({ name: plusOneName, guest_id: internalGuest.id });
+		} else if (hasPlusOne && plusOneToggle) {
+			updatePlusOne(plusOneId, { name: plusOneName });
+		} else if (hasPlusOne && !plusOneToggle) {
+			deletePlusOne(plusOneId);
+		} else {
+			return;
+		}
+	};
 
 	function updateInternalData() {
 		let data = {
@@ -131,6 +131,12 @@ export default function ContactInfo({
 			email: email,
 			rsvp: rsvp,
 		});
+		if (childList.length > 0 && childList[0].name !== '') {
+			createKids(childList);
+		}
+		if (internalGuest.plus_one_count !== 0) {
+			handlePlusOne();
+		}
 	}
 
 	function handleContinue(e) {
@@ -158,11 +164,9 @@ export default function ContactInfo({
 			} else {
 				setSubmitRsvpDecline(false);
 				updateInternalData();
-				let result = updateDatabase();
-				console.log(result);
-
-				// progressFlow(rsvp);
-				// window.scrollTo(0, 0);
+				updateDatabase();
+				progressFlow(rsvp);
+				window.scrollTo(0, 0);
 			}
 		}
 	}

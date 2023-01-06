@@ -9,9 +9,13 @@ export const SubTitles = styled.div`
 	&#main {
 		padding: 2rem 0rem;
 	}
+	.airbnb-block {
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+	}
 	.section {
 		max-width: 1200px;
-		margin: auto;
 		h2 {
 			font-size: 22px;
 			font-family: 'Circular-Book';
