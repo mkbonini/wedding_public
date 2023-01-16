@@ -11,8 +11,6 @@ import dining from '../../assets/cabins/dining.png';
 import beds from '../../assets/cabins/beds.png';
 import gym from '../../assets/cabins/gym.png';
 import Carousel from '../../components/Carousel';
-import airBnb from '../../assets/airbnb.png';
-import lineBreak from '../../assets/tree-break.svg';
 import airbnbIcon from '../../assets/airbnb-icon.svg';
 
 import {
@@ -25,7 +23,6 @@ import {
 	AdditionalContainer,
 	Accent,
 	ButtonContainer,
-	LineBreakContainer,
 	Section,
 } from './styled-components';
 

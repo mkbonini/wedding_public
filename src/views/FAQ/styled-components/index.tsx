@@ -5,24 +5,37 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	width: 100%;
 	max-width: 1000px;
-	padding: 12rem 0rem 8rem 0rem;
+	padding: 10rem 0rem 8rem 0rem;
 	margin: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	h1 {
+		font-size: 35px;
+		font-family: 'Lazydog';
+	}
 	h2 {
 		font-size: 30px;
 		font-family: 'Lazydog';
 	}
 	h3 {
-		align-self: flex-start;
-		margin-left: 1rem;
 		font-family: 'Lazydog';
-		font-size: 26px;
+		font-size: 20px;
+		color: #000;
+		padding: 0px 20px;
+	}
+	@media only screen and (max-width: 900px) {
+		padding: 8rem 0rem;
 	}
 `;
 
+export const Category = styled.div`
+	display: flex;
+	justify-content: start;
+	align-items: flex-start;
+	width: 100%;
+`;
 export const ScrollContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -71,7 +84,7 @@ export const ScrollButton = styled.div`
 	@media only screen and (max-width: 900px) {
 		height: 70px;
 		width: 100px;
-		border-radius: 8px;
+		border-radius: 5px;
 		font-size: 14px;
 		margin: 0;
 		color: white;
@@ -104,7 +117,8 @@ export const Accent = styled.div`
 `;
 
 export const ScrollToTopContainer = styled.div`
-	width: 100%;
+	width: 95%;
+	margin-right: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -116,5 +130,5 @@ export const ButtonContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 10px;
+	margin: 7px;
 `;

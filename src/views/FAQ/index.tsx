@@ -8,6 +8,7 @@ import {
 	ButtonContainer,
 	ScrollButton,
 	Accent,
+	Category,
 	ScrollToTopContainer,
 } from './styled-components';
 
@@ -25,7 +26,7 @@ export default function FAQ() {
 
 	return (
 		<Container>
-			<h2 id='title'>FAQ</h2>
+			<h1 id='title'>FAQ</h1>
 			<ScrollContainer>
 				{Object.keys(Questions).map((key) => (
 					<ButtonContainer key={key}>
@@ -36,17 +37,35 @@ export default function FAQ() {
 					</ButtonContainer>
 				))}
 			</ScrollContainer>
-			<h3 id='lodging'>Lodging</h3>
+
+			<Category>
+				<h3 id='lodging'>Lodging</h3>
+			</Category>
 			<Accordian FAQ={Questions['lodging']} />
-			<h3 id='rsvp'>RSVP</h3>
+
+			<Category>
+				<h3 id='rsvp'>RSVP</h3>
+			</Category>
 			<Accordian FAQ={Questions['rsvp']} />
-			<h3 id='general'>General</h3>
+
+			<Category>
+				<h3 id='general'>General</h3>
+			</Category>
 			<Accordian FAQ={Questions['general']} />
-			<h3 id='weekend'>Weekend</h3>
+
+			<Category>
+				<h3 id='weekend'>Weekend</h3>
+			</Category>
 			<Accordian FAQ={Questions['weekend']} />
-			<h3 id='wedding'>Wedding</h3>
+
+			<Category>
+				<h3 id='wedding'>Wedding</h3>
+			</Category>
 			<Accordian FAQ={Questions['wedding']} />
-			<h3 id='other'>Other</h3>
+
+			<Category>
+				<h3 id='other'>Other</h3>
+			</Category>
 			<Accordian FAQ={Questions['other']} />
 
 			<ScrollToTopContainer>

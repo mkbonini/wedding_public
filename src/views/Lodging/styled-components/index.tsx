@@ -86,6 +86,9 @@ export const LodgingContainer = styled.div`
 		font-family: 'Lazydog';
 		margin: 1rem 0px 1rem 0px;
 		padding: 0;
+		@media only screen and (max-width: 900px) {
+			text-align: center;
+		}
 	}
 	#lodging-description {
 		width: 100%;
@@ -127,7 +130,8 @@ export const AdditionalContainer = styled.div`
 
 	@media only screen and (max-width: 900px) {
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 	}
@@ -148,7 +152,6 @@ export const AdditionalButton = styled.div`
 	#airbnb-button-content {
 		display: none;
 	}
-
 	&:hover {
 		cursor: pointer;
 		span {
@@ -167,8 +170,8 @@ export const AdditionalButton = styled.div`
 
 	@media only screen and (max-width: 900px) {
 		height: 70px;
-		width: 310px;
-		border-radius: 100px;
+		width: 165px;
+		border-radius: 5px;
 		margin: 2px;
 	}
 `;
