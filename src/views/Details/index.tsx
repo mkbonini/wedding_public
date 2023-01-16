@@ -6,7 +6,6 @@ import heart from '../../assets/heart.png';
 import smiley from '../../assets/smiley.png';
 import {
 	DetailsPage,
-	MobileImageContainer,
 	ContentContainer,
 	DetailSection,
 	ImageContainer,
@@ -15,9 +14,6 @@ export default function Details() {
 	return (
 		<>
 			<DetailsPage>
-				<MobileImageContainer>
-					<img src={note} alt='' />
-				</MobileImageContainer>
 				<ContentContainer id='venue' eyebrowColor='#FF99FF' align='start'>
 					<DetailSection>
 						<div className='eyebrow'>the venue</div>
@@ -44,7 +40,7 @@ export default function Details() {
 					<DetailSection>
 						<div className='eyebrow'>the weekend</div>
 						<h2>july 21-23, 2023</h2>
-						<h3>friday 3:00pm- sunday 10:00am</h3>
+						<h3>friday 3:00pm - sunday 10:00am</h3>
 						<p>
 							One of the reasons we loved the venue so much was that we were
 							able to book it for the entire weekend! In addition to that, there
@@ -84,7 +80,7 @@ export default function Details() {
 					<DetailSection>
 						<div className='eyebrow'>the ceremony</div>
 						<h2>satuday july 22</h2>
-						<h3>3:30 pm</h3>
+						<h3>starts at 3:30 pm</h3>
 						<p>
 							The ceremony will take place outside among beautiful aspens.
 							Attire is festive-casual. Think bright colors, fun dresses or

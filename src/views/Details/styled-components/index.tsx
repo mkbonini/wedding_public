@@ -24,7 +24,6 @@ export const ContentContainer = styled.div<{
 	width: 100vw;
 	background-color: ${(p) =>
 		p.align === 'end' ? 'rgba(169, 190, 255, 0.17);' : '#ffffff'};
-
 	@media only screen and (min-width: 900px) {
 		min-height: 650px;
 		margin-top: -5rem;
@@ -32,17 +31,17 @@ export const ContentContainer = styled.div<{
 	.eyebrow {
 		font-size: 30px;
 		color: ${(p) => p.eyebrowColor};
-		text-align: center;
-		font-family: 'Circular-Book';
-		margin: 0;
+		text-align: start;
+		font-family: 'Lazydog';
+		margin-bottom: 10px;
 		@media only screen and (min-width: 900px) {
 			text-align: ${(p) => p.align};
 		}
 	}
 	h2 {
-		font-size: 22px;
-		font-family: 'Circular-Book';
-		text-align: center;
+		font-size: 35px;
+		line-height: 30px;
+		text-align: start;
 		padding: 0;
 		margin: 0;
 		@media only screen and (min-width: 900px) {
@@ -51,11 +50,10 @@ export const ContentContainer = styled.div<{
 		}
 	}
 	h3 {
-		font-size: 20px;
-		font-family: 'Circular-Book';
-		text-align: center;
-		padding: 10px;
-		margin: 0;
+		font-size: 23px;
+		text-align: start;
+		margin-top: 10px !important;
+
 		@media only screen and (min-width: 900px) {
 			font-size: 30px;
 			text-align: ${(p) => p.align};
@@ -63,7 +61,7 @@ export const ContentContainer = styled.div<{
 	}
 	p {
 		max-width: 650px;
-		text-align: center;
+		text-align: start;
 		font-family: 'Circular-Book';
 		@media only screen and (min-width: 900px) {
 			text-align: ${(p) => p.align};
@@ -92,18 +90,6 @@ export const ImageContainer = styled.div`
 			max-width: 200px;
 			margin: -350px -400px 120px 0px;
 		}
-	}
-`;
-
-export const MobileImageContainer = styled.div`
-	max-width: 300px;
-	z-index: 2;
-	transform: rotate(-16deg);
-	img {
-		width: 100%;
-	}
-	@media only screen and (min-width: 900px) {
-		display: none;
 	}
 `;
 
