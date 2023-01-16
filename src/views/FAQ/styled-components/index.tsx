@@ -26,22 +26,23 @@ export const Container = styled.div`
 export const ScrollContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
-	max-width: 850px;
+	max-width: 1000px;
 	padding-bottom: 1rem;
 
 	@media only screen and (max-width: 900px) {
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 	}
 `;
 
 export const ScrollButton = styled.div`
-	height: 150px;
-	width: 100%;
+	height: 120px;
+	width: 120px;
 	background-color: #ffffff;
 	border: 1px solid darkgray;
 	border-radius: 3px;
@@ -67,16 +68,13 @@ export const ScrollButton = styled.div`
 		opacity: 1;
 		width: 100%;
 	}
-
 	@media only screen and (max-width: 900px) {
 		height: 70px;
-		width: 90%;
-		border-radius: 2px;
-		margin: 2px;
+		width: 100px;
+		border-radius: 8px;
+		font-size: 14px;
+		margin: 0;
 		color: white;
-		&:hover {
-			border-radius: 3px;
-		}
 	}
 `;
 
@@ -118,6 +116,5 @@ export const ButtonContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
 	margin: 10px;
 `;

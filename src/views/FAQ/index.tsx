@@ -46,6 +46,9 @@ export default function FAQ() {
 			<Accordian FAQ={Questions['weekend']} />
 			<h3 id='wedding'>Wedding</h3>
 			<Accordian FAQ={Questions['wedding']} />
+			<h3 id='other'>Other</h3>
+			<Accordian FAQ={Questions['other']} />
+
 			<ScrollToTopContainer>
 				<ScrollButton
 					onClick={() => scrollToSection('title')}
