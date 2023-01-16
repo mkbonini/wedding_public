@@ -19,24 +19,11 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 	const history = useHistory();
 
 	//Nav Heading Visible State
-	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [scrollVisible, setScrollVisible] = useState(true);
 
-	// const handleScroll = debounce(() => {
-	// 	const currentScrollPos = window.pageYOffset;
-	// 	setScrollVisible(
-	// 		(prevScrollPos > currentScrollPos &&
-	// 			prevScrollPos - currentScrollPos > 50) ||
-	// 			currentScrollPos < 10
-	// 	);
-	// 	setPrevScrollPos(currentScrollPos);
-	// }, 50);
-
-	// useEffect(() => {
-	// 	window.addEventListener('scroll', handleScroll);
-	// 	return () => window.removeEventListener('scroll', handleScroll);
-	// }, [handleScroll, prevScrollPos, scrollVisible]);
-
+	const handleClick = () => {
+		window.scrollTo(0, 0);
+	};
 	return (
 		<MainNav
 			scrollVisible={scrollVisible}
@@ -57,32 +44,32 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 			<LinkContainer>
 				<GroupedLinks>
 					<Title onClick={() => history.push('/')}>M + M</Title>
-					<MenuLink>
+					<MenuLink onClick={() => handleClick()}>
 						<Link to='/our-story'>
 							<p>our story</p>
 						</Link>
 					</MenuLink>
-					<MenuLink>
+					<MenuLink onClick={() => handleClick()}>
 						<Link to='/details'>
 							<p>details</p>
 						</Link>
 					</MenuLink>
-					<MenuLink>
+					<MenuLink onClick={() => handleClick()}>
 						<Link to='/lodging'>
 							<p>lodging</p>
 						</Link>
 					</MenuLink>
-					<MenuLink>
+					<MenuLink onClick={() => handleClick()}>
 						<Link to='/faq'>
 							<p>faq</p>
 						</Link>
 					</MenuLink>
-					<MenuLink>
+					<MenuLink onClick={() => handleClick()}>
 						<Link to='/registry'>
 							<p>registry</p>
 						</Link>
 					</MenuLink>
-					<MenuLink>
+					<MenuLink onClick={() => handleClick()}>
 						<Link to='/map'>
 							<p>map</p>
 						</Link>

@@ -15,6 +15,7 @@ export default function Flyout({ flyoutVisible, setFlyoutVisible }) {
 	const handleMenuClick = (path) => {
 		setActive(path);
 		setFlyoutVisible(false);
+		window.scrollTo(0, 0);
 	};
 	return (
 		<FlyoutMobileMenu visible={flyoutVisible}>
