@@ -19,4 +19,7 @@ export const Footer = styled.div`
 	div {
 		padding: 0;
 	}
+	p {
+		font-family: 'Circular-Book';
+	}
 `;

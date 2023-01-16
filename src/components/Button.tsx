@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 
 const Primary = styled(Button)<ButtonProps>(({ theme }) => ({
 	minWidth: '100px',
-	backgroundColor: '#3366FF',
+	backgroundColor: '#242424',
 	height: '50px',
 	borderRadius: '100px;',
 	textTransform: 'none',

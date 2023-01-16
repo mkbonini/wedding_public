@@ -36,7 +36,7 @@ export const NavAccent = styled.div`
 	);
 	height: 10px;
 	width: 100%;
-	box-shadow: 0px 2px 6px lightgray;
+	box-shadow: 0px 2px 6px darkslategray;
 `;
 
 export const MainNav = styled.div<{

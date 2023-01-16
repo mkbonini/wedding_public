@@ -16,7 +16,7 @@ const Title = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: start;
-	padding: 6rem 1rem;
+	padding: 7rem 1rem;
 	height: 80vh;
 	h1 {
 		font-size: 25px;
@@ -34,8 +34,9 @@ export default function Registry() {
 				<h1>
 					Hello there!
 					<br />
-					We will open this page up <br />
-					closer to the wedding <br />♡
+					The Registry page <br />
+					is coming soon
+					<br />
 				</h1>
 			</Title>
 		</RegistryPage>

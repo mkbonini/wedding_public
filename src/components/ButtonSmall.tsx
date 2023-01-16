@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 
 const Small = styled(Button)<ButtonProps>(({ theme }) => ({
 	minWidth: '60px',
-	backgroundColor: '#3366FF',
+	backgroundColor: '#242424',
 	height: '40px',
 	borderRadius: '100px;',
 	textTransform: 'none',

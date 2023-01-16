@@ -5,6 +5,7 @@ import {
 	ButtonContainer,
 	ErrorMessage,
 	StartPageContainer,
+	Title,
 } from '../styled-components';
 import Button from '../../../components/Button';
 import { getGuests, getSelectedGuest } from '../Model';
@@ -57,29 +58,45 @@ export default function StartPage({
 		});
 	}
 
+	const hideRsvp = true;
 	return (
 		<StartPageContainer>
-			<Heading>
-				<h1>RSVP</h1> <p>Enter your full name below to find your invitation</p>
-			</Heading>
-			<TextField
-				label='Search Your Name'
-				onChange={(e) => editSearchTerm(e)}
-				type='text'
-				required
-				error={displayError}
-				fullWidth
-			/>
-			{displayError && (
-				<ErrorMessage>
-					oh no! we’re having trouble finding your invite. Make sure the
-					spelling is correct and if the problem persists contact m+m at
-					mikemiwha@gmail.com
-				</ErrorMessage>
+			{hideRsvp ? (
+				<Title>
+					<h1>
+						Hello there!
+						<br />
+						The RSVP page
+						<br /> is coming soon
+						<br />
+					</h1>
+				</Title>
+			) : (
+				<>
+					<Heading>
+						<h1>RSVP</h1>
+						<p>Enter your full name below to find your invitation</p>
+					</Heading>
+					<TextField
+						label='Search Your Name'
+						onChange={(e) => editSearchTerm(e)}
+						type='text'
+						required
+						error={displayError}
+						fullWidth
+					/>
+					{displayError && (
+						<ErrorMessage>
+							oh no! we’re having trouble finding your invite. Make sure the
+							spelling is correct and if the problem persists contact m+m at
+							mikemiwha@gmail.com
+						</ErrorMessage>
+					)}
+					<ButtonContainer>
+						<Button onClick={() => handleClick()} text='Find My Invite' />
+					</ButtonContainer>
+				</>
 			)}
-			<ButtonContainer>
-				<Button onClick={() => handleClick()} text='Find My Invite' />
-			</ButtonContainer>
 		</StartPageContainer>
 	);
 }

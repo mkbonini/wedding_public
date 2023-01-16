@@ -65,3 +65,19 @@ export const StartPageContainer = styled.div`
 	padding-top: 10rem;
 	height: 75vh;
 `;
+
+export const Title = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
+	padding: 4rem 1rem;
+	height: 80vh;
+	h1 {
+		font-size: 25px;
+		color: black;
+		font-weight: 300;
+		text-align: center;
+		font-family: 'Lazydog';
+	}
+`;
