@@ -26,7 +26,7 @@ export default function MainDetailsSection({
 						defaultValue={internalGuest?.first_name}
 						error={firstNameError}
 						onChange={(e) => setFirstName(e.target.value)}
-						helperText={firstNameError && 'First Name is Required'}
+						helperText={firstNameError && 'First name is required'}
 					/>
 				</InputContainer>
 				<InputContainer className='input-group'>
@@ -39,7 +39,7 @@ export default function MainDetailsSection({
 						defaultValue={internalGuest?.last_name}
 						error={lastNameError}
 						onChange={(e) => setLastName(e.target.value)}
-						helperText={lastNameError && 'Last Name is Required'}
+						helperText={lastNameError && 'Last name is required'}
 					/>
 				</InputContainer>
 				<InputContainer className='input-group'>
@@ -52,7 +52,7 @@ export default function MainDetailsSection({
 						defaultValue={internalGuest?.email}
 						error={emailError}
 						onChange={(e) => setEmail(e.target.value)}
-						helperText={emailError && 'Email is Required'}
+						helperText={emailError && 'Please enter a valid email'}
 					/>
 				</InputContainer>
 			</ContactFeild>

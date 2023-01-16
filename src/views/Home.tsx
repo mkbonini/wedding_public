@@ -1,14 +1,14 @@
 /** @format */
 
 import React from 'react';
-import Hero from '../components/Hero';
 import styled from 'styled-components';
 import deerCreek from '../assets/deer_creek.jpg';
 import miwha from '../assets/bailey_sign.jpg';
 import ContentBlock from '../components/ContentBlock';
 import Button from '../components/Button';
 import Counntdown from '../components/Countdown';
-import flowerFooter from '../assets/flower-footer.svg';
+import hero from '../assets/hero.png';
+import mobile from '../assets/mobile.png';
 import { useHistory } from 'react-router-dom';
 
 const HomePage = styled.div<{ visible: boolean }>`
@@ -17,18 +17,18 @@ const HomePage = styled.div<{ visible: boolean }>`
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: -4rem;
 	overflow: hidden;
+	padding-bottom: 5rem;
 	filter: ${(p) => (p.visible ? 'blur(8px)' : 'unset')};
 	h1 {
 		text-align: center;
 		font-size: 45px;
-
 		color: #03989e;
 		margin-bottom: 1rem;
 	}
-	@media only screen and (max-width: 900px) {
+	@media only screen and (max-width: 1200px) {
 		margin-bottom: 0;
+		padding-bottom: 0;
 	}
 `;
 
@@ -44,43 +44,96 @@ const TitleContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-	margin-bottom: 4rem;
+	align-items: flex-start;
+	padding: 9rem 5rem 5rem 5rem;
+	@media only screen and (max-width: 1200px) {
+		align-items: center;
+		padding: 1rem;
+	}
 `;
 const Title = styled.div`
-	text-align: center;
+	text-align: left;
 	font-size: 70px;
-	max-width: 600px;
-	line-height: 55px;
-	font-family: 'Circular-Medium';
-	margin-bottom: 1rem;
-	@media only screen and (max-width: 900px) {
-		font-size: 40px;
-		line-height: 30px;
-		max-width: 300px;
+	line-height: 60px;
+	font-family: 'Lazydog';
+	color: #242424;
+	padding-bottom: 2rem;
+	@media only screen and (max-width: 1200px) {
+		font-size: 50px;
+		max-width: 350px;
+		line-height: 40px;
+		text-align: center;
 	}
 `;
 
 const CountdownContainer = styled.div`
 	height: 400px;
 	width: 100%;
-	max-width: 900px;
+	max-width: 1000px;
 	background-color: #e6eafe;
-	margin-bottom: 4rem;
+	margin: 4rem 0rem;
 	@media only screen and (max-width: 900px) {
-		margin-bottom: 0;
+		margin: 0;
 	}
 `;
 
-const FlowerContainer = styled.div`
-	display: block;
-	position: relative;
-	top: -150px;
-	img {
-		max-width: 1021px;
+const HeroSection = styled.div`
+	width: 100%;
+	height: 690px;
+	display: flex;
+	flex-direction: row;
+	@media only screen and (max-width: 1200px) {
+		flex-direction: column-reverse;
+		height: unset;
 	}
-	@media only screen and (max-width: 900px) {
-		display: none;
+	.copy-section {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		background-color: #f8fde5;
+		width: 40%;
+		height: 100%;
+		@media only screen and (max-width: 1200px) {
+			padding-top: 5rem;
+			justify-content: center;
+			width: 100%;
+			height: 360px;
+			justify-content: center;
+		}
+	}
+	.image-section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #afdf76;
+		width: 60%;
+		height: 100%;
+		position: relative;
+		.desktop {
+			display: none;
+			@media only screen and (min-width: 1201px) {
+				display: block;
+				position: absolute;
+				width: 950px;
+				top: 30px;
+				left: 0;
+				margin: 5rem 0rem 0rem -10rem;
+			}
+		}
+		.mobile {
+			display: block;
+			padding-top: 6rem;
+			position: absolute;
+			width: 350px;
+			top: 1%;
+			@media only screen and (min-width: 1201px) {
+				display: none;
+			}
+		}
+		@media only screen and (max-width: 1200px) {
+			width: 100%;
+			height: 400px;
+		}
 	}
 `;
 
@@ -89,15 +142,23 @@ export default function Home({ visible }) {
 	return (
 		<>
 			<HomePage visible={visible}>
-				<Hero />
+				<HeroSection>
+					<div className='copy-section'>
+						<TitleContainer>
+							<Title>we're getting married!</Title>
+							<Button
+								text='LEARN MORE'
+								onClick={() => history.push('/details')}
+							/>
+						</TitleContainer>
+					</div>
+					<div className='image-section'>
+						<img src={hero} alt='' className='desktop' />
+						<img src={mobile} alt='' className='mobile' />
+					</div>
+				</HeroSection>
+				{/* <Hero /> */}
 				<StoryContainer>
-					<TitleContainer>
-						<Title>we're getting married!</Title>
-						<Button
-							text='LEARN MORE'
-							onClick={() => history.push('/details')}
-						/>
-					</TitleContainer>
 					<CountdownContainer>
 						<Counntdown />
 					</CountdownContainer>
@@ -122,9 +183,6 @@ export default function Home({ visible }) {
 						id='mike'
 					/>
 				</StoryContainer>
-				<FlowerContainer>
-					<img src={flowerFooter} alt='' />
-				</FlowerContainer>
 			</HomePage>
 		</>
 	);

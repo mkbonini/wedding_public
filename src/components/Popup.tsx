@@ -190,10 +190,9 @@ export default function Popup({
 						<Image image={image_url ? image_url : dummyImage} />
 						<Title>
 							<h1>{name}</h1>
-							<div className='links'>
+							<div className='links' onClick={() => window.open(url)}>
 								<div className='airbnb-link'>
-									<TbBrandAirbnb onClick={() => window.open(url)} /> View on
-									Airbnb
+									<TbBrandAirbnb /> View on Airbnb
 								</div>
 							</div>
 							<p className='description'> {description}</p>

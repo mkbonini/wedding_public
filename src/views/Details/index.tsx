@@ -1,23 +1,15 @@
 /** @format */
 
-import note from '../../assets/note.png';
-import cobra from '../../assets/cobra.png';
-import heart from '../../assets/heart.png';
-import smiley from '../../assets/smiley.png';
 import {
 	DetailsPage,
-	MobileImageContainer,
 	ContentContainer,
 	DetailSection,
-	ImageContainer,
+	MobileSeperator,
 } from './styled-components';
 export default function Details() {
 	return (
 		<>
 			<DetailsPage>
-				<MobileImageContainer>
-					<img src={note} alt='' />
-				</MobileImageContainer>
 				<ContentContainer id='venue' eyebrowColor='#FF99FF' align='start'>
 					<DetailSection>
 						<div className='eyebrow'>the venue</div>
@@ -33,36 +25,47 @@ export default function Details() {
 							<br />
 							Everything is centrally located, however moving from the ceremony
 							site to the dining hall and cabins does require some minimal
-							walking. See Lodging page for more information.
+							walking. See the map page for view of the venue layout.
 						</p>
 					</DetailSection>
 				</ContentContainer>
+				<MobileSeperator />
 				<ContentContainer id='weekend' eyebrowColor='#3366FF' align='end'>
-					<ImageContainer>
-						<img src={note} alt='' />
-					</ImageContainer>
 					<DetailSection>
 						<div className='eyebrow'>the weekend</div>
 						<h2>july 21-23, 2023</h2>
-						<h3>friday 3:00pm- sunday 10:00am</h3>
+						<h3>friday 3:00pm - sunday 10:00am</h3>
 						<p>
 							One of the reasons we loved the venue so much was that we were
 							able to book it for the entire weekend! In addition to that, there
 							is lodging on site, meaning you can come for the entire weekend
 							and don’t need to worry about driving to and from the venue and a
-							potential airbnb/hotel. Please check the <strong>Lodging</strong>{' '}
-							page for more details.
+							potential airbnb/hotel. Please check the lodging page for more
+							details.
 						</p>
 					</DetailSection>
 				</ContentContainer>
-				<ContentContainer id='dodgeball' eyebrowColor='#C9E265' align='start'>
-					<ImageContainer id='cobra'>
-						<img src={cobra} alt='' />
-					</ImageContainer>
+				<MobileSeperator />
+				<ContentContainer id='dinner' eyebrowColor='#C9E265' align='start'>
+					<DetailSection>
+						<div className='eyebrow'>arrival dinner</div>
+						<h2>july 21, 2023</h2>
+						<h3>friday 6:00pm</h3>
+						<p>
+							We know plenty of people will be traveling in on Friday and
+							Saturday, and perhaps arriving at different times. However we want
+							to make sure that the people who arrive Friday can relax and enjoy
+							dinner and so we will be hositng a BBQ Friday evening with drinks
+							before any evening games.
+						</p>
+					</DetailSection>
+				</ContentContainer>
+				<MobileSeperator />
+				<ContentContainer id='dodgeball' eyebrowColor='#3366FF' align='end'>
 					<DetailSection>
 						<div className='eyebrow'>the dodgeball tournament</div>
 						<h2>friday july 21</h2>
-						<h3>after dinner</h3>
+						<h3>7:30pm</h3>
 						<p>
 							If you know anything about us, it’s that we love a good friendly
 							competition. But even more when there are costumes involved! Event
@@ -77,14 +80,12 @@ export default function Details() {
 						</p>
 					</DetailSection>
 				</ContentContainer>
-				<ContentContainer id='ceremony' eyebrowColor='#3366FF' align='end'>
-					<ImageContainer id='heart'>
-						<img src={heart} alt='' />
-					</ImageContainer>
+				<MobileSeperator />
+				<ContentContainer id='ceremony' eyebrowColor='#FF99FF' align='start'>
 					<DetailSection>
 						<div className='eyebrow'>the ceremony</div>
 						<h2>satuday july 22</h2>
-						<h3>3:30 pm</h3>
+						<h3>starts at 3:30 pm</h3>
 						<p>
 							The ceremony will take place outside among beautiful aspens.
 							Attire is festive-casual. Think bright colors, fun dresses or
@@ -93,10 +94,8 @@ export default function Details() {
 						</p>
 					</DetailSection>
 				</ContentContainer>
-				<ContentContainer id='reception' eyebrowColor='#FF99FF' align='start'>
-					<ImageContainer id='smiley'>
-						<img src={smiley} alt='' />
-					</ImageContainer>
+				<MobileSeperator />
+				<ContentContainer id='reception' eyebrowColor='#C9E265' align='end'>
 					<DetailSection>
 						<div className='eyebrow'>the reception</div>
 						<h2>following the ceremony</h2>

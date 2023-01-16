@@ -23,19 +23,17 @@ const CardStyles = styled.div`
 		max-width: 250px;
 	}
 `;
-
+const ImageContainer = styled.div`
+	position: relative;
+`;
 const Image = styled.div<{ image: string }>`
 	background-image: url(${(p) => p.image && p.image});
-	height: 290px;
-	width: 290px;
+	height: 230px;
+	width: 230px;
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-radius: 10px;
 	padding: 1rem;
-	@media only screen and (min-width: 900px) {
-		height: 230px;
-		width: 230px;
-	}
 `;
 
 const Title = styled.div`
@@ -54,16 +52,18 @@ const Title = styled.div`
 `;
 
 const TypeLabel = styled.div`
-	width: 80px;
-	border-radius: 2px;
-	background-color: gray;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background-color: #000;
 	color: white;
 	font-size: 14px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 30px;
-	margin-top: 20px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
 `;
 
 const ViewMoreLink = styled.div`
@@ -86,7 +86,10 @@ export default function Card({ image, name, type, remaining, onClick }) {
 	return (
 		<CardStyles onClick={() => onClick()}>
 			<div>
-				<Image image={image ? image : dummyImage} />
+				<ImageContainer>
+					<TypeLabel>{type}</TypeLabel>
+					<Image image={image ? image : dummyImage} />
+				</ImageContainer>
 				<Title>
 					<h1>{name}</h1>
 					<p className='spots-remaining'>
@@ -96,7 +99,6 @@ export default function Card({ image, name, type, remaining, onClick }) {
 						</span>{' '}
 						spots remaining in this cabin
 					</p>
-					<TypeLabel>{type}</TypeLabel>
 				</Title>
 			</div>
 			<div>

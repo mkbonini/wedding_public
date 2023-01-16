@@ -13,15 +13,15 @@ const ContentBlockContainer = styled.div<{
 	flex-direction: ${(p) => (p.position === 'right' ? 'row-reverse' : 'row')};
 	justify-content: center;
 	align-items: center;
-	max-width: 900px;
+	max-width: 1000px;
 	background-color: ${(p) => (p.backgroundColor ? p.backgroundColor : 'white')};
 	p {
 		color: ${(p) => (p.copyColor ? p.copyColor : 'black')};
-		font-size: 30px;
+		font-size: 35px;
 		padding: 20px;
 		text-align: center;
 		max-width: 270px;
-		font-family: 'Circular-Book';
+		font-family: 'Lazydog';
 	}
 	img {
 		width: 50%;

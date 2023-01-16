@@ -6,27 +6,35 @@ export const SubTitles = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	&#main {
-		padding: 2rem 0rem;
+	font-family: 'Circular-Book';
+	.airbnb-block {
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+		padding-top: 4rem;
 	}
 	.section {
 		max-width: 1200px;
-		margin: auto;
 		h2 {
-			font-size: 22px;
-			font-family: 'Circular-Book';
-			text-align: center;
-			padding: 0;
+			font-size: 26px;
+			font-family: 'Lazydog';
+			text-align: start;
+			padding-top: 20px;
 			margin: 0;
-			&.cabin-title {
-				text-align: start;
-				padding: 2rem 0rem 0rem 0rem;
-				font-size: 20x;
-			}
 			@media only screen and (min-width: 900px) {
 				font-size: 30px;
 			}
 		}
+		h3 {
+			font-family: 'Lazydog';
+			font-size: 23px;
+			padding: 0;
+			margin: 0;
+		}
+	}
+	.bold {
+		font-family: 'Circular-Medium';
+		font-size: 16px;
 	}
 `;
 
@@ -39,17 +47,20 @@ export const ImageContainer = styled.div`
 		height: 100%;
 	}
 	&#airbnb {
-		max-width: 200px;
+		max-width: 100px;
 		padding: 1rem 0rem;
 		margin: auto;
 	}
 	&#distance {
-		max-width: 600px;
+		max-width: 700px;
 		margin: 20px 0px;
 		border-radius: 5px;
 		img {
 			border-radius: 5px;
 		}
+	}
+	&.line-break {
+		height: 200px;
 	}
 `;
 
@@ -72,9 +83,12 @@ export const LodgingContainer = styled.div`
 	justify-content: center;
 	padding: 0rem 1rem;
 	h1 {
-		font-family: 'Circular-Book';
+		font-family: 'Lazydog';
 		margin: 1rem 0px 1rem 0px;
 		padding: 0;
+		@media only screen and (max-width: 900px) {
+			text-align: center;
+		}
 	}
 	#lodging-description {
 		width: 100%;
@@ -92,7 +106,7 @@ export const LodgingContainer = styled.div`
 
 export const LodgingPage = styled.div`
 	width: 100%;
-	max-width: 1200px;
+	max-width: 1000px;
 	padding: 12rem 0rem 2rem 0rem;
 	margin: auto;
 	@media only screen and (max-width: 900px) {
@@ -110,53 +124,55 @@ export const ContentCenter = styled.div`
 export const AdditionalContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
-	max-width: 850px;
-	padding-bottom: 3rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 1rem 0rem 2rem 0rem;
 
 	@media only screen and (max-width: 900px) {
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 	}
 `;
 
 export const AdditionalButton = styled.div`
-	height: 150px;
-	width: 150px;
+	height: 70px;
+	width: 220px;
+	border-radius: 100px;
 	background-color: #000000;
-	margin: 10px;
+	margin: 5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 3px;
 	color: #ffffff;
 	text-decoration: none;
 	text-align: center;
-
+	#airbnb-button-content {
+		display: none;
+	}
 	&:hover {
 		cursor: pointer;
-		border-radius: 50%;
-	}
-	&:hover + #accent {
-		opacity: 1;
-		width: 100%;
+		span {
+			display: none;
+		}
+		background-color: #ff5a5f;
+		color: #ffffff;
+		#airbnb-button-content {
+			display: block;
+			img {
+				max-width: 20px;
+				margin-left: 5px;
+			}
+		}
 	}
 
 	@media only screen and (max-width: 900px) {
 		height: 70px;
-		width: 260px;
-		border-radius: 2px;
+		width: 165px;
+		border-radius: 5px;
 		margin: 2px;
-		&:hover {
-			border-radius: 3px;
-		}
-		&:hover + #accent {
-			opacity: 0;
-			width: 100%;
-		}
 	}
 `;
 
@@ -172,28 +188,9 @@ export const ButtonContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	margin: 10px;
-`;
-
-export const AccentSection = styled.div`
-	min-height: 650px;
-	background: rgba(169, 190, 255, 0.17);
-	margin-top: 4rem;
-	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	p {
-		margin: 2rem;
-		padding: 0;
-	}
-	@media only screen and (max-width: 900px) {
-		min-height: 850px;
-	}
+	margin: 5px;
 `;
 
 export const Section = styled.div`
-	padding: 8rem 0rem;
+	padding: 2rem 0rem;
 `;

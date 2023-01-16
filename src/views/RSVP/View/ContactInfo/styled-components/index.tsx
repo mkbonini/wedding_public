@@ -107,9 +107,7 @@ export const ContactFeild = styled.div`
 		margin: 0;
 	}
 	&.child-inputs {
-		display: flex;
-		flex-direction: column;
-		padding: 1rem 0rem 2rem 0rem;
+		padding-bottom: 1rem;
 	}
 	&.children-field {
 		display: flex;
@@ -138,23 +136,21 @@ export const ImageContainer = styled.div`
 	&.delete-button {
 		border-radius: 4px;
 		height: 40px;
+		width: 40px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 20px;
 		padding: 5px;
 		cursor: pointer;
-		align-self: center;
-		background-color: #000;
-		color: #fff;
+		background-color: #fff;
+		border: 1px solid lightgray;
 		font-size: 15px;
 		svg {
-			font-size: 15px;
-			color: #fff;
-			margin-left: 10px;
+			color: #000;
 		}
 		:hover {
 			box-shadow: 2px 2px 10px 2px lightgray;
+			border: 1px solid black;
 		}
 	}
 `;
@@ -177,7 +173,10 @@ export const LineBreak = styled.div`
 	background-color: whitesmoke;
 	width: 100%;
 	max-width: '800px';
-	margin: 1rem 0rem;
+	margin-bottom: 20px;
+	@media only screen and (min-width: 900px) {
+		display: none;
+	}
 `;
 
 export const SubmitButton = styled.button`

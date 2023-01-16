@@ -12,8 +12,8 @@ import InputLabel from '@mui/material/InputLabel';
 import { FaTrashAlt, FaPlus } from 'react-icons/fa';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import StandardTextField from '../../../../components/StandardTextField';
 import TextField from '@mui/material/TextField';
+import FormHelperText from '@mui/material/FormHelperText';
 
 export default function ChildSection({
 	childList,
@@ -21,6 +21,7 @@ export default function ChildSection({
 	childCare,
 	setChildCare,
 	internalGuest,
+	childCareError,
 }) {
 	let addChildFormField = (e) => {
 		if (childList.length < 4) {
@@ -32,6 +33,7 @@ export default function ChildSection({
 					needs_bed: '',
 					guest_id: internalGuest.id,
 					child_care: childCare,
+					team_id: 0,
 				},
 			]);
 		}
@@ -74,87 +76,101 @@ export default function ChildSection({
 				Who will watch the children during the ceremony and dinner?
 			</div>
 
-			<FormControl sx={{ m: 1, maxWidth: 230, margin: 0 }}>
+			<FormControl
+				sx={{ m: 1, maxWidth: 320, margin: 0 }}
+				error={childCareError}
+				required
+			>
 				<InputLabel id='child-care-label'>Please select an option</InputLabel>
 				<Select
 					labelId='child-care-label'
 					onChange={handleChildCareChange}
 					label='Please select an option'
-					value={childCare ? childCare : ''}
+					value={childCare ?? ''}
 				>
 					<MenuItem value={'guardian'}>A Parent</MenuItem>
 					<MenuItem value={'sitter'}>Sitters Service</MenuItem>
+					<MenuItem value={'na'}>Not applicable</MenuItem>
 				</Select>
+				{childCareError && (
+					<FormHelperText>Please select an option</FormHelperText>
+				)}
 			</FormControl>
 			<KidsContainer>
 				<div className='sub-heading'>Please enter their information below</div>
 				{childList?.map((element, index) => (
 					<div key={`${index}-child`}>
-						<ContactFeild className='child-inputs'>
-							<InputContainer className='no-gap input-gap'>
-								<TextField
-									sx={{ width: '100%', maxWidth: 340 }}
-									label='Full Name'
-									required={false}
-									type='text'
-									name='name'
-									onChange={(e) => handleChildInputChange(index, e)}
-									defaultValue={element.name || ''}
-								/>
-							</InputContainer>
-							<div style={{ display: 'flex', flexDirection: 'row' }}>
-								<div>
-									<div style={{ display: 'flex' }}>
-										<div>
-											<p>Do they need their own bed?</p>
-											<FormControl
-												sx={{
-													m: 1,
-													maxWidth: 270,
-													margin: 0,
-													width: '100%',
-												}}
-											>
-												<InputLabel id='kid-bed-label'>
-													Please Select
-												</InputLabel>
-												<Select
-													labelId='kid-bed-label'
-													label='Please Select'
-													name='needs_bed'
-													onChange={(e) => handleChildInputChange(index, e)}
-													defaultValue={element.needs_bed || ''}
-												>
-													<MenuItem value={'yes'}>Yes</MenuItem>
-													<MenuItem value={'no'}>No</MenuItem>
-												</Select>
-											</FormControl>
-										</div>
-										<InputContainer className='input-gap'>
-											<TextField
-												sx={{
-													marginTop: '33px',
-													marginLeft: '10px',
-													maxWidth: 100,
-												}}
-												label='Age'
-												required={false}
-												type='number'
-												name='age'
-												onChange={(e) => handleChildInputChange(index, e)}
-												defaultValue={element.age || ''}
-											/>
-										</InputContainer>
-									</div>
-									<ImageContainer
-										className='delete-button'
-										onClick={() => removeChildFormField(index)}
+						<div style={{ paddingTop: 20 }}>
+							<ContactFeild className='child-inputs'>
+								<InputContainer className='no-gap input-gap'>
+									<TextField
+										sx={{ width: '320px' }}
+										label='Full Name'
+										required={false}
+										type='text'
+										name='name'
+										onChange={(e) => handleChildInputChange(index, e)}
+										defaultValue={element.name ?? ''}
+										error={element.name === '' && childCareError}
+										helperText={
+											element.name === '' &&
+											childCareError &&
+											'Name is required'
+										}
+									/>
+								</InputContainer>
+								<InputContainer className='input-gap'>
+									<FormControl
+										sx={{
+											m: 1,
+											width: 230,
+											margin: 0,
+										}}
+										error={element.needs_bed === '' && childCareError}
 									>
-										Delete <FaTrashAlt />
-									</ImageContainer>
-								</div>
-							</div>
-						</ContactFeild>
+										<InputLabel id='kid-bed-label'>
+											Do they need their own bed?
+										</InputLabel>
+										<Select
+											labelId='kid-bed-label'
+											label='Do they need their own bed?'
+											name='needs_bed'
+											onChange={(e) => handleChildInputChange(index, e)}
+											defaultValue={element.needs_bed ?? ''}
+										>
+											<MenuItem value={'yes'}>Yes</MenuItem>
+											<MenuItem value={'no'}>No</MenuItem>
+										</Select>
+										{childCareError && element.needs_bed === '' && (
+											<FormHelperText>Please select an option</FormHelperText>
+										)}
+									</FormControl>
+								</InputContainer>
+								<InputContainer className='input-gap'>
+									<TextField
+										sx={{
+											width: '120px',
+										}}
+										label='Age'
+										required={false}
+										type='number'
+										name='age'
+										onChange={(e) => handleChildInputChange(index, e)}
+										defaultValue={element.age ?? ''}
+										error={element.age === '' && childCareError}
+										helperText={
+											element.age === '' && childCareError && 'Age is required'
+										}
+									/>
+								</InputContainer>
+								<ImageContainer
+									className='delete-button'
+									onClick={() => removeChildFormField(index)}
+								>
+									<FaTrashAlt />
+								</ImageContainer>
+							</ContactFeild>
+						</div>
 						<LineBreak />
 					</div>
 				))}

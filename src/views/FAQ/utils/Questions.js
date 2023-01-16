@@ -159,4 +159,10 @@ export const Questions = {
 			answer: `For accurate weather, make sure you are looking days prior to the date. However during July 2022, the weather was in the 70's with occasional light rain.`,
 		},
 	],
+	other: [
+		{
+			question: 'Do you have a registry?',
+			answer: `We do! It is under the registry tab on our website, however we won't be openinig it until June most likely.`,
+		},
+	],
 };

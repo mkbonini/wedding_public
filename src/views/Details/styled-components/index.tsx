@@ -7,7 +7,21 @@ export const DetailsPage = styled.div`
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	padding: 8rem 1rem;
+	padding: 9rem 1rem 4rem 1rem;
+	@media only screen and (min-width: 900px) {
+		padding: 5rem 1rem 0rem 1rem;
+	}
+`;
+
+export const MobileSeperator = styled.div`
+	display: block;
+	height: 1px;
+	background-color: whitesmoke;
+	margin: 3rem 1rem;
+	width: 100%;
+	@media only screen and (min-width: 900px) {
+		display: none;
+	}
 `;
 
 export const ContentContainer = styled.div<{
@@ -20,29 +34,28 @@ export const ContentContainer = styled.div<{
 	justify-content: center;
 	flex-direction: column;
 	padding: 0;
-	padding: 2rem 0rem;
 	width: 100vw;
-	background-color: ${(p) =>
-		p.align === 'end' ? 'rgba(169, 190, 255, 0.17);' : '#ffffff'};
-
+	min-height: 350px;
 	@media only screen and (min-width: 900px) {
-		min-height: 650px;
-		margin-top: -5rem;
+		padding: 3rem 0rem;
+		min-height: 500px;
+		background-color: ${(p) =>
+			p.align === 'end' ? 'rgba(169, 190, 255, 0.17);' : '#ffffff'};
 	}
 	.eyebrow {
 		font-size: 30px;
 		color: ${(p) => p.eyebrowColor};
-		text-align: center;
-		font-family: 'Circular-Book';
-		margin: 0;
+		text-align: start;
+		font-family: 'Lazydog';
+		margin-bottom: 10px;
 		@media only screen and (min-width: 900px) {
 			text-align: ${(p) => p.align};
 		}
 	}
 	h2 {
-		font-size: 22px;
-		font-family: 'Circular-Book';
-		text-align: center;
+		font-size: 35px;
+		line-height: 30px;
+		text-align: start;
 		padding: 0;
 		margin: 0;
 		@media only screen and (min-width: 900px) {
@@ -51,11 +64,10 @@ export const ContentContainer = styled.div<{
 		}
 	}
 	h3 {
-		font-size: 20px;
-		font-family: 'Circular-Book';
-		text-align: center;
-		padding: 10px;
-		margin: 0;
+		font-size: 23px;
+		text-align: start;
+		margin-top: 10px !important;
+
 		@media only screen and (min-width: 900px) {
 			font-size: 30px;
 			text-align: ${(p) => p.align};
@@ -63,47 +75,11 @@ export const ContentContainer = styled.div<{
 	}
 	p {
 		max-width: 650px;
-		text-align: center;
+		text-align: start;
 		font-family: 'Circular-Book';
 		@media only screen and (min-width: 900px) {
 			text-align: ${(p) => p.align};
 		}
-	}
-`;
-
-export const ImageContainer = styled.div`
-	display: none;
-	@media only screen and (min-width: 900px) {
-		display: block;
-		max-width: 350px;
-		margin: -350px 0px 19px -350px;
-		img {
-			width: 100%;
-		}
-		&#cobra {
-			max-width: 150px;
-			margin: -250px -400px 0px 0px;
-		}
-		&#heart {
-			max-width: 150px;
-			margin: -415px 0px 19px -350px;
-		}
-		&#smiley {
-			max-width: 200px;
-			margin: -350px -400px 120px 0px;
-		}
-	}
-`;
-
-export const MobileImageContainer = styled.div`
-	max-width: 300px;
-	z-index: 2;
-	transform: rotate(-16deg);
-	img {
-		width: 100%;
-	}
-	@media only screen and (min-width: 900px) {
-		display: none;
 	}
 `;
 

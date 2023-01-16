@@ -5,44 +5,58 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	width: 100%;
 	max-width: 1000px;
-	padding: 12rem 0rem 8rem 0rem;
+	padding: 10rem 0rem 8rem 0rem;
 	margin: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	h1 {
+		font-size: 35px;
+		font-family: 'Lazydog';
+	}
 	h2 {
 		font-size: 30px;
-		font-family: 'Circular-Book';
+		font-family: 'Lazydog';
 	}
 	h3 {
-		align-self: flex-start;
-		margin-left: 1rem;
-		font-family: 'Circular-Book';
+		font-family: 'Lazydog';
+		font-size: 20px;
+		color: #000;
+		padding: 0px 20px;
+	}
+	@media only screen and (max-width: 900px) {
+		padding: 8rem 0rem;
 	}
 `;
 
+export const Category = styled.div`
+	display: flex;
+	justify-content: start;
+	align-items: flex-start;
+	width: 100%;
+`;
 export const ScrollContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
-	max-width: 850px;
+	max-width: 1000px;
 	padding-bottom: 1rem;
 
 	@media only screen and (max-width: 900px) {
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 	}
 `;
 
 export const ScrollButton = styled.div`
-	height: 150px;
-	width: 100%;
+	height: 120px;
+	width: 120px;
 	background-color: #ffffff;
-	color: darkgray;
 	border: 1px solid darkgray;
 	border-radius: 3px;
 	margin: 10px;
@@ -51,9 +65,9 @@ export const ScrollButton = styled.div`
 	align-items: center;
 	border-radius: 50%;
 	background-color: black;
+	color: #ffffff;
 	&:hover {
 		cursor: pointer;
-		color: white;
 	}
 	&#bottom-button {
 		width: 150px;
@@ -67,16 +81,13 @@ export const ScrollButton = styled.div`
 		opacity: 1;
 		width: 100%;
 	}
-
 	@media only screen and (max-width: 900px) {
 		height: 70px;
-		width: 90%;
-		border-radius: 2px;
-		margin: 2px;
+		width: 100px;
+		border-radius: 5px;
+		font-size: 14px;
+		margin: 0;
 		color: white;
-		&:hover {
-			border-radius: 3px;
-		}
 	}
 `;
 
@@ -106,7 +117,8 @@ export const Accent = styled.div`
 `;
 
 export const ScrollToTopContainer = styled.div`
-	width: 100%;
+	width: 95%;
+	margin-right: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -118,6 +130,5 @@ export const ButtonContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	margin: 10px;
+	margin: 7px;
 `;

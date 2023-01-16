@@ -31,10 +31,15 @@ export default function StartPage({
 	regressFlow,
 	progressFlow,
 	internalGuest,
+	setInternalGuest,
 }) {
-	const [breakfast, setBreakfast] = useState('');
-	const [dodgeball, setDodgeball] = useState(false);
-	const [arrivalDate, setArrivalDate] = useState('');
+	const [breakfast, setBreakfast] = useState(internalGuest?.breakfast ?? '');
+	const [dodgeball, setDodgeball] = useState(
+		internalGuest?.team_id === 1 ? true : false
+	);
+	const [arrivalDate, setArrivalDate] = useState(
+		internalGuest?.arrival_date ?? ''
+	);
 	const [arrivalDropdownError, setArrivalDropdownError] = useState(false);
 	const [dodgeballParticipants, setDodgeballParticipants] = useState<any>([]);
 
@@ -54,33 +59,52 @@ export default function StartPage({
 		if (arrivalDate === '') return true;
 	};
 
+	const handleRegress = () => {
+		let formValues = getFormValues();
+		setInternalGuest({
+			...internalGuest,
+			...formValues,
+			arrival_date: arrivalDate,
+			breakfast: breakfast,
+		});
+
+		regressFlow();
+	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let error = checkForErrors();
 		if (!error) {
-			let formValues = getFormValues();
-			updateGuest(internalGuest.id, {
-				...formValues,
-				arrival_date: arrivalDate,
-				breakfast: breakfast,
-			});
+			// let formValues = getFormValues();
+			// updateGuest(internalGuest.id, {
+			// 	...formValues,
+			// 	arrival_date: arrivalDate,
+			// 	breakfast: breakfast,
+			// });
+
 			if (dodgeballParticipants) {
-				updateDodgeball({ name: dodgeballParticipants });
+				// updateDodgeball({ name: dodgeballParticipants });
 			}
 			progressFlow();
+			window.scrollTo(0, 0);
 		}
 	};
 
 	const getPartyList = () => {
 		if (internalGuest) {
+			let guestsOverSeventeen;
+			let guest = internalGuest?.full_name;
+
 			let plusOne = internalGuest?.plus_ones[0]?.name;
+
 			let children = internalGuest?.kids;
 			let childrenEligible = children?.filter((child) => child?.age >= 17);
 			let childNames = childrenEligible?.map((child) => child?.name);
-			let guest = internalGuest?.full_name;
 
-			let guestsOverSeventeen = [plusOne, ...childNames, guest];
-			console.log(guestsOverSeventeen);
+			if (plusOne === undefined || plusOne === '') {
+				guestsOverSeventeen = [...childNames, guest];
+			} else {
+				guestsOverSeventeen = [plusOne, ...childNames, guest];
+			}
 			return guestsOverSeventeen;
 		} else {
 			return [];
@@ -101,7 +125,8 @@ export default function StartPage({
 		}
 	};
 
-	getPartyList();
+	console.log(internalGuest, 'internalGuest from additional');
+
 	return (
 		<AdditionalPageContainer>
 			<StepperContainer>
@@ -116,8 +141,10 @@ export default function StartPage({
 						Morning. For Saturday morning/lunch we recommend guests hit the town
 						in Bailey or Conifer for a meal, though we will also have some
 						simple food out for people to enjoy incase they are unable to get to
-						town. For Sunday breakfast we are asking for a $5 dollar donation.
-						However if you do not want breakfast you can opt out below as well.
+						town. <br />
+						<br />
+						For Sunday breakfast we are asking for a $5 dollar donation. However
+						if you do not want breakfast you can opt out below as well.
 					</p>
 				</SectionBreaks>
 				<form noValidate autoComplete='off' onSubmit={handleSubmit}>
@@ -133,7 +160,7 @@ export default function StartPage({
 							label='Any Allergies?'
 							multiline
 							maxRows={4}
-							defaultValue={internalGuest?.diet}
+							defaultValue={internalGuest?.diet ?? ''}
 						/>
 					</SectionBreaks>
 					<SectionBreaks>
@@ -146,7 +173,7 @@ export default function StartPage({
 								labelId='breakfast-label'
 								label='Please Select'
 								onChange={handleBreakfastChange}
-								defaultValue={internalGuest?.breakfast}
+								defaultValue={internalGuest?.breakfast ?? ''}
 								required
 							>
 								<MenuItem value={'yes'}>Yes</MenuItem>
@@ -167,11 +194,7 @@ export default function StartPage({
 								labelId='day-label'
 								label='Select a day'
 								onChange={handleArrivalChange}
-								defaultValue={
-									internalGuest.arrival_date
-										? internalGuest.arrival_date
-										: arrivalDate
-								}
+								defaultValue={internalGuest.arrival_date ?? ''}
 							>
 								<MenuItem value={'friday'}>Friday</MenuItem>
 								<MenuItem value={'saturday'}>Saturday</MenuItem>
@@ -205,9 +228,9 @@ export default function StartPage({
 					{dodgeball && (
 						<SectionBreaks className='checkmark-section'>
 							<h3>Select those who wish to participate</h3>
-							{getPartyList()?.map((guest) => {
+							{getPartyList()?.map((guest, index) => {
 								return (
-									<CheckboxContainer>
+									<CheckboxContainer key={`checkbox-${index}`}>
 										<Checkbox
 											onChange={handleCheckmarks}
 											inputProps={{ name: guest }}
@@ -227,12 +250,12 @@ export default function StartPage({
 							label='Comments or Questions'
 							multiline
 							maxRows={4}
-							defaultValue={internalGuest.comments && internalGuest.comments}
+							defaultValue={internalGuest.comments ?? ''}
 						/>
 					</SectionBreaks>
 
 					<ButtonContainer>
-						<ButtonSecondary onClick={() => regressFlow()} text='Back' />
+						<ButtonSecondary onClick={() => handleRegress()} text='Back' />
 						<SubmitButton type='submit'>Submit My Rsvp</SubmitButton>
 					</ButtonContainer>
 				</form>
