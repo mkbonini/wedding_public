@@ -1,17 +1,9 @@
 /** @format */
 
 import distanceTo from '../../assets/distance-to.svg';
-import moose from '../../assets/cabins/moose.jpg';
-import sasquach from '../../assets/cabins/sasquach.jpg';
-import rv from '../../assets/cabins/rv-3.jpg';
-import door from '../../assets/cabins/door.png';
-import volleyball from '../../assets/cabins/volleyball.png';
-import ceremony from '../../assets/cabins/ceremony.png';
-import dining from '../../assets/cabins/dining.png';
-import beds from '../../assets/cabins/beds.png';
-import gym from '../../assets/cabins/gym.png';
 import Carousel from '../../components/Carousel';
 import airbnbIcon from '../../assets/airbnb-icon.svg';
+import { airBnbLinks, imageArray } from './utils';
 
 import {
 	SubTitles,
@@ -27,28 +19,6 @@ import {
 } from './styled-components';
 
 export default function Lodging() {
-	const airBnbLinks = [
-		{
-			href: 'https://www.airbnb.com/s/Bailey--CO/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&ne_lat=39.506147143646864&ne_lng=-105.38012221385952&sw_lat=39.340923016158364&sw_lng=-105.57374015380856&zoom=12&search_by_map=true&search_type=user_map_move&query=Bailey%2C%20CO',
-			name: 'bailey',
-		},
-		{
-			href: 'https://www.airbnb.com/s/Denver--Colorado--United-States/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&search_type=autocomplete_click&query=Denver%2C%20Colorado%2C%20United%20States&place_id=ChIJzxcfI6qAa4cR1jaKJ_j0jhE&checkin=2023-07-21&checkout=2023-07-23&source=structured_search_input_header',
-
-			name: 'denver',
-		},
-		{
-			href: 'https://www.airbnb.com/s/Conifer--Colorado--United-States/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&search_type=autocomplete_click&query=Conifer%2C%20Colorado%2C%20United%20States&place_id=ChIJA7bcoFFxa4cRzyG8MMfi3iM&source=structured_search_input_header',
-
-			name: 'conifer',
-		},
-		{
-			href: 'https://www.airbnb.com/s/Lakewood--CO--United-States/homes?flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&source=structured_search_input_header&search_type=autocomplete_click&query=Lakewood%2C%20CO%2C%20United%20States&place_id=ChIJt3LdXG-Ba4cRl87Q8fpdkJ4',
-
-			name: 'lakewood',
-		},
-	];
-
 	return (
 		<LodgingPage>
 			<LodgingContainer>
@@ -70,19 +40,7 @@ export default function Lodging() {
 							made on the registry site or through venmo. <br />
 							<br />
 						</p>
-						<Carousel
-							images={[
-								moose,
-								door,
-								sasquach,
-								beds,
-								rv,
-								ceremony,
-								volleyball,
-								gym,
-								dining,
-							]}
-						/>
+						<Carousel images={imageArray} />
 					</div>
 				</SubTitles>
 				<SubTitles>

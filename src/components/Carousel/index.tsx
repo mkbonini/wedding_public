@@ -31,12 +31,12 @@ const SliderContainer = styled.div`
 
 const ImageContainer = styled.div`
 	overflow: hidden;
-	max-height: 350px;
+	max-height: 320px;
 	&:hover {
 		cursor: pointer;
 	}
 	&.thumb-container {
-		max-height: 135px;
+		max-height: 120px;
 	}
 	@media only screen and (min-width: 601px) and( max-width: 900px) {
 		&.thumb-container {
