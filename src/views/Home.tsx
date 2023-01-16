@@ -71,7 +71,7 @@ const CountdownContainer = styled.div`
 	width: 100%;
 	max-width: 1000px;
 	background-color: #e6eafe;
-	margin: 4rem 0rem;
+	margin: 3rem 0rem;
 	@media only screen and (max-width: 900px) {
 		margin: 0;
 	}
@@ -79,8 +79,8 @@ const CountdownContainer = styled.div`
 
 const HeroSection = styled.div`
 	width: 100%;
-	max-width: 1400px;
-	height: 690px;
+	max-width: 1500px;
+	height: 670px;
 	display: flex;
 	flex-direction: row;
 	@media only screen and (max-width: 1200px) {
