@@ -79,6 +79,7 @@ const CountdownContainer = styled.div`
 
 const HeroSection = styled.div`
 	width: 100%;
+	max-width: 1400px;
 	height: 690px;
 	display: flex;
 	flex-direction: row;
