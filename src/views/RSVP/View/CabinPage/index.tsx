@@ -150,8 +150,8 @@ export default function CabinPage({
 							</SelectedCabinSection>
 						)}
 
+						<div>Available Cabins</div>
 						<CabinListContainer>
-							<div className='sticky'>Available Cabins</div>
 							{cabinList && (
 								<CabinCardsContainer>
 									{cabinList.map((cabin, index) => {

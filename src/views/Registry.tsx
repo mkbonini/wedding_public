@@ -23,6 +23,7 @@ const Title = styled.div`
 		color: black;
 		font-weight: 300;
 		text-align: center;
+		font-family: 'Lazydog';
 	}
 `;
 

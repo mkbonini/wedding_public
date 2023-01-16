@@ -60,7 +60,7 @@ export default function StartPage({
 	return (
 		<StartPageContainer>
 			<Heading>
-				<h1>RSVP</h1> <p>Enter your full name below to find your reservation</p>
+				<h1>RSVP</h1> <p>Enter your full name below to find your invitation</p>
 			</Heading>
 			<TextField
 				label='Search Your Name'
@@ -78,7 +78,7 @@ export default function StartPage({
 				</ErrorMessage>
 			)}
 			<ButtonContainer>
-				<Button onClick={() => handleClick()} text='Find My RSVP' />
+				<Button onClick={() => handleClick()} text='Find My Invite' />
 			</ButtonContainer>
 		</StartPageContainer>
 	);

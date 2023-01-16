@@ -51,8 +51,8 @@ const Title = styled.div`
 	text-align: center;
 	font-size: 70px;
 	max-width: 600px;
-	line-height: 55px;
-	font-family: 'Circular-Medium';
+	line-height: 60px;
+	font-family: 'Lazydog';
 	margin-bottom: 1rem;
 	@media only screen and (max-width: 900px) {
 		font-size: 40px;
@@ -92,7 +92,7 @@ export default function Home({ visible }) {
 				<Hero />
 				<StoryContainer>
 					<TitleContainer>
-						<Title>we're getting married!</Title>
+						<Title>we're getting married</Title>
 						<Button
 							text='LEARN MORE'
 							onClick={() => history.push('/details')}

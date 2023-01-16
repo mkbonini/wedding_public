@@ -5,12 +5,10 @@ export const CabinListContainer = styled.div`
 	height: 700px;
 	overflow: scroll;
 	margin-bottom: 5rem;
-	.sticky {
-		font-size: 20px;
-		font-weight: 700;
-		padding: 1rem;
-		background: rgba(230, 234, 254, 0.26);
-		position: sticky;
+	@media only screen and (max-width: 900px) {
+		height: 500px;
+		margin-bottom: 0px;
+		max-width: 350px;
 	}
 `;
 export const ButtonContainer = styled.div`
@@ -79,6 +77,11 @@ export const CabinCardsContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	@media only screen and (max-width: 600px) {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: start;
+	}
 `;
 
 export const SelectedCabinContainer = styled.div`

@@ -116,6 +116,7 @@ const Story = styled.div`
 	h1 {
 		margin: 0;
 		height: 55px;
+		font-family: 'Lazydog';
 	}
 	p {
 		max-width: 450px;
@@ -153,7 +154,7 @@ export default function OurStory() {
 						<img src={miwha} alt='' />
 					</ImageContainer>
 					<Story className='content-right'>
-						<h1>miwhas side</h1>
+						<h1>miwha's side</h1>
 						<Accent className='miwha' />
 						<p>
 							Mike and I met in the summer of 2013, when he did a road trip with
@@ -183,7 +184,7 @@ export default function OurStory() {
 				<Background>
 					<AboutSection className='accent'>
 						<Story className='content-left'>
-							<h1>michaels side</h1>
+							<h1>michael's side</h1>
 							<Accent className='mike' />
 							<p>
 								I don’t know why but I was really excited to meet Miwha. The

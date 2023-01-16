@@ -28,16 +28,12 @@ const ImageContainer = styled.div`
 `;
 const Image = styled.div<{ image: string }>`
 	background-image: url(${(p) => p.image && p.image});
-	height: 290px;
-	width: 290px;
+	height: 230px;
+	width: 230px;
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-radius: 10px;
 	padding: 1rem;
-	@media only screen and (min-width: 900px) {
-		height: 230px;
-		width: 230px;
-	}
 `;
 
 const Title = styled.div`

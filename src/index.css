@@ -58,4 +58,9 @@ textarea {
 	url("./fonts/Circular/CircularStd-Light.otf") format("opentype");
 }
 
+@font-face {
+	font-family: "Lazydog";
+	src: local("Lazydog"),
+	url("./fonts/Lazydog/Lazydog.otf") format("opentype");
+}
 

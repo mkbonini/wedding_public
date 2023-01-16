@@ -13,12 +13,13 @@ export const Container = styled.div`
 	flex-direction: column;
 	h2 {
 		font-size: 30px;
-		font-family: 'Circular-Book';
+		font-family: 'Lazydog';
 	}
 	h3 {
 		align-self: flex-start;
 		margin-left: 1rem;
-		font-family: 'Circular-Book';
+		font-family: 'Lazydog';
+		font-size: 26px;
 	}
 `;
 
@@ -42,7 +43,6 @@ export const ScrollButton = styled.div`
 	height: 150px;
 	width: 100%;
 	background-color: #ffffff;
-	color: darkgray;
 	border: 1px solid darkgray;
 	border-radius: 3px;
 	margin: 10px;
@@ -51,9 +51,9 @@ export const ScrollButton = styled.div`
 	align-items: center;
 	border-radius: 50%;
 	background-color: black;
+	color: #ffffff;
 	&:hover {
 		cursor: pointer;
-		color: white;
 	}
 	&#bottom-button {
 		width: 150px;
