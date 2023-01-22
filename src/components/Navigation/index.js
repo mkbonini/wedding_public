@@ -31,7 +31,6 @@ export default function Navigation() {
 				<Travel />
 			</Route>
 			<Route path='/faq'>
-				Travel
 				<FAQ />
 			</Route>
 			<Route path='/'>

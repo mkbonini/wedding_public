@@ -7,7 +7,7 @@ export const PageTitle = styled.div`
 	font-size: 22px;
 	align-self: center;
 	text-align: center;
-	min-width: 200px;
+	min-width: 150px;
 	margin: 1rem 0rem 2rem -1rem;
 	padding: 25px;
 	box-shadow: 12px 12px 1px 0px #242424;

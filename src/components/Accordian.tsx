@@ -13,12 +13,12 @@ const AccordianContainer = styled.div`
 	transition: ease-in-out 0.2s;
 `;
 const Question = styled.div<{ active: boolean }>`
-	margin: -5px 5px 5px 30px;
+	margin: -5px 5px 5px 20px;
 	height: 80px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 18px;
+	font-size: 20px;
 	color: black;
 	font-family: 'Circular-Book';
 	svg {
@@ -28,15 +28,14 @@ const Question = styled.div<{ active: boolean }>`
 		cursor: pointer;
 	}
 	@media only screen and (max-width: 900px) {
-		font-size: 15px;
-		font-weight: 500;
+		font-size: 16.5px;
 	}
 `;
 
 const ArrowContainer = styled.div`
 	font-size: 20px;
 	font-weight: 900;
-	padding: 10px 30px 10px;
+	padding: 10px 15px 10px;
 	transform: rotate(0deg);
 	transition: transform 0.1s linear;
 	&.arrow-up {
