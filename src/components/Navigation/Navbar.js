@@ -43,34 +43,40 @@ export default function Navbar({ setFlyoutVisible, flyoutVisible }) {
 			<LinkContainer>
 				<GroupedLinks>
 					<Title onClick={() => history.push('/')}>M + M</Title>
+
 					<MenuLink onClick={() => handleClick()}>
 						<Link to='/our-story'>
 							<p>our story</p>
 						</Link>
 					</MenuLink>
+
 					<MenuLink onClick={() => handleClick()}>
-						<Link to='/details'>
-							<p>details</p>
+						<Link to='/schedule'>
+							<p>schedule</p>
 						</Link>
 					</MenuLink>
+
 					<MenuLink onClick={() => handleClick()}>
 						<Link to='/lodging'>
 							<p>lodging</p>
 						</Link>
 					</MenuLink>
+
 					<MenuLink onClick={() => handleClick()}>
-						<Link to='/faq'>
-							<p>faq</p>
+						<Link to='/travel'>
+							<p>travel</p>
 						</Link>
 					</MenuLink>
+
 					<MenuLink onClick={() => handleClick()}>
 						<Link to='/registry'>
 							<p>registry</p>
 						</Link>
 					</MenuLink>
+
 					<MenuLink onClick={() => handleClick()}>
-						<Link to='/map'>
-							<p>map</p>
+						<Link to='/faq'>
+							<p>faq</p>
 						</Link>
 					</MenuLink>
 				</GroupedLinks>

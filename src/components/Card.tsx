@@ -39,12 +39,10 @@ const Image = styled.div<{ image: string }>`
 const Title = styled.div`
 	padding: 1rem 1rem 0rem 1rem;
 	h1 {
-		font-family: 'Circular-Book';
 		font-size: 17px;
 	}
 	p.spots-remaining {
 		font-size: 14px;
-		font-family: 'Circular-Light';
 	}
 	span.number {
 		font-family: 'Circular-Medium';

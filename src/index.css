@@ -1,44 +1,5 @@
 /** @format */
 
-
-
-body {
-	font-family: 'DM Sans', sans-serif;
-	margin: 0;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-}
-
-h1,
-h2 {
-	font-family: 'Circular-Book';
-}
-
-p{
-	font-family: 'Circular-Light';
-}
-
-
-body.modal-open {
-    overflow: hidden;
-}
-
-
-
-input[type='text'],
-input[type='number'],
-input[type='email'],
-textarea {
-	font-size: 16px;
-}
-
-#content.disable {
-	overflow: hidden;
-	position: fixed;
-}
-
-
-
 @font-face {
 	font-family: "Circular-Medium";
 	src: local("Circular"),
@@ -63,4 +24,37 @@ textarea {
 	src: local("Lazydog"),
 	url("./fonts/Lazydog/Lazydog.otf") format("opentype");
 }
+
+
+
+
+
+body {
+	margin: 0;
+	font-family: 'Circular-Book';
+}
+
+p{
+	font-family: 'Circular-Light';
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+
+input[type='text'],
+input[type='number'],
+input[type='email'],
+textarea {
+	font-size: 16px;
+}
+
+#content.disable {
+	overflow: hidden;
+	position: fixed;
+}
+
+
 

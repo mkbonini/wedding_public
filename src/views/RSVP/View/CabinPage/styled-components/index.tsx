@@ -174,7 +174,6 @@ export const DeselectButton = styled.div`
 	background-color: #ff3333;
 	height: 50px;
 	text-transform: none;
-	/* font-family: 'Circular-Book'; */
 	font-size: 14px;
 	color: #ffdddd;
 	padding-right: 0;

@@ -28,7 +28,6 @@ const Title = styled.div`
 	padding: 0rem 1rem 0rem 2rem;
 	max-width: 700px;
 	h1 {
-		font-family: 'Circular-Book';
 		font-size: 40px;
 		padding: 1rem 0rem 1rem 0rem;
 		margin: 0;
@@ -39,7 +38,6 @@ const Title = styled.div`
 	}
 	p.description {
 		padding-right: 3rem;
-		font-family: 'Circular-Light';
 	}
 	.links {
 		display: flex;

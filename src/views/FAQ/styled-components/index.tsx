@@ -2,6 +2,35 @@
 
 import styled from 'styled-components';
 
+export const PageTitle = styled.div`
+	font-family: 'Circular-Book';
+	font-size: 22px;
+	align-self: center;
+	text-align: center;
+	min-width: 200px;
+	margin: 1rem 0rem 2rem -1rem;
+	padding: 25px;
+	box-shadow: 12px 12px 1px 0px #242424;
+	text-transform: uppercase;
+	border: 1px solid black;
+	@media only screen and (max-width: 900px) {
+		font-size: 18px;
+		text-align: center;
+	}
+`;
+
+export const SubTitle = styled.div`
+	font-family: 'Circular-Book';
+	font-size: 20px;
+	align-self: flex-start;
+	margin: 1rem 0px 0rem 0px;
+	padding: 1rem;
+	@media only screen and (max-width: 900px) {
+		font-size: 18px;
+		text-align: start;
+	}
+`;
+
 export const Container = styled.div`
 	width: 100%;
 	max-width: 1000px;
@@ -11,22 +40,8 @@ export const Container = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	h1 {
-		font-size: 35px;
-		font-family: 'Lazydog';
-	}
-	h2 {
-		font-size: 30px;
-		font-family: 'Lazydog';
-	}
-	h3 {
-		font-family: 'Lazydog';
-		font-size: 20px;
-		color: #000;
-		padding: 0px 20px;
-	}
 	@media only screen and (max-width: 900px) {
-		padding: 8rem 0rem;
+		padding: 7rem 0rem;
 	}
 `;
 
@@ -42,7 +57,7 @@ export const ScrollContainer = styled.div`
 	justify-content: center;
 	width: 100%;
 	max-width: 1000px;
-	padding-bottom: 1rem;
+	padding: 1rem;
 
 	@media only screen and (max-width: 900px) {
 		display: flex;
@@ -57,68 +72,47 @@ export const ScrollButton = styled.div`
 	height: 120px;
 	width: 120px;
 	background-color: #ffffff;
-	border: 1px solid darkgray;
-	border-radius: 3px;
-	margin: 10px;
+	border: 10px solid white;
+	margin: 0px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
 	background-color: black;
 	color: #ffffff;
-	&:hover {
-		cursor: pointer;
-	}
 	&#bottom-button {
-		width: 150px;
-		height: 40px;
-		border-radius: 3px;
+		margin: 0;
+		width: 140px;
+		height: 50px;
+		border: 3px solid white;
+		border-radius: 80px;
 		&:hover {
+			border: 3px solid #bd83c1;
 			cursor: pointer;
 		}
 	}
-	&:hover + #accent {
-		opacity: 1;
-		width: 100%;
+	&:hover {
+		border-bottom: 10px solid #bd83c1;
+		cursor: pointer;
 	}
 	@media only screen and (max-width: 900px) {
-		height: 70px;
-		width: 100px;
-		border-radius: 5px;
+		height: 90px;
+		width: 90px;
+		border-radius: 10px;
 		font-size: 14px;
 		margin: 0;
 		color: white;
-	}
-`;
-
-export const Accent = styled.div`
-	height: 5px;
-	width: 100px;
-	opacity: 0;
-	&.lodging {
-		background-color: #3366ff;
-	}
-	&.rsvp {
-		background-color: #c9e265;
-	}
-	&.general {
-		background-color: #ff99ff;
-	}
-	&.weekend {
-		background-color: #3366ff;
-	}
-	&.wedding {
-		background-color: #c9e265;
-	}
-
-	@media only screen and (max-width: 900px) {
-		display: none;
+		border: 3px solid white;
+		&:hover {
+			border: 3px solid #bd83c1;
+			cursor: pointer;
+		}
 	}
 `;
 
 export const ScrollToTopContainer = styled.div`
-	width: 95%;
-	margin-right: 10px;
+	width: 100%;
+	margin-right: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;

@@ -2,12 +2,12 @@
 import { Switch, Route } from 'react-router-dom';
 import Home from '../../views/Home';
 import RSVP from '../../views/RSVP/index';
-import Details from '../../views/Details/index';
+import Schedule from '../../views/Schedule/index';
 import Registry from '../../views/Registry';
 import Lodging from '../../views/Lodging/index';
 import FAQ from '../../views/FAQ/index';
 import OurStory from '../../views/OurStory';
-import Map from '../../views/Map';
+import Travel from '../../views/Travel';
 
 export default function Navigation() {
 	return (
@@ -15,8 +15,8 @@ export default function Navigation() {
 			<Route path='/our-story'>
 				<OurStory />
 			</Route>
-			<Route path='/details'>
-				<Details />
+			<Route path='/schedule'>
+				<Schedule />
 			</Route>
 			<Route path='/rsvp'>
 				<RSVP />
@@ -27,10 +27,11 @@ export default function Navigation() {
 			<Route path='/lodging'>
 				<Lodging />
 			</Route>
-			<Route path='/map'>
-				<Map />
+			<Route path='/travel'>
+				<Travel />
 			</Route>
 			<Route path='/faq'>
+				Travel
 				<FAQ />
 			</Route>
 			<Route path='/'>

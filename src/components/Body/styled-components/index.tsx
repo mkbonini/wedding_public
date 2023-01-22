@@ -7,13 +7,13 @@ export const HamburgerContainer = styled.div`
 `;
 
 export const Footer = styled.div`
-	height: 120px;
+	height: 100px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #cae36f;
+	background-color: #6871e4;
 	color: white;
 	padding: 2rem 0rem;
 	div {
