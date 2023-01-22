@@ -120,6 +120,7 @@ export const HamburgerContainer = styled.div`
 		display: flex;
 		flex-direction: column;
 		margin: 15px;
+		min-width: 75px;
 		.bar {
 			height: 2px;
 			border-radius: 10px;

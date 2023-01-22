@@ -43,8 +43,8 @@ export default function Flyout({ flyoutVisible, setFlyoutVisible }) {
 					onClick={() => handleMenuClick('schedule')}
 					active={active === 'schedule'}
 				>
-					<Link to='/details'>
-						<p>details</p>
+					<Link to='/schedule'>
+						<p>schedule</p>
 					</Link>
 				</FlyoutMenuLink>
 				<FlyoutMenuLink
@@ -56,11 +56,11 @@ export default function Flyout({ flyoutVisible, setFlyoutVisible }) {
 					</Link>
 				</FlyoutMenuLink>
 				<FlyoutMenuLink
-					onClick={() => handleMenuClick('faq')}
-					active={active === 'faq'}
+					onClick={() => handleMenuClick('travel')}
+					active={active === 'travel'}
 				>
-					<Link to='/faq'>
-						<p>faq</p>
+					<Link to='/travel'>
+						<p>travel</p>
 					</Link>
 				</FlyoutMenuLink>
 				<FlyoutMenuLink
@@ -72,19 +72,19 @@ export default function Flyout({ flyoutVisible, setFlyoutVisible }) {
 					</Link>
 				</FlyoutMenuLink>
 				<FlyoutMenuLink
+					onClick={() => handleMenuClick('faq')}
+					active={active === 'faq'}
+				>
+					<Link to='/faq'>
+						<p>faq</p>
+					</Link>
+				</FlyoutMenuLink>
+				<FlyoutMenuLink
 					onClick={() => handleMenuClick('rsvp')}
 					active={active === 'rsvp'}
 				>
 					<Link to='/rsvp'>
 						<p>rsvp</p>
-					</Link>
-				</FlyoutMenuLink>
-				<FlyoutMenuLink
-					onClick={() => handleMenuClick('map')}
-					active={active === 'map'}
-				>
-					<Link to='/map'>
-						<p>map</p>
 					</Link>
 				</FlyoutMenuLink>
 			</FlyoutLinkContainer>

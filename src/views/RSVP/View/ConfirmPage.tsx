@@ -15,21 +15,18 @@ export default function ConfirmPage({ selectedGuest }) {
 
 		h1 {
 			text-transform: uppercase;
-			font-family: 'Circular-Book';
 			font-size: 40px;
 			text-align: center;
 			margin: 0;
 			padding: 0;
 		}
 		h2 {
-			font-family: 'Circular-Book';
 			text-align: center;
 			font-size: 20px;
 		}
 		p {
 			max-width: 420px;
 			text-align: center;
-			font-family: 'Circular-Light';
 		}
 	`;
 	return (

@@ -5,12 +5,32 @@ import styled from 'styled-components';
 import mike from '../assets/mike.jpg';
 import miwha from '../assets/miwha.jpg';
 
+const PageTitle = styled.div`
+	font-family: 'Circular-Book';
+	font-size: 22px;
+	align-self: center;
+	text-align: center;
+	min-width: 200px;
+	margin: 1rem 0rem 2rem -1rem;
+	padding: 25px;
+	box-shadow: 12px 12px 1px 0px #242424;
+	text-transform: uppercase;
+	border: 1px solid black;
+	@media only screen and (max-width: 900px) {
+		font-size: 18px;
+		text-align: center;
+	}
+`;
+
 const OurStoryPage = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding-top: 8rem;
+	padding-top: 7rem;
+	@media only screen and (min-width: 900px) {
+		padding-top: 11rem;
+	}
 `;
 
 const ImageContainer = styled.div`
@@ -149,6 +169,7 @@ export default function OurStory() {
 	return (
 		<OurStoryPage>
 			<ContentSection>
+				<PageTitle>Our Story</PageTitle>
 				<AboutSection>
 					<ImageContainer className='miwha'>
 						<img src={miwha} alt='' />

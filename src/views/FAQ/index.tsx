@@ -7,9 +7,10 @@ import {
 	ScrollContainer,
 	ButtonContainer,
 	ScrollButton,
-	Accent,
 	Category,
 	ScrollToTopContainer,
+	PageTitle,
+	SubTitle,
 } from './styled-components';
 
 export default function FAQ() {
@@ -26,45 +27,44 @@ export default function FAQ() {
 
 	return (
 		<Container>
-			<h1 id='title'>FAQ</h1>
+			<PageTitle id='title'>FAQ</PageTitle>
 			<ScrollContainer>
 				{Object.keys(Questions).map((key) => (
 					<ButtonContainer key={key}>
 						<ScrollButton onClick={() => scrollToSection(key)}>
 							{key}
 						</ScrollButton>
-						<Accent id='accent' className={key} />
 					</ButtonContainer>
 				))}
 			</ScrollContainer>
 
 			<Category>
-				<h3 id='lodging'>Lodging</h3>
+				<SubTitle id='lodging'>Lodging</SubTitle>
 			</Category>
 			<Accordian FAQ={Questions['lodging']} />
 
 			<Category>
-				<h3 id='rsvp'>RSVP</h3>
+				<SubTitle id='rsvp'>RSVP</SubTitle>
 			</Category>
 			<Accordian FAQ={Questions['rsvp']} />
 
 			<Category>
-				<h3 id='general'>General</h3>
+				<SubTitle id='general'>General</SubTitle>
 			</Category>
 			<Accordian FAQ={Questions['general']} />
 
 			<Category>
-				<h3 id='weekend'>Weekend</h3>
+				<SubTitle id='weekend'>Weekend</SubTitle>
 			</Category>
 			<Accordian FAQ={Questions['weekend']} />
 
 			<Category>
-				<h3 id='wedding'>Wedding</h3>
+				<SubTitle id='wedding'>Wedding</SubTitle>
 			</Category>
 			<Accordian FAQ={Questions['wedding']} />
 
 			<Category>
-				<h3 id='other'>Other</h3>
+				<SubTitle id='other'>Other</SubTitle>
 			</Category>
 			<Accordian FAQ={Questions['other']} />
 

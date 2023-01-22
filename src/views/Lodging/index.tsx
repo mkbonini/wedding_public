@@ -4,9 +4,10 @@ import distanceTo from '../../assets/distance-to.svg';
 import Carousel from '../../components/Carousel';
 import airbnbIcon from '../../assets/airbnb-icon.svg';
 import { airBnbLinks, imageArray } from './utils';
+import map from '../../assets/deer-creek.jpg';
 
 import {
-	SubTitles,
+	Section,
 	LodgingContainer,
 	ImageContainer,
 	LodgingPage,
@@ -15,15 +16,18 @@ import {
 	AdditionalContainer,
 	Accent,
 	ButtonContainer,
-	Section,
+	AdditionalLodging,
+	LodgeContainer,
+	SubTitle,
+	PageTitle,
 } from './styled-components';
 
 export default function Lodging() {
 	return (
 		<LodgingPage>
 			<LodgingContainer>
-				<h1>Lodging Information</h1>
-				<SubTitles>
+				<PageTitle>Lodging Information</PageTitle>
+				<Section>
 					<div className='section'>
 						<p>
 							We're so excited that this venue has lodging on site. It was
@@ -42,10 +46,14 @@ export default function Lodging() {
 						</p>
 						<Carousel images={imageArray} />
 					</div>
-				</SubTitles>
-				<SubTitles>
+				</Section>
+				<Accent />
+				<ImageContainer id='map'>
+					<img src={map} alt='' />
+				</ImageContainer>
+				<Section>
 					<div className='section airbnb-block'>
-						<h2>nearby airbnbs</h2>
+						<SubTitle>Nearby Airbnbs</SubTitle>
 						<p>
 							We understand that cabins may not be everyone’s cup of tea and
 							some might rather have their own accommodations. If that is the
@@ -69,7 +77,6 @@ export default function Lodging() {
 													</div>
 													<span>{bnb.name}</span>
 												</AdditionalButton>
-												<Accent id='accent' />
 											</ButtonContainer>
 										</>
 									);
@@ -77,32 +84,26 @@ export default function Lodging() {
 							</AdditionalContainer>
 						</ContentCenter>
 
-						<h2>additional lodging</h2>
-						<p>
-							In addition to Airbnb, there are also are also two lodges in town
-							recommended by the owners of the venue. Both are great places and
-							have wonderful hosts. Also people with mobility issues will
-							appreciate the ground level rooms of Bailey Lodge.
-							<br />
-							<br />
-							<span className='bold'>Bailey Lodge: </span>
-							<br />
-							57920 US Hwy 285, Bailey, CO 80421 <br />
-							<br />
-							<span className='bold'>Glenn Isle resort:</span>
-							<br />
-							573 Old Stagecoach Rd, Bailey, CO 80421
-							<br />
-							<br />
-						</p>
+						<AdditionalLodging>
+							<SubTitle>Additional Lodging</SubTitle>
+							<p>
+								In addition to Airbnb, there are also are also two lodges in
+								town recommended by the owners of the venue. Both are great
+								places and have wonderful hosts. Also people with mobility
+								issues will appreciate the ground level rooms of Bailey Lodge.
+								<LodgeContainer>
+									<div className='lodge'>
+										<span className='bold'>Bailey Lodge</span>
+										57920 US Hwy 285, Bailey, CO 80421
+									</div>
+									<div className='lodge'>
+										<span className='bold'>Glenn Isle resort</span>
+										573 Old Stagecoach Rd, Bailey, CO 80421
+									</div>
+								</LodgeContainer>
+							</p>
+						</AdditionalLodging>
 					</div>
-				</SubTitles>
-				<Section>
-					<ContentCenter>
-						<ImageContainer id='distance'>
-							<img src={distanceTo} alt='' />
-						</ImageContainer>
-					</ContentCenter>
 				</Section>
 			</LodgingContainer>
 		</LodgingPage>

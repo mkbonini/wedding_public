@@ -45,7 +45,7 @@ const TitleContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	padding: 9rem 5rem 5rem 5rem;
+	padding: 10rem 6rem 6rem 6rem;
 	@media only screen and (max-width: 1200px) {
 		align-items: center;
 		padding: 1rem;
@@ -71,26 +71,30 @@ const CountdownContainer = styled.div`
 	width: 100%;
 	max-width: 1000px;
 	background-color: #e6eafe;
-	margin: 4rem 0rem;
+	margin: 3rem 0rem 4rem 0rem;
 	@media only screen and (max-width: 900px) {
 		margin: 0;
 	}
 `;
 
 const HeroSection = styled.div`
+	padding-top: 2rem;
 	width: 100%;
-	height: 690px;
+	max-width: 1500px;
+	height: 660px;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.07);
 	display: flex;
 	flex-direction: row;
 	@media only screen and (max-width: 1200px) {
+		border: none;
 		flex-direction: column-reverse;
 		height: unset;
+		box-shadow: none;
 	}
 	.copy-section {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		background-color: #f8fde5;
 		width: 40%;
 		height: 100%;
 		@media only screen and (max-width: 1200px) {
@@ -105,7 +109,7 @@ const HeroSection = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: #afdf76;
+		background-color: #bd83c1;
 		width: 60%;
 		height: 100%;
 		position: relative;
@@ -114,10 +118,10 @@ const HeroSection = styled.div`
 			@media only screen and (min-width: 1201px) {
 				display: block;
 				position: absolute;
-				width: 950px;
-				top: 30px;
+				width: 940px;
+				top: 50px;
 				left: 0;
-				margin: 5rem 0rem 0rem -10rem;
+				margin: 2.5rem 0rem 0rem -7rem;
 			}
 		}
 		.mobile {
@@ -148,7 +152,7 @@ export default function Home({ visible }) {
 							<Title>we're getting married!</Title>
 							<Button
 								text='LEARN MORE'
-								onClick={() => history.push('/details')}
+								onClick={() => history.push('/schedule')}
 							/>
 						</TitleContainer>
 					</div>
@@ -157,15 +161,14 @@ export default function Home({ visible }) {
 						<img src={mobile} alt='' className='mobile' />
 					</div>
 				</HeroSection>
-				{/* <Hero /> */}
 				<StoryContainer>
 					<CountdownContainer>
 						<Counntdown />
 					</CountdownContainer>
 					<ContentBlock
-						image={miwha}
-						alt='miwha at gardens'
-						copy='bailey,co'
+						image={deerCreek}
+						alt='deer creek'
+						copy='july 21-23, 2023'
 						backgroundColor='#E6F4FE'
 						copyColor='#3366FF'
 						imagePosition='right'
@@ -173,11 +176,11 @@ export default function Home({ visible }) {
 						id='miwha'
 					/>
 					<ContentBlock
-						image={deerCreek}
-						alt='mike at balloon festival'
+						image={miwha}
+						alt='bailey sign'
 						type='copy'
-						copy='july 21-23, 2023'
-						backgroundColor='#3366FF'
+						copy='bailey,co'
+						backgroundColor='#BD83C1'
 						copyColor='#ffffff'
 						imagePosition='left'
 						id='mike'
