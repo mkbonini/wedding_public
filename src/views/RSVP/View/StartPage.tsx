@@ -11,11 +11,7 @@ import Button from '../../../components/Button';
 import { getGuests, getSelectedGuest } from '../Model';
 import TextField from '@mui/material/TextField';
 
-export default function StartPage({
-	setSelectedGuest,
-	progressFlow,
-	setInternalGuest,
-}) {
+export default function StartPage({ setSelectedGuest, progressFlow }) {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [displayError, setDisplayError] = useState(false);
 	const [guestList, setGuestList] = useState<any>([]);
@@ -42,7 +38,6 @@ export default function StartPage({
 			});
 			let result = await promise;
 			setSelectedGuest(result);
-			setInternalGuest(result);
 			return result;
 		}
 	}
@@ -58,7 +53,7 @@ export default function StartPage({
 		});
 	}
 
-	const hideRsvp = true;
+	const hideRsvp = false;
 	return (
 		<StartPageContainer>
 			{hideRsvp ? (

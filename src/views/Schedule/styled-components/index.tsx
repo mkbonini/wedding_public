@@ -2,23 +2,16 @@
 
 import styled from 'styled-components';
 
-export const PageTitle = styled.div`
-	font-family: 'Circular-Book';
-	font-size: 22px;
-	align-self: center;
-	text-align: center;
-	min-width: 200px;
-	margin: 1rem 0rem 2rem -1rem;
-	padding: 25px;
-	box-shadow: 12px 12px 1px 0px #242424;
-	text-transform: uppercase;
-	border: 1px solid black;
+export const ImageContainer = styled.div<{ align: string }>`
+	padding: 2rem;
+	transform: ${(p) => (p.align === 'start' ? 'rotate(5deg)' : 'rotate(-5deg)')};
+	img {
+		max-width: 250px;
+	}
 	@media only screen and (max-width: 900px) {
-		font-size: 18px;
-		text-align: center;
+		display: none;
 	}
 `;
-
 export const SubTitle = styled.div<{ align: string }>`
 	font-family: 'Circular-Medium';
 	font-size: 38px;
@@ -62,6 +55,7 @@ export const SchedulePage = styled.div`
 	align-items: center;
 	flex-direction: column;
 	padding: 8rem 1rem 4rem 1rem;
+
 	@media only screen and (min-width: 900px) {
 		padding: 12rem 1rem 0rem 1rem;
 	}
@@ -79,19 +73,19 @@ export const ContentContainer = styled.div<{
 	width: 100%;
 	padding: 2rem 0rem;
 	@media only screen and (min-width: 900px) {
+		flex-direction: row;
 		padding: 1rem 0rem;
 		background-color: ${(p) =>
 			p.align === 'end' ? 'rgba(169, 190, 255, 0.17);' : '#ffffff'};
 		min-height: 600px;
 		&#weekend {
 			min-height: 500px;
-			padding: 1rem 0rem 4rem 0rem;
+			padding-bottom: 6rem;
 		}
 	}
 
 	.eyebrow {
 		font-size: 25px;
-		color: ${(p) => p.eyebrowColor};
 		font-family: 'Lazydog';
 		margin-bottom: 1rem;
 		text-align: start;

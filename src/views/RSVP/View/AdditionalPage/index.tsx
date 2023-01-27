@@ -30,15 +30,15 @@ import {
 export default function StartPage({
 	regressFlow,
 	progressFlow,
-	internalGuest,
-	setInternalGuest,
+	selectedGuest,
+	setSelectedGuest,
 }) {
-	const [breakfast, setBreakfast] = useState(internalGuest?.breakfast ?? '');
+	const [breakfast, setBreakfast] = useState(selectedGuest?.breakfast ?? '');
 	const [dodgeball, setDodgeball] = useState(
-		internalGuest?.team_id === 1 ? true : false
+		selectedGuest?.team_id === 1 ? true : false
 	);
 	const [arrivalDate, setArrivalDate] = useState(
-		internalGuest?.arrival_date ?? ''
+		selectedGuest?.arrival_date ?? ''
 	);
 	const [arrivalDropdownError, setArrivalDropdownError] = useState(false);
 	const [dodgeballParticipants, setDodgeballParticipants] = useState<any>([]);
@@ -61,8 +61,8 @@ export default function StartPage({
 
 	const handleRegress = () => {
 		let formValues = getFormValues();
-		setInternalGuest({
-			...internalGuest,
+		setSelectedGuest({
+			...selectedGuest,
 			...formValues,
 			arrival_date: arrivalDate,
 			breakfast: breakfast,
@@ -75,7 +75,7 @@ export default function StartPage({
 		let error = checkForErrors();
 		if (!error) {
 			// let formValues = getFormValues();
-			// updateGuest(internalGuest.id, {
+			// updateGuest(selectedGuest.id, {
 			// 	...formValues,
 			// 	arrival_date: arrivalDate,
 			// 	breakfast: breakfast,
@@ -90,13 +90,13 @@ export default function StartPage({
 	};
 
 	const getPartyList = () => {
-		if (internalGuest) {
+		if (selectedGuest) {
 			let guestsOverSeventeen;
-			let guest = internalGuest?.full_name;
+			let guest = selectedGuest?.full_name;
 
-			let plusOne = internalGuest?.plus_ones[0]?.name;
+			let plusOne = selectedGuest?.plus_ones[0]?.name;
 
-			let children = internalGuest?.kids;
+			let children = selectedGuest?.kids;
 			let childrenEligible = children?.filter((child) => child?.age >= 17);
 			let childNames = childrenEligible?.map((child) => child?.name);
 
@@ -125,7 +125,7 @@ export default function StartPage({
 		}
 	};
 
-	console.log(internalGuest, 'internalGuest from additional');
+	console.log(selectedGuest, 'selectedGuest from additional');
 
 	return (
 		<AdditionalPageContainer>
@@ -160,7 +160,7 @@ export default function StartPage({
 							label='Any Allergies?'
 							multiline
 							maxRows={4}
-							defaultValue={internalGuest?.diet ?? ''}
+							defaultValue={selectedGuest?.diet ?? ''}
 						/>
 					</SectionBreaks>
 					<SectionBreaks>
@@ -173,7 +173,7 @@ export default function StartPage({
 								labelId='breakfast-label'
 								label='Please Select'
 								onChange={handleBreakfastChange}
-								defaultValue={internalGuest?.breakfast ?? ''}
+								defaultValue={selectedGuest?.breakfast ?? ''}
 								required
 							>
 								<MenuItem value={'yes'}>Yes</MenuItem>
@@ -194,7 +194,7 @@ export default function StartPage({
 								labelId='day-label'
 								label='Select a day'
 								onChange={handleArrivalChange}
-								defaultValue={internalGuest.arrival_date ?? ''}
+								defaultValue={selectedGuest.arrival_date ?? ''}
 							>
 								<MenuItem value={'friday'}>Friday</MenuItem>
 								<MenuItem value={'saturday'}>Saturday</MenuItem>
@@ -250,7 +250,7 @@ export default function StartPage({
 							label='Comments or Questions'
 							multiline
 							maxRows={4}
-							defaultValue={internalGuest.comments ?? ''}
+							defaultValue={selectedGuest.comments ?? ''}
 						/>
 					</SectionBreaks>
 

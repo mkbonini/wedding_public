@@ -19,14 +19,15 @@ import {
 	AdditionalLodging,
 	LodgeContainer,
 	SubTitle,
-	PageTitle,
 } from './styled-components';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 export default function Lodging() {
 	return (
 		<LodgingPage>
+			<Breadcrumbs page='lodging' />
 			<LodgingContainer>
-				<PageTitle>Lodging Information</PageTitle>
+				<SubTitle>Onsite Cabins</SubTitle>
 				<Section>
 					<div className='section'>
 						<p>

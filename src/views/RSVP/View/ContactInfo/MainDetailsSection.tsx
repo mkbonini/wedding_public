@@ -10,7 +10,9 @@ export default function MainDetailsSection({
 	firstNameError,
 	lastNameError,
 	emailError,
-	internalGuest,
+	currentGuest,
+	selectedGuest,
+	loaded,
 }) {
 	return (
 		<div>
@@ -23,7 +25,9 @@ export default function MainDetailsSection({
 						label='First Name'
 						required
 						type='text'
-						defaultValue={internalGuest?.first_name}
+						defaultValue={
+							loaded ? currentGuest?.first_name : selectedGuest?.first_name
+						}
 						error={firstNameError}
 						onChange={(e) => setFirstName(e.target.value)}
 						helperText={firstNameError && 'First name is required'}
@@ -36,7 +40,9 @@ export default function MainDetailsSection({
 						label='Last Name'
 						required
 						type='text'
-						defaultValue={internalGuest?.last_name}
+						defaultValue={
+							loaded ? currentGuest?.last_name : selectedGuest?.last_name
+						}
 						error={lastNameError}
 						onChange={(e) => setLastName(e.target.value)}
 						helperText={lastNameError && 'Last name is required'}
@@ -49,7 +55,7 @@ export default function MainDetailsSection({
 						label='Email'
 						required
 						type='text'
-						defaultValue={internalGuest?.email}
+						defaultValue={loaded ? currentGuest?.email : selectedGuest?.email}
 						error={emailError}
 						onChange={(e) => setEmail(e.target.value)}
 						helperText={emailError && 'Please enter a valid email'}

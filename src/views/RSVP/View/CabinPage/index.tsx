@@ -29,21 +29,21 @@ export default function CabinPage({
 	regressFlow,
 	progressFlow,
 	cabinList,
-	internalGuest,
-	setInternalGuest,
+	selectedGuest,
+	setSelectedGuest,
 }) {
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState();
 	const [internalCabin, setInternalCabin] = useState<any>(undefined);
 	const [acceptLodging, setAcceptLodging] = useState(
-		internalGuest.lodging_id > 0 ? true : false
+		selectedGuest.lodging_id > 0 ? true : false
 	);
 	const [open, setOpen] = useState(false);
 	const [selectCabinNotice, setSelectCabinNotice] = useState(false);
 
 	const selectedCabin = () => {
 		if (cabinList) {
-			return cabinList.find((cabin) => cabin?.id === internalGuest?.lodging_id);
+			return cabinList.find((cabin) => cabin?.id === selectedGuest?.lodging_id);
 		} else {
 			return null;
 		}
@@ -80,13 +80,13 @@ export default function CabinPage({
 		// 	setInternalCabin(undefined);
 		// 	progressFlow();
 		// } else if (acceptLodging && internalCabin.id) {
-		// 	// updateGuest(internalGuest?.id, { lodging_id: internalCabin?.id });
+		// 	// updateGuest(selectedGuest?.id, { lodging_id: internalCabin?.id });
 
 		// 	setSelectCabinNotice(false);
 		// 	window.scrollTo(0, 0);
 		// }
 
-		setInternalGuest({ ...internalGuest, lodging_id: internalCabin?.id });
+		setSelectedGuest({ ...selectedGuest, lodging_id: internalCabin?.id });
 
 		progressFlow();
 	};

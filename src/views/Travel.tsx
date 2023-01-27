@@ -2,14 +2,15 @@
 
 import styled from 'styled-components';
 import map from '../assets/distance-to.svg';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const TravelPage = styled.div`
 	width: 100%;
-	max-width: 1000px;
-	padding: 11rem 0rem 2rem 0rem;
+	max-width: 1100px;
+	padding: 12rem 0rem 2rem 0rem;
 	margin: auto;
 	@media only screen and (max-width: 900px) {
-		padding: 7rem 0rem 2rem 0rem;
+		padding: 8rem 0rem 2rem 0rem;
 	}
 `;
 
@@ -34,24 +35,22 @@ const TravelContainer = styled.div`
 	}
 `;
 
-export const PageTitle = styled.div`
+const PageTitle = styled.div`
 	font-family: 'Circular-Book';
-	font-size: 22px;
+	font-size: 24px;
 	align-self: center;
 	text-align: center;
-	max-width: 300px;
-	margin: 1rem 0rem 2rem -1rem;
+	min-width: 200px;
+	margin: 0;
 	padding: 25px;
-	box-shadow: 12px 12px 1px 0px #242424;
 	text-transform: uppercase;
-	border: 1px solid black;
 	@media only screen and (max-width: 900px) {
 		font-size: 18px;
 		text-align: center;
 	}
 `;
 
-export const SubTitle = styled.div`
+const SubTitle = styled.div`
 	font-family: 'Circular-Book';
 	font-size: 30px;
 	align-self: flex-start;
@@ -63,16 +62,23 @@ export const SubTitle = styled.div`
 	}
 `;
 
-export const SecondarySubTitle = styled.div`
+const SecondarySubTitle = styled.div`
 	font-family: 'Circular-Book';
 	font-size: 20px;
+`;
+
+const LinkContainer = styled.div`
+	padding: 10px 0px;
+	a {
+		color: #6871e4;
+	}
 `;
 
 export default function Travel() {
 	return (
 		<TravelPage>
+			<Breadcrumbs page='travel' />
 			<TravelContainer>
-				<PageTitle>Travel Information</PageTitle>
 				<SubTitle>Nearest Airport</SubTitle>
 				<SecondarySubTitle>Denver International Airport</SecondarySubTitle>
 				<SecondarySubTitle> 8500 Peña Blvd, Denver, CO 80249</SecondarySubTitle>
@@ -95,6 +101,16 @@ export default function Travel() {
 				<SubTitle>Venue</SubTitle>
 				<SecondarySubTitle>Deer Creek Mountain Camp</SecondarySubTitle>
 				<SecondarySubTitle>228 S Pine Dr, Bailey, CO 80421</SecondarySubTitle>
+				<LinkContainer>
+					<a
+						target='_blank'
+						rel='noreferrer'
+						href='https://deercreekmountaincamp.com/'
+					>
+						View Deer Creek Website Here
+					</a>
+				</LinkContainer>
+
 				<p>
 					Deer Creek Mountain Camp is located less than an hour away from
 					Denver, and just a couple of miles off of US 285 near Bailey, at 9,000

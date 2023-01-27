@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	createPlusOne,
 	deletePlusOne,
@@ -17,7 +17,7 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
 import { checkForErrors } from './utils';
-
+import { getSelectedGuest } from '../../Model';
 import {
 	ContactFeild,
 	ContactInfoSection,
@@ -35,25 +35,25 @@ import MainDetailsSection from './MainDetailsSection';
 export default function ContactInfo({
 	regressFlow,
 	progressFlow,
-	internalGuest,
-	setInternalGuest,
+	selectedGuest,
 }) {
-	const [rsvp, setRsvp] = useState(internalGuest?.rsvp ?? '');
+	const [currentGuest, setCurrentGuest] = useState(selectedGuest);
+	const [rsvp, setRsvp] = useState(currentGuest?.rsvp ?? '');
 	const [plusOneName, setPlusOneName] = useState(
-		internalGuest?.plus_ones[0]?.name ?? ''
+		currentGuest?.plus_ones[0]?.name ?? ''
 	);
 	const [plusOneToggle, setPlusOneToggle] = useState(
-		internalGuest?.plus_ones[0] ? true : false
+		currentGuest?.plus_ones[0] ? true : false
 	);
 	const [children, setChildren] = useState(
-		internalGuest?.kids?.length > 0 ? true : false
+		currentGuest?.kids?.length > 0 ? true : false
 	);
 
 	const [submitRsvpDecline, setSubmitRsvpDecline] = useState(false);
 
-	const [firstName, setFirstName] = useState(internalGuest?.first_name ?? '');
-	const [lastName, setLastName] = useState(internalGuest?.last_name ?? '');
-	const [email, setEmail] = useState(internalGuest?.email ?? '');
+	const [firstName, setFirstName] = useState(currentGuest?.first_name ?? '');
+	const [lastName, setLastName] = useState(currentGuest?.last_name ?? '');
+	const [email, setEmail] = useState(currentGuest?.email ?? '');
 
 	const [firstNameError, setFirstNameError] = useState(false);
 	const [lastNameError, setLastNameError] = useState(false);
@@ -63,37 +63,57 @@ export default function ContactInfo({
 	const [childCareError, setChildCareError] = useState(false);
 
 	const [childCare, setChildCare] = useState(
-		internalGuest?.kids[0]?.child_care ?? ''
+		currentGuest?.kids[0]?.child_care ?? ''
 	);
 	const [childList, setChildList] = useState(
-		internalGuest?.kids?.length > 0
-			? internalGuest?.kids
+		currentGuest?.kids?.length > 0
+			? currentGuest?.kids
 			: [
 					{
 						name: '',
 						age: '',
 						needs_bed: '',
-						guest_id: internalGuest.id,
+						guest_id: currentGuest.id,
 						child_care: childCare,
 						team_id: 0,
 					},
 			  ]
 	);
 
+	const [loaded, setLoaded] = useState(false);
+
+	useEffect(() => {
+		if (!loaded) {
+			getCurrentGuestInfo();
+		}
+	}, [currentGuest]);
+
+	async function getCurrentGuestInfo() {
+		let promise = new Promise((resolve) => {
+			resolve(getSelectedGuest(selectedGuest.id));
+		});
+		let result = await promise;
+		console.log('result from getCurrentGuestInfo', result);
+		setCurrentGuest(result);
+		if (result) {
+			setLoaded(true);
+		}
+	}
+
 	const handleRsvpChange = (event) => {
 		setRsvp(event.target.value);
 	};
 
 	const handlePlusOne = () => {
-		let hasPlusOne = internalGuest?.plus_ones.length === 1;
-		let noPlusOne = internalGuest?.plus_ones?.length === 0;
-		let plusOneId = internalGuest?.plus_ones[0]?.id;
+		let hasPlusOne = currentGuest?.plus_ones.length === 1;
+		let noPlusOne = currentGuest?.plus_ones?.length === 0;
+		let plusOneId = currentGuest?.plus_ones[0]?.id;
 
 		if (rsvp === null || rsvp === 'no') {
 			progressFlow(rsvp);
 			setPlusOneToggle(false);
 		} else if (noPlusOne && plusOneToggle) {
-			createPlusOne({ name: plusOneName, guest_id: internalGuest.id });
+			createPlusOne({ name: plusOneName, guest_id: currentGuest.id });
 		} else if (hasPlusOne && plusOneToggle) {
 			updatePlusOne(plusOneId, { name: plusOneName });
 		} else if (hasPlusOne && !plusOneToggle) {
@@ -103,29 +123,29 @@ export default function ContactInfo({
 		}
 	};
 
-	function updateInternalData() {
-		let data = {
-			first_name: firstName,
-			last_name: lastName,
-			email: email,
-			rsvp: rsvp,
-			kids: children ? childList : [],
-			plus_ones: plusOneName
-				? [
-						{
-							id: null,
-							name: plusOneName,
-							lodging_id: null,
-							team_id: null,
-						},
-				  ]
-				: [],
-		};
-		setInternalGuest({ ...internalGuest, ...data });
-	}
+	// function updateInternalData() {
+	// 	let data = {
+	// 		first_name: firstName,
+	// 		last_name: lastName,
+	// 		email: email,
+	// 		rsvp: rsvp,
+	// 		kids: children ? childList : [],
+	// 		plus_ones: plusOneName
+	// 			? [
+	// 					{
+	// 						id: null,
+	// 						name: plusOneName,
+	// 						lodging_id: null,
+	// 						team_id: null,
+	// 					},
+	// 			  ]
+	// 			: [],
+	// 	};
+	// 	setCurrentGuest({ ...currentGuest, ...data });
+	// }
 
 	function updateDatabase() {
-		updateGuest(internalGuest.id, {
+		updateGuest(currentGuest.id, {
 			first_name: firstName,
 			last_name: lastName,
 			email: email,
@@ -134,7 +154,7 @@ export default function ContactInfo({
 		if (childList.length > 0 && childList[0].name !== '') {
 			createKids(childList);
 		}
-		if (internalGuest.plus_one_count !== 0) {
+		if (currentGuest.plus_one_count !== 0) {
 			handlePlusOne();
 		}
 	}
@@ -163,13 +183,15 @@ export default function ContactInfo({
 				setSubmitRsvpDecline(true);
 			} else {
 				setSubmitRsvpDecline(false);
-				updateInternalData();
+				// updateInternalData();
 				updateDatabase();
 				progressFlow(rsvp);
 				window.scrollTo(0, 0);
 			}
 		}
 	}
+
+	console.log(loaded, 'loaded');
 
 	return (
 		<ContactInfoSection>
@@ -182,7 +204,7 @@ export default function ContactInfo({
 				/>
 			)}
 			<div className='heading'>
-				Hello {internalGuest?.first_name || 'No User'}, <br /> we found your
+				Hello {currentGuest?.first_name || 'No User'}, <br /> we found your
 				reservation!
 			</div>
 			<p className='main-sub-heading'> Please update the information below</p>
@@ -198,7 +220,7 @@ export default function ContactInfo({
 						labelId='rsvp-label'
 						label='Please Select'
 						onChange={handleRsvpChange}
-						defaultValue={internalGuest?.rsvp ?? ''}
+						defaultValue={currentGuest?.rsvp ?? ''}
 						required
 					>
 						<MenuItem value={'yes'}>Yes</MenuItem>
@@ -211,17 +233,19 @@ export default function ContactInfo({
 			</RsvpContainer>
 			<Form noValidate autoComplete='off' onSubmit={(e) => handleContinue(e)}>
 				<MainDetailsSection
-					internalGuest={internalGuest}
+					currentGuest={currentGuest}
 					setLastName={setLastName}
 					setFirstName={setFirstName}
 					setEmail={setEmail}
 					firstNameError={firstNameError}
 					lastNameError={lastNameError}
 					emailError={emailError}
+					selectedGuest={selectedGuest}
+					loaded={loaded}
 				/>
 				{rsvp === 'yes' && (
 					<div>
-						{internalGuest.plus_one_count !== 0 && (
+						{currentGuest.plus_one_count !== 0 && (
 							<ToggleContainer>
 								<div>
 									<div className='sub-heading'>
@@ -245,7 +269,11 @@ export default function ContactInfo({
 										label='Full Name'
 										required={false}
 										type='text'
-										defaultValue={internalGuest?.plus_ones[0]?.name}
+										defaultValue={
+											loaded
+												? currentGuest?.plus_ones[0]?.name
+												: selectedGuest?.plus_ones[0]?.name
+										}
 										onChange={(e) => setPlusOneName(e.target.value)}
 										error={plusOneError}
 										helperText={plusOneError && 'Name is required'}
@@ -266,7 +294,7 @@ export default function ContactInfo({
 						</ToggleContainer>
 						{children && (
 							<ChildSection
-								internalGuest={internalGuest}
+								currentGuest={currentGuest}
 								childList={childList}
 								setChildList={setChildList}
 								childCare={childCare}

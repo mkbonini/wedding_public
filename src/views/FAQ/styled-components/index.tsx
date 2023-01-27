@@ -2,23 +2,6 @@
 
 import styled from 'styled-components';
 
-export const PageTitle = styled.div`
-	font-family: 'Circular-Book';
-	font-size: 22px;
-	align-self: center;
-	text-align: center;
-	min-width: 150px;
-	margin: 1rem 0rem 2rem -1rem;
-	padding: 25px;
-	box-shadow: 12px 12px 1px 0px #242424;
-	text-transform: uppercase;
-	border: 1px solid black;
-	@media only screen and (max-width: 900px) {
-		font-size: 18px;
-		text-align: center;
-	}
-`;
-
 export const SubTitle = styled.div`
 	font-family: 'Circular-Book';
 	font-size: 20px;
@@ -34,14 +17,14 @@ export const SubTitle = styled.div`
 export const Container = styled.div`
 	width: 100%;
 	max-width: 1000px;
-	padding: 10rem 0rem 8rem 0rem;
+	padding: 12rem 0rem 8rem 0rem;
 	margin: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	@media only screen and (max-width: 900px) {
-		padding: 7rem 0rem;
+		padding: 8rem 0rem;
 	}
 `;
 
