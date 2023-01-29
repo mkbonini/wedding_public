@@ -16,8 +16,8 @@ export const GuestProvider = (props) => {
 		party_count: 0,
 		plus_one_count: 0,
 		comments: '',
-		lodging_id: 0,
-		team_id: 0,
+		lodging_id: null,
+		team_id: null,
 		created_at: '',
 		updated_at: '',
 		bed_count: 0,
@@ -27,12 +27,21 @@ export const GuestProvider = (props) => {
 		plus_ones: [],
 	};
 	const [guest, setGuest] = useState(emptyGuest);
+	const [childList, setChildList] = useState([
+		{
+			name: '',
+			age: '',
+			needs_bed: '',
+		},
+	]);
 
 	return (
 		<GuestContext.Provider
 			value={{
 				guest,
 				setGuest,
+				childList,
+				setChildList,
 			}}
 		>
 			{props.children}

@@ -110,6 +110,7 @@ export async function updateGuest(id, body) {
 			throw new Error(`Error! status: ${response.status}`);
 		}
 		const result = await response.json();
+		console.log(result);
 		return result;
 	} catch (err) {
 		console.log(err);
@@ -154,9 +155,9 @@ export async function deletePlusOne(plus_one_id) {
 	});
 }
 
-export async function createKids(body) {
-	fetch('https://mm-wedding-backend.herokuapp.com/kids', {
-		method: 'POST',
+export async function setKids(id, body) {
+	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}/kids`, {
+		method: 'PATCH',
 		body: JSON.stringify(body),
 		headers: {
 			'Content-Type': 'application/json',

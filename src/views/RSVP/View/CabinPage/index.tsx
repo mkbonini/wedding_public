@@ -20,8 +20,8 @@ import {
 	ViewMoreLink,
 	SelectedContent,
 	DeselectButton,
-	AvailableCabinMessage,
 	ArrowContainer,
+	ViewMoreButton,
 } from './styled-components';
 
 import Card from '../../../../components/Card';
@@ -55,6 +55,7 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 	function setCurrentState(current) {
 		let cabin = cabinList.find((cabin) => cabin?.id === current?.lodging_id);
 		if (cabin) {
+			setHideCabins(true);
 			setAcceptLodging(true);
 			setSelectedCabin(cabin);
 		}
@@ -130,7 +131,7 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 						/>
 					</div>
 				</ToggleContainer>
-				<p className='description'>
+				<p className='description line-divider'>
 					Staying in a cabin requires bringing your own bedding. While there are
 					enough beds for everyone to stay in at the property, sleeping
 					bags/pillows will need to be brought with you. In addition to the
@@ -141,9 +142,7 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 					<div>
 						{selectedCabin && (
 							<SelectedCabinSection>
-								<div className='sub-heading'>
-									You and your party are assigned to:
-								</div>
+								<h3>You and your party are assigned to:</h3>
 								<SelectedCabinContainer>
 									<Image image={selectedCabin?.image_url ?? ''} />
 									<SelectedContent>
@@ -166,21 +165,26 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 								</SelectedCabinContainer>
 							</SelectedCabinSection>
 						)}
-						<AvailableCabinMessage onClick={() => setHideCabins(!hideCabins)}>
-							<>
-								{hideCabins ? 'View Available Cabins' : 'Available Cabins'}
-								<ArrowContainer className={`${!hideCabins && 'arrow-up'}`}>
-									<IoIosArrowDown />
-								</ArrowContainer>
-							</>
-						</AvailableCabinMessage>
+						<h3 style={{ paddingBottom: '0px', marginBottom: '5px' }}>
+							{selectedCabin
+								? 'Browse other options below'
+								: 'Please select a cabin from the list below'}
+						</h3>
+						<p>
+							If you have any issues selecting a cabin, or cannot find a cabin
+							that will fit your entire party, please reach out to us and we can
+							assist.
+						</p>
+
 						<CabinListContainer className={`${!hideCabins && 'open'}`}>
+							<h3 className='cabin-list-title'>Cabin List</h3>
 							{cabinList && (
 								<CabinCardsContainer>
 									{cabinList.map((cabin, index) => {
 										if (cabin.lodging_type !== 'appartment') {
 											return (
 												<Card
+													disable={hideCabins}
 													image={cabin.image_url}
 													name={cabin.name}
 													type={cabin.lodging_type}
@@ -193,7 +197,17 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 									})}
 								</CabinCardsContainer>
 							)}
+							<ViewMoreButton
+								onClick={() => setHideCabins(!hideCabins)}
+								visible={hideCabins}
+							>
+								{hideCabins ? 'View Full List' : 'Collapse List'}
+								<ArrowContainer className={`${!hideCabins && 'arrow-up'}`}>
+									<IoIosArrowDown />
+								</ArrowContainer>
+							</ViewMoreButton>
 						</CabinListContainer>
+
 						{activeModal && (
 							<Popup
 								activeCard={activeCard}

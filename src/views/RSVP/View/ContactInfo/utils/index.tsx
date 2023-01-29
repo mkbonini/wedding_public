@@ -32,8 +32,8 @@ function validateEmail(email) {
 
 export function checkForErrors({
 	children,
-	childCare,
-	setChildCareError,
+	// childCare,
+	// setChildCareError,
 	setRsvpError,
 	rsvp,
 	email,
@@ -42,11 +42,11 @@ export function checkForErrors({
 	plusOneName,
 	setPlusOneError,
 }) {
-	if (children && childCare === '') {
-		setChildCareError(true);
-	} else {
-		setChildCareError(false);
-	}
+	// if (children && childCare === '') {
+	// 	setChildCareError(true);
+	// } else {
+	// 	setChildCareError(false);
+	// }
 	if (rsvp === '') {
 		setRsvpError(true);
 	} else {
@@ -64,7 +64,7 @@ export function checkForErrors({
 	}
 
 	if (
-		(children && childCare === '') ||
+		// (children && childCare === '') ||
 		rsvp === '' ||
 		(plusOneToggle && plusOneName === '') ||
 		!validateEmail(email)

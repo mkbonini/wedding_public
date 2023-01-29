@@ -1,4 +1,7 @@
 /** @format */
+
+import { useContext, useEffect } from 'react';
+import { GuestContext } from '../../../../context/GuestContext';
 import {
 	ContactFeild,
 	KidsContainer,
@@ -16,13 +19,12 @@ import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
 
 export default function ChildSection({
-	childList,
-	setChildList,
+	childCareError,
 	childCare,
 	setChildCare,
-	guest,
-	childCareError,
 }) {
+	const { childList, setChildList, guest } = useContext<any>(GuestContext);
+
 	let addChildFormField = (e) => {
 		if (childList.length < 4) {
 			setChildList([
@@ -31,9 +33,6 @@ export default function ChildSection({
 					name: '',
 					age: '',
 					needs_bed: '',
-					guest_id: guest.id,
-					child_care: childCare,
-					team_id: 0,
 				},
 			]);
 		}
@@ -46,15 +45,10 @@ export default function ChildSection({
 		setChildList(newChildList);
 	};
 
-	let handleChildInputChange = (i, e) => {
+	let handleChildInputChange = (i = 0, e) => {
 		let newChildList = [...childList];
 		newChildList[i][e.target.name] = e.target.value;
-		newChildList[i].child_care = childCare;
 		setChildList(newChildList);
-	};
-
-	let handleChildCareChange = (e) => {
-		setChildCare(e.target.value);
 	};
 
 	return (
@@ -75,7 +69,6 @@ export default function ChildSection({
 			<div className='sub-heading'>
 				Who will watch the children during the ceremony and dinner?
 			</div>
-
 			<FormControl
 				sx={{ m: 1, maxWidth: 320, margin: 0 }}
 				error={childCareError}
@@ -84,9 +77,14 @@ export default function ChildSection({
 				<InputLabel id='child-care-label'>Please select an option</InputLabel>
 				<Select
 					labelId='child-care-label'
-					onChange={handleChildCareChange}
+					name='child_care'
+					onChange={(e) => handleChildInputChange(0, e)}
 					label='Please select an option'
-					value={childCare ?? ''}
+					defaultValue={
+						guest.kids[0]?.child_care === ''
+							? 'guardian'
+							: guest.kids[0]?.child_care
+					}
 				>
 					<MenuItem value={'guardian'}>A Parent</MenuItem>
 					<MenuItem value={'sitter'}>Sitters Service</MenuItem>
@@ -98,7 +96,7 @@ export default function ChildSection({
 			</FormControl>
 			<KidsContainer>
 				<div className='sub-heading'>Please enter their information below</div>
-				{childList?.map((element, index) => (
+				{childList.map((element, index) => (
 					<div key={`${index}-child`}>
 						<div style={{ paddingTop: 20 }}>
 							<ContactFeild className='child-inputs'>
@@ -175,7 +173,7 @@ export default function ChildSection({
 					</div>
 				))}
 			</KidsContainer>
-			{childList?.length < 4 && (
+			{childList.length < 4 && (
 				<AddChildLink onClick={(e) => addChildFormField(e)}>
 					<FaPlus />
 					Add Child

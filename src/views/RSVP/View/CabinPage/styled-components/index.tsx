@@ -1,42 +1,55 @@
 /** @format */
 import styled from 'styled-components';
 
-export const AvailableCabinMessage = styled.div`
-	margin-top: 2rem;
-	height: 70px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 20px;
-	padding: 0rem 1rem;
-	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.07);
-	:hover {
-		cursor: pointer;
-	}
-`;
-
 export const ArrowContainer = styled.div`
 	font-size: 20px;
 	font-weight: 900;
 	padding: 15px 15px 5px;
 	transform: rotate(0deg);
 	transition: transform 0.2s linear;
+	svg {
+		color: #fff;
+	}
 	&.arrow-up {
 		transform: rotate(180deg);
-		transition: transform 0.2s linear;
-	}
-	svg {
-		color: #9bba1d;
+		transition: transform 0.1s linear;
 	}
 `;
 
+export const ViewMoreButton = styled.div<{ visible: boolean }>`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: ${(p) => (!p.visible ? '1%' : '5%')};
+	left: 43%;
+	background-color: #242424;
+	color: white;
+	z-index: 999999;
+	opacity: 1;
+	padding-left: 15px;
+	border-radius: 40px;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+	font-size: 14px;
+	:hover {
+		cursor: pointer;
+		box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.65);
+	}
+`;
 export const CabinListContainer = styled.div`
-	height: 0px;
+	position: relative;
+	height: 430px;
 	overflow: hidden;
+	padding-top: 1rem;
+	margin-top: 2rem;
 	transition: height 0.2s ease;
 	&.open {
 		height: 1900px;
-		padding-bottom: 5rem;
+		padding-bottom: 10rem;
+	}
+	.cabin-list-title {
+		padding-left: 0rem;
+		margin-bottom: 0;
 	}
 	@media only screen and (max-width: 900px) {
 		overflow: scroll;
@@ -100,9 +113,13 @@ export const CabinInfoSection = styled.div`
 		color: #343232;
 	}
 	p.description {
+		padding-bottom: 2rem;
 		@media only screen and (min-width: 900px) {
 			padding-right: 8rem;
 		}
+	}
+	.line-divider {
+		border-bottom: 1px solid whitesmoke;
 	}
 `;
 
@@ -110,7 +127,7 @@ export const CabinCardsContainer = styled.div`
 	max-width: 1400px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 	@media only screen and (max-width: 600px) {
 		display: flex;
 		flex-wrap: nowrap;

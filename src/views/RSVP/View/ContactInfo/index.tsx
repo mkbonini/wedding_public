@@ -6,7 +6,7 @@ import {
 	deletePlusOne,
 	updateGuest,
 	updatePlusOne,
-	createKids,
+	setKids,
 	getSelectedGuest,
 } from '../../Model';
 import Confirmation from '../../../../components/Confirmation';
@@ -35,7 +35,7 @@ import ChildSection from './ChildSection';
 import MainDetailsSection from './MainDetailsSection';
 
 export default function ContactInfo({ regressFlow, progressFlow }) {
-	const { guest, setGuest } = useContext<any>(GuestContext);
+	const { guest, setGuest, childList } = useContext<any>(GuestContext);
 	const [loaded, setLoaded] = useState(false);
 
 	const [rsvp, setRsvp] = useState('');
@@ -45,15 +45,6 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 	const [submitRsvpDecline, setSubmitRsvpDecline] = useState(false);
 	const [email, setEmail] = useState('');
 	const [childCare, setChildCare] = useState('');
-	const [childList, setChildList] = useState([
-		{
-			name: '',
-			age: '',
-			needs_bed: '',
-			guest_id: guest.id,
-			child_care: childCare,
-		},
-	]);
 
 	const [emailError, setEmailError] = useState(false);
 	const [rsvpError, setRsvpError] = useState(false);
@@ -74,20 +65,16 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 	}, []);
 
 	function setCurrentState(current) {
+		console.log(current, 'current');
 		if (rsvp === 'no') {
 			return;
 		} else {
 			setPlusOneToggle(current?.plus_ones?.length > 0);
 			setPlusOneName(current?.plus_ones[0]?.name);
 			setRsvp(current?.rsvp);
-			setChildren(current?.kids?.length > 0);
 			setEmail(current?.email);
-			setChildCare(current?.kids[0]?.child_care);
 			if (current.rsvp === 'no') {
 				setSubmitRsvpDecline(true);
-			}
-			if (current.kids.length !== 0) {
-				setChildList(current?.kids);
 			}
 		}
 	}
@@ -131,9 +118,11 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			email: email,
 			rsvp: rsvp,
 		});
-		// if (childList.length > 0 && childList[0].name !== '') {
-		// 	createKids(childList);
-		// }
+		if (!children) {
+			setKids(guest.id, []);
+		} else {
+			setKids(guest.id, childList);
+		}
 		if (guest.plus_one_count !== 0) {
 			handlePlusOne();
 		}
@@ -143,8 +132,8 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 		e.preventDefault();
 		let error = checkForErrors({
 			children,
-			childCare,
-			setChildCareError,
+			// childCare,
+			// setChildCareError,
 			setRsvpError,
 			rsvp,
 			email,
@@ -266,12 +255,9 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 								</ToggleContainer>
 								{children && (
 									<ChildSection
-										guest={guest}
-										childList={childList}
-										setChildList={setChildList}
+										childCareError={childCareError}
 										childCare={childCare}
 										setChildCare={setChildCare}
-										childCareError={childCareError}
 									/>
 								)}
 							</div>
