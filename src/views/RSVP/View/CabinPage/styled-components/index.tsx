@@ -1,11 +1,45 @@
 /** @format */
 import styled from 'styled-components';
 
+export const AvailableCabinMessage = styled.div`
+	margin-top: 2rem;
+	height: 70px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 20px;
+	padding: 0rem 1rem;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.07);
+	:hover {
+		cursor: pointer;
+	}
+`;
+
+export const ArrowContainer = styled.div`
+	font-size: 20px;
+	font-weight: 900;
+	padding: 15px 15px 5px;
+	transform: rotate(0deg);
+	transition: transform 0.2s linear;
+	&.arrow-up {
+		transform: rotate(180deg);
+		transition: transform 0.2s linear;
+	}
+	svg {
+		color: #9bba1d;
+	}
+`;
+
 export const CabinListContainer = styled.div`
-	height: 700px;
-	overflow: scroll;
-	margin-bottom: 5rem;
+	height: 0px;
+	overflow: hidden;
+	transition: height 0.2s ease;
+	&.open {
+		height: 1900px;
+		padding-bottom: 5rem;
+	}
 	@media only screen and (max-width: 900px) {
+		overflow: scroll;
 		height: 500px;
 		margin-bottom: 0px;
 		max-width: 350px;
@@ -16,7 +50,7 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 3rem 0rem;
+	margin: 5rem 0rem 4rem 0rem;
 	gap: 20px;
 `;
 
@@ -88,7 +122,7 @@ export const SelectedCabinContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	border-radius: 4px;
-	box-shadow: 2px 2px 10px 3px rgba(0, 0, 1, 0.09);
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.07);
 	margin-top: 2rem;
 	.selected-p {
 		display: none;

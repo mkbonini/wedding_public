@@ -2,7 +2,7 @@
 
 import Body from './components/Body';
 import './index.css';
-
+import { GuestProvider } from './context/GuestContext';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAnalytics, logEvent } from 'firebase/analytics';
@@ -27,7 +27,11 @@ const analytics = getAnalytics(app);
 logEvent(analytics, 'notification_received');
 
 function App() {
-	return <Body />;
+	return (
+		<GuestProvider>
+			<Body />
+		</GuestProvider>
+	);
 }
 
 export default App;

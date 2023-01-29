@@ -20,7 +20,7 @@ export default function ChildSection({
 	setChildList,
 	childCare,
 	setChildCare,
-	currentGuest,
+	guest,
 	childCareError,
 }) {
 	let addChildFormField = (e) => {
@@ -31,7 +31,7 @@ export default function ChildSection({
 					name: '',
 					age: '',
 					needs_bed: '',
-					guest_id: currentGuest.id,
+					guest_id: guest.id,
 					child_care: childCare,
 					team_id: 0,
 				},

@@ -15,7 +15,10 @@ export default function Schedule() {
 	return (
 		<>
 			<SchedulePage>
-				<Breadcrumbs page='schedule' />
+				<div style={{ width: '100%', maxWidth: '1100px', display: 'flex' }}>
+					<Breadcrumbs page='schedule' id='schedule' />
+				</div>
+
 				<ContentContainer id='weekend' eyebrowColor='#FF99FF' align='start'>
 					<ImageContainer align='start'>
 						<img src='https://iili.io/H0hacdX.png' alt='' />

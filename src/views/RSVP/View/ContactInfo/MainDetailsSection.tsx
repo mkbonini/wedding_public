@@ -3,17 +3,7 @@ import { ContactFeild, InputContainer } from './styled-components';
 
 import TextField from '@mui/material/TextField';
 
-export default function MainDetailsSection({
-	setFirstName,
-	setLastName,
-	setEmail,
-	firstNameError,
-	lastNameError,
-	emailError,
-	currentGuest,
-	selectedGuest,
-	loaded,
-}) {
+export default function MainDetailsSection({ setEmail, emailError, guest }) {
 	return (
 		<div>
 			<div className='sub-heading'>Your Details:</div>
@@ -23,14 +13,9 @@ export default function MainDetailsSection({
 						fullWidth
 						id='first-name-input'
 						label='First Name'
-						required
 						type='text'
-						defaultValue={
-							loaded ? currentGuest?.first_name : selectedGuest?.first_name
-						}
-						error={firstNameError}
-						onChange={(e) => setFirstName(e.target.value)}
-						helperText={firstNameError && 'First name is required'}
+						defaultValue={guest?.first_name}
+						inputProps={{ readOnly: true }}
 					/>
 				</InputContainer>
 				<InputContainer className='input-group'>
@@ -38,14 +23,9 @@ export default function MainDetailsSection({
 						fullWidth
 						id='last-name-input'
 						label='Last Name'
-						required
 						type='text'
-						defaultValue={
-							loaded ? currentGuest?.last_name : selectedGuest?.last_name
-						}
-						error={lastNameError}
-						onChange={(e) => setLastName(e.target.value)}
-						helperText={lastNameError && 'Last name is required'}
+						defaultValue={guest?.last_name}
+						inputProps={{ readOnly: true }}
 					/>
 				</InputContainer>
 				<InputContainer className='input-group'>
@@ -55,7 +35,7 @@ export default function MainDetailsSection({
 						label='Email'
 						required
 						type='text'
-						defaultValue={loaded ? currentGuest?.email : selectedGuest?.email}
+						defaultValue={guest?.email}
 						error={emailError}
 						onChange={(e) => setEmail(e.target.value)}
 						helperText={emailError && 'Please enter a valid email'}

@@ -28,10 +28,10 @@ export default function FAQ() {
 	return (
 		<Container>
 			<div style={{ padding: '1rem', alignSelf: 'flex-start' }}>
-				<Breadcrumbs page='faq' />
+				<Breadcrumbs page='faq' id='faq' />
 			</div>
 
-			<ScrollContainer>
+			<ScrollContainer id='title'>
 				{Object.keys(Questions).map((key) => (
 					<ButtonContainer key={key}>
 						<ScrollButton onClick={() => scrollToSection(key)}>

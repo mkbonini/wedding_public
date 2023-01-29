@@ -5,8 +5,6 @@ import { GrClose } from 'react-icons/gr';
 import Button from './Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 
 const Title = styled.div`
 	padding: 0rem 1rem 0rem 2rem;
@@ -43,47 +41,38 @@ const ContentGroup = styled.div`
 `;
 
 export default function Popup({
-	submitRsvpDecline,
-	setSubmitRsvpDecline,
-	rsvp,
-	progressFlow,
+	content,
+	handleExit = () => {},
+	handleContinue = () => {},
+	confirm = false,
 }) {
-	const handledeclineSubmit = () => {
-		progressFlow(rsvp);
-	};
-
-	const handleExit = () => {
-		setSubmitRsvpDecline(false);
-	};
-
-	const theme = useTheme();
-
-	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
 	return (
 		<div>
 			<Dialog
-				fullScreen={fullScreen}
-				open={submitRsvpDecline}
+				open={true}
 				onClose={handleExit}
 				aria-labelledby='responsive-dialog-title'
 				scroll='body'
 				maxWidth={'sm'}
 			>
 				<ExitButton>
-					<GrClose onClick={() => handleExit()} />
+					<GrClose onClick={handleExit} />
 				</ExitButton>
 				<DialogContent>
 					<ContentGroup>
 						<Title>
-							<p>
-								You selected <strong>"No"</strong> on your RSVP. Is this
-								correct?
-							</p>
-							<ButtonContainer>
-								<Button onClick={() => handledeclineSubmit()} text='Yes' />
-								<Button onClick={() => handleExit()} text='No' />
-							</ButtonContainer>
+							<p>{content}</p>
+
+							{confirm ? (
+								<ButtonContainer>
+									<Button onClick={handleExit} text='Ok' />
+								</ButtonContainer>
+							) : (
+								<ButtonContainer>
+									<Button onClick={handleContinue} text='Yes' />
+									<Button onClick={handleExit} text='No' />
+								</ButtonContainer>
+							)}
 						</Title>
 					</ContentGroup>
 				</DialogContent>

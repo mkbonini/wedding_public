@@ -12,30 +12,7 @@ import AdditionalPage from './View/AdditionalPage/index';
 
 export default function RSVP() {
 	const [currentStep, setCurrentStep] = useState(steps.start);
-	const [selectedGuest, setSelectedGuest] = useState<any>(null);
-	const [cabinList, setCabinList] = useState<any>([]);
-	const [internalGuest, setInternalGuest] = useState({
-		id: 0,
-		first_name: '',
-		last_name: '',
-		email: '',
-		rsvp: '',
-		diet: '',
-		payment_method: '',
-		arrival_date: '',
-		party_count: 0,
-		plus_one_count: 0,
-		comments: '',
-		lodging_id: 0,
-		team_id: 0,
-		created_at: '',
-		updated_at: '',
-		bed_count: 0,
-		breakfast: '',
-		full_name: '',
-		kids: [],
-		plus_ones: [],
-	});
+	const [cabinList, setCabinList] = useState([]);
 
 	useEffect(() => {
 		(async () => {
@@ -86,24 +63,15 @@ export default function RSVP() {
 		}
 	}
 
-	console.log(internalGuest, 'internal guest');
 	function contentToDisplay() {
 		switch (currentStep) {
 			case steps.start:
-				return (
-					<StartPage
-						setSelectedGuest={setSelectedGuest}
-						setInternalGuest={setInternalGuest}
-						progressFlow={progressFlow}
-					/>
-				);
+				return <StartPage progressFlow={progressFlow} />;
 			case steps.contact:
 				return (
 					<ContactInfoPage
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
-						internalGuest={internalGuest}
-						setInternalGuest={setInternalGuest}
 					/>
 				);
 
@@ -113,23 +81,19 @@ export default function RSVP() {
 						regressFlow={regressFlow}
 						progressFlow={progressFlow}
 						cabinList={cabinList}
-						internalGuest={internalGuest}
-						setInternalGuest={setInternalGuest}
 					/>
 				);
 
 			case steps.additional:
 				return (
 					<AdditionalPage
-						setInternalGuest={setInternalGuest}
-						internalGuest={internalGuest}
 						progressFlow={progressFlow}
 						regressFlow={regressFlow}
 					/>
 				);
 
 			case steps.confirm:
-				return <ConfirmPage selectedGuest={selectedGuest} />;
+				return <ConfirmPage />;
 			default:
 				setCurrentStep(steps.start);
 		}

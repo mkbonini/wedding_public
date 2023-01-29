@@ -1,8 +1,11 @@
 /** @format */
 
 import styled from 'styled-components';
+import { GuestContext } from '../../../context/GuestContext';
+import { useContext } from 'react';
 
-export default function ConfirmPage({ selectedGuest }) {
+export default function ConfirmPage() {
+	const { guest } = useContext<any>(GuestContext);
 	const ConfirmationPage = styled.div`
 		margin-top: 4rem;
 		max-width: 600px;

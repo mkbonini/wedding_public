@@ -35,11 +35,7 @@ export function checkForErrors({
 	childCare,
 	setChildCareError,
 	setRsvpError,
-	setFirstNameError,
-	setLastNameError,
 	rsvp,
-	firstName,
-	lastName,
 	email,
 	setEmailError,
 	plusOneToggle,
@@ -56,16 +52,6 @@ export function checkForErrors({
 	} else {
 		setRsvpError(false);
 	}
-	if (firstName === '') {
-		setFirstNameError(true);
-	} else {
-		setFirstNameError(false);
-	}
-	if (lastName === '') {
-		setLastNameError(true);
-	} else {
-		setLastNameError(false);
-	}
 	if (!validateEmail(email)) {
 		setEmailError(true);
 	} else {
@@ -80,8 +66,6 @@ export function checkForErrors({
 	if (
 		(children && childCare === '') ||
 		rsvp === '' ||
-		firstName === '' ||
-		lastName === '' ||
 		(plusOneToggle && plusOneName === '') ||
 		!validateEmail(email)
 	) {

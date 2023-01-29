@@ -89,7 +89,7 @@ const AboutSection = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	max-width: 1200px;
+	max-width: 1100px;
 	min-height: 650px;
 	padding-bottom: 3rem;
 	@media only screen and (max-width: 1000px) {
@@ -153,7 +153,15 @@ const Background = styled.div`
 export default function OurStory() {
 	return (
 		<OurStoryPage>
-			<Breadcrumbs page='our story' />
+			<div
+				style={{
+					width: '100%',
+					maxWidth: '1100px',
+					display: 'flex',
+				}}
+			>
+				<Breadcrumbs page='our story' id='our-story' />
+			</div>
 			<ContentSection>
 				<AboutSection>
 					<ImageContainer className='miwha'>

@@ -1,25 +1,5 @@
 /** @format */
 
-interface Guest {
-	age: number;
-	arrival_date: string;
-	comments: string;
-	created_at: string;
-	diet: string;
-	email: string;
-	first_name: string;
-	id: number;
-	last_name: string;
-	lodging_id: number;
-	meals: string;
-	payment_method: number;
-	plus_ones: number;
-	rsvp: string;
-	team_id: number;
-	updated_at: string;
-	host_id: number;
-}
-
 export const steps = {
 	start: 'START',
 	verify: 'VERIFY',
@@ -28,27 +8,6 @@ export const steps = {
 	confirm: 'CONFIRM',
 	additional: 'ADDITIONAL',
 };
-export function handleGuestDeselection(
-	setSelectedGuest: Function,
-	setSearchTerm: Function,
-	setGuestInputRecieved: Function,
-	setEmailInputRecieved: Function,
-	setChildInputRecieved: Function,
-	setNotesInputRecieved: Function,
-	setCode: Function,
-	setVarified: Function,
-	setError: Function
-) {
-	setSelectedGuest(null);
-	setSearchTerm('');
-	setGuestInputRecieved(false);
-	setEmailInputRecieved(false);
-	setChildInputRecieved(false);
-	setNotesInputRecieved(false);
-	setCode('');
-	setVarified(false);
-	setError(false);
-}
 
 export async function getGuests() {
 	try {
@@ -151,7 +110,6 @@ export async function updateGuest(id, body) {
 			throw new Error(`Error! status: ${response.status}`);
 		}
 		const result = await response.json();
-		console.log('updated guest', result);
 		return result;
 	} catch (err) {
 		console.log(err);

@@ -1,14 +1,16 @@
 /** @format */
 
+import { useContext } from 'react';
 import styled from 'styled-components';
-
 import { TbBrandAirbnb } from 'react-icons/tb';
 import { GrClose } from 'react-icons/gr';
 import ButtonFullWidth from './ButtonFullWidth';
+import ButtonError from './ButtonError';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { GuestContext } from '../context/GuestContext';
 
 const Image = styled.div<{ image: string }>`
 	background-image: url(${(p) => p.image && p.image});
@@ -141,6 +143,7 @@ export default function Popup({
 	setActiveModal,
 	noCabinSelected,
 	selectedCabin,
+	setHideCabins,
 	id,
 }) {
 	const {
@@ -156,9 +159,18 @@ export default function Popup({
 	const dummyImage =
 		'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
 
+	const { guest } = useContext<any>(GuestContext);
+
 	const handleSelectCabin = () => {
-		setActiveModal(false);
-		setSelectedCabin(activeCard);
+		if (activeCard === selectedCabin) {
+			setActiveModal(false);
+			setSelectedCabin(null);
+			setHideCabins(false);
+		} else {
+			setActiveModal(false);
+			setSelectedCabin(activeCard);
+			setHideCabins(true);
+		}
 	};
 
 	const handleExit = () => {
@@ -169,6 +181,11 @@ export default function Popup({
 
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
+	const determineButtonText = () => {
+		if (guest.bed_count > spots_remaining)
+			return 'Not enough beds for your party';
+		else return 'Select This Cabin';
+	};
 	return (
 		<div key={id}>
 			<Dialog
@@ -210,14 +227,19 @@ export default function Popup({
 							</CabinSpotContainer>
 
 							<ButtonContainer>
-								<ButtonFullWidth
-									onClick={() => handleSelectCabin()}
-									text={
-										activeCard === selectedCabin
-											? 'You already selected this cabin'
-											: 'Select This Cabin'
-									}
-								/>
+								{activeCard === selectedCabin ? (
+									<ButtonError
+										onClick={() => handleSelectCabin()}
+										text='Deselect This Cabin'
+										fullWidth
+									/>
+								) : (
+									<ButtonFullWidth
+										disabled={guest.bed_count > spots_remaining}
+										onClick={() => handleSelectCabin()}
+										text={determineButtonText()}
+									/>
+								)}
 							</ButtonContainer>
 						</Title>
 					</ContentGroup>
