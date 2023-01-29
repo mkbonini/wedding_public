@@ -35,7 +35,7 @@ import ChildSection from './ChildSection';
 import MainDetailsSection from './MainDetailsSection';
 
 export default function ContactInfo({ regressFlow, progressFlow }) {
-	const { guest, setGuest, childList } = useContext<any>(GuestContext);
+	const { guest, setGuest } = useContext<any>(GuestContext);
 	const [loaded, setLoaded] = useState(false);
 
 	const [rsvp, setRsvp] = useState('');
@@ -45,6 +45,14 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 	const [submitRsvpDecline, setSubmitRsvpDecline] = useState(false);
 	const [email, setEmail] = useState('');
 	const [childCare, setChildCare] = useState('');
+	const [childList, setChildList] = useState([
+		{
+			name: '',
+			age: '',
+			needs_bed: '',
+			child_care: childCare,
+		},
+	]);
 
 	const [emailError, setEmailError] = useState(false);
 	const [rsvpError, setRsvpError] = useState(false);
@@ -65,7 +73,6 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 	}, []);
 
 	function setCurrentState(current) {
-		console.log(current, 'current');
 		if (rsvp === 'no') {
 			return;
 		} else {
@@ -75,6 +82,11 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			setEmail(current?.email);
 			if (current.rsvp === 'no') {
 				setSubmitRsvpDecline(true);
+			}
+			if (current.kids.length !== 0) {
+				setChildList(current?.kids);
+				setChildCare(current?.kids[0]?.child_care);
+				setChildren(current?.kids?.length > 0);
 			}
 		}
 	}
@@ -132,8 +144,8 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 		e.preventDefault();
 		let error = checkForErrors({
 			children,
-			// childCare,
-			// setChildCareError,
+			childCare,
+			setChildCareError,
 			setRsvpError,
 			rsvp,
 			email,
@@ -255,9 +267,12 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 								</ToggleContainer>
 								{children && (
 									<ChildSection
-										childCareError={childCareError}
+										guest={guest}
+										childList={childList}
+										setChildList={setChildList}
 										childCare={childCare}
 										setChildCare={setChildCare}
+										childCareError={childCareError}
 									/>
 								)}
 							</div>
