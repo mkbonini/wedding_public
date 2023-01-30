@@ -96,7 +96,7 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 
 		// setInternalGuest({ ...guest, lodging_id: selectedCabin?.id });
 		console.log(selectedCabin);
-		// progressFlow();
+		progressFlow();
 	};
 
 	const content = (
@@ -175,9 +175,8 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 							that will fit your entire party, please reach out to us and we can
 							assist.
 						</p>
-
+						<h3 style={{ margin: '1rem 0rem 0rem 0rem' }}>Cabin List</h3>
 						<CabinListContainer className={`${!hideCabins && 'open'}`}>
-							<h3 className='cabin-list-title'>Cabin List</h3>
 							{cabinList && (
 								<CabinCardsContainer>
 									{cabinList.map((cabin, index) => {
@@ -201,7 +200,7 @@ export default function CabinPage({ regressFlow, progressFlow, cabinList }) {
 								onClick={() => setHideCabins(!hideCabins)}
 								visible={hideCabins}
 							>
-								{hideCabins ? 'View Full List' : 'Collapse List'}
+								{hideCabins ? 'View All' : 'Collapse List'}
 								<ArrowContainer className={`${!hideCabins && 'arrow-up'}`}>
 									<IoIosArrowDown />
 								</ArrowContainer>

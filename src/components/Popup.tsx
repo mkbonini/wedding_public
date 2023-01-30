@@ -28,7 +28,11 @@ const Image = styled.div<{ image: string }>`
 
 const Title = styled.div`
 	padding: 0rem 1rem 0rem 2rem;
-	max-width: 700px;
+	max-width: 600px;
+	min-width: 600px;
+	@media only screen and (max-width: 1200px) {
+		min-width: unset;
+	}
 	h1 {
 		font-size: 40px;
 		padding: 1rem 0rem 1rem 0rem;

@@ -33,14 +33,14 @@ const BarContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: start;
-	max-width: 40px;
-	min-width: 25px;
+	max-width: 100px;
+	min-width: 100px;
 `;
 
 const Bar = styled.div<{ completed: boolean; nextStep: boolean }>`
-	height: 4px;
+	height: 2px;
 	width: 100%;
-	border-radius: 2px;
+	border-radius: 1px;
 	margin: 14px 10px 14px -4px;
 	background: ${(p) => (p.completed || p.nextStep ? '#000000' : 'lightgray')};
 `;

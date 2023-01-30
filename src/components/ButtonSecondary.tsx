@@ -4,7 +4,7 @@ import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 const Secondary = styled(Button)<ButtonProps>(({ theme }) => ({
-	minWidth: '100px',
+	minWidth: '200px',
 	backgroundColor: '#ffffff',
 	height: '50px',
 	borderRadius: '100px;',

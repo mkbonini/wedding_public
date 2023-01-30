@@ -50,7 +50,6 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			name: '',
 			age: '',
 			needs_bed: '',
-			child_care: childCare,
 		},
 	]);
 
@@ -84,9 +83,16 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 				setSubmitRsvpDecline(true);
 			}
 			if (current.kids.length !== 0) {
+				let careType = current?.kids[0].child_care;
 				setChildList(current?.kids);
-				setChildCare(current?.kids[0]?.child_care);
 				setChildren(current?.kids?.length > 0);
+				if (
+					careType === 'guardian' ||
+					careType === 'sitter' ||
+					careType === 'na'
+				) {
+					setChildCare(current?.kids[0].child_care);
+				}
 			}
 		}
 	}
@@ -159,10 +165,11 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			if (rsvp === 'no') {
 				setDisplayConfirmation(true);
 			} else {
-				setSubmitRsvpDecline(false);
-				updateDatabase();
+				// setSubmitRsvpDecline(false);
+				// updateDatabase();
 				progressFlow(rsvp);
-				window.scrollTo(0, 0);
+				// window.scrollTo(0, 0);
+				console.log(childCare, 'child care in submit');
 			}
 		}
 	}
@@ -267,7 +274,6 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 								</ToggleContainer>
 								{children && (
 									<ChildSection
-										guest={guest}
 										childList={childList}
 										setChildList={setChildList}
 										childCare={childCare}

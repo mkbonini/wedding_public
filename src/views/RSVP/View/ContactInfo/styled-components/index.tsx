@@ -161,7 +161,10 @@ export const ButtonContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 2rem 0rem 6rem 0rem;
-	gap: 20px;
+	gap: 30px;
+	@media only screen and (max-width: 900px) {
+		flex-direction: column;
+	}
 `;
 
 export const RsvpContainer = styled.div`
@@ -180,8 +183,8 @@ export const LineBreak = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-	min-width: 100px;
-	background-color: #3366ff;
+	min-width: 200px;
+	background-color: #242424;
 	height: 50px;
 	border-radius: 100px;
 	text-transform: none;

@@ -20,7 +20,6 @@ export default function ChildSection({
 	setChildList,
 	childCare,
 	setChildCare,
-	guest,
 	childCareError,
 }) {
 	let addChildFormField = (e) => {
@@ -31,7 +30,6 @@ export default function ChildSection({
 					name: '',
 					age: '',
 					needs_bed: '',
-					child_care: childCare,
 				},
 			]);
 		}
@@ -47,7 +45,6 @@ export default function ChildSection({
 	let handleChildInputChange = (i, e) => {
 		let newChildList = [...childList];
 		newChildList[i][e.target.name] = e.target.value;
-		newChildList[i].child_care = childCare;
 		setChildList(newChildList);
 	};
 
