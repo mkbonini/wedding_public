@@ -137,9 +137,9 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			rsvp: rsvp,
 		});
 		if (!children) {
-			setKids(guest.id, []);
+			setKids(guest.id, { child_care: null, kids: [] });
 		} else {
-			setKids(guest.id, childList);
+			setKids(guest.id, { child_care: childCare, kids: childList });
 		}
 		if (guest.plus_one_count !== 0) {
 			handlePlusOne();
@@ -149,6 +149,7 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 	function handleContinue(e) {
 		e.preventDefault();
 		let error = checkForErrors({
+			childList,
 			children,
 			childCare,
 			setChildCareError,
@@ -160,16 +161,14 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			plusOneName,
 			setPlusOneError,
 		});
-
 		if (!error) {
 			if (rsvp === 'no') {
 				setDisplayConfirmation(true);
 			} else {
-				// setSubmitRsvpDecline(false);
-				// updateDatabase();
+				setSubmitRsvpDecline(false);
+				updateDatabase();
 				progressFlow(rsvp);
-				// window.scrollTo(0, 0);
-				console.log(childCare, 'child care in submit');
+				window.scrollTo(0, 0);
 			}
 		}
 	}
@@ -283,7 +282,6 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 								)}
 							</div>
 						)}
-
 						<ButtonContainer>
 							<ButtonSecondary onClick={() => regressFlow()} text='Back' />
 							<SubmitButton type='submit'>Continue</SubmitButton>

@@ -141,11 +141,9 @@ const ContentGroup = styled.div`
 
 export default function Popup({
 	open,
-	setOpen,
 	activeCard,
 	setSelectedCabin,
 	setActiveModal,
-	noCabinSelected,
 	selectedCabin,
 	setHideCabins,
 	id,
@@ -153,7 +151,7 @@ export default function Popup({
 	const {
 		name,
 		image_url,
-		lodging_type,
+		// lodging_type,
 		spots_remaining,
 		description,
 		occupants,

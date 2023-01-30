@@ -73,7 +73,7 @@ export default function ChildSection({
 
 			<FormControl
 				sx={{ m: 1, maxWidth: 320, margin: 0 }}
-				error={childCareError}
+				error={childCare === '' && childCareError}
 				required
 			>
 				<InputLabel id='child-care-label'>Please select an option</InputLabel>

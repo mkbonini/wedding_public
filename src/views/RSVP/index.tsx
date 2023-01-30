@@ -1,25 +1,16 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { RsvpContainer, SignUpForm } from './styled-components';
 import StartPage from './View/StartPage';
-
 import ContactInfoPage from './View/ContactInfo/index';
 import CabinPage from './View/CabinPage/index';
 import ConfirmPage from './View/ConfirmPage';
-import { getLodgings, steps } from './Model';
+import { steps } from './Model';
 import AdditionalPage from './View/AdditionalPage/index';
 
 export default function RSVP() {
 	const [currentStep, setCurrentStep] = useState(steps.start);
-	const [cabinList, setCabinList] = useState([]);
-
-	useEffect(() => {
-		(async () => {
-			let lodgingResult = await getLodgings();
-			setCabinList(lodgingResult);
-		})();
-	}, []);
 
 	function progressFlow(rsvp) {
 		switch (currentStep) {
@@ -77,11 +68,7 @@ export default function RSVP() {
 
 			case steps.cabin:
 				return (
-					<CabinPage
-						regressFlow={regressFlow}
-						progressFlow={progressFlow}
-						cabinList={cabinList}
-					/>
+					<CabinPage regressFlow={regressFlow} progressFlow={progressFlow} />
 				);
 
 			case steps.additional:

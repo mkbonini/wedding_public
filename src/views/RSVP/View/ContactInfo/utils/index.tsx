@@ -25,12 +25,18 @@ export const plusOneFormValue = () => {
 	};
 };
 
+const kidsErrors = (childlist) =>
+	childlist.some(
+		(kid) => kid.name === '' || kid.age === '' || kid.needs_bed === ''
+	);
+
 function validateEmail(email) {
 	var re = /\S+@\S+\.\S+/;
 	return re.test(email);
 }
 
 export function checkForErrors({
+	childList,
 	children,
 	childCare,
 	setChildCareError,
@@ -42,12 +48,12 @@ export function checkForErrors({
 	plusOneName,
 	setPlusOneError,
 }) {
-	if (children && childCare === '') {
+	if ((children && childCare === '') || (children && kidsErrors(childList))) {
 		setChildCareError(true);
 	} else {
 		setChildCareError(false);
 	}
-	if (rsvp === '') {
+	if (rsvp === '' || rsvp === null) {
 		setRsvpError(true);
 	} else {
 		setRsvpError(false);
@@ -65,7 +71,9 @@ export function checkForErrors({
 
 	if (
 		(children && childCare === '') ||
+		(children && kidsErrors(childList)) ||
 		rsvp === '' ||
+		rsvp === null ||
 		(plusOneToggle && plusOneName === '') ||
 		!validateEmail(email)
 	) {

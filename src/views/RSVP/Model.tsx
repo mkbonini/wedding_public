@@ -30,7 +30,6 @@ export async function getGuests() {
 		}
 
 		const result = await response.json();
-		console.log('guests:', result);
 		return result;
 	} catch (err) {
 		console.log(err);
@@ -84,7 +83,34 @@ export async function getLodgings() {
 		}
 
 		const result = await response.json();
-		console.log('lodging', result);
+		console.log(result);
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+}
+export async function getSelectedLodge(id) {
+	try {
+		const response = await fetch(
+			`https://mm-wedding-backend.herokuapp.com/lodgings/${id}`,
+			{
+				method: 'GET',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					accept: 'application/json',
+					X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+				},
+			}
+		);
+
+		if (!response.ok) {
+			throw new Error(`Error! status: ${response.status}`);
+		}
+
+		const result = await response.json();
+		console.log(result);
 		return result;
 	} catch (err) {
 		console.log(err);
