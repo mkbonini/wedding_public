@@ -50,28 +50,23 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 	}, []);
 
 	const setCurrentState = (current) => {
-		// let kidsPlayingDodgeball = current?.kids.some((kid) => kid.team_id === 1);
-		// let plusOnePlayingDodgeball = current?.plus_ones[0]?.team_id === 1;
-		// let guestPlayingDodgeball = current?.team_id === 1;
-
-		// let dodgeballParticipants =
-		// 	kidsPlayingDodgeball || plusOnePlayingDodgeball || guestPlayingDodgeball;
-
 		let kidsPlayingDodgeball = current?.kids.filter((kid) => kid.team_id === 1);
-		let plusOnePlayingDodgeball = current?.plus_ones.filter(
-			(plusOne) => plusOne.team_id === 1
-		);
+
+		let plusOnePlayingDodgeball =
+			current?.plus_ones[0].team_id === 1 && current?.plus_ones[0].name;
+
 		let guestPlayingDodgeball =
 			current?.team_id === 1 ? current?.full_name : '';
-		// console.log([
-		// 	...kidsPlayingDodgeball,
-		// 	...plusOnePlayingDodgeball,
-		// 	guestPlayingDodgeball,
-		// ]);
+
+		setDodgeballParticipants([
+			...kidsPlayingDodgeball,
+			plusOnePlayingDodgeball,
+			guestPlayingDodgeball,
+		]);
 
 		setArrivalDate(current.arrival_date);
 		setBreakfast(current.breakfast);
-		// setDodgeball(dodgeballParticipants);
+		setDodgeball(dodgeballParticipants);
 	};
 
 	const handleArrivalChange = (event: SelectChangeEvent) => {
@@ -104,7 +99,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 			if (dodgeballParticipants) {
 				updateDodgeball({ name: dodgeballParticipants });
 			}
-			progressFlow();
+			// progressFlow();
 			window.scrollTo(0, 0);
 		}
 	};
@@ -143,6 +138,8 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 			setDodgeballParticipants([...dodgeballParticipants, e.target.name]);
 		}
 	};
+
+	console.log(dodgeballParticipants, 'dodgeball participants');
 
 	return (
 		<>
@@ -220,7 +217,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 										labelId='day-label'
 										label='Select a day'
 										onChange={handleArrivalChange}
-										defaultValue={guest.arrival_date ?? ''}
+										defaultValue={guest?.arrival_date ?? ''}
 									>
 										<MenuItem value={'friday'}>Friday</MenuItem>
 										<MenuItem value={'saturday'}>Saturday</MenuItem>
@@ -258,6 +255,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 										return (
 											<CheckboxContainer key={`checkbox-${index}`}>
 												<Checkbox
+													checked={dodgeballParticipants.includes(guest)}
 													onChange={handleCheckmarks}
 													inputProps={{ name: guest }}
 												/>

@@ -29,11 +29,10 @@ import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Button from '../../../../components/Button';
 import Popup from '../../../../components/Popup';
 import { updateGuest, getSelectedGuest } from '../../Model';
-import { off } from 'process';
 import Loading from '../../../../components/Loading';
 
 export default function CabinPage({ regressFlow, progressFlow }) {
-	const { guest, cabinList } = useContext<any>(GuestContext);
+	const { setGuest, guest, cabinList } = useContext<any>(GuestContext);
 	const [loaded, setLoaded] = useState(false);
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState<any>(null);
@@ -49,6 +48,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		let controller = new AbortController();
 		(async () => {
 			let current = await getSelectedGuest(guest.id);
+			setGuest(current);
 			setCurrentState(current);
 			setLoaded(true);
 		})();

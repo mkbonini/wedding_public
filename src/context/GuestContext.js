@@ -28,6 +28,7 @@ export const GuestProvider = (props) => {
 	};
 	const [cabinList, setCabinList] = useState([]);
 	const [guest, setGuest] = useState(emptyGuest);
+	const [selectedCabin, setSelectedCabin] = useState(null);
 	const [childList, setChildList] = useState([
 		{
 			name: '',
@@ -45,6 +46,8 @@ export const GuestProvider = (props) => {
 				setChildList,
 				cabinList,
 				setCabinList,
+				selectedCabin,
+				setSelectedCabin,
 			}}
 		>
 			{props.children}
