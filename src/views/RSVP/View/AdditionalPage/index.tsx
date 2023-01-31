@@ -69,9 +69,9 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 		// 	guestPlayingDodgeball,
 		// ]);
 
+		setArrivalDate(current.arrival_date);
 		setBreakfast(current.breakfast);
 		// setDodgeball(dodgeballParticipants);
-		setArrivalDate(current.arrival_date);
 	};
 
 	const handleArrivalChange = (event: SelectChangeEvent) => {
@@ -94,15 +94,15 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 		e.preventDefault();
 		let error = checkForErrors();
 		if (!error) {
-			// let formValues = getFormValues();
-			// updateGuest(guest.id, {
-			// 	...formValues,
-			// 	arrival_date: arrivalDate,
-			// 	breakfast: breakfast,
-			// });
+			let formValues = getFormValues();
+			updateGuest(guest.id, {
+				...formValues,
+				arrival_date: arrivalDate,
+				breakfast: breakfast,
+			});
 
 			if (dodgeballParticipants) {
-				// updateDodgeball({ name: dodgeballParticipants });
+				updateDodgeball({ name: dodgeballParticipants });
 			}
 			progressFlow();
 			window.scrollTo(0, 0);

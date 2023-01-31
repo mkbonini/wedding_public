@@ -28,12 +28,12 @@ import Card from '../../../../components/Card';
 import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Button from '../../../../components/Button';
 import Popup from '../../../../components/Popup';
-import { updateGuest, getSelectedGuest, getLodgings } from '../../Model';
+import { updateGuest, getSelectedGuest } from '../../Model';
 import { off } from 'process';
 import Loading from '../../../../components/Loading';
 
 export default function CabinPage({ regressFlow, progressFlow }) {
-	const { guest, cabinList, setCabinList } = useContext<any>(GuestContext);
+	const { guest, cabinList } = useContext<any>(GuestContext);
 	const [loaded, setLoaded] = useState(false);
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState<any>(null);
@@ -48,9 +48,6 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 	useEffect(() => {
 		let controller = new AbortController();
 		(async () => {
-			let currentCabinList = await getLodgings();
-			setCabinList(currentCabinList);
-
 			let current = await getSelectedGuest(guest.id);
 			setCurrentState(current);
 			setLoaded(true);
@@ -58,17 +55,16 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		return () => controller?.abort();
 	}, []);
 
-	function setCurrentState(current) {
+	function setCurrentState(guestResult) {
 		let cabin = cabinList.find(
-			(cabin) => cabin?.id === current?.lodging_id && cabin?.id
+			(cabin) => cabin?.id === guestResult?.lodging_id
 		);
-		if (cabin) {
+		if (cabin && cabin.id !== 24) {
 			setHideCabins(true);
 			setAcceptLodging(true);
 			setSelectedCabin(cabin);
 			setActiveCard(cabin);
-		}
-		if (cabin?.id === 24) {
+		} else {
 			setAcceptLodging(false);
 			setSelectedCabin(cabin);
 		}
@@ -161,7 +157,11 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 											<h1>{selectedCabin?.name}</h1>
 											<p className='selected-p'>{selectedCabin?.description}</p>
 											<LinkContainer>
-												<ViewMoreLink onClick={() => setActiveModal(true)}>
+												<ViewMoreLink
+													onClick={() => {
+														setActiveModal(true);
+													}}
+												>
 													View Details <FaArrowRight />
 												</ViewMoreLink>
 												<DeselectButton
