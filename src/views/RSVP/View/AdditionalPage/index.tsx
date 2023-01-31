@@ -50,7 +50,8 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 	}, []);
 
 	const setCurrentState = (current) => {
-		let kidsPlayingDodgeball = current?.kids.filter((kid) => kid.team_id === 1);
+		let kids = current?.kids.filter((kid) => kid.team_id === 1);
+		let kidsPlayingDodgeball = kids.map((kid) => kid.name);
 
 		let plusOnePlayingDodgeball =
 			current?.plus_ones[0].team_id === 1 && current?.plus_ones[0].name;
@@ -99,7 +100,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 			if (dodgeballParticipants) {
 				updateDodgeball({ name: dodgeballParticipants });
 			}
-			// progressFlow();
+			progressFlow();
 			window.scrollTo(0, 0);
 		}
 	};
@@ -138,8 +139,6 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 			setDodgeballParticipants([...dodgeballParticipants, e.target.name]);
 		}
 	};
-
-	console.log(dodgeballParticipants, 'dodgeball participants');
 
 	return (
 		<>
