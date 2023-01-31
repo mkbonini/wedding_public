@@ -25,7 +25,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 export default function Lodging() {
 	return (
 		<LodgingPage>
-			<Breadcrumbs page='lodging' />
+			<Breadcrumbs page='lodging' id='lodging' />
 			<LodgingContainer>
 				<SubTitle>Onsite Cabins</SubTitle>
 				<Section>

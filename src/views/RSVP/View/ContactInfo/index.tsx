@@ -1,12 +1,13 @@
 /** @format */
-
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { GuestContext } from '../../../../context/GuestContext';
 import {
 	createPlusOne,
 	deletePlusOne,
 	updateGuest,
 	updatePlusOne,
-	createKids,
+	setKids,
+	getSelectedGuest,
 } from '../../Model';
 import Confirmation from '../../../../components/Confirmation';
 import Toggle from '../../../../components/Toggle';
@@ -29,112 +30,118 @@ import {
 	SubmitButton,
 } from './styled-components';
 import ButtonSecondary from '../../../../components/ButtonSecondary';
+import Loading from '../../../../components/Loading';
 import ChildSection from './ChildSection';
 import MainDetailsSection from './MainDetailsSection';
 
-export default function ContactInfo({
-	regressFlow,
-	progressFlow,
-	internalGuest,
-	setInternalGuest,
-}) {
-	const [rsvp, setRsvp] = useState(internalGuest?.rsvp ?? '');
-	const [plusOneName, setPlusOneName] = useState(
-		internalGuest?.plus_ones[0]?.name ?? ''
-	);
-	const [plusOneToggle, setPlusOneToggle] = useState(
-		internalGuest?.plus_ones[0] ? true : false
-	);
-	const [children, setChildren] = useState(
-		internalGuest?.kids?.length > 0 ? true : false
-	);
+export default function ContactInfo({ regressFlow, progressFlow }) {
+	const { guest, setGuest } = useContext<any>(GuestContext);
+	const [loaded, setLoaded] = useState(false);
 
+	const [rsvp, setRsvp] = useState('');
+	const [plusOneName, setPlusOneName] = useState('');
+	const [plusOneToggle, setPlusOneToggle] = useState(false);
+	const [children, setChildren] = useState(false);
 	const [submitRsvpDecline, setSubmitRsvpDecline] = useState(false);
+	const [email, setEmail] = useState('');
+	const [childCare, setChildCare] = useState('');
+	const [childList, setChildList] = useState([
+		{
+			name: '',
+			age: '',
+			needs_bed: '',
+		},
+	]);
 
-	const [firstName, setFirstName] = useState(internalGuest?.first_name ?? '');
-	const [lastName, setLastName] = useState(internalGuest?.last_name ?? '');
-	const [email, setEmail] = useState(internalGuest?.email ?? '');
-
-	const [firstNameError, setFirstNameError] = useState(false);
-	const [lastNameError, setLastNameError] = useState(false);
 	const [emailError, setEmailError] = useState(false);
 	const [rsvpError, setRsvpError] = useState(false);
 	const [plusOneError, setPlusOneError] = useState(false);
 	const [childCareError, setChildCareError] = useState(false);
 
-	const [childCare, setChildCare] = useState(
-		internalGuest?.kids[0]?.child_care ?? ''
-	);
-	const [childList, setChildList] = useState(
-		internalGuest?.kids?.length > 0
-			? internalGuest?.kids
-			: [
-					{
-						name: '',
-						age: '',
-						needs_bed: '',
-						guest_id: internalGuest.id,
-						child_care: childCare,
-						team_id: 0,
-					},
-			  ]
-	);
+	const [displayConfirmation, setDisplayConfirmation] = useState(false);
+
+	useEffect(() => {
+		let controller = new AbortController();
+		(async () => {
+			let current = await getSelectedGuest(guest.id);
+			setGuest(current);
+			setCurrentState(current);
+			setLoaded(true);
+		})();
+		return () => controller?.abort();
+	}, []);
+
+	function setCurrentState(current) {
+		if (rsvp === 'no') {
+			return;
+		} else {
+			setPlusOneToggle(current?.plus_ones?.length > 0);
+			setPlusOneName(current?.plus_ones[0]?.name);
+			setRsvp(current?.rsvp);
+			setEmail(current?.email);
+			if (current.rsvp === 'no') {
+				setSubmitRsvpDecline(true);
+			}
+			if (current.kids.length !== 0) {
+				let careType = current?.kids[0].child_care;
+				setChildList(current?.kids);
+				setChildren(current?.kids?.length > 0);
+				if (
+					careType === 'guardian' ||
+					careType === 'sitter' ||
+					careType === 'na'
+				) {
+					setChildCare(current?.kids[0].child_care);
+				}
+			}
+		}
+	}
 
 	const handleRsvpChange = (event) => {
 		setRsvp(event.target.value);
 	};
 
 	const handlePlusOne = () => {
-		let hasPlusOne = internalGuest?.plus_ones.length === 1;
-		let noPlusOne = internalGuest?.plus_ones?.length === 0;
-		let plusOneId = internalGuest?.plus_ones[0]?.id;
+		if (guest.plus_ones) {
+			let plusOneRegistered = guest?.plus_ones?.length === 1;
+			let plusOneOpen = guest?.plus_ones?.length === 0;
+			let plusOneId = guest?.plus_ones[0]?.id;
 
-		if (rsvp === null || rsvp === 'no') {
-			progressFlow(rsvp);
-			setPlusOneToggle(false);
-		} else if (noPlusOne && plusOneToggle) {
-			createPlusOne({ name: plusOneName, guest_id: internalGuest.id });
-		} else if (hasPlusOne && plusOneToggle) {
-			updatePlusOne(plusOneId, { name: plusOneName });
-		} else if (hasPlusOne && !plusOneToggle) {
-			deletePlusOne(plusOneId);
+			if (rsvp === null || rsvp === 'no') {
+				setPlusOneToggle(false);
+			} else if (plusOneOpen && plusOneToggle) {
+				createPlusOne({ name: plusOneName, guest_id: guest.id });
+			} else if (plusOneRegistered && plusOneToggle) {
+				updatePlusOne(plusOneId, { name: plusOneName });
+			} else if (plusOneRegistered && !plusOneToggle) {
+				deletePlusOne(plusOneId);
+			} else {
+				return;
+			}
 		} else {
 			return;
 		}
 	};
 
-	function updateInternalData() {
-		let data = {
-			first_name: firstName,
-			last_name: lastName,
+	function handleRsvpNo() {
+		updateGuest(guest.id, {
 			email: email,
-			rsvp: rsvp,
-			kids: children ? childList : [],
-			plus_ones: plusOneName
-				? [
-						{
-							id: null,
-							name: plusOneName,
-							lodging_id: null,
-							team_id: null,
-						},
-				  ]
-				: [],
-		};
-		setInternalGuest({ ...internalGuest, ...data });
+			rsvp: 'no',
+		});
+		progressFlow(rsvp);
 	}
 
 	function updateDatabase() {
-		updateGuest(internalGuest.id, {
-			first_name: firstName,
-			last_name: lastName,
+		updateGuest(guest.id, {
 			email: email,
 			rsvp: rsvp,
 		});
-		if (childList.length > 0 && childList[0].name !== '') {
-			createKids(childList);
+		if (!children) {
+			setKids(guest.id, { child_care: null, kids: [] });
+		} else {
+			setKids(guest.id, { child_care: childCare, kids: childList });
 		}
-		if (internalGuest.plus_one_count !== 0) {
+		if (guest.plus_one_count !== 0) {
 			handlePlusOne();
 		}
 	}
@@ -142,146 +149,148 @@ export default function ContactInfo({
 	function handleContinue(e) {
 		e.preventDefault();
 		let error = checkForErrors({
+			childList,
 			children,
 			childCare,
 			setChildCareError,
 			setRsvpError,
-			setFirstNameError,
-			setLastNameError,
 			rsvp,
-			firstName,
-			lastName,
 			email,
 			setEmailError,
 			plusOneToggle,
 			plusOneName,
 			setPlusOneError,
 		});
-
 		if (!error) {
 			if (rsvp === 'no') {
-				setSubmitRsvpDecline(true);
+				setDisplayConfirmation(true);
 			} else {
 				setSubmitRsvpDecline(false);
-				updateInternalData();
 				updateDatabase();
 				progressFlow(rsvp);
 				window.scrollTo(0, 0);
 			}
 		}
 	}
-
 	return (
-		<ContactInfoSection>
-			{submitRsvpDecline && (
-				<Confirmation
-					submitRsvpDecline={submitRsvpDecline}
-					setSubmitRsvpDecline={setSubmitRsvpDecline}
-					rsvp={rsvp}
-					progressFlow={progressFlow}
-				/>
-			)}
-			<div className='heading'>
-				Hello {internalGuest?.first_name || 'No User'}, <br /> we found your
-				reservation!
-			</div>
-			<p className='main-sub-heading'> Please update the information below</p>
-			<RsvpContainer>
-				<div className='sub-heading'>Will you be attending the wedding?</div>
-				<FormControl
-					sx={{ m: 1, maxWidth: 200, margin: 0, width: '100%' }}
-					error={rsvpError}
-					required
-				>
-					<InputLabel id='rsvp-label'>Please select</InputLabel>
-					<Select
-						labelId='rsvp-label'
-						label='Please Select'
-						onChange={handleRsvpChange}
-						defaultValue={internalGuest?.rsvp ?? ''}
-						required
-					>
-						<MenuItem value={'yes'}>Yes</MenuItem>
-						<MenuItem value={'no'}>No</MenuItem>
-					</Select>
-					{rsvpError && (
-						<FormHelperText>Please select an option</FormHelperText>
+		<>
+			{loaded ? (
+				<ContactInfoSection>
+					{displayConfirmation && (
+						<Confirmation
+							handleExit={() => setDisplayConfirmation(false)}
+							handleContinue={() => handleRsvpNo()}
+							content={`You selected "No" on your RSVP. Is this correct?`}
+						/>
 					)}
-				</FormControl>
-			</RsvpContainer>
-			<Form noValidate autoComplete='off' onSubmit={(e) => handleContinue(e)}>
-				<MainDetailsSection
-					internalGuest={internalGuest}
-					setLastName={setLastName}
-					setFirstName={setFirstName}
-					setEmail={setEmail}
-					firstNameError={firstNameError}
-					lastNameError={lastNameError}
-					emailError={emailError}
-				/>
-				{rsvp === 'yes' && (
-					<div>
-						{internalGuest.plus_one_count !== 0 && (
-							<ToggleContainer>
-								<div>
-									<div className='sub-heading'>
-										Your rsvp includes a plus one. Will you be bringing
-										somebody?
-									</div>
-								</div>
-								<Toggle
-									toggleActive={plusOneToggle}
-									onChange={() => setPlusOneToggle(!plusOneToggle)}
-								/>
-							</ToggleContainer>
-						)}
-						{plusOneToggle && (
-							<ContactFeild className='plus-one-field'>
-								<p>If yes, please enter their name below</p>
-								<InputContainer className='no-gap'>
-									<TextField
-										sx={{ width: 300 }}
-										id='plus-one-input'
-										label='Full Name'
-										required={false}
-										type='text'
-										defaultValue={internalGuest?.plus_ones[0]?.name}
-										onChange={(e) => setPlusOneName(e.target.value)}
-										error={plusOneError}
-										helperText={plusOneError && 'Name is required'}
-									/>
-								</InputContainer>
-							</ContactFeild>
-						)}
-
-						<ToggleContainer>
-							<div className='sub-heading'>
-								Do you have any children in your party?
-							</div>
-
-							<Toggle
-								toggleActive={children}
-								onChange={() => setChildren(!children)}
-							/>
-						</ToggleContainer>
-						{children && (
-							<ChildSection
-								internalGuest={internalGuest}
-								childList={childList}
-								setChildList={setChildList}
-								childCare={childCare}
-								setChildCare={setChildCare}
-								childCareError={childCareError}
-							/>
-						)}
+					<div className='heading'>
+						Hello {guest?.first_name || 'No User'}, <br /> we found your
+						reservation!
 					</div>
-				)}
+					<p className='main-sub-heading'>
+						{' '}
+						Please update the information below
+					</p>
+					<RsvpContainer>
+						<div className='sub-heading'>
+							Will you be attending the wedding?
+						</div>
+						<FormControl
+							sx={{ m: 1, maxWidth: 200, margin: 0, width: '100%' }}
+							error={rsvpError}
+							required
+						>
+							<InputLabel id='rsvp-label'>Please select</InputLabel>
+							<Select
+								labelId='rsvp-label'
+								label='Please Select'
+								onChange={handleRsvpChange}
+								defaultValue={guest?.rsvp ?? ''}
+								required
+							>
+								<MenuItem value={'yes'}>Yes</MenuItem>
+								<MenuItem value={'no'}>No</MenuItem>
+							</Select>
+							{rsvpError && (
+								<FormHelperText>Please select an option</FormHelperText>
+							)}
+						</FormControl>
+					</RsvpContainer>
+					<Form
+						noValidate
+						autoComplete='off'
+						onSubmit={(e) => handleContinue(e)}
+					>
+						<MainDetailsSection
+							guest={guest}
+							setEmail={setEmail}
+							emailError={emailError}
+						/>
+						{rsvp === 'yes' && (
+							<div>
+								{guest.plus_one_count !== 0 && (
+									<ToggleContainer>
+										<div>
+											<div className='sub-heading'>
+												Your rsvp includes a plus one. Will you be bringing
+												somebody?
+											</div>
+										</div>
+										<Toggle
+											toggleActive={plusOneToggle}
+											onChange={() => setPlusOneToggle(!plusOneToggle)}
+										/>
+									</ToggleContainer>
+								)}
+								{plusOneToggle && (
+									<ContactFeild className='plus-one-field'>
+										<p>If yes, please enter their name below</p>
+										<InputContainer className='no-gap'>
+											<TextField
+												sx={{ width: 300 }}
+												id='plus-one-input'
+												label='Full Name'
+												required={false}
+												type='text'
+												defaultValue={guest?.plus_ones[0]?.name}
+												onChange={(e) => setPlusOneName(e.target.value)}
+												error={plusOneError}
+												helperText={plusOneError && 'Name is required'}
+											/>
+										</InputContainer>
+									</ContactFeild>
+								)}
 
-				<ButtonContainer>
-					<ButtonSecondary onClick={() => regressFlow()} text='Back' />
-					<SubmitButton type='submit'>Continue</SubmitButton>
-				</ButtonContainer>
-			</Form>
-		</ContactInfoSection>
+								<ToggleContainer>
+									<div className='sub-heading'>
+										Do you have any children in your party?
+									</div>
+
+									<Toggle
+										toggleActive={children}
+										onChange={() => setChildren(!children)}
+									/>
+								</ToggleContainer>
+								{children && (
+									<ChildSection
+										childList={childList}
+										setChildList={setChildList}
+										childCare={childCare}
+										setChildCare={setChildCare}
+										childCareError={childCareError}
+									/>
+								)}
+							</div>
+						)}
+						<ButtonContainer>
+							<ButtonSecondary onClick={() => regressFlow()} text='Back' />
+							<SubmitButton type='submit'>Continue</SubmitButton>
+						</ButtonContainer>
+					</Form>
+				</ContactInfoSection>
+			) : (
+				<Loading />
+			)}
+		</>
 	);
 }

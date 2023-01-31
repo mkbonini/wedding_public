@@ -1,11 +1,61 @@
 /** @format */
 import styled from 'styled-components';
 
-export const CabinListContainer = styled.div`
-	height: 700px;
-	overflow: scroll;
-	margin-bottom: 5rem;
+export const ArrowContainer = styled.div`
+	font-size: 20px;
+	font-weight: 900;
+	padding: 5px 0px 0px 5px;
+	transform: rotate(0deg);
+	transition: transform 0.2s linear;
+	svg {
+		color: #fff;
+	}
+	&.arrow-up {
+		transform: rotate(180deg);
+		transition: transform 0.1s linear;
+	}
+`;
+
+export const ViewMoreButton = styled.div<{ visible: boolean }>`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: ${(p) => (!p.visible ? '1%' : '5%')};
+	left: 43%;
+	background-color: #242424;
+	color: white;
+	opacity: 1;
+	padding-left: 15px;
+	border-radius: 40px;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+	font-size: 14px;
+	padding: 10px 30px;
+	:hover {
+		cursor: pointer;
+		box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.65);
+	}
 	@media only screen and (max-width: 900px) {
+		display: none;
+	}
+`;
+export const CabinListContainer = styled.div`
+	position: relative;
+	height: 385px;
+	overflow: hidden;
+	margin-top: 0rem;
+	transition: height 0.2s ease;
+	&.open {
+		height: 1900px;
+		padding-bottom: 10rem;
+		@media only screen and (max-width: 900px) {
+			height: 550px;
+			padding-bottom: 0rem;
+		}
+	}
+
+	@media only screen and (max-width: 900px) {
+		overflow: scroll;
 		height: 500px;
 		margin-bottom: 0px;
 		max-width: 350px;
@@ -16,8 +66,12 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 3rem 0rem;
-	gap: 20px;
+	margin: 6rem 0rem 5rem 0rem;
+	gap: 30px;
+	@media only screen and (max-width: 900px) {
+		flex-direction: column;
+		margin: 3rem 0rem 5rem 0rem;
+	}
 `;
 
 export const ToggleContainer = styled.div`
@@ -70,13 +124,17 @@ export const CabinInfoSection = styled.div`
 			padding-right: 8rem;
 		}
 	}
+	.line-divider {
+		border-bottom: 1px solid whitesmoke;
+		padding-bottom: 1rem;
+	}
 `;
 
 export const CabinCardsContainer = styled.div`
 	max-width: 1400px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 	@media only screen and (max-width: 600px) {
 		display: flex;
 		flex-wrap: nowrap;
@@ -88,7 +146,7 @@ export const SelectedCabinContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	border-radius: 4px;
-	box-shadow: 2px 2px 10px 3px rgba(0, 0, 1, 0.09);
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.07);
 	margin-top: 2rem;
 	.selected-p {
 		display: none;

@@ -4,14 +4,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { FaArrowRight } from 'react-icons/fa';
 
-const CardStyles = styled.div`
+const CardStyles = styled.div<{ disable: boolean }>`
+	opacity: ${(p) => (p.disable ? '0.4' : '1')};
+	pointer-events: ${(p) => p.disable && 'none'};
 	max-width: 320px;
 	padding: 1rem;
 	margin: 1rem 0rem;
 	width: 100%;
 	border-radius: 4px;
 	border-bottom: 1px solid whitesmoke;
-
 	img {
 		width: 100%;
 	}
@@ -78,11 +79,18 @@ const ViewMoreLink = styled.div`
 	}
 `;
 
-export default function Card({ image, name, type, remaining, onClick }) {
+export default function Card({
+	image,
+	name,
+	type,
+	remaining,
+	onClick,
+	disable = false,
+}) {
 	const dummyImage =
 		'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
 	return (
-		<CardStyles onClick={() => onClick()}>
+		<CardStyles onClick={() => onClick()} disable={disable}>
 			<div>
 				<ImageContainer>
 					<TypeLabel>{type}</TypeLabel>

@@ -24,9 +24,10 @@ const FullWidth = styled(Button)<ButtonProps>(({ theme }) => ({
 	},
 }));
 
-export default function ButtonFullWidth({ text, onClick }) {
+export default function ButtonFullWidth({ text, onClick, disabled = false }) {
 	return (
 		<FullWidth
+			disabled={disabled}
 			variant='contained'
 			onClick={() => {
 				window.scrollTo(0, 0);

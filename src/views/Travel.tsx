@@ -77,7 +77,7 @@ const LinkContainer = styled.div`
 export default function Travel() {
 	return (
 		<TravelPage>
-			<Breadcrumbs page='travel' />
+			<Breadcrumbs page='travel' id='travel' />
 			<TravelContainer>
 				<SubTitle>Nearest Airport</SubTitle>
 				<SecondarySubTitle>Denver International Airport</SecondarySubTitle>

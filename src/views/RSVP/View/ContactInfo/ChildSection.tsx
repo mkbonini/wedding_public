@@ -20,7 +20,6 @@ export default function ChildSection({
 	setChildList,
 	childCare,
 	setChildCare,
-	currentGuest,
 	childCareError,
 }) {
 	let addChildFormField = (e) => {
@@ -31,9 +30,6 @@ export default function ChildSection({
 					name: '',
 					age: '',
 					needs_bed: '',
-					guest_id: currentGuest.id,
-					child_care: childCare,
-					team_id: 0,
 				},
 			]);
 		}
@@ -49,7 +45,6 @@ export default function ChildSection({
 	let handleChildInputChange = (i, e) => {
 		let newChildList = [...childList];
 		newChildList[i][e.target.name] = e.target.value;
-		newChildList[i].child_care = childCare;
 		setChildList(newChildList);
 	};
 
@@ -78,7 +73,7 @@ export default function ChildSection({
 
 			<FormControl
 				sx={{ m: 1, maxWidth: 320, margin: 0 }}
-				error={childCareError}
+				error={childCare === '' && childCareError}
 				required
 			>
 				<InputLabel id='child-care-label'>Please select an option</InputLabel>

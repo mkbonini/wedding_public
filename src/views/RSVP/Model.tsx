@@ -1,25 +1,5 @@
 /** @format */
 
-interface Guest {
-	age: number;
-	arrival_date: string;
-	comments: string;
-	created_at: string;
-	diet: string;
-	email: string;
-	first_name: string;
-	id: number;
-	last_name: string;
-	lodging_id: number;
-	meals: string;
-	payment_method: number;
-	plus_ones: number;
-	rsvp: string;
-	team_id: number;
-	updated_at: string;
-	host_id: number;
-}
-
 export const steps = {
 	start: 'START',
 	verify: 'VERIFY',
@@ -28,27 +8,6 @@ export const steps = {
 	confirm: 'CONFIRM',
 	additional: 'ADDITIONAL',
 };
-export function handleGuestDeselection(
-	setSelectedGuest: Function,
-	setSearchTerm: Function,
-	setGuestInputRecieved: Function,
-	setEmailInputRecieved: Function,
-	setChildInputRecieved: Function,
-	setNotesInputRecieved: Function,
-	setCode: Function,
-	setVarified: Function,
-	setError: Function
-) {
-	setSelectedGuest(null);
-	setSearchTerm('');
-	setGuestInputRecieved(false);
-	setEmailInputRecieved(false);
-	setChildInputRecieved(false);
-	setNotesInputRecieved(false);
-	setCode('');
-	setVarified(false);
-	setError(false);
-}
 
 export async function getGuests() {
 	try {
@@ -71,7 +30,6 @@ export async function getGuests() {
 		}
 
 		const result = await response.json();
-		console.log('guests:', result);
 		return result;
 	} catch (err) {
 		console.log(err);
@@ -125,20 +83,19 @@ export async function getLodgings() {
 		}
 
 		const result = await response.json();
-		console.log('lodging', result);
+		console.log(result);
 		return result;
 	} catch (err) {
 		console.log(err);
 	}
 }
-
-export async function updateGuest(id, body) {
+export async function getSelectedLodge(id) {
 	try {
 		const response = await fetch(
-			`https://mm-wedding-backend.herokuapp.com/guests/${id}`,
+			`https://mm-wedding-backend.herokuapp.com/lodgings/${id}`,
 			{
-				method: 'PATCH',
-				body: JSON.stringify(body),
+				method: 'GET',
+				mode: 'cors',
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
@@ -147,15 +104,30 @@ export async function updateGuest(id, body) {
 				},
 			}
 		);
+
 		if (!response.ok) {
 			throw new Error(`Error! status: ${response.status}`);
 		}
+
 		const result = await response.json();
-		console.log('updated guest', result);
+		console.log(result);
 		return result;
 	} catch (err) {
 		console.log(err);
 	}
+}
+
+export function updateGuest(id, body) {
+	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}`, {
+		method: 'PATCH',
+		body: JSON.stringify(body),
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			accept: 'application/json',
+			X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+		},
+	});
 }
 
 export async function createPlusOne(body) {
@@ -196,9 +168,9 @@ export async function deletePlusOne(plus_one_id) {
 	});
 }
 
-export async function createKids(body) {
-	fetch('https://mm-wedding-backend.herokuapp.com/kids', {
-		method: 'POST',
+export async function setKids(id, body) {
+	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}/kids`, {
+		method: 'PATCH',
 		body: JSON.stringify(body),
 		headers: {
 			'Content-Type': 'application/json',

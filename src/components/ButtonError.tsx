@@ -20,9 +20,13 @@ const Error = styled(Button)<ButtonProps>(({ theme }) => ({
 	},
 }));
 
-export default function ButtonError({ text, onClick }) {
+export default function ButtonError({ text, onClick, fullWidth = false }) {
 	return (
-		<Error variant='contained' onClick={() => onClick()}>
+		<Error
+			sx={{ width: fullWidth ? '100%' : 'unset', maxWidth: '500px' }}
+			variant='contained'
+			onClick={() => onClick()}
+		>
 			{text}
 		</Error>
 	);

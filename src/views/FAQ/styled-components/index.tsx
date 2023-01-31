@@ -40,7 +40,6 @@ export const ScrollContainer = styled.div`
 	justify-content: center;
 	width: 100%;
 	max-width: 1000px;
-	padding: 1rem;
 
 	@media only screen and (max-width: 900px) {
 		display: flex;
