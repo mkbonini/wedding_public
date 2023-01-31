@@ -1,35 +1,19 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import mike from '../assets/mike.jpg';
 import miwha from '../assets/miwha.jpg';
-
-const PageTitle = styled.div`
-	font-family: 'Circular-Book';
-	font-size: 22px;
-	align-self: center;
-	text-align: center;
-	min-width: 200px;
-	margin: 1rem 0rem 2rem -1rem;
-	padding: 25px;
-	box-shadow: 12px 12px 1px 0px #242424;
-	text-transform: uppercase;
-	border: 1px solid black;
-	@media only screen and (max-width: 900px) {
-		font-size: 18px;
-		text-align: center;
-	}
-`;
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const OurStoryPage = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding-top: 7rem;
-	@media only screen and (min-width: 900px) {
-		padding-top: 11rem;
+	padding: 12rem 1rem 1rem 1rem;
+	@media only screen and (max-width: 900px) {
+		padding-top: 8rem;
 	}
 `;
 
@@ -98,7 +82,6 @@ const ContentSection = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding-top: 1rem;
 `;
 
 const AboutSection = styled.div`
@@ -106,11 +89,11 @@ const AboutSection = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin: 1rem;
 	max-width: 1200px;
-	min-height: 700px;
-
+	min-height: 650px;
+	padding-bottom: 3rem;
 	@media only screen and (max-width: 1000px) {
+		margin: 3rem 0rem;
 		flex-direction: column;
 		&.accent {
 			flex-direction: column-reverse;
@@ -118,29 +101,31 @@ const AboutSection = styled.div`
 	}
 `;
 
-const Accent = styled.div`
-	height: 0.5rem;
-	width: 100px;
-	margin: 0;
-	&.miwha {
-		background-color: #c9e265;
-	}
-	&.mike {
-		background-color: #ff99ff;
-	}
-`;
+// const Accent = styled.div`
+// 	height: 0.2rem;
+// 	width: 50px;
+// 	margin: 0rem 1rem 0.5rem 1rem;
+// 	&.miwha {
+// 		background-color: #c9e265;
+// 	}
+// 	&.mike {
+// 		background-color: #ff99ff;
+// 	}
+// `;
 const Story = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: start;
 	h1 {
 		margin: 0;
-		height: 55px;
+		padding: 0rem 1rem 0rem 1rem;
+		font-size: 23px;
+		height: 31px;
 		font-family: 'Lazydog';
 	}
 	p {
 		max-width: 450px;
-		padding: 1rem;
+		padding: 0rem 1rem;
 	}
 	&.content-left {
 		margin-right: 6rem;
@@ -168,15 +153,14 @@ const Background = styled.div`
 export default function OurStory() {
 	return (
 		<OurStoryPage>
+			<Breadcrumbs page='our story' />
 			<ContentSection>
-				<PageTitle>Our Story</PageTitle>
 				<AboutSection>
 					<ImageContainer className='miwha'>
 						<img src={miwha} alt='' />
 					</ImageContainer>
 					<Story className='content-right'>
 						<h1>miwha's side</h1>
-						<Accent className='miwha' />
 						<p>
 							Mike and I met in the summer of 2013, when he did a road trip with
 							friends and stayed at my place along the way. We had many
@@ -206,7 +190,6 @@ export default function OurStory() {
 					<AboutSection className='accent'>
 						<Story className='content-left'>
 							<h1>michael's side</h1>
-							<Accent className='mike' />
 							<p>
 								I don’t know why but I was really excited to meet Miwha. The
 								first time we met I was on a road trip with Aaron and Elliot

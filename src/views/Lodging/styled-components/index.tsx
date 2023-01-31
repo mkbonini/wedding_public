@@ -2,22 +2,6 @@
 
 import styled, { keyframes } from 'styled-components';
 
-export const PageTitle = styled.div`
-	font-family: 'Circular-Book';
-	font-size: 22px;
-	align-self: center;
-	text-align: center;
-	min-width: 220px;
-	margin: 1rem 0rem 2rem -1rem;
-	padding: 25px;
-	box-shadow: 12px 12px 1px 0px #242424;
-	text-transform: uppercase;
-	border: 1px solid black;
-	@media only screen and (max-width: 900px) {
-		font-size: 18px;
-		text-align: center;
-	}
-`;
 export const SubTitle = styled.div`
 	font-family: 'Circular-Book';
 	font-size: 30px;
@@ -41,7 +25,7 @@ export const Section = styled.div`
 		padding-top: 4rem;
 	}
 	.section {
-		max-width: 1200px;
+		max-width: 1100px;
 	}
 	.bold {
 		font-family: 'Circular-Medium';
@@ -96,7 +80,7 @@ export const LodgingContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 0rem 1rem;
+	padding: 2rem 1rem;
 
 	#lodging-description {
 		width: 100%;
@@ -114,7 +98,7 @@ export const LodgingContainer = styled.div`
 
 export const LodgingPage = styled.div`
 	width: 100%;
-	max-width: 1000px;
+	max-width: 1100px;
 	padding: 12rem 0rem 2rem 0rem;
 	margin: auto;
 	@media only screen and (max-width: 900px) {

@@ -9,9 +9,9 @@ import {
 	ScrollButton,
 	Category,
 	ScrollToTopContainer,
-	PageTitle,
 	SubTitle,
 } from './styled-components';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 export default function FAQ() {
 	const scrollToSection = (key) => {
@@ -27,7 +27,10 @@ export default function FAQ() {
 
 	return (
 		<Container>
-			<PageTitle id='title'>FAQ</PageTitle>
+			<div style={{ padding: '1rem', alignSelf: 'flex-start' }}>
+				<Breadcrumbs page='faq' />
+			</div>
+
 			<ScrollContainer>
 				{Object.keys(Questions).map((key) => (
 					<ButtonContainer key={key}>

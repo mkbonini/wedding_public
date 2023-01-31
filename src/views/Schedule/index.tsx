@@ -1,10 +1,11 @@
 /** @format */
 
+import Breadcrumbs from '../../components/Breadcrumbs';
 import {
 	SchedulePage,
 	ContentContainer,
 	ScheduleSection,
-	PageTitle,
+	ImageContainer,
 	SubTitle,
 	SecondarySubTitle,
 	AdditionalSubTitle,
@@ -14,8 +15,11 @@ export default function Schedule() {
 	return (
 		<>
 			<SchedulePage>
-				<PageTitle>Schedule</PageTitle>
+				<Breadcrumbs page='schedule' />
 				<ContentContainer id='weekend' eyebrowColor='#FF99FF' align='start'>
+					<ImageContainer align='start'>
+						<img src='https://iili.io/H0hacdX.png' alt='' />
+					</ImageContainer>
 					<ScheduleSection align='start'>
 						<div className='eyebrow'>the weekend</div>
 						<SubTitle className='padding-bottom' align='start'>
@@ -53,9 +57,15 @@ export default function Schedule() {
 							before any evening games.
 						</p>
 					</ScheduleSection>
+					<ImageContainer align='end'>
+						<img src='https://iili.io/H0hxzMu.png' alt='' />
+					</ImageContainer>
 				</ContentContainer>
 				<MobileDivider />
 				<ContentContainer id='dodgeball' eyebrowColor='#C9E265' align='start'>
+					<ImageContainer align='start'>
+						<img src='https://iili.io/H0h1EaS.png' alt='' />
+					</ImageContainer>
 					<ScheduleSection align='start'>
 						<div className='eyebrow'>The Dodgeball Tournament</div>
 						<SubTitle align='start'>Friday July 21</SubTitle>
@@ -65,10 +75,6 @@ export default function Schedule() {
 							competition. But even more when there are costumes involved! Event
 							is aged 17+. You can opt in via your RSVP - participants will be
 							assigned a team, and teams will be assigned a theme! <br />
-							<br />
-							We’ll play in the indoor gym, where there is plenty of
-							space/activities (pool table, foosball ect) for spectators &
-							anybody who wants to hang out but not necessarily compete. <br />
 							<br />
 							And yes there will be a Purple Cobras team *clap* *clap* *hiss*
 						</p>
@@ -87,9 +93,15 @@ export default function Schedule() {
 							comfortable. So wear what you like!
 						</p>
 					</ScheduleSection>
+					<ImageContainer align='end'>
+						<img src='https://iili.io/H0hal7n.png' alt='' />
+					</ImageContainer>
 				</ContentContainer>
 				<MobileDivider />
 				<ContentContainer id='reception' eyebrowColor='#3366FF' align='start'>
+					<ImageContainer align='start'>
+						<img src='https://iili.io/H0ha0es.png' alt='' />
+					</ImageContainer>
 					<ScheduleSection align='start'>
 						<div className='eyebrow'>The Reception</div>
 						<SubTitle align='start'>Following the Ceremony</SubTitle>

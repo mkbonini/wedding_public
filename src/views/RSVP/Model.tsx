@@ -132,17 +132,30 @@ export async function getLodgings() {
 	}
 }
 
-export function updateGuest(id, body) {
-	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}`, {
-		method: 'PATCH',
-		body: JSON.stringify(body),
-		headers: {
-			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*',
-			accept: 'application/json',
-			X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
-		},
-	});
+export async function updateGuest(id, body) {
+	try {
+		const response = await fetch(
+			`https://mm-wedding-backend.herokuapp.com/guests/${id}`,
+			{
+				method: 'PATCH',
+				body: JSON.stringify(body),
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					accept: 'application/json',
+					X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+				},
+			}
+		);
+		if (!response.ok) {
+			throw new Error(`Error! status: ${response.status}`);
+		}
+		const result = await response.json();
+		console.log('updated guest', result);
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
 }
 
 export async function createPlusOne(body) {
