@@ -32,7 +32,8 @@ import { updateGuest, getSelectedGuest } from '../../Model';
 import Loading from '../../../../components/Loading';
 
 export default function CabinPage({ regressFlow, progressFlow }) {
-	const { setGuest, guest, cabinList } = useContext<any>(GuestContext);
+	const { setGuest, guest, cabinList, partyUpdated } =
+		useContext<any>(GuestContext);
 	const [loaded, setLoaded] = useState(false);
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState<any>(null);
@@ -95,10 +96,12 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 			updateGuest(guest?.id, { lodging_id: 24 });
 			progressFlow();
 			window.scrollTo(0, 0);
-		} else if (selectedCabin && acceptLodging) {
+		} else if (selectedCabin && acceptLodging && partyUpdated) {
 			updateGuest(guest?.id, { lodging_id: selectedCabin?.id });
 			progressFlow();
 			window.scrollTo(0, 0);
+		} else if (selectedCabin && acceptLodging && !partyUpdated) {
+			progressFlow();
 		} else {
 			updateGuest(guest?.id, { lodging_id: 24 });
 			progressFlow();
@@ -192,7 +195,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 								{cabinList && (
 									<CabinCardsContainer>
 										{cabinList.map((cabin, index) => {
-											if (cabin.lodging_type !== 'appartment') {
+											if (cabin.lodging_type !== 'apartment') {
 												return (
 													<Card
 														disable={hideCabins}

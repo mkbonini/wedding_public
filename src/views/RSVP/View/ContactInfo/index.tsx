@@ -1,5 +1,5 @@
 /** @format */
-import { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { GuestContext } from '../../../../context/GuestContext';
 import {
 	createPlusOne,
@@ -35,7 +35,7 @@ import ChildSection from './ChildSection';
 import MainDetailsSection from './MainDetailsSection';
 
 export default function ContactInfo({ regressFlow, progressFlow }) {
-	const { guest, setGuest } = useContext<any>(GuestContext);
+	const { guest, setGuest, setPartyUpdated } = useContext<any>(GuestContext);
 	const [loaded, setLoaded] = useState(false);
 
 	const [rsvp, setRsvp] = useState('');
@@ -238,7 +238,9 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 										</div>
 										<Toggle
 											toggleActive={plusOneToggle}
-											onChange={() => setPlusOneToggle(!plusOneToggle)}
+											onChange={() => {
+												setPlusOneToggle(!plusOneToggle);
+											}}
 										/>
 									</ToggleContainer>
 								)}
@@ -253,7 +255,10 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 												required={false}
 												type='text'
 												defaultValue={guest?.plus_ones[0]?.name}
-												onChange={(e) => setPlusOneName(e.target.value)}
+												onChange={(e) => {
+													setPlusOneName(e.target.value);
+													setPartyUpdated(true);
+												}}
 												error={plusOneError}
 												helperText={plusOneError && 'Name is required'}
 											/>

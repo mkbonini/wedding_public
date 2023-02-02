@@ -18,7 +18,7 @@ const Question = styled.div<{ active: boolean }>`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 20px;
+	font-size: 17px;
 	color: black;
 	font-family: 'Circular-Book';
 	svg {
