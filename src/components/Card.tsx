@@ -1,6 +1,4 @@
 /** @format */
-
-import * as React from 'react';
 import styled from 'styled-components';
 import { FaArrowRight } from 'react-icons/fa';
 

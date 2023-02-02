@@ -1,6 +1,5 @@
 /** @format */
-
-import Accordian from '../../components/Accordian';
+import { Accordian, Breadcrumbs } from '../../components/index';
 import { Questions } from './utils/Questions';
 import {
 	Container,
@@ -11,7 +10,6 @@ import {
 	ScrollToTopContainer,
 	SubTitle,
 } from './styled-components';
-import Breadcrumbs from '../../components/Breadcrumbs';
 
 export default function FAQ() {
 	const scrollToSection = (key) => {

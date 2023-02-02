@@ -1,10 +1,8 @@
 /** @format */
-
-import React from 'react';
 import styled from 'styled-components';
 import mike from '../assets/mike.jpg';
 import miwha from '../assets/miwha.jpg';
-import Breadcrumbs from '../components/Breadcrumbs';
+import { Breadcrumbs } from '../components/index';
 
 const OurStoryPage = styled.div`
 	display: flex;

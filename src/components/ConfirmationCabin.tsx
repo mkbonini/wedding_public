@@ -46,11 +46,8 @@ export default function Popup({ setState, state, text }) {
 	const handleExit = () => {
 		setState(false);
 	};
-
 	const theme = useTheme();
-
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
 	return (
 		<div>
 			<Dialog

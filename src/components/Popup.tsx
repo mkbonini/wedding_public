@@ -99,6 +99,7 @@ const CabinSpotContainer = styled.div`
 		font-family: 'Circular-Light';
 	}
 `;
+
 const CabinSpot = styled.div<{ color: string }>`
 	display: flex;
 	flex-direction: row;
@@ -141,7 +142,6 @@ const ContentGroup = styled.div`
 
 export default function Popup({
 	open,
-
 	activeCard,
 	setSelectedCabin,
 	setActiveModal,
@@ -164,6 +164,8 @@ export default function Popup({
 		'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
 
 	const { guest } = useContext<any>(GuestContext);
+	const theme = useTheme();
+	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
 	const handleSelectCabin = () => {
 		if (activeCard === selectedCabin) {
@@ -180,10 +182,6 @@ export default function Popup({
 	const handleExit = () => {
 		setActiveModal(false);
 	};
-
-	const theme = useTheme();
-
-	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
 	const determineButtonText = () => {
 		if (guest.bed_count > spots_remaining)
@@ -215,7 +213,6 @@ export default function Popup({
 								</div>
 							</div>
 							<p className='description'> {description}</p>
-
 							<CabinSpotContainer>
 								{occupants.map((occupant, index) => {
 									return (
@@ -229,7 +226,6 @@ export default function Popup({
 									);
 								})}
 							</CabinSpotContainer>
-
 							<ButtonContainer>
 								{activeCard === selectedCabin ? (
 									<ButtonError

@@ -1,8 +1,7 @@
 /** @format */
-
 import styled from 'styled-components';
 import map from '../assets/distance-to.svg';
-import Breadcrumbs from '../components/Breadcrumbs';
+import { Breadcrumbs } from '../components/index';
 
 const TravelPage = styled.div`
 	width: 100%;
@@ -90,14 +89,12 @@ export default function Travel() {
 					aware that the traffic along I-70 can get pretty congested during peak
 					commuter hours.
 				</p>
-
 				<p>
 					<span>Note: </span>The venue is in the mountians, and as mountain life
 					goes, you might not always have reliable cell service. To be on the
 					safe side make sure you have the address typed into your GPS before
 					reaching the mountains incase service drops.
 				</p>
-
 				<SubTitle>Venue</SubTitle>
 				<SecondarySubTitle>Deer Creek Mountain Camp</SecondarySubTitle>
 				<SecondarySubTitle>228 S Pine Dr, Bailey, CO 80421</SecondarySubTitle>
@@ -110,7 +107,6 @@ export default function Travel() {
 						View Deer Creek Website Here
 					</a>
 				</LinkContainer>
-
 				<p>
 					Deer Creek Mountain Camp is located less than an hour away from
 					Denver, and just a couple of miles off of US 285 near Bailey, at 9,000
@@ -118,7 +114,6 @@ export default function Travel() {
 					Airport makes them the perfect combination of mountain getaway with
 					convenient access.
 				</p>
-
 				<SubTitle>Transportation</SubTitle>
 				<p>
 					While we don't have any formal transportation set up, we are happy to

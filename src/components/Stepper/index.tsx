@@ -1,5 +1,4 @@
 /** @format */
-
 import styled from 'styled-components';
 
 const StepBubble = styled.div<{ completed: boolean; currentStep: boolean }>`
@@ -62,22 +61,18 @@ export default function Stepper({ step }) {
 				</StepBubble>
 				<h1>Contact</h1>
 			</StepSection>
-
 			<BarContainer>
 				<Bar completed={step > 2} nextStep={step === 2} />
 			</BarContainer>
-
 			<StepSection>
 				<StepBubble completed={step > 2} currentStep={step === 2}>
 					{step > 2 ? <CheckMark /> : '2'}
 				</StepBubble>
 				<h1>Cabin</h1>
 			</StepSection>
-
 			<BarContainer>
 				<Bar completed={step > 3} nextStep={step === 3} />
 			</BarContainer>
-
 			<StepSection>
 				<StepBubble completed={step > 3} currentStep={step === 3}>
 					{step > 3 ? <CheckMark /> : '3'}

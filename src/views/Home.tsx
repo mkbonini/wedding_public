@@ -1,15 +1,11 @@
 /** @format */
-
-import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import deerCreek from '../assets/deer_creek.jpg';
 import miwha from '../assets/bailey_sign.jpg';
-import ContentBlock from '../components/ContentBlock';
-import Button from '../components/Button';
-import Counntdown from '../components/Countdown';
 import hero from '../assets/hero.png';
 import mobile from '../assets/mobile.png';
-import { useHistory } from 'react-router-dom';
+import { ContentBlock, Button, Countdown } from '../components/index';
 
 const HomePage = styled.div<{ visible: boolean }>`
 	width: 100%;
@@ -163,7 +159,7 @@ export default function Home({ visible }) {
 				</HeroSection>
 				<StoryContainer>
 					<CountdownContainer>
-						<Counntdown />
+						<Countdown />
 					</CountdownContainer>
 					<ContentBlock
 						image={deerCreek}

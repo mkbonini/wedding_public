@@ -1,5 +1,4 @@
 /** @format */
-
 import React from 'react';
 import styled from 'styled-components';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -12,6 +11,7 @@ const AccordianContainer = styled.div`
 	margin: 1rem;
 	transition: ease-in-out 0.2s;
 `;
+
 const Question = styled.div<{ active: boolean }>`
 	margin: -5px 5px 5px 20px;
 	height: 80px;
@@ -60,6 +60,7 @@ const AnswerContainer = styled.div`
 		}
 	}
 `;
+
 const Answer = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -79,7 +80,6 @@ export default function Accordian({ FAQ }) {
 			setOpenPanel([...openedPanel, id]);
 		}
 	};
-
 	return (
 		<FAQSection>
 			{FAQ.map((faq, index) => {

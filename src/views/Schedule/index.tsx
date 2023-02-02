@@ -1,6 +1,5 @@
 /** @format */
-
-import Breadcrumbs from '../../components/Breadcrumbs';
+import { Breadcrumbs } from '../../components/index';
 import {
 	SchedulePage,
 	ContentContainer,

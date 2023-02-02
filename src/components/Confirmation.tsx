@@ -1,5 +1,4 @@
 /** @format */
-
 import styled from 'styled-components';
 import { GrClose } from 'react-icons/gr';
 import Button from './Button';
@@ -62,7 +61,6 @@ export default function Popup({
 					<ContentGroup>
 						<Title>
 							<p>{content}</p>
-
 							{confirm ? (
 								<ButtonContainer>
 									<Button onClick={handleExit} text='Ok' />

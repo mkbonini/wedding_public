@@ -2,7 +2,6 @@
 import { useState, createContext } from 'react';
 
 export const GuestContext = createContext({});
-
 export const GuestProvider = (props) => {
 	const emptyGuest = {
 		id: 0,

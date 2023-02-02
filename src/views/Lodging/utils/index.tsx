@@ -10,12 +10,11 @@ export const imageArray = [
 	'https://a0.muscache.com/im/pictures/c9aec1f7-b559-40e8-b65e-c466783fab82.jpg',
 	'https://a0.muscache.com/im/pictures/2eb21432-fbe8-4e86-9b71-e9ae5f672415.jpg',
 	'https://a0.muscache.com/im/pictures/8913a9f9-2d16-4b2b-a72c-e3629cf862c4.jpg',
-
-	ceremony,
-	dining,
 	'https://a0.muscache.com/im/pictures/e898ac8b-4c0f-4ff0-ba9d-48f44650fd7f.jpg',
 	'https://a0.muscache.com/im/pictures/344652fe-f169-4b84-93c3-1de9b089993c.jpg',
 	'https://a0.muscache.com/im/pictures/fb3818d3-1c2b-4a7f-9960-fe02b79cbda8.jpg',
+	ceremony,
+	dining,
 ];
 export const airBnbLinks = [
 	{
