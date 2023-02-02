@@ -1,5 +1,4 @@
 /** @format */
-
 import styled from 'styled-components';
 
 const RegistryPage = styled.div`

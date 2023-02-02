@@ -1,7 +1,4 @@
 /** @format */
-
-/** @format */
-
 import { Switch } from '@mui/material';
 
 export default function Toggle({ toggleActive, onChange }) {

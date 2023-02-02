@@ -1,7 +1,5 @@
 /** @format */
-
-import distanceTo from '../../assets/distance-to.svg';
-import Carousel from '../../components/Carousel';
+import { Carousel, Breadcrumbs } from '../../components/index';
 import airbnbIcon from '../../assets/airbnb-icon.svg';
 import { airBnbLinks, imageArray } from './utils';
 import map from '../../assets/deer-creek.jpg';
@@ -20,7 +18,6 @@ import {
 	LodgeContainer,
 	SubTitle,
 } from './styled-components';
-import Breadcrumbs from '../../components/Breadcrumbs';
 
 export default function Lodging() {
 	return (

@@ -6,7 +6,6 @@
 	url("./fonts/Circular/CircularStd-Medium.otf") format("opentype");
 }
 
-
 @font-face {
 	font-family: "Circular-Book";
 	src: local("Circular"),
@@ -26,9 +25,6 @@
 }
 
 
-
-
-
 body {
 	margin: 0;
 	font-family: 'Circular-Book';
@@ -42,8 +38,6 @@ body.modal-open {
     overflow: hidden;
 }
 
-
-
 input[type='text'],
 input[type='number'],
 input[type='email'],
@@ -55,6 +49,3 @@ textarea {
 	overflow: hidden;
 	position: fixed;
 }
-
-
-
