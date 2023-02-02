@@ -37,7 +37,9 @@ export default function MainDetailsSection({ setEmail, emailError, guest }) {
 						type='text'
 						defaultValue={guest?.email}
 						error={emailError}
-						onChange={(e) => setEmail(e.target.value)}
+						onChange={(e) => {
+							setEmail(e.target.value);
+						}}
 						helperText={emailError && 'Please enter a valid email'}
 					/>
 				</InputContainer>

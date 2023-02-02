@@ -28,6 +28,7 @@ import {
 	SubmitButton,
 	CheckboxContainer,
 } from './styled-components';
+import { GrTarget } from 'react-icons/gr';
 
 export default function AdditionalPage({ regressFlow, progressFlow }) {
 	const { guest, setGuest } = useContext<any>(GuestContext);
@@ -35,7 +36,8 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 	const [dodgeball, setDodgeball] = useState(false);
 	const [arrivalDate, setArrivalDate] = useState('');
 	const [arrivalDropdownError, setArrivalDropdownError] = useState(false);
-	const [dodgeballParticipants, setDodgeballParticipants] = useState<any>([]);
+	const [playingDodgeball, setPlayingDodgeball] = useState<any>([]);
+	const [notPlayingDodgeball, setNotPlayingDodgeball] = useState<any>([]);
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
@@ -51,23 +53,40 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 
 	const setCurrentState = (current) => {
 		let kids = current?.kids.filter((kid) => kid.team_id === 1);
+		let kidsNotPlaying = current?.kids.filter((kid) => kid.team_id === null);
+
 		let kidsPlayingDodgeball = kids.map((kid) => kid.name);
+		let kidsNotPlayingDodgeball = kidsNotPlaying.map((kid) => kid.name);
 
 		let plusOnePlayingDodgeball =
-			current?.plus_ones[0].team_id === 1 && current?.plus_ones[0].name;
+			current?.plus_ones[0].team_id === 1 ? current?.plus_ones[0].name : '';
+
+		let plusOneNotPlayingDodgeball =
+			current?.plus_ones[0].team_id === 0 ? current?.plus_ones[0].name : '';
 
 		let guestPlayingDodgeball =
 			current?.team_id === 1 ? current?.full_name : '';
 
-		setDodgeballParticipants([
+		let guestNotPlayingDodgeball =
+			current?.team_id === 0 ? current?.full_name : '';
+
+		let playing = [
 			...kidsPlayingDodgeball,
 			plusOnePlayingDodgeball,
 			guestPlayingDodgeball,
-		]);
+		].filter((name) => name !== '');
 
+		let notPlaying = [
+			...kidsNotPlayingDodgeball,
+			plusOneNotPlayingDodgeball,
+			guestNotPlayingDodgeball,
+		].filter((name) => name !== '');
+
+		setPlayingDodgeball(playing);
+		setNotPlayingDodgeball(notPlaying);
 		setArrivalDate(current.arrival_date);
 		setBreakfast(current.breakfast);
-		setDodgeball(dodgeballParticipants);
+		setDodgeball(playingDodgeball);
 	};
 
 	const handleArrivalChange = (event: SelectChangeEvent) => {
@@ -97,8 +116,8 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 				breakfast: breakfast,
 			});
 
-			if (dodgeballParticipants) {
-				updateDodgeball({ name: dodgeballParticipants });
+			if (playingDodgeball) {
+				updateDodgeball({ yes: playingDodgeball, no: notPlayingDodgeball });
 			}
 			progressFlow();
 			window.scrollTo(0, 0);
@@ -127,16 +146,16 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 	};
 
 	const handleCheckmarks = (e) => {
-		const exists = dodgeballParticipants.find(
-			(guest) => guest === e.target.name
-		);
-		if (exists) {
-			let result = dodgeballParticipants.filter(
-				(guest) => guest !== e.target.name
-			);
-			setDodgeballParticipants(result);
+		let player = e.target.name;
+
+		if (playingDodgeball.includes(player)) {
+			let result = playingDodgeball.filter((guest) => guest !== player);
+			setPlayingDodgeball(result);
+			setNotPlayingDodgeball([...notPlayingDodgeball, player]);
 		} else {
-			setDodgeballParticipants([...dodgeballParticipants, e.target.name]);
+			let result = notPlayingDodgeball.filter((guest) => guest !== player);
+			setNotPlayingDodgeball(result);
+			setPlayingDodgeball([...playingDodgeball, player]);
 		}
 	};
 
@@ -254,7 +273,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 										return (
 											<CheckboxContainer key={`checkbox-${index}`}>
 												<Checkbox
-													checked={dodgeballParticipants.includes(guest)}
+													defaultChecked={playingDodgeball.includes(guest)}
 													onChange={handleCheckmarks}
 													inputProps={{ name: guest }}
 												/>
