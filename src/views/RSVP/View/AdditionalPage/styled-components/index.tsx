@@ -30,18 +30,6 @@ export const ButtonContainer = styled.div`
 	}
 `;
 
-export const ToggleContainer = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 1rem 2rem 0rem 0rem;
-	@media only screen and (max-width: 900px) {
-		flex-direction: column;
-		align-items: flex-start;
-		padding: 0px 0px 10px 0px;
-	}
-`;
-
 export const LineBreak = styled.div`
 	height: 1px;
 	background-color: whitesmoke;

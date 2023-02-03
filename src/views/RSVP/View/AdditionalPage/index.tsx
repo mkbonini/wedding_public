@@ -3,9 +3,7 @@
 import { useEffect, useState, useContext } from 'react';
 import Stepper from '../../../../components/Stepper';
 import ButtonSecondary from '../../../../components/ButtonSecondary';
-import Button from '../../../../components/Button';
 import TextField from '@mui/material/TextField';
-import Toggle from '../../../../components/Toggle';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -13,7 +11,6 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import Loading from '../../../../components/Loading';
-
 import { getFormValues } from './utils';
 import { GuestContext } from '../../../../context/GuestContext';
 import {
@@ -29,16 +26,13 @@ import {
 	ContentContainer,
 	SectionBreaks,
 	LineBreak,
-	ToggleContainer,
 	SubmitButton,
 	CheckboxContainer,
 } from './styled-components';
-import { GrTarget } from 'react-icons/gr';
 
 export default function AdditionalPage({ regressFlow, progressFlow }) {
 	const { guest, setGuest } = useContext<any>(GuestContext);
 	const [breakfast, setBreakfast] = useState('');
-	const [dodgeball, setDodgeball] = useState(false);
 	const [arrivalDate, setArrivalDate] = useState('');
 	const [arrivalDropdownError, setArrivalDropdownError] = useState(false);
 	const [playingDodgeball, setPlayingDodgeball] = useState<any>([]);
@@ -91,7 +85,6 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 		setNotPlayingDodgeball(notPlaying);
 		setArrivalDate(current.arrival_date);
 		setBreakfast(current.breakfast);
-		setDodgeball(playingDodgeball);
 	};
 
 	const handleArrivalChange = (event: SelectChangeEvent) => {
@@ -251,16 +244,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 								</FormControl>
 							</SectionBreaks>
 							<SectionBreaks className='dodgeball-section'>
-								<ToggleContainer>
-									<div className='sub-heading'>
-										Do you or anybody in your party wish to participate in the
-										dodgeball tournament?
-									</div>
-									<Toggle
-										toggleActive={dodgeball}
-										onChange={() => setDodgeball(!dodgeball)}
-									/>
-								</ToggleContainer>
+								<div className='sub-heading'>Playing Dodgeball?</div>
 								<p>
 									The dodgeball tournament will be held on{' '}
 									<strong>Friday evening</strong>. Due to the nature of the
@@ -271,24 +255,23 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 									still participate by watching and cheering for a team.
 								</p>
 							</SectionBreaks>
-							{dodgeball && (
-								<SectionBreaks className='checkmark-section'>
-									<h3>Select those who wish to participate</h3>
-									{getPartyList()?.map((guest, index) => {
-										return (
-											<CheckboxContainer key={`checkbox-${index}`}>
-												<Checkbox
-													defaultChecked={playingDodgeball.includes(guest)}
-													onChange={handleCheckmarks}
-													inputProps={{ name: guest }}
-												/>
-												{guest}
-											</CheckboxContainer>
-										);
-									})}
-								</SectionBreaks>
-							)}
-
+							<SectionBreaks className='checkmark-section'>
+								<div className='sub-heading'>
+									Select those who wish to participate
+								</div>
+								{getPartyList()?.map((guest, index) => {
+									return (
+										<CheckboxContainer key={`checkbox-${index}`}>
+											<Checkbox
+												defaultChecked={playingDodgeball.includes(guest)}
+												onChange={handleCheckmarks}
+												inputProps={{ name: guest }}
+											/>
+											{guest}
+										</CheckboxContainer>
+									);
+								})}
+							</SectionBreaks>
 							<SectionBreaks>
 								<div className='sub-heading'>
 									Any final questions or comments?
@@ -302,7 +285,6 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 									defaultValue={guest.comments ?? ''}
 								/>
 							</SectionBreaks>
-
 							<ButtonContainer>
 								<ButtonSecondary onClick={() => regressFlow()} text='Back' />
 								<SubmitButton type='submit'>Submit My Rsvp</SubmitButton>

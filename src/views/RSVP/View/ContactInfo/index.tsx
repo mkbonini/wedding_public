@@ -33,6 +33,7 @@ import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Loading from '../../../../components/Loading';
 import ChildSection from './ChildSection';
 import MainDetailsSection from './MainDetailsSection';
+import { GrElevator } from 'react-icons/gr';
 
 export default function ContactInfo({ regressFlow, progressFlow }) {
 	const { guest, setGuest, setPartyUpdated } = useContext<any>(GuestContext);
@@ -172,6 +173,8 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			}
 		}
 	}
+
+	const plusOneFirstName = guest?.plus_ones[0]?.name?.split(' ')[0];
 	return (
 		<>
 			{loaded ? (
@@ -180,12 +183,16 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 						<Confirmation
 							handleExit={() => setDisplayConfirmation(false)}
 							handleContinue={() => handleRsvpNo()}
-							content={`You selected "No" on your RSVP. Is this correct?`}
+							content={{
+								__html: `You selected "No" on your RSVP. <br/> Is this correct?`,
+							}}
 						/>
 					)}
 					<div className='heading'>
-						Hello {guest?.first_name || 'No User'}, <br /> we found your
-						reservation!
+						Hello {guest?.first_name}
+						{`${
+							guest?.plus_ones[0]?.name ? ` & ${plusOneFirstName}` : ''
+						}`}, <br /> We found your reservation!
 					</div>
 					<p className='main-sub-heading'>
 						{' '}
@@ -226,7 +233,8 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 							setEmail={setEmail}
 							emailError={emailError}
 						/>
-						{rsvp === 'yes' && (
+						{(rsvp === 'yes' ||
+							(rsvp === null && guest.plus_ones.length > 0)) && (
 							<div>
 								{guest.plus_one_count !== 0 && (
 									<ToggleContainer>

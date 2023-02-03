@@ -120,13 +120,6 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		}
 	};
 
-	const content = (
-		<span>
-			You have not selected a cabin. <br />
-			Please select a cabin or select "No" for lodging
-		</span>
-	);
-
 	return (
 		<>
 			{loaded ? (
@@ -134,8 +127,10 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 					{noLodgingNotice && (
 						<Confirmation
 							handleExit={() => setNoLodgingNotice(false)}
-							content={content}
 							confirm={true}
+							content={{
+								__html: `<span>You have not selected a cabin. <br />Please select a cabin or <br/>select "No" for lodging</span>`,
+							}}
 						/>
 					)}
 
