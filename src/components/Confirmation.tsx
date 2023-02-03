@@ -6,8 +6,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 
 const Title = styled.div`
-	padding: 0rem 1rem 0rem 2rem;
 	max-width: 700px;
+	min-width: 300px;
 	text-align: center;
 `;
 
@@ -26,8 +26,11 @@ const ExitButton = styled.div`
 
 const ButtonContainer = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	margin: 3rem 0rem 4rem -2rem;
+	align-self: center;
+	max-width: 200px;
+	margin: 2rem auto;
 	gap: 20px;
 `;
 
@@ -46,7 +49,7 @@ export default function Popup({
 	confirm = false,
 }) {
 	return (
-		<div>
+		<div style={{ minWidth: '300px' }}>
 			<Dialog
 				open={true}
 				onClose={handleExit}
@@ -60,7 +63,7 @@ export default function Popup({
 				<DialogContent>
 					<ContentGroup>
 						<Title>
-							<p>{content}</p>
+							<p dangerouslySetInnerHTML={content}></p>
 							{confirm ? (
 								<ButtonContainer>
 									<Button onClick={handleExit} text='Ok' />

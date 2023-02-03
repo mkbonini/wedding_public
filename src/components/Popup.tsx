@@ -1,6 +1,6 @@
 /** @format */
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { TbBrandAirbnb } from 'react-icons/tb';
 import { GrClose } from 'react-icons/gr';
@@ -11,6 +11,11 @@ import DialogContent from '@mui/material/DialogContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { GuestContext } from '../context/GuestContext';
+import {
+	getLodgings,
+	getSelectedLodge,
+	updateGuest,
+} from '../views/RSVP/Model';
 
 const Image = styled.div<{ image: string }>`
 	background-image: url(${(p) => p.image && p.image});
@@ -143,38 +148,32 @@ const ContentGroup = styled.div`
 export default function Popup({
 	open,
 	activeCard,
-	setSelectedCabin,
 	setActiveModal,
-
-	selectedCabin,
 	setHideCabins,
-	id,
 }) {
-	const {
-		name,
-		image_url,
-		lodging_type,
-		spots_remaining,
-		description,
-		occupants,
-		color,
-		url,
-	} = activeCard;
 	const dummyImage =
 		'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
 
-	const { guest } = useContext<any>(GuestContext);
+	const { guest, selectedCabin, setSelectedCabin } =
+		useContext<any>(GuestContext);
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+	const [content, setContent] = useState<any>(activeCard);
+
+	useEffect(() => {
+		updateCabin();
+	}, []);
 
 	const handleSelectCabin = () => {
 		if (activeCard === selectedCabin) {
 			setActiveModal(false);
 			setSelectedCabin(null);
+			updateGuest(guest?.id, { lodging_id: null });
 			setHideCabins(false);
 		} else {
 			setActiveModal(false);
 			setSelectedCabin(activeCard);
+			updateGuest(guest?.id, { lodging_id: activeCard.id });
 			setHideCabins(true);
 		}
 	};
@@ -183,13 +182,22 @@ export default function Popup({
 		setActiveModal(false);
 	};
 
+	async function updateCabin() {
+		try {
+			const result = await getSelectedLodge(activeCard.id);
+			setContent(result);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	const determineButtonText = () => {
-		if (guest.bed_count > spots_remaining)
+		if (guest.bed_count > content.spots_remaining)
 			return 'Not enough beds for your party';
 		else return 'Select This Cabin';
 	};
 	return (
-		<div key={id}>
+		<div key={`cabin-popup-${activeCard.id}`}>
 			<Dialog
 				fullScreen={fullScreen}
 				open={open}
@@ -204,21 +212,25 @@ export default function Popup({
 				</ExitButton>
 				<DialogContent>
 					<ContentGroup>
-						<Image image={image_url ? image_url : dummyImage} />
+						<Image image={content.image_url ? content.image_url : dummyImage} />
 						<Title>
-							<h1>{name}</h1>
-							<div className='links' onClick={() => window.open(url)}>
+							<h1>{content.name}</h1>
+							<div className='links' onClick={() => window.open(content.url)}>
 								<div className='airbnb-link'>
 									<TbBrandAirbnb /> View on Airbnb
 								</div>
 							</div>
-							<p className='description'> {description}</p>
+							<p className='description'> {content.description}</p>
 							<CabinSpotContainer>
-								{occupants.map((occupant, index) => {
+								{content.occupants.map((occupant, index) => {
 									return (
 										<CabinSpot
 											key={index}
-											color={occupant !== 'Spot Available' ? color : '#242424'}
+											color={
+												occupant !== 'Spot Available'
+													? content.color
+													: '#242424'
+											}
 										>
 											<div className='spot-number'>{index + 1}</div>
 											<span>{occupant}</span>
@@ -235,7 +247,7 @@ export default function Popup({
 									/>
 								) : (
 									<ButtonFullWidth
-										disabled={guest.bed_count > spots_remaining}
+										disabled={guest.bed_count > content.spots_remaining}
 										onClick={() => handleSelectCabin()}
 										text={determineButtonText()}
 									/>

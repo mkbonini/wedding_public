@@ -1,10 +1,8 @@
 /** @format */
 import { useEffect, useState, useContext } from 'react';
 import { GuestContext } from '../../../../context/GuestContext';
-import Toggle from '../../../../components/Toggle';
-import Stepper from '../../../../components/Stepper';
+import { Confirmation, Stepper, Toggle } from '../../../../components/index';
 import { FaArrowRight } from 'react-icons/fa';
-import Confirmation from '../../../../components/Confirmation';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import {
@@ -28,18 +26,24 @@ import Card from '../../../../components/Card';
 import ButtonSecondary from '../../../../components/ButtonSecondary';
 import Button from '../../../../components/Button';
 import Popup from '../../../../components/Popup';
-import { updateGuest, getSelectedGuest } from '../../Model';
+import { updateGuest, getLodgings } from '../../Model';
 import Loading from '../../../../components/Loading';
 
 export default function CabinPage({ regressFlow, progressFlow }) {
-	const { setGuest, guest, cabinList, partyUpdated } =
-		useContext<any>(GuestContext);
+	const {
+		guest,
+		cabinList,
+		partyUpdated,
+		setCabinList,
+		selectedCabin,
+		setSelectedCabin,
+	} = useContext<any>(GuestContext);
 	const [loaded, setLoaded] = useState(false);
 	const [activeModal, setActiveModal] = useState(false);
 	const [activeCard, setActiveCard] = useState<any>(null);
-	const [selectedCabin, setSelectedCabin] = useState<any>(null);
 	const [noLodgingNotice, setNoLodgingNotice] = useState(false);
 	const [hideCabins, setHideCabins] = useState(false);
+
 	const offsiteCabin = selectedCabin?.id === 24;
 
 	const [acceptLodging, setAcceptLodging] = useState(false);
@@ -48,28 +52,11 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 	useEffect(() => {
 		let controller = new AbortController();
 		(async () => {
-			let current = await getSelectedGuest(guest.id);
-			setGuest(current);
-			setCurrentState(current);
+			setCurrentState();
 			setLoaded(true);
 		})();
 		return () => controller?.abort();
 	}, []);
-
-	function setCurrentState(guestResult) {
-		let cabin = cabinList.find(
-			(cabin) => cabin?.id === guestResult?.lodging_id
-		);
-		if (cabin && cabin.id !== 24) {
-			setHideCabins(true);
-			setAcceptLodging(true);
-			setSelectedCabin(cabin);
-			setActiveCard(cabin);
-		} else {
-			setAcceptLodging(false);
-			setSelectedCabin(cabin);
-		}
-	}
 
 	useEffect(() => {
 		var body = document.body;
@@ -82,6 +69,28 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		}
 	}, [activeModal]);
 
+	useEffect(() => {
+		updateCabinList();
+	}, [selectedCabin]);
+
+	function setCurrentState() {
+		let cabin = cabinList.find((cabin) => cabin?.id === guest?.lodging_id);
+		if (cabin && cabin.id !== 24) {
+			setHideCabins(true);
+			setAcceptLodging(true);
+			setSelectedCabin(cabin);
+			setActiveCard(cabin);
+		} else {
+			setAcceptLodging(false);
+			setSelectedCabin(cabin);
+		}
+	}
+
+	async function updateCabinList() {
+		let lodgingResult = await getLodgings();
+		setCabinList(lodgingResult);
+	}
+
 	const handleCardClick = (cabin) => {
 		setActiveModal(true);
 		setActiveCard(cabin);
@@ -90,13 +99,16 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 
 	//offsite is cabin id 24
 	const handleContinue = () => {
-		if (selectedCabin === null && acceptLodging) {
+		if (
+			(selectedCabin === null && acceptLodging) ||
+			(selectedCabin?.id === 24 && acceptLodging)
+		) {
 			setNoLodgingNotice(true);
 		} else if (selectedCabin && !acceptLodging) {
-			updateGuest(guest?.id, { lodging_id: 24 });
+			updateGuest(guest?.id, { lodging_id: null });
 			progressFlow();
 			window.scrollTo(0, 0);
-		} else if (selectedCabin && acceptLodging && partyUpdated) {
+		} else if (partyUpdated) {
 			updateGuest(guest?.id, { lodging_id: selectedCabin?.id });
 			progressFlow();
 			window.scrollTo(0, 0);
@@ -108,13 +120,6 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		}
 	};
 
-	const content = (
-		<span>
-			You have not selected a cabin. <br />
-			Please select a cabin or select "No" for lodging
-		</span>
-	);
-
 	return (
 		<>
 			{loaded ? (
@@ -122,8 +127,10 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 					{noLodgingNotice && (
 						<Confirmation
 							handleExit={() => setNoLodgingNotice(false)}
-							content={content}
 							confirm={true}
+							content={{
+								__html: `<span>You have not selected a cabin. <br />Please select a cabin or <br/>select "No" for lodging</span>`,
+							}}
 						/>
 					)}
 
@@ -170,6 +177,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 												<DeselectButton
 													onClick={() => {
 														setSelectedCabin(null);
+														updateGuest(guest?.id, { lodging_id: null });
 														setHideCabins(false);
 													}}
 												>
@@ -195,7 +203,10 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 								{cabinList && (
 									<CabinCardsContainer>
 										{cabinList.map((cabin, index) => {
-											if (cabin.lodging_type !== 'apartment') {
+											if (
+												cabin.lodging_type !== 'apartment' &&
+												cabin.lodging_type !== 'offsite'
+											) {
 												return (
 													<Card
 														disable={hideCabins}
@@ -204,7 +215,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 														type={cabin?.lodging_type}
 														remaining={cabin?.spots_remaining}
 														onClick={() => handleCardClick(cabin)}
-														key={`cabin-card-${index}`}
+														key={`card-${index}`}
 													/>
 												);
 											}
@@ -226,10 +237,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 								<Popup
 									activeCard={activeCard}
 									setHideCabins={setHideCabins}
-									setSelectedCabin={setSelectedCabin}
 									setActiveModal={setActiveModal}
-									selectedCabin={selectedCabin}
-									id={`${selectedCabin?.id}-popup`}
 									open={open}
 								/>
 							)}
