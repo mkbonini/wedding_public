@@ -1,11 +1,6 @@
-/**
- * eslint-disable @typescript-eslint/no-unused-vars
- *
- * @format
- */
-
 /** @format */
 import { useEffect, useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
 	Heading,
 	ButtonContainer,
@@ -68,7 +63,7 @@ export default function StartPage({ progressFlow }) {
 		});
 	}
 
-	const hideRsvp = false;
+	const hideRsvp = window.location.search === '?beta' ? false : true;
 	return (
 		<>
 			{loaded ? (
