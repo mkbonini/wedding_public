@@ -105,10 +105,10 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		) {
 			setNoLodgingNotice(true);
 		} else if (selectedCabin && !acceptLodging) {
-			updateGuest(guest?.id, { lodging_id: 24 });
+			updateGuest(guest?.id, { lodging_id: null });
 			progressFlow();
 			window.scrollTo(0, 0);
-		} else if (selectedCabin && acceptLodging && partyUpdated) {
+		} else if (partyUpdated) {
 			updateGuest(guest?.id, { lodging_id: selectedCabin?.id });
 			progressFlow();
 			window.scrollTo(0, 0);
@@ -220,6 +220,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 														type={cabin?.lodging_type}
 														remaining={cabin?.spots_remaining}
 														onClick={() => handleCardClick(cabin)}
+														key={`card-${index}`}
 													/>
 												);
 											}
