@@ -84,9 +84,15 @@ export default function Card({
 	remaining,
 	onClick,
 	disable = false,
+	occupants,
 }) {
 	const dummyImage =
 		'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+
+	const rvOccupied =
+		occupants.some((guest) => guest !== 'Spot Available') && type === 'rv';
+	const rvVacant =
+		occupants.some((guest) => guest === 'Spot Available') && type === 'rv';
 	return (
 		<CardStyles onClick={() => onClick()} disable={disable}>
 			<div>
@@ -96,13 +102,26 @@ export default function Card({
 				</ImageContainer>
 				<Title>
 					<h1>{name}</h1>
-					<p className='spots-remaining'>
-						There are{' '}
-						<span>
-							<span className='number'>{remaining}</span>
-						</span>{' '}
-						spots remaining in this cabin
-					</p>
+					{type === 'rv' ? (
+						rvOccupied ? (
+							<p className='spots-remaining'>This site is occupied.</p>
+						) : (
+							<p className='spots-remaining'>
+								This site is vacant and allows for a party up to{' '}
+								<span>
+									<span className='number'>{remaining}</span>
+								</span>
+							</p>
+						)
+					) : (
+						<p className='spots-remaining'>
+							There are{' '}
+							<span>
+								<span className='number'>{remaining}</span>
+							</span>{' '}
+							spots remaining
+						</p>
+					)}
 				</Title>
 			</div>
 			<div>

@@ -129,7 +129,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 			let plusOne = guest?.plus_ones[0]?.name;
 
 			let children = guest?.kids;
-			let childrenEligible = children?.filter((child) => child?.age >= 17);
+			let childrenEligible = children?.filter((child) => child?.age >= 8);
 			let childNames = childrenEligible?.map((child) => child?.name);
 
 			if (plusOne === undefined || plusOne === '') {
@@ -249,7 +249,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 									The dodgeball tournament will be held on{' '}
 									<strong>Friday evening</strong>. Due to the nature of the
 									game, we are currently only allowing contestants who are{' '}
-									<strong>17 years old or older to compete</strong>. There is
+									<strong>8 years old or older to compete</strong>. There is
 									however a section of the gym that overlooks the court and
 									those who are interested in hanging out but not playing can
 									still participate by watching and cheering for a team.

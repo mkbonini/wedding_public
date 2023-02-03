@@ -75,7 +75,7 @@ export default function Schedule() {
 						<p>
 							If you know anything about us, it’s that we love a good friendly
 							competition. But even more when there are costumes involved! Event
-							is aged 17+. You can opt in via your RSVP - participants will be
+							is aged 8+. You can opt in via your RSVP - participants will be
 							assigned a team, and teams will be assigned a theme! <br />
 							<br />
 							And yes there will be a Purple Cobras team *clap* *clap* *hiss*

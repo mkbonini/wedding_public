@@ -235,6 +235,7 @@ export const DeselectButton = styled.div`
 	font-size: 14px;
 	color: #ffdddd;
 	padding-right: 0;
+	margin-top: 15px;
 	&:hover {
 		background-color: #ffdddd;
 		color: #ff3333;

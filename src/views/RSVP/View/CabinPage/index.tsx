@@ -21,13 +21,14 @@ import {
 	ArrowContainer,
 	ViewMoreButton,
 } from './styled-components';
-
-import Card from '../../../../components/Card';
-import ButtonSecondary from '../../../../components/ButtonSecondary';
-import Button from '../../../../components/Button';
-import Popup from '../../../../components/Popup';
+import {
+	Card,
+	ButtonSecondary,
+	Button,
+	Popup,
+	Loading,
+} from '../../../../components/index';
 import { updateGuest, getLodgings } from '../../Model';
-import Loading from '../../../../components/Loading';
 
 export default function CabinPage({ regressFlow, progressFlow }) {
 	const {
@@ -214,6 +215,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 														name={cabin?.name}
 														type={cabin?.lodging_type}
 														remaining={cabin?.spots_remaining}
+														occupants={cabin.occupants}
 														onClick={() => handleCardClick(cabin)}
 														key={`card-${index}`}
 													/>

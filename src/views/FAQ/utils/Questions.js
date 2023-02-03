@@ -117,7 +117,7 @@ export const Questions = {
 		{
 			question: 'How can I join a dodgeball team?',
 			answer:
-				'To join a dodgeball team, you simply specify in your RSVP that you would like to participate. You will recieve a follow up email once teams are created. The tournament is for ages 17+ and will happen Friday evening after dinner.',
+				'To join a dodgeball team, you simply specify in your RSVP that you would like to participate. You will recieve a follow up email once teams are created. The tournament is for ages 8+ and will happen Friday evening after dinner.',
 		},
 		{
 			question: 'What else is there to do around the property?',
