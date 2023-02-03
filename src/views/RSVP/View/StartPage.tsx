@@ -1,6 +1,5 @@
 /** @format */
 import { useEffect, useState, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import {
 	Heading,
 	ButtonContainer,
@@ -20,6 +19,8 @@ export default function StartPage({ progressFlow }) {
 	const [loaded, setLoaded] = useState(true);
 	const [guestList, setGuestList] = useState<any>([]);
 	const { setGuest } = useContext<any>(GuestContext);
+
+	const hideRsvp = window.location.search === '?beta' ? false : true;
 
 	useEffect(() => {
 		let controller = new AbortController();
@@ -63,7 +64,6 @@ export default function StartPage({ progressFlow }) {
 		});
 	}
 
-	const hideRsvp = window.location.search === '?beta' ? false : true;
 	return (
 		<>
 			{loaded ? (
