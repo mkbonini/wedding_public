@@ -134,7 +134,7 @@ export const CabinCardsContainer = styled.div`
 	max-width: 1400px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: start;
 	@media only screen and (max-width: 600px) {
 		display: flex;
 		flex-wrap: nowrap;

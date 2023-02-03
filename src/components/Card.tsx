@@ -19,7 +19,7 @@ const CardStyles = styled.div<{ disable: boolean }>`
 		cursor: pointer;
 	}
 	@media only screen and (min-width: 900px) {
-		max-width: 250px;
+		max-width: 260px;
 	}
 `;
 const ImageContainer = styled.div`
@@ -48,17 +48,19 @@ const Title = styled.div`
 	}
 `;
 
-const TypeLabel = styled.div`
+const TypeLabel = styled.div<{ type: string }>`
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
-	background-color: #000;
-	color: white;
+	background-color: ${(p) =>
+		p.type === 'rv' ? '#E6EAFE' : p.type === 'family' ? '#6871E4' : '#3366FF'};
+	color: ${(p) => (p.type === 'rv' ? '#3366FF' : 'white')};
 	font-size: 14px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.07);
 	top: 10px;
 	left: 10px;
 `;
@@ -89,15 +91,12 @@ export default function Card({
 	const dummyImage =
 		'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
 
-	const rvOccupied =
-		occupants.some((guest) => guest !== 'Spot Available') && type === 'rv';
-	const rvVacant =
-		occupants.some((guest) => guest === 'Spot Available') && type === 'rv';
+	const rvOccupied = occupants.some((guest) => guest !== 'Spot Available');
 	return (
 		<CardStyles onClick={() => onClick()} disable={disable}>
 			<div>
 				<ImageContainer>
-					<TypeLabel>{type}</TypeLabel>
+					<TypeLabel type={type}>{type}</TypeLabel>
 					<Image image={image ? image : dummyImage} />
 				</ImageContainer>
 				<Title>
