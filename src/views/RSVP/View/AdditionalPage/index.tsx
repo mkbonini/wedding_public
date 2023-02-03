@@ -16,7 +16,12 @@ import Loading from '../../../../components/Loading';
 
 import { getFormValues } from './utils';
 import { GuestContext } from '../../../../context/GuestContext';
-import { getSelectedGuest, updateDodgeball, updateGuest } from '../../Model';
+import {
+	getSelectedGuest,
+	updateDodgeball,
+	updateGuest,
+	getGuestEmail,
+} from '../../Model';
 import {
 	ButtonContainer,
 	AdditionalPageContainer,
@@ -59,10 +64,10 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 		let kidsNotPlayingDodgeball = kidsNotPlaying.map((kid) => kid.name);
 
 		let plusOnePlayingDodgeball =
-			current?.plus_ones[0].team_id === 1 ? current?.plus_ones[0].name : '';
+			current?.plus_ones[0]?.team_id === 1 ? current?.plus_ones[0]?.name : '';
 
 		let plusOneNotPlayingDodgeball =
-			current?.plus_ones[0].team_id === 0 ? current?.plus_ones[0].name : '';
+			current?.plus_ones[0]?.team_id === 0 ? current?.plus_ones[0]?.name : '';
 
 		let guestPlayingDodgeball =
 			current?.team_id === 1 ? current?.full_name : '';
@@ -115,11 +120,11 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 				arrival_date: arrivalDate,
 				breakfast: breakfast,
 			});
-
 			if (playingDodgeball) {
 				updateDodgeball({ yes: playingDodgeball, no: notPlayingDodgeball });
 			}
 			progressFlow();
+			getGuestEmail(guest.id);
 			window.scrollTo(0, 0);
 		}
 	};
