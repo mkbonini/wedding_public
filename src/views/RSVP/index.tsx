@@ -18,7 +18,6 @@ export default function RSVP() {
 		(async () => {
 			let lodgingResult = await getLodgings();
 			setCabinList(lodgingResult);
-			console.log('set cabin from rsvp');
 		})();
 	}, []);
 
