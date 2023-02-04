@@ -165,10 +165,10 @@ export default function Popup({
 	}, []);
 
 	const handleSelectCabin = () => {
-		if (activeCard === selectedCabin) {
+		if (activeCard?.id === selectedCabin?.id) {
+			updateGuest(guest?.id, { lodging_id: null });
 			setActiveModal(false);
 			setSelectedCabin(null);
-			updateGuest(guest?.id, { lodging_id: null });
 			setHideCabins(false);
 		} else {
 			setActiveModal(false);
@@ -251,7 +251,7 @@ export default function Popup({
 								})}
 							</CabinSpotContainer>
 							<ButtonContainer>
-								{activeCard === selectedCabin ? (
+								{activeCard?.id === selectedCabin?.id ? (
 									<ButtonError
 										onClick={() => handleSelectCabin()}
 										text='Deselect This Cabin'

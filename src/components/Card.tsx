@@ -53,8 +53,8 @@ const TypeLabel = styled.div<{ type: string }>`
 	width: 50px;
 	border-radius: 50%;
 	background-color: ${(p) =>
-		p.type === 'rv' ? '#E6EAFE' : p.type === 'family' ? '#6871E4' : '#3366FF'};
-	color: ${(p) => (p.type === 'rv' ? '#3366FF' : 'white')};
+		p.type === 'family' ? '#E6EAFE' : p.type === 'rv' ? '#6871E4' : '#3366FF'};
+	color: ${(p) => (p.type === 'family' ? '#3366FF' : 'white')};
 	font-size: 14px;
 	display: flex;
 	justify-content: center;
