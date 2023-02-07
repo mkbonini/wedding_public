@@ -17,7 +17,7 @@ import {
 	getSelectedGuest,
 	updateDodgeball,
 	updateGuest,
-	getGuestEmail,
+	sendGuestEmail,
 } from '../../Model';
 import {
 	ButtonContainer,
@@ -117,7 +117,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 				updateDodgeball({ yes: playingDodgeball, no: notPlayingDodgeball });
 			}
 			progressFlow();
-			getGuestEmail(guest.id);
+			sendGuestEmail(guest.id);
 			window.scrollTo(0, 0);
 		}
 	};

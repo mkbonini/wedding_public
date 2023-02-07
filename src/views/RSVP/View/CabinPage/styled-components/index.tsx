@@ -1,6 +1,11 @@
 /** @format */
 import styled from 'styled-components';
 
+export const ErrorMessage = styled.div`
+	background-color: #ffdddd;
+	color: #ff3333;
+	padding: 20px;
+`;
 export const ArrowContainer = styled.div`
 	font-size: 20px;
 	font-weight: 900;

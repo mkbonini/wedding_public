@@ -62,7 +62,7 @@ export async function getSelectedGuest(id) {
 	}
 }
 
-export async function getGuestEmail(id) {
+export async function sendGuestEmail(id) {
 	try {
 		const response = await fetch(
 			`https://mm-wedding-backend.herokuapp.com/guests/${id}/email`,
