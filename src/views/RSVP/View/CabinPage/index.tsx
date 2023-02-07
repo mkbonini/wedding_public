@@ -162,7 +162,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 					</div>
 					<ToggleContainer>
 						<div className='sub-heading'>
-							Will you be staying onsite in a cabin?
+							Will you be staying on-site in a cabin?
 						</div>
 						<div>
 							<Toggle
@@ -175,8 +175,8 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 						Staying in a cabin requires bringing your own bedding. While there
 						are enough beds for everyone to stay in at the property, sleeping
 						bags/pillows will need to be brought with you. In addition to the
-						bedding, the cost of staying at a cabin onsite is $30 per person for
-						the entire weekend.
+						bedding, the cost of staying at a cabin on-site is $30 per person
+						for the entire weekend.
 					</p>
 
 					{acceptLodging ? (
@@ -278,7 +278,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 							<div className='sub-heading'>By selecting "No"</div>
 
 							<p className='description'>
-								By selecting no, you have opted out of lodging onsite and will
+								By selecting no, you have opted out of lodging on-site and will
 								need to find another option. The lodging page on this site
 								offers some suggestions.
 							</p>

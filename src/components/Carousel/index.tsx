@@ -27,6 +27,15 @@ const SliderContainer = styled.div`
 		padding: 0;
 		margin-bottom: 2rem;
 	}
+	.swiper-button-next,
+	.swiper-button-prev {
+		color: white !important;
+		font-size: 10px;
+	}
+	.swiper-button-next::after,
+	.swiper-button-prev::after {
+		font-size: 35px;
+	}
 `;
 
 const ImageContainer = styled.div`
@@ -68,7 +77,7 @@ export default function Carousel({ images }) {
 				tag='section'
 				wrapperTag='ul'
 				pagination={{ clickable: true }}
-				navigation={mobile ? false : true}
+				navigation={true}
 				thumbs={{ swiper: thumbsSwiper }}
 			>
 				{images.map((image, index) => {

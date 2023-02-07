@@ -121,6 +121,9 @@ export const HamburgerContainer = styled.div`
 		flex-direction: column;
 		margin: 15px;
 		min-width: 75px;
+		&:hover {
+			cursor: pointer;
+		}
 		.bar {
 			height: 2px;
 			border-radius: 10px;

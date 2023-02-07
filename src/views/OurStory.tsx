@@ -88,7 +88,7 @@ const AboutSection = styled.div`
 	align-items: center;
 	justify-content: center;
 	max-width: 1100px;
-	min-height: 650px;
+	min-height: 660px;
 	padding-bottom: 3rem;
 	@media only screen and (max-width: 1000px) {
 		margin: 3rem 0rem;
@@ -197,20 +197,22 @@ export default function OurStory() {
 						<Story className='content-left'>
 							<h1>michael's side</h1>
 							<p>
-								I don’t know why but I was really excited to meet Miwha. The
-								first time we met I was on a road trip with Aaron and Elliot
-								Smith and we were planning to spend the night at Miwha’s family
-								house in Colorado on our way from Pennsylvania to California.
-								Miwha and I had known of each other from life as Moonies but had
-								never actually met. We were only staying with Miwha because of a
-								mutual friend, Emily Cornier, who connected us when I reached
-								out for a place to stay. <br />
+								The first time Miwha and I met, I was on a road trip with Aaron
+								and Elliot Smith. We were planning to spend the night at Miwha’s
+								family house in Colorado on our way from Pennsylvania to
+								California. Miwha and I had known of each other from life as
+								Moonies but had never really met. We were actually only staying
+								with Miwha because of a mutual friend, Emily Cornier, who
+								connected us when I reached out for a place to stay. I don't
+								know why, but I just remember being really excited to meet
+								Miwha. <br />
 								<br />
 								The Smiths and I were driving long hours from Indianapolis to
 								get into Denver late at night, we were tired. I remember seeing
 								her smiling face in the moonlight as I stepped out of the car
-								that first night, I felt awake. I was really excited to meet
-								Miwha. <br /> <br />
+								that first night, I felt awake. I was really happy to be finally
+								meeting her.
+								<br /> <br />
 								The next day we hung out as a group but it was like no one else
 								existed. Years have past since then, but even now Miwha has a
 								way of captivating me. I continue to find myself in awe of her

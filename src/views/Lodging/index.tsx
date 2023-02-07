@@ -24,17 +24,17 @@ export default function Lodging() {
 		<LodgingPage>
 			<Breadcrumbs page='lodging' id='lodging' />
 			<LodgingContainer>
-				<SubTitle>Onsite Cabins</SubTitle>
+				<SubTitle>On-site Cabins</SubTitle>
 				<Section>
 					<div className='section'>
 						<p>
 							We're so excited that this venue has lodging on site. It was
 							another reason we loved the venue so much, and our preference is
 							that guests who are staying for the weekend stay in a cabin. It
-							will cost $30/person which will cover the entire weekend (friday,
-							saturday evening), and while they are pretty nice beds they do not
-							come with bedding, so make sure you bring a sleeping bag/pillow
-							with you.
+							will cost $30/person which will cover the entire weekend (Friday
+							and Saturday evening). While they have pretty nice beds they do
+							not come with bedding. So, make sure you bring a sleeping bag and
+							pillow with you.
 							<br /> <br />
 							If you are wanting to stay on site, you can reserve your spot in a
 							cabin when you RSVP to the event. There are also 6 RV spots
