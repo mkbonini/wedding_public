@@ -111,7 +111,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 			updateGuest(guest.id, {
 				...formValues,
 				arrival_date: arrivalDate,
-				breakfast: breakfast,
+				breakfast: breakfast ? breakfast : 'no',
 			});
 			if (playingDodgeball) {
 				updateDodgeball({ yes: playingDodgeball, no: notPlayingDodgeball });

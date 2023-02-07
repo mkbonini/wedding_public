@@ -129,9 +129,9 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		let current = await getSelectedGuest(guest.id);
 		const guestIsAssignedLodging = current?.lodging_id;
 		const plusOneIsNotAssignedLodging =
-			current?.plus_ones[0].lodging_id === null;
+			current?.plus_ones[0]?.lodging_id === null;
 		const kidIsNotAssignedLodging = current?.kids?.some(
-			(kid) => kid.lodging_id === null && kid.needs_bed !== 'no'
+			(kid) => kid?.lodging_id === null && kid?.needs_bed !== 'no'
 		);
 		if (
 			(guestIsAssignedLodging && plusOneIsNotAssignedLodging) ||
