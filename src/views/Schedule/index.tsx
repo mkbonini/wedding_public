@@ -53,10 +53,10 @@ export default function Schedule() {
 						<SecondarySubTitle align='end'>Friday 6:00pm</SecondarySubTitle>
 						<p>
 							We know plenty of people will be traveling in on Friday and
-							Saturday, and perhaps arriving at different times. However we want
-							to make sure that the people who arrive Friday can relax and enjoy
-							dinner and so we will be hositng a BBQ Friday evening with drinks
-							before any evening games.
+							Saturday, and perhaps arriving at different times. We want to make
+							sure that the people who arrive Friday can relax and enjoy dinner
+							and so, we will be hositng a BBQ Friday evening with drinks before
+							any evening games.
 						</p>
 					</ScheduleSection>
 					<ImageContainer align='end'>
@@ -74,9 +74,9 @@ export default function Schedule() {
 						<SecondarySubTitle align='start'>7:30pm</SecondarySubTitle>
 						<p>
 							If you know anything about us, it’s that we love a good friendly
-							competition. But even more when there are costumes involved! Event
-							is aged 8+. You can opt in via your RSVP - participants will be
-							assigned a team, and teams will be assigned a theme! <br />
+							competition. But, even more when there are costumes involved!
+							Event is aged 8+. You can opt in via your RSVP - participants will
+							be assigned a team, and teams will be assigned a theme! <br />
 							<br />
 							And yes there will be a Purple Cobras team *clap* *clap* *hiss*
 						</p>
@@ -86,7 +86,7 @@ export default function Schedule() {
 				<ContentContainer id='ceremony' eyebrowColor='#FF99FF' align='end'>
 					<ScheduleSection align='end'>
 						<div className='eyebrow'>The Ceremony</div>
-						<SubTitle align='end'>Satuday July 22</SubTitle>
+						<SubTitle align='end'>Saturday July 22</SubTitle>
 						<SecondarySubTitle align='end'>Starts at 3:30 pm</SecondarySubTitle>
 						<p>
 							The ceremony will take place outside among the beautiful aspens.

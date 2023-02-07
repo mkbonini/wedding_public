@@ -10,12 +10,12 @@ export const Questions = {
 		{
 			question: 'Do I need to bring my own bedding?',
 			answer:
-				'Yes! Unforunutely the beds in the cabins do not include bedding. Please bring a sleeping bag/pillow and whatever else you need to make your stay comfortable.',
+				'Yes! Unfortunately the beds in the cabins do not include bedding. Please bring a sleeping bag/pillow and whatever else you need to make your stay comfortable.',
 		},
 		{
 			question: 'How do I reserve my spot in a cabin, and how much is it?',
 			answer:
-				'We are asking $30 per person for the entire weekend (Friday 3:00PM - Sunday 10:00AM). There are also RV spots available for those who would like to park an RV which is just $30 for the spot. Unforunutely no tenting is allowed on the property.',
+				'We are asking $30 per person for the entire weekend (Friday 3:00PM - Sunday 10:00AM). There are also RV spots available for those who would like to park an RV which is just $30 for the spot. Unfortunately no tenting is allowed on the property.',
 		},
 		{
 			question: 'Are cabins co-ed?',
@@ -56,7 +56,7 @@ export const Questions = {
 		},
 		{
 			question: 'What time should I arrive?',
-			answer: `You can arrive at the venue as early as 3:00pm on Friday. There is also plenty to see and do in Bailey if you fly in early, however we can't have guests at the venue until 3pm. Just know we & the wedding party will likely be busy setting up during the day. Dinner will be around 6pm, and following dinner will be the dodgeball tournament. `,
+			answer: `You can arrive at the venue as early as 3:00pm on Friday. There is also plenty to see and do in Bailey if you fly in early. However, we can't have guests at the venue until 3pm. Just know we & the wedding party will likely be busy setting up during the day. Dinner will be around 6pm, and following dinner will be the dodgeball tournament.`,
 		},
 		{
 			question: 'Where should guests park? Is parking free?',
@@ -75,13 +75,13 @@ export const Questions = {
 		{
 			question: 'Can I bring a plus one?',
 			answer:
-				'Unforunutely we do have limitations to the amount of guests we can accomidate. So unless your RSVP specifies that you have a plus one, we cannot allow extra guests. If you think there is a mistake to your RSVP count limit please let us know.',
+				'Unfortunately we do have limitations to the amount of guests we can accommodate. So, unless your RSVP specifies that you have a plus one, we cannot allow extra guests. If you think there is a mistake to your RSVP, please let us know.',
 		},
 
 		{
 			question: 'Will transportation be provided between to/from the airport?',
 			answer:
-				'We are unable to offer transportation to and from the airport. However we can aid in coordination for carpooling.',
+				'We are unable to offer transportation to and from the airport. However, we can aid in coordination for carpooling.',
 		},
 		{
 			question: 'How do I get to the venue?',
@@ -107,32 +107,33 @@ export const Questions = {
 		{
 			question: 'What happens after the ceremony?',
 			answer:
-				'After the ceremony the guests will enjoy a cocktail hour at the dining hall until dinner is ready at the main lodge.',
+				'After the ceremony, the guests will enjoy a cocktail hour at the dining hall until dinner is ready at the main lodge.',
 		},
 		{
 			question: 'Are there other wedding events I can attend?',
 			answer:
-				'Friday night we will be hosting a dodgeball tourament, with prizes to win! This will be held in the gym. Those who are not interested in participating in the tournament but would like to watch are more than welcome. The gym has a large area to overlook the court with pool/foosball table and chairs.',
+				'We will be hosting a dodgeball tournament on Friday evening, with prizes to win! This will be held in the gym. Those who are not interested in participating in the tournament but would like to watch are more than welcome. The gym has a large area to overlook the court with a pool and foosball table with chairs.',
 		},
 		{
 			question: 'How can I join a dodgeball team?',
 			answer:
-				'To join a dodgeball team, you simply specify in your RSVP that you would like to participate. You will recieve a follow up email once teams are created. The tournament is for ages 8+ and will happen Friday evening after dinner.',
+				'To join a dodgeball team, you simply specify in your RSVP that you would like to participate. You will receive a follow up email once teams are created. The tournament is for ages 8+ and will happen Friday evening after dinner.',
 		},
 		{
 			question: 'What else is there to do around the property?',
 			answer:
-				'The property is absolutely beautiful. On it there is a disc golf course (created by the owner), an outdoor volleyball pit, a large area for late night bonfires as well as hiking. There is also plenty of wildlife to enjoy and beautiful spots to relax and read a book or have your morning coffee!',
+				'The property is absolutely beautiful. There is a disc golf course (created by the owner), an outdoor volleyball pit, a large area for late night bonfires as well as hiking on-site” There is also plenty of wildlife to enjoy and beautiful spots to relax and read a book or have your morning coffee!',
 		},
+
 		{
 			question: 'What is there to do nearby?',
 			answer:
-				'Within 10 minutes of the venue, there is a beautiful mountain disc golf course, small coffee shops, restaurants and an amazing winery in town. There are also plenty of hiking trails to enjoy.',
+				'Within 10 minutes of the venue, there is a beautiful mountain disc golf course, small coffee shops, restaurants, and an amazing winery in town. There are also plenty of hiking trails to enjoy.',
 		},
 
 		{
 			question: 'What meals will be provided over the weekend?',
-			answer: `We will provide Friday dinner, Saturday dinner and Sunday breakfast. We are also asking for a $5 donation to cover Sunday breakfast. Since we won't have a formal breakfast or lunch on Saturday, we recommend going into town for food since it's only 10 minutes away. However we will have plenty of snacks out as well incase people can't get to town.`,
+			answer: `We will provide dinner on Friday, Saturday dinner, and Sunday breakfast. We are also asking for a $5 donation to cover Sunday breakfast. Since we won't have a formal breakfast or lunch on Saturday, we recommend going into town for food since it's only 10 minutes away. However, we will have plenty of snacks out as well incase people can't get to town.`,
 		},
 	],
 	wedding: [
