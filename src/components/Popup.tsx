@@ -165,10 +165,10 @@ export default function Popup({
 	}, []);
 
 	const handleSelectCabin = () => {
-		if (activeCard === selectedCabin) {
+		if (activeCard?.id === selectedCabin?.id) {
+			updateGuest(guest?.id, { lodging_id: null });
 			setActiveModal(false);
 			setSelectedCabin(null);
-			updateGuest(guest?.id, { lodging_id: null });
 			setHideCabins(false);
 		} else {
 			setActiveModal(false);
@@ -194,7 +194,19 @@ export default function Popup({
 	const determineButtonText = () => {
 		if (guest.bed_count > content.spots_remaining)
 			return 'Not enough beds for your party';
-		else return 'Select This Cabin';
+		else if (
+			content.occupants.some((guest) => guest !== 'Spot Available') &&
+			content.lodging_type === 'rv'
+		) {
+			return 'Only one party per site allowed';
+		} else if (
+			content.occupants.some((guest) => guest === 'Spot Available') &&
+			content.lodging_type === 'rv'
+		) {
+			return 'Select This Site';
+		} else {
+			return 'Select This Cabin';
+		}
 	};
 	return (
 		<div key={`cabin-popup-${activeCard.id}`}>
@@ -239,7 +251,7 @@ export default function Popup({
 								})}
 							</CabinSpotContainer>
 							<ButtonContainer>
-								{activeCard === selectedCabin ? (
+								{activeCard?.id === selectedCabin?.id ? (
 									<ButtonError
 										onClick={() => handleSelectCabin()}
 										text='Deselect This Cabin'
@@ -247,7 +259,13 @@ export default function Popup({
 									/>
 								) : (
 									<ButtonFullWidth
-										disabled={guest.bed_count > content.spots_remaining}
+										disabled={
+											guest.bed_count > content.spots_remaining ||
+											(content.occupants.some(
+												(guest) => guest !== 'Spot Available'
+											) &&
+												content.lodging_type === 'rv')
+										}
 										onClick={() => handleSelectCabin()}
 										text={determineButtonText()}
 									/>

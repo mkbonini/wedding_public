@@ -1,6 +1,11 @@
 /** @format */
 import styled from 'styled-components';
 
+export const ErrorMessage = styled.div`
+	background-color: #ffdddd;
+	color: #ff3333;
+	padding: 20px;
+`;
 export const ArrowContainer = styled.div`
 	font-size: 20px;
 	font-weight: 900;
@@ -134,7 +139,7 @@ export const CabinCardsContainer = styled.div`
 	max-width: 1400px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: start;
 	@media only screen and (max-width: 600px) {
 		display: flex;
 		flex-wrap: nowrap;
@@ -235,6 +240,7 @@ export const DeselectButton = styled.div`
 	font-size: 14px;
 	color: #ffdddd;
 	padding-right: 0;
+	margin-top: 15px;
 	&:hover {
 		background-color: #ffdddd;
 		color: #ff3333;

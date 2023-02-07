@@ -19,7 +19,7 @@ const CardStyles = styled.div<{ disable: boolean }>`
 		cursor: pointer;
 	}
 	@media only screen and (min-width: 900px) {
-		max-width: 250px;
+		max-width: 260px;
 	}
 `;
 const ImageContainer = styled.div`
@@ -48,17 +48,19 @@ const Title = styled.div`
 	}
 `;
 
-const TypeLabel = styled.div`
+const TypeLabel = styled.div<{ type: string }>`
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
-	background-color: #000;
-	color: white;
+	background-color: ${(p) =>
+		p.type === 'family' ? '#E6EAFE' : p.type === 'rv' ? '#6871E4' : '#3366FF'};
+	color: ${(p) => (p.type === 'family' ? '#3366FF' : 'white')};
 	font-size: 14px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.07);
 	top: 10px;
 	left: 10px;
 `;
@@ -84,25 +86,41 @@ export default function Card({
 	remaining,
 	onClick,
 	disable = false,
+	occupants,
 }) {
 	const dummyImage =
 		'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+
+	const rvOccupied = occupants.some((guest) => guest !== 'Spot Available');
 	return (
 		<CardStyles onClick={() => onClick()} disable={disable}>
 			<div>
 				<ImageContainer>
-					<TypeLabel>{type}</TypeLabel>
+					<TypeLabel type={type}>{type}</TypeLabel>
 					<Image image={image ? image : dummyImage} />
 				</ImageContainer>
 				<Title>
 					<h1>{name}</h1>
-					<p className='spots-remaining'>
-						There are{' '}
-						<span>
-							<span className='number'>{remaining}</span>
-						</span>{' '}
-						spots remaining in this cabin
-					</p>
+					{type === 'rv' ? (
+						rvOccupied ? (
+							<p className='spots-remaining'>This site is occupied.</p>
+						) : (
+							<p className='spots-remaining'>
+								This site is vacant and allows for a party up to{' '}
+								<span>
+									<span className='number'>{remaining}</span>
+								</span>
+							</p>
+						)
+					) : (
+						<p className='spots-remaining'>
+							There are{' '}
+							<span>
+								<span className='number'>{remaining}</span>
+							</span>{' '}
+							spots remaining
+						</p>
+					)}
 				</Title>
 			</div>
 			<div>

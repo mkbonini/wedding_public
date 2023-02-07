@@ -20,18 +20,21 @@ import {
 	DeselectButton,
 	ArrowContainer,
 	ViewMoreButton,
+	ErrorMessage,
 } from './styled-components';
-
-import Card from '../../../../components/Card';
-import ButtonSecondary from '../../../../components/ButtonSecondary';
-import Button from '../../../../components/Button';
-import Popup from '../../../../components/Popup';
-import { updateGuest, getLodgings } from '../../Model';
-import Loading from '../../../../components/Loading';
+import {
+	Card,
+	ButtonSecondary,
+	Button,
+	Popup,
+	Loading,
+} from '../../../../components/index';
+import { updateGuest, getLodgings, getSelectedGuest } from '../../Model';
 
 export default function CabinPage({ regressFlow, progressFlow }) {
 	const {
 		guest,
+		setGuest,
 		cabinList,
 		partyUpdated,
 		setCabinList,
@@ -43,6 +46,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 	const [activeCard, setActiveCard] = useState<any>(null);
 	const [noLodgingNotice, setNoLodgingNotice] = useState(false);
 	const [hideCabins, setHideCabins] = useState(false);
+	const [capacityError, setCapacityError] = useState(false);
 
 	const offsiteCabin = selectedCabin?.id === 24;
 
@@ -84,6 +88,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 			setAcceptLodging(false);
 			setSelectedCabin(cabin);
 		}
+		checkPartyCapacity();
 	}
 
 	async function updateCabinList() {
@@ -117,6 +122,24 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 		} else {
 			updateGuest(guest?.id, { lodging_id: 24 });
 			progressFlow();
+		}
+	};
+
+	const checkPartyCapacity = async () => {
+		let current = await getSelectedGuest(guest.id);
+		const guestIsAssignedLodging = current?.lodging_id;
+		const plusOneIsNotAssignedLodging =
+			current?.plus_ones[0]?.lodging_id === null;
+		const kidIsNotAssignedLodging = current?.kids?.some(
+			(kid) => kid?.lodging_id === null && kid?.needs_bed !== 'no'
+		);
+		if (
+			(guestIsAssignedLodging && plusOneIsNotAssignedLodging) ||
+			(guestIsAssignedLodging && kidIsNotAssignedLodging)
+		) {
+			setCapacityError(true);
+		} else {
+			setCapacityError(false);
 		}
 	};
 
@@ -161,6 +184,13 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 							{selectedCabin && !offsiteCabin && (
 								<SelectedCabinSection>
 									<h3>You and your party are assigned to:</h3>
+									{capacityError && (
+										<ErrorMessage>
+											Important! Not everyone in your party can fit into this
+											cabin as it is already full. Please select a new cabin
+											that can accomidate your full party.
+										</ErrorMessage>
+									)}
 									<SelectedCabinContainer>
 										<Image image={selectedCabin?.image_url ?? ''} />
 										<SelectedContent>
@@ -214,6 +244,7 @@ export default function CabinPage({ regressFlow, progressFlow }) {
 														name={cabin?.name}
 														type={cabin?.lodging_type}
 														remaining={cabin?.spots_remaining}
+														occupants={cabin.occupants}
 														onClick={() => handleCardClick(cabin)}
 														key={`card-${index}`}
 													/>

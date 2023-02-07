@@ -8,6 +8,7 @@ import {
 	updatePlusOne,
 	setKids,
 	getSelectedGuest,
+	sendGuestEmail,
 } from '../../Model';
 import Confirmation from '../../../../components/Confirmation';
 import Toggle from '../../../../components/Toggle';
@@ -129,6 +130,7 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			email: email,
 			rsvp: 'no',
 		});
+		sendGuestEmail(guest.id);
 		progressFlow(rsvp);
 	}
 
@@ -173,7 +175,6 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			}
 		}
 	}
-
 	const plusOneFirstName = guest?.plus_ones[0]?.name?.split(' ')[0];
 	return (
 		<>
