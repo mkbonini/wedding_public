@@ -22,7 +22,7 @@ export const airBnbLinks = [
 		name: 'bailey',
 	},
 	{
-		href: 'https://www.airbnb.com/s/Denver--Colorado--United-States/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&search_type=autocomplete_click&query=Denver%2C%20Colorado%2C%20United%20States&place_id=ChIJzxcfI6qAa4cR1jaKJ_j0jhE&checkin=2023-07-21&checkout=2023-07-23&source=structured_search_input_header',
+		href: 'https://www.airbnb.com/s/Denver--Colorado--United-States/homes?adults=2&refinement_paths%5B%5D=%2Fhomes&tab_id=home_tab&flexible_trip_dates%5B%5D=november&flexible_trip_dates%5B%5D=october&flexible_trip_lengths%5B%5D=weekend_trip&date_picker_type=calendar&search_type=autocomplete_click&query=Denver%2C%20Colorado%2C%20United%20States&place_id=ChIJzxcfI6qAa4cR1jaKJ_j0jhE&source=structured_search_input_header',
 		name: 'denver',
 	},
 	{

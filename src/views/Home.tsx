@@ -164,7 +164,7 @@ export default function Home({ visible }) {
 					<ContentBlock
 						image={deerCreek}
 						alt='deer creek'
-						copy='july 21-23, 2023'
+						copy='May 18-21, 2040'
 						backgroundColor='#E6F4FE'
 						copyColor='#3366FF'
 						imagePosition='right'

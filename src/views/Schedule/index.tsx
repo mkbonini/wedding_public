@@ -27,13 +27,13 @@ export default function Schedule() {
 						<SubTitle className='padding-bottom' align='start'>
 							Deer Creek Mountain Camp
 						</SubTitle>
-						<SubTitle align='start'>July 21-23, 2023</SubTitle>
+						<SubTitle align='start'>May 18-21, 2023</SubTitle>
 						<SecondarySubTitle align='start' className='padding-top'>
 							Friday 3:00pm - Sunday 10:00am
 						</SecondarySubTitle>
 						<AdditionalSubTitle align='start'>
 							{' '}
-							228 S Pine Dr, Bailey, CO 80421
+							8401 Pearl St, Thornton, CO 80229
 						</AdditionalSubTitle>
 						<p>
 							One of the reasons we loved the venue so much was that we were
@@ -49,7 +49,7 @@ export default function Schedule() {
 				<ContentContainer id='dinner' eyebrowColor='#3366FF' align='end'>
 					<ScheduleSection align='end'>
 						<div className='eyebrow'>arrival dinner</div>
-						<SubTitle align='end'>July 21, 2023</SubTitle>
+						<SubTitle align='end'>May 18, 2040</SubTitle>
 						<SecondarySubTitle align='end'>Friday 6:00pm</SecondarySubTitle>
 						<p>
 							We know plenty of people will be traveling in on Friday and
@@ -70,7 +70,7 @@ export default function Schedule() {
 					</ImageContainer>
 					<ScheduleSection align='start'>
 						<div className='eyebrow'>The Dodgeball Tournament</div>
-						<SubTitle align='start'>Friday July 21</SubTitle>
+						<SubTitle align='start'>Friday May 18</SubTitle>
 						<SecondarySubTitle align='start'>7:30pm</SecondarySubTitle>
 						<p>
 							If you know anything about us, it’s that we love a good friendly
@@ -86,7 +86,7 @@ export default function Schedule() {
 				<ContentContainer id='ceremony' eyebrowColor='#FF99FF' align='end'>
 					<ScheduleSection align='end'>
 						<div className='eyebrow'>The Ceremony</div>
-						<SubTitle align='end'>Saturday July 22</SubTitle>
+						<SubTitle align='end'>Saturday May 19</SubTitle>
 						<SecondarySubTitle align='end'>Starts at 3:30 pm</SecondarySubTitle>
 						<p>
 							The ceremony will take place outside among the beautiful aspens.

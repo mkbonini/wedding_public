@@ -97,7 +97,7 @@ export default function Travel() {
 				</p>
 				<SubTitle>Venue</SubTitle>
 				<SecondarySubTitle>Deer Creek Mountain Camp</SecondarySubTitle>
-				<SecondarySubTitle>228 S Pine Dr, Bailey, CO 80421</SecondarySubTitle>
+				<SecondarySubTitle>8401 Pearl St, Thornton, CO 80229</SecondarySubTitle>
 				<LinkContainer>
 					<a
 						target='_blank'
