@@ -12,7 +12,7 @@ export const steps = {
 export async function getGuests() {
 	try {
 		const response = await fetch(
-			'https://mm-wedding-backend.herokuapp.com/guest_list',
+			'https://wedding-be.fly.dev/guest_list',
 			{
 				method: 'GET',
 				mode: 'cors',
@@ -39,7 +39,7 @@ export async function getGuests() {
 export async function getSelectedGuest(id) {
 	try {
 		const response = await fetch(
-			`https://mm-wedding-backend.herokuapp.com/guests/${id}`,
+			`https://wedding-be.fly.dev/guests/${id}`,
 			{
 				method: 'GET',
 				mode: 'cors',
@@ -65,7 +65,7 @@ export async function getSelectedGuest(id) {
 export async function sendGuestEmail(id) {
 	try {
 		const response = await fetch(
-			`https://mm-wedding-backend.herokuapp.com/guests/${id}/email`,
+			`https://https://wedding-be.fly.dev/guests/${id}/email`,
 			{
 				method: 'GET',
 				mode: 'cors',
@@ -90,7 +90,7 @@ export async function sendGuestEmail(id) {
 export async function getLodgings() {
 	try {
 		const response = await fetch(
-			'https://mm-wedding-backend.herokuapp.com/lodgings',
+			'https://wedding-be.fly.dev/lodgings',
 			{
 				method: 'GET',
 				mode: 'cors',
@@ -115,7 +115,7 @@ export async function getLodgings() {
 export async function getSelectedLodge(id) {
 	try {
 		const response = await fetch(
-			`https://mm-wedding-backend.herokuapp.com/lodgings/${id}`,
+			`https://wedding-be.fly.dev/lodgings/${id}`,
 			{
 				method: 'GET',
 				mode: 'cors',
@@ -139,7 +139,7 @@ export async function getSelectedLodge(id) {
 }
 
 export function updateGuest(id, body) {
-	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}`, {
+	fetch(`https://wedding-be.fly.dev/guests/${id}`, {
 		method: 'PATCH',
 		body: JSON.stringify(body),
 		headers: {
@@ -151,8 +151,21 @@ export function updateGuest(id, body) {
 	});
 }
 
+export async function createGuest(body) {
+	fetch('https://wedding-be.fly.dev/guests', {
+		method: 'POST',
+		body: JSON.stringify(body),
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			accept: 'application/json',
+			X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
+		},
+	});
+}
+
 export async function createPlusOne(body) {
-	fetch('https://mm-wedding-backend.herokuapp.com/plus_ones', {
+	fetch('https://wedding-be.fly.dev/plus_ones', {
 		method: 'POST',
 		body: JSON.stringify(body),
 		headers: {
@@ -165,7 +178,7 @@ export async function createPlusOne(body) {
 }
 
 export async function updatePlusOne(plus_one_id, body) {
-	fetch(`https://mm-wedding-backend.herokuapp.com/plus_ones/${plus_one_id}`, {
+	fetch(`https://wedding-be.fly.dev/plus_ones/${plus_one_id}`, {
 		method: 'PATCH',
 		body: JSON.stringify(body),
 		headers: {
@@ -178,7 +191,7 @@ export async function updatePlusOne(plus_one_id, body) {
 }
 
 export async function deletePlusOne(plus_one_id) {
-	fetch(`https://mm-wedding-backend.herokuapp.com/plus_ones/${plus_one_id}`, {
+	fetch(`https://wedding-be.fly.dev/plus_ones/${plus_one_id}`, {
 		method: 'DELETE',
 		headers: {
 			'Content-Type': 'application/json',
@@ -190,7 +203,7 @@ export async function deletePlusOne(plus_one_id) {
 }
 
 export async function setKids(id, body) {
-	fetch(`https://mm-wedding-backend.herokuapp.com/guests/${id}/kids`, {
+	fetch(`https://wedding-be.fly.dev/guests/${id}/kids`, {
 		method: 'PATCH',
 		body: JSON.stringify(body),
 		headers: {
@@ -203,7 +216,7 @@ export async function setKids(id, body) {
 }
 
 export async function updateDodgeball(body) {
-	fetch('https://mm-wedding-backend.herokuapp.com/dodgeball', {
+	fetch('https://wedding-be.fly.dev/dodgeball', {
 		method: 'PATCH',
 		body: JSON.stringify(body),
 		headers: {

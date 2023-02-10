@@ -9,7 +9,7 @@ import {
 } from '../styled-components';
 import Button from '../../../components/Button';
 import Loading from '../../../components/Loading';
-import { getGuests, getSelectedGuest } from '../Model';
+import { getGuests, getSelectedGuest, createGuest } from '../Model';
 import TextField from '@mui/material/TextField';
 import { GuestContext } from '../../../context/GuestContext';
 
@@ -20,7 +20,8 @@ export default function StartPage({ progressFlow }) {
 	const [guestList, setGuestList] = useState<any>([]);
 	const { setGuest } = useContext<any>(GuestContext);
 
-	const hideRsvp = window.location.search === '?beta' ? false : true;
+	// const hideRsvp = window.location.search === '?beta' ? false : true;
+	const hideRsvp = false;
 
 	useEffect(() => {
 		let controller = new AbortController();
@@ -50,6 +51,18 @@ export default function StartPage({ progressFlow }) {
 		}
 	}
 
+	function getGuestName() {
+		let guestName = searchTerm.split(" ");
+		if (guestName.length === 2) {
+			// let promise = new Promise((resolve) => {
+			// 	resolve(getSelectedGuest(foundGuest?.guest_id));
+			// });
+			return ({first_name: guestName[0], last_name: guestName[1], plus_one_count: 1});
+		}
+	}
+
+
+
 	function handleClick() {
 		setLoaded(false);
 		getSelectedGuestInfo().then(function (result) {
@@ -58,7 +71,14 @@ export default function StartPage({ progressFlow }) {
 				setDisplayError(false);
 				setLoaded(true);
 			} else {
-				setDisplayError(true);
+				// Change to createUser for public demo version
+				// setDisplayError(true);
+				// setLoaded(true);
+				let guestName = getGuestName();
+				let newGuest = createGuest(guestName);
+				setGuest(newGuest);
+				progressFlow();
+				setDisplayError(false);
 				setLoaded(true);
 			}
 		});
@@ -82,7 +102,7 @@ export default function StartPage({ progressFlow }) {
 						<>
 							<Heading>
 								<h1>RSVP</h1>
-								<p>Enter your full name below to find your invitation</p>
+								<p style={{textAlign:"center"}}>This is a demo, searching a new name will create an invite.<br/> Searching the name of an existing guest or their plus one <br/>will bring up that invite.</p>
 							</Heading>
 							<TextField
 								label='Search Your Name'

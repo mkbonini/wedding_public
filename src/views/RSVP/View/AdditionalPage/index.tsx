@@ -117,7 +117,7 @@ export default function AdditionalPage({ regressFlow, progressFlow }) {
 				updateDodgeball({ yes: playingDodgeball, no: notPlayingDodgeball });
 			}
 			progressFlow();
-			sendGuestEmail(guest.id);
+			// sendGuestEmail(guest.id);
 			window.scrollTo(0, 0);
 		}
 	};

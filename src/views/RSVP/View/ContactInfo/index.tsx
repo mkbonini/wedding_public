@@ -130,7 +130,7 @@ export default function ContactInfo({ regressFlow, progressFlow }) {
 			email: email,
 			rsvp: 'no',
 		});
-		sendGuestEmail(guest.id);
+		// sendGuestEmail(guest.id);
 		progressFlow(rsvp);
 	}
 
